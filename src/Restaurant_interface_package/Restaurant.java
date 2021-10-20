@@ -19,7 +19,14 @@ public class Restaurant {
                 k+=2;
             }
         }
-        this.timeslots = new String[] {"10:00 - 12:00", "12:00 - 14:00", "14:00 - 16:00", "16:00 - 18:00", "18:00 - 20:00", "20:00 - 22:00"};
+
+        //Timeslots of the restaurant (fixed)
+        this.timeslots = new String[] {"10:00 - 12:00", 
+                                        "12:00 - 14:00", 
+                                        "14:00 - 16:00", 
+                                        "16:00 - 18:00", 
+                                        "18:00 - 20:00", 
+                                        "20:00 - 22:00"};
     }
 
     public Table[] getTables(){
@@ -36,20 +43,22 @@ public class Restaurant {
     public void printTableAvailabilityByTime(int time){
         int timeIndex = time-1; 
         System.out.println("Table Availability at "+  timeslots[timeIndex]);
+        System.out.println("Tables : ");
         for (Table table : tables) {
             System.out.print("\n "  + table.getId());
             if (table.isReservedAtTime(timeIndex) ==true)
             {
-                table.getCustomerAtTime(timeIndex).print_customer();
+                System.out.print("      : " + table.getCustomerAtTime(timeIndex).getName()); 
             } else{
-                System.out.print(" : Unoccupied");
+                System.out.print("      : Unoccupied");
             }
         }
         System.out.println();
     }
     public void printTableAvailabilityByTable(int table){
-        tables[table-1].printReservations();
-        System.out.println("-------------------");
+        System.out.printf("\nFor table %d : \n", table); 
+        tables[table-1].printReservations(timeslots);
+        
     }
 
 

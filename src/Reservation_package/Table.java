@@ -43,7 +43,7 @@ public class Table {
         return this.reservations[time] != null;
     }
 
-    public void reserveAtTime(Customer customer, int time)
+    public void reserveAtTime(Customer customer, int time) //takes in the timeslot INDEX
     {
         if (this.reservations[time] != null)
         {
@@ -55,7 +55,7 @@ public class Table {
             System.out.println("Too many people!");
             return;
         }
-        System.out.printf("Table %d at timeslot %d successfully reserved%n", getId(), time);
+        System.out.printf("Table %d at timeslot %d successfully reserved%n", getId(), time+1);
         this.reservations[time] = customer;
     }
 
@@ -64,17 +64,17 @@ public class Table {
         this.reservations[time] = null;
     }
 
-    public void printReservations()
+    public void printReservations(String[] timeslot)
     {
-        for (int i=0;i<getReservations().length;i++)
+        for (int i=0; i<getReservations().length;i++)
         {
             if (this.reservations[i]!=null)
             {
-                System.out.printf("%d : reserved%n",i);
+                System.out.print(timeslot[i] + " : Reserved by " + this.reservations[i].getName()+ "\n");
             }
             else
             {
-                System.out.printf("%d : not reserved%n",i);
+                System.out.print(timeslot[i] + " : Not Reserved\n");
             }
         }
     }

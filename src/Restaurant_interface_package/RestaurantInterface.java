@@ -40,11 +40,13 @@ public class RestaurantInterface {
         System.out.println("What would you like to do today?"
                             + "\nSelect one of the following options (choose -1 to quit) : ");
         do {
+            System.out.println("===============================================");
             int i=0; 
             for (String option : options) {
                 i+=1; 
                 System.out.println(i + " : " + option); 
             }
+            System.out.println("===============================================");
             choice = sc.nextInt(); 
 
             switch(choice){
@@ -54,8 +56,9 @@ public class RestaurantInterface {
                     break; 
                 case 12:
                     this.createReservation(restaurant);
+                    break;
             }
-
+            
         } while (choice!=-1); 
     }
 
@@ -73,6 +76,7 @@ public class RestaurantInterface {
             restaurant.printTimeSlots();
             int time = this.sc.nextInt(); 
             restaurant.printTableAvailabilityByTime(time);
+
         } else if (choice==2) {
             System.out.println("Select Table Number [1-10] : "); 
             int table = this.sc.nextInt();
@@ -80,7 +84,7 @@ public class RestaurantInterface {
         }
     }
 
-    public void createReservation (Restaurant restaurant){
+    public Customer createCustomer(){
         System.out.println("Enter customer details for this reservation");
         System.out.println("Customer name : ");
         String name = this.sc.next();
@@ -96,18 +100,24 @@ public class RestaurantInterface {
         }
 
         Customer customer = new Customer(name, pax, membership); 
+        return customer; 
+    }
+
+    public void createReservation (Restaurant restaurant){
         
-        System.out.println("Select timeslot : ");
+        Customer customer = this.createCustomer();
+        
+        System.out.println("=====================\nSelect timeslot : ");
         restaurant.printTimeSlots();
 
         int time = this.sc.nextInt();
         restaurant.printTableAvailabilityByTime(time);
 
-        System.out.println("Select table : ");
+        System.out.println("=====================\nSelect table : ");
         int tableChoice = this.sc.nextInt();
         
-        restaurant.getTables()[tableChoice].reserveAtTime(customer, time);
-        System.out.println("Created reservation successfully");
-        restaurant.getTables()[tableChoice].getCustomerAtTime(time).print_customer();;
+        restaurant.getTables()[tableChoice-1].reserveAtTime(customer, time-1); 
+        // need to minus one because the method from Table class takes in the index itself
+        
     }
 }
