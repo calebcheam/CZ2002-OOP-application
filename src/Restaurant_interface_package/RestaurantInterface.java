@@ -5,10 +5,11 @@ import java.util.Scanner;
 
 public class RestaurantInterface {
     ArrayList<String> options;
+    Scanner sc; 
 
     public void Start(){
         int choice;
-        Scanner sc = new Scanner(System.in); 
+        sc = new Scanner(System.in); 
         options = new ArrayList<String>();
 
         // Menu Actions
@@ -32,7 +33,8 @@ public class RestaurantInterface {
         // Reservation Actions
         options.add("Create new Reservation");
         options.add("Delete Reservation");
-
+        
+        Restaurant restaurant = new Restaurant(); 
         System.out.println("What would you like to do today?"
                             + "\nSelect one of the following options (choose -1 to quit) : ");
         do {
@@ -42,6 +44,12 @@ public class RestaurantInterface {
                 System.out.println(i + " : " + option); 
             }
             choice = sc.nextInt(); 
+
+            switch(choice){
+                case 11:
+                    this.viewTableAvailability(restaurant);
+            }
+
         } while (choice!=-1); 
     }
 
@@ -51,8 +59,18 @@ public class RestaurantInterface {
         restaurantApp.Start();
     }
 
-    public void viewTableAvailability(){
-        
+    public void viewTableAvailability(Restaurant restaurant){
+        System.out.println("View by (1) Timeslot \n(2) Table");
+        int choice = this.sc.nextInt();
+        if (choice==1){
+            restaurant.printTimeSlots();
+            int time = this.sc.nextInt(); 
+            restaurant.printTableAvailabilityByTime(time);
+        } else if (choice==2) {
+            System.out.println("Select Table Number [1-10] : "); 
+            int table = this.sc.nextInt();
+            restaurant.printTableAvailabilityByTable(table);
+        }
     }
 
 }
