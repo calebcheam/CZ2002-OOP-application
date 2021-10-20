@@ -12,10 +12,18 @@ public class Restaurant {
         //this means 0 reservations have been made, all tables empty, no sales made
         this.numOfTables = 10; 
         tables = new Table[numOfTables];
+        int k=2; 
         for (int i=0; i<10; i++){
-            tables[i] = new Table(i+1, 2); 
+            tables[i] = new Table(i+1, k); 
+            if (i%2==0){
+                k+=2;
+            }
         }
-        this.timeslots = new String[] {"10:00 - 12:00", "12:00 - 14:00", "14:00 - 16:00", "16:00 - 18:00", "18:00 - 20:00", "20:00-22:00"};
+        this.timeslots = new String[] {"10:00 - 12:00", "12:00 - 14:00", "14:00 - 16:00", "16:00 - 18:00", "18:00 - 20:00", "20:00 - 22:00"};
+    }
+
+    public Table[] getTables(){
+        return this.tables; 
     }
 
     public void printTimeSlots(){
@@ -25,15 +33,16 @@ public class Restaurant {
             System.out.print(timeslots[i] + "\n");
         }
     }
-
     public void printTableAvailabilityByTime(int time){
+        int timeIndex = time-1; 
+        System.out.println("Table Availability at "+  timeslots[timeIndex]);
         for (Table table : tables) {
-            System.out.println(table.getReservations()[time-1]);
+        
         }
     }
-
     public void printTableAvailabilityByTable(int table){
-        tables[table-1].printReservations();;
+        tables[table-1].printReservations();
+        System.out.println("-------------------");
     }
 
 

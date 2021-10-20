@@ -3,6 +3,8 @@ package Restaurant_interface_package;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import Reservation_package.Customer;
+
 public class RestaurantInterface {
     ArrayList<String> options;
     Scanner sc; 
@@ -46,8 +48,12 @@ public class RestaurantInterface {
             choice = sc.nextInt(); 
 
             switch(choice){
+                 
                 case 11:
                     this.viewTableAvailability(restaurant);
+                    break; 
+                case 12:
+                    this.createReservation(restaurant);
             }
 
         } while (choice!=-1); 
@@ -60,8 +66,9 @@ public class RestaurantInterface {
     }
 
     public void viewTableAvailability(Restaurant restaurant){
-        System.out.println("View by (1) Timeslot \n(2) Table");
+        System.out.println("View by : \n(1) Timeslot \n(2) Table");
         int choice = this.sc.nextInt();
+
         if (choice==1){
             restaurant.printTimeSlots();
             int time = this.sc.nextInt(); 
@@ -73,4 +80,34 @@ public class RestaurantInterface {
         }
     }
 
+    public void createReservation (Restaurant restaurant){
+        System.out.println("Enter customer details for this reservation");
+        System.out.println("Customer name : ");
+        String name = this.sc.next();
+        System.out.println("Number of pax : ");
+        int pax = this.sc.nextInt();
+        System.out.println("Membership? (Y/N)");
+        boolean membership; 
+        if (sc.next().charAt(0) == 'Y')
+        {
+            membership = true; 
+        } else {
+            membership = false;
+        }
+
+        Customer customer = new Customer(name, pax, membership); 
+        
+        System.out.println("Select timeslot : ");
+        restaurant.printTimeSlots();
+
+        int time = this.sc.nextInt();
+        restaurant.printTableAvailabilityByTime(time);
+
+        System.out.println("Select table : ");
+        int tableChoice = this.sc.nextInt();
+        
+        restaurant.getTables()[tableChoice].reserveAtTime(customer, time);
+        System.out.println("Created reservation successfully");
+        restaurant.getTables()[tableChoice].getCustomerAtTime(time).print_customer();;
+    }
 }
