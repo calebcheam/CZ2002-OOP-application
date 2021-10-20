@@ -38,6 +38,7 @@ public class Table {
         
     }
 
+
     public void reserveAtTime(Customer customer, int time)
     {
         if (this.reservations[time] != null)
@@ -50,6 +51,7 @@ public class Table {
             System.out.println("Too many people!");
             return;
         }
+        System.out.printf("Table %d at timeslot %d successfully reserved", getId(), time);
         this.reservations[time] = customer;
     }
 
@@ -64,7 +66,7 @@ public class Table {
         {
             if (this.reservations[i]!=null)
             {
-                System.out.printf("%d : %s",i,this.reservations[i]);
+                System.out.printf("%d : reserved",i);
             }
             else
             {
