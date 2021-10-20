@@ -38,8 +38,26 @@ public class Customer {
         return this.membership;
     }
 
+    public void print_customer()
+    {
+        System.out.println("===Customer Details===");
+        System.out.println("Customer name:"+this.name);
+        System.out.println("Id:"+this.customerID);
+        System.out.println("Pax:"+this.pax);
+        
+        if (this.membership==true)
+        {
+            System.out.println("Member");
+        }
+        else
+        {
+            System.out.println("Non-Member");
+        }
 
-    
+    }
+
+
+
 
 
 
