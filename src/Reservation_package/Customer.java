@@ -1,5 +1,7 @@
 package Reservation_package;
 
+import java.util.Random;
+
 public class Customer { 
 
     private String name; //customer reservation representative name 
@@ -7,13 +9,14 @@ public class Customer {
     private int pax; //number of customers for specific reservation
     private Boolean membership; //whether a customer is a member or not
 
-    public Customer(String name,int customerID,int pax,Boolean membership)
+    public Customer(String name,int pax,Boolean membership)
     {
+        Random rand=new Random();
         this.name=name;
-        this.customerID=customerID;
+        this.customerID=rand.nextInt((100000 - 10000) + 1) + 10000;
         this.pax=pax;
         this.membership=membership;
-
+        
     }
 
     //getters and setters
