@@ -37,8 +37,15 @@ public class Restaurant {
         int timeIndex = time-1; 
         System.out.println("Table Availability at "+  timeslots[timeIndex]);
         for (Table table : tables) {
-        
+            System.out.print("\n "  + table.getId());
+            if (table.isReservedAtTime(timeIndex) ==true)
+            {
+                table.getCustomerAtTime(timeIndex).print_customer();
+            } else{
+                System.out.print(" : Unoccupied");
+            }
         }
+        System.out.println();
     }
     public void printTableAvailabilityByTable(int table){
         tables[table-1].printReservations();

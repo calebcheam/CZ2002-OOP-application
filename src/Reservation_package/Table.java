@@ -43,9 +43,6 @@ public class Table {
         return this.reservations[time] != null;
     }
 
-
-   
-
     public void reserveAtTime(Customer customer, int time)
     {
         if (this.reservations[time] != null)
