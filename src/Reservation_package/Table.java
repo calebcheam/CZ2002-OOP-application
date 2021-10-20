@@ -51,7 +51,7 @@ public class Table {
             System.out.println("Too many people!");
             return;
         }
-        System.out.printf("Table %d at timeslot %d successfully reserved", getId(), time);
+        System.out.printf("Table %d at timeslot %d successfully reserved%n", getId(), time);
         this.reservations[time] = customer;
     }
 
@@ -62,15 +62,15 @@ public class Table {
 
     public void printReservations()
     {
-        for (int i=0;i<6;i++)
+        for (int i=0;i<getReservations().length;i++)
         {
             if (this.reservations[i]!=null)
             {
-                System.out.printf("%d : reserved",i);
+                System.out.printf("%d : reserved%n",i);
             }
             else
             {
-                System.out.printf("%d : not reserved",i);
+                System.out.printf("%d : not reserved%n",i);
             }
         }
     }
