@@ -38,6 +38,11 @@ public class Table {
         
     }
 
+    public boolean isReservedAtTime(int time)
+    {
+        return this.reservations[time] != null;
+    }
+
 
     public void reserveAtTime(Customer customer, int time)
     {
