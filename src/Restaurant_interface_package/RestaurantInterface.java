@@ -3,16 +3,20 @@ package Restaurant_interface_package;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import javax.lang.model.util.ElementScanner6;
+
 import Reservation_package.Customer;
+import Reservation_package.Table;
 
 public class RestaurantInterface {
     ArrayList<String> options;
     Scanner sc; 
+    Restaurant restaurant = new Restaurant(); 
 
     public void Start(){
         int choice;
-        sc = new Scanner(System.in); 
-        options = new ArrayList<String>();
+        this.sc = new Scanner(System.in); //scanner attribute to read things
+        this.options = new ArrayList<String>(); //options for functions staff can use
 
         // Menu Actions
         options.add("Create new Menu Item (Ala Carte)");
@@ -36,7 +40,7 @@ public class RestaurantInterface {
         options.add("Create new Reservation");
         options.add("Delete Reservation");
         
-        Restaurant restaurant = new Restaurant(); 
+        
         System.out.println("What would you like to do today?"
                             + "\nSelect one of the following options (choose -1 to quit) : ");
         do {
@@ -52,10 +56,10 @@ public class RestaurantInterface {
             switch(choice){
                  
                 case 11:
-                    this.viewTableAvailability(restaurant);
+                    this.viewTableAvailability();
                     break; 
                 case 12:
-                    this.createReservation(restaurant);
+                    this.createReservation();
                     break;
             }
             
@@ -68,20 +72,26 @@ public class RestaurantInterface {
         restaurantApp.Start();
     }
 
-    public void viewTableAvailability(Restaurant restaurant){
-        System.out.println("View by : \n(1) Timeslot \n(2) Table");
+    public void viewTableAvailability(){
+        System.out.println("View by : \n(1) Timeslot \n(2) Table \n(3) All");
         int choice = this.sc.nextInt();
 
         if (choice==1){
-            restaurant.printTimeSlots();
+            this.restaurant.printTimeSlots();
             int time = this.sc.nextInt(); 
-            restaurant.printTableAvailabilityByTime(time);
+            this.restaurant.printTableAvailabilityByTime(time);
 
         } else if (choice==2) {
             System.out.println("Select Table Number [1-10] : "); 
             int table = this.sc.nextInt();
-            restaurant.printTableAvailabilityByTable(table);
+            this.restaurant.printTableAvailabilityByTable(table);
         }
+        else if (choice==3) {
+
+            
+            this.restaurant.printTableAvailabilityAll();
+        }
+       
     }
 
     public Customer createCustomer(){
@@ -103,7 +113,7 @@ public class RestaurantInterface {
         return customer; 
     }
 
-    public void createReservation (Restaurant restaurant){
+    public void createReservation (){
         
         Customer customer = this.createCustomer();
         
@@ -116,7 +126,7 @@ public class RestaurantInterface {
         System.out.println("=====================\nSelect table : ");
         int tableChoice = this.sc.nextInt();
         
-        restaurant.getTables()[tableChoice-1].reserveAtTime(customer, time-1); 
+        this.restaurant.getTables()[tableChoice-1].reserveAtTime(customer, time-1); 
         // need to minus one because the method from Table class takes in the index itself
         
     }
