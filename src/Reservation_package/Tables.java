@@ -1,33 +1,28 @@
-package Restaurant_interface_package;
+package Reservation_package;
 
-import Reservation_package.Customer;
-import Reservation_package.Table;
+public class Tables {
 
-public class Restaurant {
-    private int numOfTables; 
+    private final static int numOfTables=10; 
     private Table[] tables; 
-    private String[] timeslots; 
+    private final static String[] timeslots= new String[] {"10:00 - 12:00", 
+                                    "12:00 - 14:00", 
+                                    "14:00 - 16:00", 
+                                    "16:00 - 18:00", 
+                                    "18:00 - 20:00", 
+                                    "20:00 - 22:00"}; //Timeslots of the restaurant (fixed)
 
-    public Restaurant(){
+    public Tables(){
         //constructor -- this creates a restaurant from scratch
         //this means 0 reservations have been made, all tables empty, no sales made
-        this.numOfTables = 10; 
+         
         tables = new Table[numOfTables];
         int k=2; 
-        for (int i=0; i<10; i++){
+        for (int i=0; i<numOfTables; i++){
             tables[i] = new Table(i+1, k); 
             if (i%2==0){
                 k+=2;
             }
         }
-
-        //Timeslots of the restaurant (fixed)
-        this.timeslots = new String[] {"10:00 - 12:00", 
-                                        "12:00 - 14:00", 
-                                        "14:00 - 16:00", 
-                                        "16:00 - 18:00", 
-                                        "18:00 - 20:00", 
-                                        "20:00 - 22:00"};
     }
 
     public Table[] getTables(){
@@ -35,7 +30,7 @@ public class Restaurant {
     }
 
     public String[] getTimeSlots(){
-        return this.timeslots; 
+        return timeslots; 
     }
 
     public void printTimeSlots(){
@@ -99,6 +94,7 @@ public class Restaurant {
 
     }
 
+    
 
+    
 }
-
