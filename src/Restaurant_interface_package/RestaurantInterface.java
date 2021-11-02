@@ -36,7 +36,7 @@ public class RestaurantInterface {
         // Table Actions
         options.add("Check Table Availablility");
 
-        // Reservation Actions
+        // Reservation Actions will be replaced with a restaurant UI for this
         options.add("Create new Reservation");
         options.add("Delete Reservation");
         
@@ -72,62 +72,5 @@ public class RestaurantInterface {
         restaurantApp.Start();
     }
 
-    public void viewTableAvailability(){
-        System.out.println("View by : \n(1) Timeslot \n(2) Table \n(3) All");
-        int choice = this.sc.nextInt();
-
-        if (choice==1){
-            this.restaurant.printTimeSlots();
-            int time = this.sc.nextInt(); 
-            this.restaurant.printTableAvailabilityByTime(time);
-
-        } else if (choice==2) {
-            System.out.println("Select Table Number [1-10] : "); 
-            int table = this.sc.nextInt();
-            this.restaurant.printTableAvailabilityByTable(table);
-        }
-        else if (choice==3) {
-
-            
-            this.restaurant.printTableAvailabilityAll();
-        }
-       
-    }
-
-    public Customer createCustomer(){
-        System.out.println("Enter customer details for this reservation");
-        System.out.println("Customer name : ");
-        String name = this.sc.next();
-        System.out.println("Number of pax : ");
-        int pax = this.sc.nextInt();
-        System.out.println("Membership? (Y/N)");
-        boolean membership; 
-        if (sc.next().charAt(0) == 'Y')
-        {
-            membership = true; 
-        } else {
-            membership = false;
-        }
-
-        Customer customer = new Customer(name, pax, membership); 
-        return customer; 
-    }
-
-    public void createReservation (){
-        
-        Customer customer = this.createCustomer();
-        
-        System.out.println("=====================\nSelect timeslot : ");
-        restaurant.printTimeSlots();
-
-        int time = this.sc.nextInt();
-        restaurant.printTableAvailabilityByTime(time);
-
-        System.out.println("=====================\nSelect table : ");
-        int tableChoice = this.sc.nextInt();
-        
-        this.restaurant.getTables()[tableChoice-1].reserveAtTime(customer, time-1); 
-        // need to minus one because the method from Table class takes in the index itself
-        
-    }
+    
 }
