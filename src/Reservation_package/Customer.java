@@ -47,6 +47,11 @@ public class Customer {
 
     }
 
+    public double getOrderDiscount()
+    {
+        return this.order.nonMemberGstTotal()-this.order.memberGstTotal();
+    }
+
     //getters and setters
 
     public String getName()

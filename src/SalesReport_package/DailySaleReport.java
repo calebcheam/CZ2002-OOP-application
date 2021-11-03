@@ -17,6 +17,7 @@ import Reservation_package.Table;
 
 public class DailySaleReport { //this stores one day's worth orders
     private double dailyTotal; // total revenue from one day
+    private double dailyDiscount; // total discount given in one day
     private Map<Item, Integer> map; // total quantity sold by item 
     private String date; 
 
@@ -36,9 +37,12 @@ public class DailySaleReport { //this stores one day's worth orders
         for (int i=1; i<10; i++){
             Item item = new Item();
             item.setName("Some food " + i);
+            item.setPrice(i*2*i);
             map.put(item, (i+10)/2); 
+
         }
         this.dailyTotal= 100.0; 
+        this.dailyDiscount = 20.0;
     }
 
     public DailySaleReport(Restaurant restaurant){
@@ -85,7 +89,11 @@ public class DailySaleReport { //this stores one day's worth orders
         for (Table table : this.restaurantTables) {
             for (int i=0; i<6; i++){
                 Customer customer = table.getCustomerAtTime(i);
+                if (customer==null){
+                    continue;
+                }
                 this.dailyTotal += customer.getOrderPrice(); 
+                this.dailyDiscount += customer.getOrderDiscount();
             }
         }
     }
@@ -106,16 +114,20 @@ public class DailySaleReport { //this stores one day's worth orders
             PrintWriter pw = new PrintWriter(bw);
             
             pw.println("__________________________________________________");
-            pw.println("            DAILY SALES REPORT                    ");
+            pw.println("                 DAILY SALES REPORT               ");
             pw.println("__________________________________________________");
             pw.println("Date : " + this.date);
-            pw.println("Item                     | Quantity");
+            pw.println("Item                     | Quantity     | Revenue");
             pw.println("---------------------------------------------------");
             for (Item item : this.map.keySet()){
-                pw.println(item.getName() + "\t\t\t\t | " + this.map.get(item));
+                int quantity = this.map.get(item);
+                pw.println(item.getName() + "\t\t\t\t | " + quantity
+                            + "\t\t\t\t | " + item.getPrice()*quantity);
             }
             pw.printf("\nDAY'S TOTAL : %.2f\n" , this.dailyTotal);
+            pw.printf("TOTAL DISC GIVEN : %.2f\n" , this.dailyDiscount);
             pw.println("__________________________________________________");
+            pw.println("");
             pw.close();
   
         System.out.println("Data successfully appended at the end of file");
