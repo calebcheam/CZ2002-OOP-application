@@ -62,6 +62,11 @@ public class Table {
 
     public void removeReservationAtTime(int time)
     {
+        if(this.reservations[time]==null)
+        {
+            System.out.println("There is no customer at this table/timeslot!");
+            return;
+        }
         this.reservations[time] = null;
         System.out.printf("Customer at Table %d at timeslot %d successfully removed%n", getId(), time+1);
     

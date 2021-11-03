@@ -51,6 +51,7 @@ public class OrderManager {
 
         if(this.tables.getTables()[tableId-1].getCustomerAtTime(timeslot-1)!=null)
         {
+            System.out.println("HI");
             this.tables.getTables()[tableId-1].getCustomerAtTime(timeslot-1).getOrder().orders.put(dummyItem, quantity);
             System.out.println("Successfully edited order of "+this.tables.getTables()[tableId-1].getCustomerAtTime(timeslot-1).getName());
         }
