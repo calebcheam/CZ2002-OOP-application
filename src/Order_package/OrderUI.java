@@ -1,27 +1,22 @@
-package Reservation_package;
-
-import java.util.ArrayList;
+package Order_package;
+import Reservation_package.Restaurant;
 import java.util.Scanner;
+import java.util.ArrayList;
 
-public class ReservationUI {
-    
+public class OrderUI {
     protected Restaurant restaurant;
-    private ReservationManager manager;
-    ArrayList<String> options=new ArrayList<String>();
-    Scanner sc=new Scanner(System.in); 
-
-
-    public ReservationUI(Restaurant res)
+    private OrderManager manager;
+    ArrayList<String> options=new ArrayList<>();
+    Scanner sc=new Scanner(System.in);
+    public OrderUI(Restaurant res)
     {
         this.restaurant=res;
-        this.manager=new ReservationManager(this.restaurant);
+        this.manager=new OrderManager(this.restaurant);
            
-        options.add("Create new Reservation");
-        options.add("Delete Reservation");
-        options.add("View Reservations");
+        options.add("Create new order");
+        options.add("Edit order");
         
     }
-
     public void start()
     {
         int choice;
@@ -40,16 +35,15 @@ public class ReservationUI {
             switch(choice){
                  
                 case 1:
-                    this.manager.createReservation();
+                    this.manager.createOrder();
                     break; 
                 case 2:
-                    this.manager.removeReservation();
+                    this.manager.editOrder();
                     break;
-                case 3:
-                    this.manager.viewTableAvailability();
-            }
+                default:
+                    break;
+            } 
+            
         } while (choice!=-1); 
-        
     }
-
 }
