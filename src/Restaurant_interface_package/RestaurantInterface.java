@@ -3,6 +3,7 @@ package Restaurant_interface_package;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import Order_package.OrderUI;
 import Reservation_package.ReservationUI;
 import Reservation_package.Restaurant;
 
@@ -60,7 +61,8 @@ public class RestaurantInterface {
             choice = sc.nextInt(); 
 
             ReservationUI reservationUI=new ReservationUI(restaurant);
-            // OrderUI orderUI = new OrderUI(restaurant);
+
+            OrderUI orderUI = new OrderUI(restaurant);
 
             switch(choice){
                  
@@ -68,7 +70,7 @@ public class RestaurantInterface {
 
                     break; 
                 case 2:
-                    // orderUI.start();
+                    orderUI.start();
                     break;
                 
                 case 3: //for reservations

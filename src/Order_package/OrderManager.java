@@ -17,28 +17,49 @@ public class OrderManager {
     public void createOrder() // gonna need table id and timeslot
     {
         Order order = new Order();
-        System.out.println("table id");
+        System.out.println("Table Id:");
         int tableId = sc.nextInt();
-        System.out.println("timeslot");
+        System.out.println("Timeslot:");
         int timeslot = sc.nextInt();
-        this.tables.getTables()[tableId].getCustomerAtTime(timeslot).addOrder(order);
+        
+        if(this.tables.getTables()[tableId-1].getCustomerAtTime(timeslot-1)!=null)
+        {
+            this.tables.getTables()[tableId-1].getCustomerAtTime(timeslot-1).addOrder(order);
+            System.out.println("Successfully added order to "+this.tables.getTables()[tableId-1].getCustomerAtTime(timeslot-1).getName());
+        }
+        else
+        {
+            System.out.println("There is no customer at this table/timeslot!");
+            return;
+        }
 
     }
 
     public void editOrder() //add and remove
     {
-        System.out.println("table id");
+        System.out.println("Table id:");
         int tableId = sc.nextInt();
-        System.out.println("timeslot");
+        System.out.println("Timeslot:");
         int timeslot = sc.nextInt();
-        System.out.println("item");
+        System.out.println("Item");
         //Item item = MENU.GET(ITEM)
-        System.out.println("quantity");
+        System.out.println("Quantity");
         int quantity = sc.nextInt();
         Item dummyItem = new Item();
         dummyItem.setName("broliterallyfuckoop");
         dummyItem.setPrice(100);
-        this.tables.getTables()[tableId].getCustomerAtTime(timeslot).getOrder().orders.put(dummyItem, quantity);
+
+        if(this.tables.getTables()[tableId-1].getCustomerAtTime(timeslot-1)!=null)
+        {
+            this.tables.getTables()[tableId-1].getCustomerAtTime(timeslot-1).getOrder().orders.put(dummyItem, quantity);
+            System.out.println("Successfully edited order of "+this.tables.getTables()[tableId-1].getCustomerAtTime(timeslot-1).getName());
+        }
+        else
+        {
+            System.out.println("There is no customer at this table/timeslot!");
+            return;
+        }
+        
 
     }
 
