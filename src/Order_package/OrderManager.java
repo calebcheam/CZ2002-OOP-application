@@ -25,7 +25,12 @@ public class OrderManager {
         if(this.tables.getTables()[tableId-1].getCustomerAtTime(timeslot-1)!=null)
         {
             this.tables.getTables()[tableId-1].getCustomerAtTime(timeslot-1).addOrder(order);
+            if(this.tables.getTables()[tableId-1].getCustomerAtTime(timeslot-1).getOrder()==null)
+            {
+                System.out.println("Failed to add order...");
+            }
             System.out.println("Successfully added order to "+this.tables.getTables()[tableId-1].getCustomerAtTime(timeslot-1).getName());
+            
         }
         else
         {
@@ -51,9 +56,15 @@ public class OrderManager {
 
         if(this.tables.getTables()[tableId-1].getCustomerAtTime(timeslot-1)!=null)
         {
-            System.out.println("HI");
-            this.tables.getTables()[tableId-1].getCustomerAtTime(timeslot-1).getOrder().orders.put(dummyItem, quantity);
+            
+            this.tables.getTables()[tableId-1].getCustomerAtTime(timeslot-1).getOrder().setOrders(dummyItem, quantity);
+            if(this.tables.getTables()[tableId-1].getCustomerAtTime(timeslot-1).getOrder()==null)
+            {
+                System.out.println("Theres no order...");
+            }
             System.out.println("Successfully edited order of "+this.tables.getTables()[tableId-1].getCustomerAtTime(timeslot-1).getName());
+            this.tables.getTables()[tableId-1].getCustomerAtTime(timeslot-1).print_invoice();
+
         }
         else
         {

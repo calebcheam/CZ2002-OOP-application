@@ -10,7 +10,7 @@ public class Customer {
     private int customerID; //customer ID for reservation
     private int pax; //number of customers for specific reservation
     private Boolean membership; //whether a customer is a member or not
-    private Order order=null;//stores the orders of that customer
+    private Order order;//stores the orders of that customer
 
     public Customer(String name,int pax,Boolean membership)
     {
