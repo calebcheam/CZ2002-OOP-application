@@ -40,6 +40,7 @@ public class Restaurant {
             System.out.print(timeslots[i] + "\n");
         }
     }
+    
     public void printTableAvailabilityByTime(int time){
         int timeIndex = time-1; 
         System.out.println("Table Availability at "+  timeslots[timeIndex]);

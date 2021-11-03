@@ -5,8 +5,8 @@ import java.util.Scanner;
 
 public class ReservationUI {
     
-    private Restaurant restaurant;
-    private ReservationManager manager=new ReservationManager(this.restaurant);
+    protected Restaurant restaurant;
+    private ReservationManager manager;
     ArrayList<String> options=new ArrayList<String>();
     Scanner sc=new Scanner(System.in); 
 
@@ -14,8 +14,11 @@ public class ReservationUI {
     public ReservationUI(Restaurant res)
     {
         this.restaurant=res;
+        this.manager=new ReservationManager(this.restaurant);
+           
         options.add("Create new Reservation");
         options.add("Delete Reservation");
+        options.add("View Reservations");
         
     }
 
@@ -42,6 +45,8 @@ public class ReservationUI {
                 case 2:
                     this.manager.removeReservation();
                     break;
+                case 3:
+                    this.manager.viewTableAvailability();
             }
         } while (choice!=-1); 
         

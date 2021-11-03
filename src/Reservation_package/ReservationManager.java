@@ -2,6 +2,8 @@ package Reservation_package;
 
 import java.util.Scanner;
 
+import javax.sound.sampled.SourceDataLine;
+
 public class ReservationManager {
 
     private Restaurant restaurant;
@@ -40,6 +42,9 @@ public class ReservationManager {
         Customer customer = this.createCustomer();
         
         System.out.println("=====================\nSelect timeslot : ");
+        if (this.restaurant==null){
+            System.out.println("hi");
+        }
         this.restaurant.printTimeSlots();
 
         int time = this.sc.nextInt();

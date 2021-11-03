@@ -23,11 +23,10 @@ public class OrderManager {
         System.out.println("timeslot");
         int timeslot = sc.nextInt();
         this.tables.getTables()[tableId].getCustomerAtTime(timeslot).addOrder(order);
-        System.out.println("Order successfully created, editOrder to add/remove items");
 
     }
 
-    public void editOrder()
+    public void editOrder() //add and remove
     {
         System.out.println("table id");
         int tableId = sc.nextInt();
@@ -44,4 +43,5 @@ public class OrderManager {
 
     }
 
+    
 }

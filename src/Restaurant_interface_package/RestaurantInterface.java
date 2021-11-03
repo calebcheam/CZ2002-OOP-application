@@ -14,6 +14,7 @@ public class RestaurantInterface {
 
 
     public void Start(){
+        
         int choice;
         this.sc = new Scanner(System.in); //scanner attribute to read things
         this.options = new ArrayList<String>(); //options for functions staff can use
@@ -58,7 +59,7 @@ public class RestaurantInterface {
             System.out.println("===============================================");
             choice = sc.nextInt(); 
 
-            ReservationUI resUI=new ReservationUI(restaurant);
+            ReservationUI reservationUI=new ReservationUI(restaurant);
 
             switch(choice){
                  
@@ -70,7 +71,7 @@ public class RestaurantInterface {
                 
                 case 3:
                     
-                    resUI.start();
+                    reservationUI.start();
                    
                     break; 
                 
