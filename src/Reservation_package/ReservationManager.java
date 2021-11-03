@@ -2,7 +2,6 @@ package Reservation_package;
 
 import java.util.Scanner;
 
-import javax.sound.sampled.SourceDataLine;
 
 public class ReservationManager {
 
@@ -62,7 +61,6 @@ public class ReservationManager {
 
         System.out.println("=====================\nSelect timeslot : ");
 
-        if(this.restaurant==null) {System.out.println("fuckkkkkk");}
         this.restaurant.printTimeSlots();
 
         int time = this.sc.nextInt();

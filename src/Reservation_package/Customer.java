@@ -32,6 +32,21 @@ public class Customer {
         return this.order;
     }
 
+    public double getOrderPrice()
+    {
+        if (this.membership==false)
+        {
+            
+            return this.order.nonMemberGstTotal();
+        }
+
+        else
+        {
+            return this.order.memberGstTotal();
+        }
+
+    }
+
     //getters and setters
 
     public String getName()

@@ -11,6 +11,11 @@ public class Order {
         this.date = java.time.LocalDate.now().toString();
     }
 
+    public HashMap<Item, Integer> getOrderedItems()
+    {
+        return this.orders;
+    }
+
     public void viewOrders()
     {
         for (Item item : this.orders.keySet())

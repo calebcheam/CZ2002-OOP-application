@@ -55,13 +55,16 @@ public class Table {
             System.out.println("Too many people!");
             return;
         }
-        System.out.printf("Table %d at timeslot %d successfully reserved%n", getId(), time+1);
+        
         this.reservations[time] = customer;
+        System.out.printf("Table %d at timeslot %d successfully reserved%n", getId(), time+1);
     }
 
     public void removeReservationAtTime(int time)
     {
         this.reservations[time] = null;
+        System.out.printf("Customer at Table %d at timeslot %d successfully removed%n", getId(), time+1);
+    
     }
 
     public void printReservations(String[] timeslot)

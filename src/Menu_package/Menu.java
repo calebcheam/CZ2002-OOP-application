@@ -81,18 +81,21 @@ public class Menu {
         switch (type) {
         	case 1:
                 return mainCourseItems.get(itemindex);
-            break;
+            
             case 2:
                 return dessertItems.get(itemindex);
-            break;
+            	
             case 3:
                 return drinkItems.get(itemindex);
-            break;
+            	
             case 4:
                 return setItems.get(itemindex);
-            break;
-        )
-    }
+			
+			default:
+				return null;
+		
+   		}
+	}
     public void add() {
     	Scanner sc = new Scanner(System.in);
     	Item newitem = new Item();

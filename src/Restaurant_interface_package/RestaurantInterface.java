@@ -71,13 +71,13 @@ public class RestaurantInterface {
                     orderUI.start();
                     break;
                 
-                case 3:
+                case 3: //for reservations
                     
                     reservationUI.start();
                    
                     break; 
                 
-                case 4: //for reservations
+                case 4: //for sales report
                    
                 
                    break;
