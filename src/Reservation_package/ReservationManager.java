@@ -56,6 +56,8 @@ public class ReservationManager {
     public void removeReservation (){
 
         System.out.println("=====================\nSelect timeslot : ");
+
+        if(this.restaurant==null) {System.out.println("fuckkkkkk");}
         this.restaurant.printTimeSlots();
 
         int time = this.sc.nextInt();

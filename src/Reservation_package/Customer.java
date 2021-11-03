@@ -71,6 +71,22 @@ public class Customer {
         }
 
     }
+    public void print_invoice()
+    {
+        if (this.membership==false)
+        {
+            System.out.println("Customer ID:"+this.customerID);
+            this.order.printInvoiceRaw();
+        }
+
+        else
+        {
+            System.out.println("Customer ID:"+this.customerID);
+            this.order.printInvoiceMember();
+        }
+    }
+
+   
 
 
 

@@ -3,16 +3,14 @@ package Restaurant_interface_package;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import javax.lang.model.util.ElementScanner6;
-
-import Reservation_package.Customer;
+import Reservation_package.ReservationUI;
 import Reservation_package.Restaurant;
-import Reservation_package.Table;
+
 
 public class RestaurantInterface {
     ArrayList<String> options;
     Scanner sc; 
-    Restaurant restaurant;
+    Restaurant restaurant=new Restaurant();
 
 
     public void Start(){
@@ -60,20 +58,26 @@ public class RestaurantInterface {
             System.out.println("===============================================");
             choice = sc.nextInt(); 
 
+            ReservationUI resUI=new ReservationUI(restaurant);
+
             switch(choice){
                  
                 case 1:
-                    
+
                     break; 
                 case 2:
-                    
                     break;
+                
                 case 3:
                     
+                    resUI.start();
+                   
                     break; 
-                case 4:
-                    
-                    break;
+                
+                case 4: //for reservations
+                   
+                
+                   break;
             }
             
         } while (choice!=-1); 
