@@ -31,6 +31,16 @@ public class Order {
         return res;
     }
 
+    public double memberGstTotal()
+    {
+        return totalPrice()*0.9*1.17;
+    }
+
+    public double nonMemberGstTotal()
+    {
+        return totalPrice()*1.17;
+    }
+
     public void printInvoiceRaw()
     {
         // name, date, quantity, price, totalAmount
@@ -46,7 +56,7 @@ public class Order {
             System.out.println(item.getPrice()*orders.get(item));
         }
         System.out.println("Member? No");
-        System.out.println("Total Price with GST = "+totalPrice()*1.17);
+        System.out.println("Total Price with GST = "+nonMemberGstTotal());
 
 
     }
@@ -66,7 +76,7 @@ public class Order {
             System.out.println(item.getPrice()*orders.get(item));
         }
         System.out.println("Member? Yes");
-        System.out.println("Total Price with GST and 10% membership discount = "+totalPrice()*0.9*1.17);
+        System.out.println("Total Price with GST and 10% membership discount = "+memberGstTotal());
 
     }
 
