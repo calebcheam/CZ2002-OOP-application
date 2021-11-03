@@ -1,6 +1,6 @@
 package Reservation_package;
 
-public class Tables {
+public class Restaurant {
 
     private final static int numOfTables=10; 
     private Table[] tables; 
@@ -11,7 +11,7 @@ public class Tables {
                                     "18:00 - 20:00", 
                                     "20:00 - 22:00"}; //Timeslots of the restaurant (fixed)
 
-    public Tables(){
+    public Restaurant(){
         //constructor -- this creates a restaurant from scratch
         //this means 0 reservations have been made, all tables empty, no sales made
          

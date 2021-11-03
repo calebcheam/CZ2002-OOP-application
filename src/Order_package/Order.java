@@ -4,23 +4,12 @@ import java.util.HashMap;
 import Menu_package.Item;
 
 public class Order {
-    private HashMap<Item, Integer> orders;
+    protected HashMap<Item, Integer> orders;
     private String date;
 
     public Order()
     {
         this.date = java.time.LocalDate.now().toString();
-
-        ////
-        this.orders = new HashMap<>();
-        Item i1 = new Item();
-        i1.setName("fkinglongname");
-        i1.setPrice(15);
-        Item i2 = new Item();
-        i2.setName("even longer name");
-        i2.setPrice(20);
-        this.orders.put(i1,2);
-        this.orders.put(i2,1);
     }
 
     public void viewOrders()
@@ -62,10 +51,4 @@ public class Order {
 
     }
 
-    public static void main (String[] args){
-        Order o1 = new Order();
-        System.out.println(o1.totalPrice());
-        o1.viewOrders();
-        o1.printInvoice();
-    }
 }

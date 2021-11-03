@@ -6,12 +6,14 @@ import java.util.Scanner;
 import javax.lang.model.util.ElementScanner6;
 
 import Reservation_package.Customer;
+import Reservation_package.Restaurant;
 import Reservation_package.Table;
 
 public class RestaurantInterface {
     ArrayList<String> options;
     Scanner sc; 
-    Restaurant restaurant = new Restaurant(); 
+    Restaurant restaurant;
+
 
     public void Start(){
         int choice;
@@ -19,26 +21,31 @@ public class RestaurantInterface {
         this.options = new ArrayList<String>(); //options for functions staff can use
 
         // Menu Actions
-        options.add("Create new Menu Item (Ala Carte)");
-        options.add("Update/Delete Menu Item (Ala Carte)");
-        options.add("Create new Promotion ");
-        options.add("Update/Delete Promotion");
+        options.add("Menu actions");
+        options.add("Order actions");
+        options.add("Reservation Actions");
+        options.add("Sales Report");
 
-        options.add("View all Main Courses");
-        options.add("View all Desserts");
-        options.add("View all Drinks");
+        //  options.add("Create new Menu Item (Ala Carte)");
+        // options.add("Update/Delete Menu Item (Ala Carte)");
+        // options.add("Create new Promotion ");
+        // options.add("Update/Delete Promotion");
 
-        // Order Actions
-        options.add("Create new Order");
-        options.add("View Order");
-        options.add("Edit Order");
+        // options.add("View all Main Courses");
+        // options.add("View all Desserts");
+        // options.add("View all Drinks");
 
-        // Table Actions
-        options.add("Check Table Availablility");
+        // // Order Actions
+        // options.add("Create new Order");
+        // options.add("View Order");
+        // options.add("Edit Order");
 
-        // Reservation Actions will be replaced with a restaurant UI for this
-        options.add("Create new Reservation");
-        options.add("Delete Reservation");
+        // // Table Actions
+        // options.add("Check Table Availablility");
+
+        // // Reservation Actions will be replaced with a restaurant UI for this
+        // options.add("Create new Reservation");
+        // options.add("Delete Reservation");
         
         
         System.out.println("What would you like to do today?"
@@ -55,11 +62,17 @@ public class RestaurantInterface {
 
             switch(choice){
                  
-                case 11:
-                    this.viewTableAvailability();
+                case 1:
+                    
                     break; 
-                case 12:
-                    this.createReservation();
+                case 2:
+                    
+                    break;
+                case 3:
+                    
+                    break; 
+                case 4:
+                    
                     break;
             }
             

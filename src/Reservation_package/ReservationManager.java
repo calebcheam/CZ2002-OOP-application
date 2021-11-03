@@ -4,13 +4,13 @@ import java.util.Scanner;
 
 public class ReservationManager {
 
-    private Tables Tables;
+    private Restaurant restaurant;
     private Scanner sc=new Scanner(System.in); //scanner attribute to read things;
 
 
-    public ReservationManager(Tables tables)
+    public ReservationManager(Restaurant res)
     {
-        this.Tables=tables;
+        this.restaurant=res;
     }
 
 
@@ -40,15 +40,15 @@ public class ReservationManager {
         Customer customer = this.createCustomer();
         
         System.out.println("=====================\nSelect timeslot : ");
-        this.Tables.printTimeSlots();
+        this.restaurant.printTimeSlots();
 
         int time = this.sc.nextInt();
-        this.Tables.printTableAvailabilityByTime(time);
+        this.restaurant.printTableAvailabilityByTime(time);
 
         System.out.println("=====================\nSelect table : ");
         int tableChoice = this.sc.nextInt();
         
-        this.Tables.getTables()[tableChoice-1].reserveAtTime(customer, time-1); 
+        this.restaurant.getTables()[tableChoice-1].reserveAtTime(customer, time-1); 
         // need to minus one because the method from Table class takes in the index itself
         
     }
@@ -56,15 +56,15 @@ public class ReservationManager {
     public void removeReservation (){
 
         System.out.println("=====================\nSelect timeslot : ");
-        this.Tables.printTimeSlots();
+        this.restaurant.printTimeSlots();
 
         int time = this.sc.nextInt();
-        this.Tables.printTableAvailabilityByTime(time);
+        this.restaurant.printTableAvailabilityByTime(time);
 
         System.out.println("=====================\nSelect table : ");
         int tableChoice = this.sc.nextInt();
         
-        this.Tables.getTables()[tableChoice-1].removeReservationAtTime(time-1); 
+        this.restaurant.getTables()[tableChoice-1].removeReservationAtTime(time-1); 
         // need to minus one because the method from Table class takes in the index itself
 
     }
@@ -75,17 +75,17 @@ public class ReservationManager {
         int choice = this.sc.nextInt();
 
         if (choice==1){
-            this.Tables.printTimeSlots();
+            this.restaurant.printTimeSlots();
             int time = this.sc.nextInt(); 
-            this.Tables.printTableAvailabilityByTime(time);
+            this.restaurant.printTableAvailabilityByTime(time);
 
         } else if (choice==2) {
             System.out.println("Select Table Number [1-10] : "); 
             int table = this.sc.nextInt();
-            this.Tables.printTableAvailabilityByTable(table);
+            this.restaurant.printTableAvailabilityByTable(table);
         }
         else if (choice==3) {
-            this.Tables.printTableAvailabilityAll();
+            this.restaurant.printTableAvailabilityAll();
         }
        
     }
