@@ -71,6 +71,28 @@ public class Menu {
             System.out.println(e.getMessage());
         }
     }
+    public Item getItem(){
+        Scanner sc = new Scanner(System.in);
+        displaymenu();
+        System.out.println("Enter Item Type number: ");
+        int type = sc.nextInt();
+        System.out.println("Enter Item number: ");
+        int itemindex = sc.nextInt() - 1;
+        switch (type) {
+        	case 1:
+                return mainCourseItems.get(itemindex);
+            break;
+            case 2:
+                return dessertItems.get(itemindex);
+            break;
+            case 3:
+                return drinkItems.get(itemindex);
+            break;
+            case 4:
+                return setItems.get(itemindex);
+            break;
+        )
+    }
     public void add() {
     	Scanner sc = new Scanner(System.in);
     	Item newitem = new Item();
@@ -238,7 +260,7 @@ public class Menu {
         String type;
         for (j=0;j<this.mainCourseItems.size();j++) {
         	type = this.mainCourseItems.get(j).getType();
-        	System.out.println("| " + type + ":                 |");
+        	System.out.println("| " + type + "(1):                 |");
         	while (type.equals(this.mainCourseItems.get(j).getType())){
         		i = j+1;
         		System.out.println("|        " + i + ". " + this.mainCourseItems.get(j).getName() +"       |");
@@ -250,7 +272,7 @@ public class Menu {
         j = 0;
         for (j=0;j<this.dessertItems.size();j++) {
         	type = this.dessertItems.get(j).getType();
-        	System.out.println("| " + type + ":                 |");
+        	System.out.println("| " + type + "(2):                 |");
         	while (type.equals(this.dessertItems.get(j).getType())){
         		i = j+1;
         		System.out.println("|        " + i + ". " + this.dessertItems.get(j).getName() + "       |");
@@ -262,7 +284,7 @@ public class Menu {
         j = 0;
         for (j=0;j<this.drinkItems.size();j++) {
         	type = this.drinkItems.get(j).getType();
-        	System.out.println("| " + type + ":                 |");
+        	System.out.println("| " + type + "(3):                 |");
         	while (type.equals(this.drinkItems.get(j).getType())){
         		i = j+1;
         		System.out.println("|        " + i + ". " + this.drinkItems.get(j).getName() + "       |");
@@ -274,7 +296,7 @@ public class Menu {
         j = 0;
         for (j=0;j<this.setItems.size();j++) {
         	type = this.setItems.get(j).getType();
-        	System.out.println("| " + type + ":                 |");
+        	System.out.println("| " + type + "(4):                 |");
         	while (type.equals(this.setItems.get(j).getType())){
         		i = j+1;
         		System.out.println("|        " + i + ". " + this.setItems.get(j).getName() + "       |");
