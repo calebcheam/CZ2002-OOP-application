@@ -60,7 +60,7 @@ public class RestaurantInterface {
             choice = sc.nextInt(); 
 
             ReservationUI reservationUI=new ReservationUI(restaurant);
-            OrderUI orderUI = new OrderUI(restaurant);
+            // OrderUI orderUI = new OrderUI(restaurant);
 
             switch(choice){
                  
@@ -68,7 +68,7 @@ public class RestaurantInterface {
 
                     break; 
                 case 2:
-                    orderUI.start();
+                    // orderUI.start();
                     break;
                 
                 case 3: //for reservations
