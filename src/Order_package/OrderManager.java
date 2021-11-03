@@ -1,6 +1,5 @@
 package Order_package;
-import Reservation_package.Customer;
-import Reservation_package.Table;
+
 import Reservation_package.Restaurant;
 import Menu_package.Item;
 import java.util.Scanner;
