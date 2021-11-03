@@ -1,19 +1,19 @@
-package SalesReport_package;
-
-import java.util.ArrayList;
-import java.util.Scanner;
-
+package Order_package;
 import Reservation_package.Restaurant;
+import java.util.Scanner;
+import java.util.ArrayList;
 
-public class SalesUI {
+public class OrderUI {
     protected Restaurant restaurant;
+    private OrderManager manager;
     ArrayList<String> options=new ArrayList<>();
     Scanner sc=new Scanner(System.in);
-    public SalesUI(Restaurant res)
+    public OrderUI(Restaurant res)
     {
         this.restaurant=res;
-    
-        options.add("");
+        this.manager=new OrderManager(this.restaurant);
+           
+        options.add("Create new order");
         options.add("Edit order");
         
     }
@@ -35,10 +35,10 @@ public class SalesUI {
             switch(choice){
                  
                 case 1:
-    
+                    this.manager.createOrder();
                     break; 
                 case 2:
-          
+                    this.manager.editOrder();
                     break;
                 default:
                     break;

@@ -51,21 +51,6 @@ public class ReservationUI {
             }
         } while (choice!=-1); 
         
-
-
-
-
-
     }
-
-
-
-
-
-
-
-
-
-
 
 }

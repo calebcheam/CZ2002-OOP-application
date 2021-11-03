@@ -11,6 +11,10 @@ public class Order {
         this.date = java.time.LocalDate.now().toString();
     }
 
+    public String getDate(){
+        return this.date; 
+    }
+
     public HashMap<Item, Integer> getOrderedItems()
     {
         return this.orders;
