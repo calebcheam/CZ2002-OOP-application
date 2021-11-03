@@ -26,7 +26,7 @@ public class OrderManager {
 
     }
 
-    public void editOrder()
+    public void editOrder() //add and remove
     {
         System.out.println("table id");
         int tableId = sc.nextInt();
@@ -43,4 +43,5 @@ public class OrderManager {
 
     }
 
+    
 }
