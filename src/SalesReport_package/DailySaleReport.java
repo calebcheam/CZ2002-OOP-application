@@ -1,7 +1,6 @@
 package SalesReport_package;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import Menu_package.Item;
@@ -10,15 +9,38 @@ import Reservation_package.Customer;
 import Reservation_package.Restaurant;
 import Reservation_package.Table;
 
-public class SalesReport {
-    
+public class DailySaleReport {
+    //this stores one day's worth orders
+    private double dailyTotal; 
+
+    //for easier referencing in the method functions
+    private Restaurant restaurant; 
+    private Table[] restaurantTables; 
+    private Map<Item, Integer> map;
+
+    public DailySaleReport(Restaurant restaurant){
+        this.restaurant = restaurant; 
+        this.restaurantTables = restaurant.getTables(); 
+        this.map = new HashMap<Item, Integer>();
+    }
+    public double getDailyTotal(){
+        return this.dailyTotal;
+    }
+
+    private void calculateDailyTotal(){
+        double total = 0.0;
+        for (Table table : this.restaurantTables) {
+            for (int i=0; i<6; i++){
+                Customer customer = table.getCustomerAtTime(i);
+                //total += customer.getOrderPrice(); 
+            }
+        }
+        this.dailyTotal = total;
+    }
     public void writeDayReport(Restaurant restaurant){
         // to be called at end of the Day
-        
-        Map<Item, Integer> map = new HashMap<Item, Integer>();
-        Table[] restaurantTables = restaurant.getTables();
 
-        for (Table table : restaurantTables ) {
+        for (Table table : this.restaurantTables ) {
             // loop through the restaurant's tables
             for (int i=0; i<6; i++){
                 // loop through each time slot for a table
@@ -33,13 +55,13 @@ public class SalesReport {
                     int newQuantity = orderedItems.get(item); 
                     // the quantity of this menu item for this specific order 
 
-                    if (map.containsKey(item)){
+                    if (this.map.containsKey(item)){
                         //if daily report contains the menu item already
                         
-                        int oldQuantity = map.get(item); 
+                        int oldQuantity = this.map.get(item); 
                         newQuantity += oldQuantity; 
                     }
-                    map.put(item, newQuantity);
+                    this.map.put(item, newQuantity);
                 }
             }
         }
