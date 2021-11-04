@@ -63,7 +63,7 @@ public class SaleReports {
                }
            }
        }
-
+       
        DailySaleReport compiledReport = new DailySaleReport(summedTotal, summedDiscount, compiledMap, date);
        compiledReport.printFromObject();
    }

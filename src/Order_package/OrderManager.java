@@ -1,8 +1,9 @@
 package Order_package;
 
-import Reservation_package.Restaurant;
 import Menu_package.Item;
 import Menu_package.Menu;
+import Restaurant_interface_package.Restaurant;
+
 import java.util.Scanner;
 
 public class OrderManager {

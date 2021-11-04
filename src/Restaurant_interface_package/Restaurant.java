@@ -1,4 +1,7 @@
-package Reservation_package;
+package Restaurant_interface_package;
+
+import Reservation_package.Customer;
+import Reservation_package.Table;
 
 public class Restaurant {
 
