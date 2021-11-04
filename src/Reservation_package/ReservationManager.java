@@ -2,6 +2,8 @@ package Reservation_package;
 
 import java.util.Scanner;
 
+import Restaurant_interface_package.Restaurant;
+
 
 public class ReservationManager {
 

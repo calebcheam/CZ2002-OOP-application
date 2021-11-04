@@ -6,7 +6,6 @@ import java.util.Scanner;
 import Menu_package.Menu;
 import Order_package.OrderUI;
 import Reservation_package.ReservationUI;
-import Reservation_package.Restaurant;
 import SalesReport_package.SalesUI;
 
 

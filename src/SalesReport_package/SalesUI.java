@@ -3,7 +3,7 @@ package SalesReport_package;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import Reservation_package.Restaurant;
+import Restaurant_interface_package.Restaurant;
 
 public class SalesUI {
     protected Restaurant restaurant;

@@ -16,8 +16,8 @@ import java.util.Map;
 import Menu_package.Item;
 import Order_package.Order;
 import Reservation_package.Customer;
-import Reservation_package.Restaurant;
 import Reservation_package.Table;
+import Restaurant_interface_package.Restaurant;
 
 // degen way 
 // for adding Today / new report --> take in the information as <Item, Integer(quantity)> 
@@ -190,7 +190,7 @@ public class DailySaleReport { //this stores one day's worth orders
         }
         System.out.println();
         System.out.println("DAY'S TOTAL : " + this.dailyTotal);
-        System.out.println("TOTAL DISCOUNT GIVEN : " + this.dailyTotal);
+        System.out.println("TOTAL DISCOUNT GIVEN : " + this.dailyDiscount);
     }
 
     
