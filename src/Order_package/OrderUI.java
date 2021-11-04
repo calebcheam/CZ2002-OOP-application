@@ -2,16 +2,17 @@ package Order_package;
 import Reservation_package.Restaurant;
 import java.util.Scanner;
 import java.util.ArrayList;
+import Menu_package.Menu;
 
 public class OrderUI {
     protected Restaurant restaurant;
     private OrderManager manager;
     ArrayList<String> options=new ArrayList<>();
     Scanner sc=new Scanner(System.in);
-    public OrderUI(Restaurant res)
+    public OrderUI(Restaurant res, Menu menu)
     {
         this.restaurant=res;
-        this.manager=new OrderManager(this.restaurant);
+        this.manager=new OrderManager(this.restaurant, menu); 
            
         options.add("Create new order");
         options.add("Edit order");
