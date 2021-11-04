@@ -76,6 +76,25 @@ public class ReservationManager {
 
     }
 
+    public void checkbill()
+    {
+        System.out.println("=====================\nSelect timeslot : ");
+
+        this.restaurant.printTimeSlots();
+
+        int time = this.sc.nextInt();
+        this.restaurant.printTableAvailabilityByTime(time);
+
+        System.out.println("=====================\nSelect table : ");
+        int tableChoice = this.sc.nextInt();
+
+        this.restaurant.getTables()[tableChoice-1].getCustomerAtTime(time-1).print_invoice();
+        this.restaurant.getTables()[tableChoice-1].removeReservationAtTime(time-1); 
+
+        
+
+    }
+
 
     public void viewTableAvailability(){
         System.out.println("View by : \n(1) Timeslot \n(2) Table \n(3) All");
