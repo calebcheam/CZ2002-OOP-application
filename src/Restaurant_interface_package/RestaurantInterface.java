@@ -6,12 +6,14 @@ import java.util.Scanner;
 import Order_package.OrderUI;
 import Reservation_package.ReservationUI;
 import Reservation_package.Restaurant;
+import Menu_package.*;
 
 
 public class RestaurantInterface {
     ArrayList<String> options;
     Scanner sc; 
     Restaurant restaurant=new Restaurant();
+    Menu menu = new Menu();
 
 
     public void Start(){
@@ -62,7 +64,7 @@ public class RestaurantInterface {
 
             ReservationUI reservationUI=new ReservationUI(restaurant);
 
-            OrderUI orderUI = new OrderUI(restaurant);
+            OrderUI orderUI = new OrderUI(restaurant, menu);
 
             switch(choice){
                  
