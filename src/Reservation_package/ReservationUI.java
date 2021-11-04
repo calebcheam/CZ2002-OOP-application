@@ -3,6 +3,8 @@ package Reservation_package;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import Restaurant_interface_package.Restaurant;
+
 public class ReservationUI {
     
     protected Restaurant restaurant;

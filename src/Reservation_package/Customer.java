@@ -34,6 +34,7 @@ public class Customer {
 
     public double getOrderPrice()
     {
+        // for tabulating total (sales report)
         if (this.membership==false)
         {
             
@@ -49,7 +50,10 @@ public class Customer {
 
     public double getOrderDiscount()
     {
-        return this.order.nonMemberGstTotal()-this.order.memberGstTotal();
+        //for tabulating total discount (in sales report)
+        if (this.isMember()) return this.order.nonMemberGstTotal()-this.order.memberGstTotal();
+        
+        return 0.0; 
     }
 
     //getters and setters

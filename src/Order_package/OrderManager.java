@@ -1,8 +1,9 @@
 package Order_package;
 
-import Reservation_package.Restaurant;
 import Menu_package.Item;
 import Menu_package.Menu;
+import Restaurant_interface_package.Restaurant;
+
 import java.util.Scanner;
 
 public class OrderManager {
@@ -38,7 +39,6 @@ public class OrderManager {
         else
         {
             System.out.println("There is no customer at this table/timeslot!");
-            return;
         }
 
     }
@@ -49,13 +49,15 @@ public class OrderManager {
         int tableId = sc.nextInt();
         System.out.println("Select timeslot for table "+tableId+":");
         int timeslot = sc.nextInt();
-        System.out.println("Select item from menu:");
-        Item item = this.menu.getItem();
+        // System.out.println("Select item from menu:");
+        // Item item = this.menu.getItem();
+        /////////////////////////////////////////////
+        Item item = new Item();
+        item.setName("broliterallyfuckoop");
+        item.setPrice(100);
+        /////////////////////////////////////////////
         System.out.println("Select quantity of "+item.getName()+" to be added:");
         int quantity = sc.nextInt();
-        // Item dummyItem = new Item();
-        // dummyItem.setName("broliterallyfuckoop");
-        // dummyItem.setPrice(100);
 
         if(this.tables.getTables()[tableId-1].getCustomerAtTime(timeslot-1)!=null)
         {
@@ -67,7 +69,8 @@ public class OrderManager {
                 System.out.println("Theres no order...");
             }
             System.out.println("Successfully edited order of "+this.tables.getTables()[tableId-1].getCustomerAtTime(timeslot-1).getName());
-            this.tables.getTables()[tableId-1].getCustomerAtTime(timeslot-1).print_invoice();
+            System.out.println("Current order is: ");
+            this.viewOrder(tableId, timeslot);
 
         }
         else
@@ -75,4 +78,22 @@ public class OrderManager {
             System.out.println("There is no customer at this table/timeslot!");
         }
     }   
+
+    public void viewOrder(int tableId, int timeslot)
+    {
+        if(this.tables.getTables()[tableId-1].getCustomerAtTime(timeslot-1)!=null)
+        {
+            this.tables.getTables()[tableId-1].getCustomerAtTime(timeslot-1).getOrder().viewOrders();
+            if(this.tables.getTables()[tableId-1].getCustomerAtTime(timeslot-1).getOrder()==null)
+            {
+                System.out.println("Theres no order...");
+            }
+
+        }
+        else
+        {
+            System.out.println("There is no customer at this table/timeslot!");
+        }
+
+    }
 }
