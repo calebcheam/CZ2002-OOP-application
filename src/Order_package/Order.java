@@ -1,18 +1,28 @@
 package Order_package;
 import java.util.HashMap;
 import Menu_package.Item;
+import java.util.Scanner;
 
 public class Order {
     protected HashMap<Item, Integer> orders=new HashMap<Item,Integer>();
     private String date;
-
+    private String staffName;
+    private Scanner sc = new Scanner(System.in);
     public Order()
     {
         this.date = java.time.LocalDate.now().toString();
+        System.out.println("Enter staff name:");
+        this.staffName = sc.nextLine();
+        System.out.println("This order is handled by "+getStaff());
     }
 
     public String getDate(){
         return this.date; 
+    }
+
+    public String getStaff()
+    {
+        return this.staffName;
     }
 
     public HashMap<Item, Integer> getOrderedItems()
@@ -30,7 +40,7 @@ public class Order {
     {
         for (Item item : this.orders.keySet())
         {
-            System.out.print(item.getName()+", ");
+            System.out.print(item.getName()+" x"+this.orders.get(item)+", ");
         }
         System.out.println();
         
@@ -59,6 +69,7 @@ public class Order {
     public void printInvoiceRaw()
     {
         // name, date, quantity, price, totalAmount
+        System.out.println("Order created by: "+this.staffName);
         System.out.println("Invoice for date:");
         System.out.println(this.date);
         System.out.println("============================");
@@ -79,6 +90,7 @@ public class Order {
     public void printInvoiceMember()
     {
         // name, date, quantity, price, totalAmount
+        System.out.println("Order created by: "+this.staffName);
         System.out.println("Invoice for date:");
         System.out.println(this.date);
         System.out.println("============================");
