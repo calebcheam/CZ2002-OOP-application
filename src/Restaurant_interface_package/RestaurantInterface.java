@@ -6,6 +6,7 @@ import java.util.Scanner;
 import Order_package.OrderUI;
 import Reservation_package.ReservationUI;
 import Reservation_package.Restaurant;
+import SalesReport_package.SalesUI;
 
 
 public class RestaurantInterface {
@@ -64,6 +65,8 @@ public class RestaurantInterface {
 
             OrderUI orderUI = new OrderUI(restaurant);
 
+            SalesUI salesUI = new SalesUI(restaurant);
+
             switch(choice){
                  
                 case 1:
@@ -81,7 +84,7 @@ public class RestaurantInterface {
                 
                 case 4: //for sales report
                    
-                
+                    salesUI.start(); 
                    break;
             }
             
