@@ -61,6 +61,7 @@ public class OrderManager {
         {
             
             this.tables.getTables()[tableId-1].getCustomerAtTime(timeslot-1).getOrder().setOrders(item, quantity);
+            
             if(this.tables.getTables()[tableId-1].getCustomerAtTime(timeslot-1).getOrder()==null)
             {
                 System.out.println("Theres no order...");
