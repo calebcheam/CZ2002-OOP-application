@@ -3,7 +3,7 @@ import java.util.HashMap;
 import Menu_package.Item;
 
 public class Order {
-    protected HashMap<Item, Integer> orders;
+    protected HashMap<Item, Integer> orders=new HashMap<Item,Integer>();
     private String date;
 
     public Order()
@@ -18,6 +18,12 @@ public class Order {
     public HashMap<Item, Integer> getOrderedItems()
     {
         return this.orders;
+    }
+
+    public void setOrders(Item item, Integer quantity)
+    {
+        this.orders.put(item, quantity);
+
     }
 
     public void viewOrders()
@@ -77,6 +83,7 @@ public class Order {
         System.out.println(this.date);
         System.out.println("============================");
         System.out.println("|Name        |Quantity |Price |Amount |");
+
         for (Item item: orders.keySet())
         {
             System.out.print(item.getName().substring(0, Math.min(item.getName().length(), 10))+"... ");

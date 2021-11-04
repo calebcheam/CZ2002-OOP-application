@@ -26,7 +26,8 @@ public class ReservationUI {
     {
         int choice;
         do {
-            
+            System.out.println("");
+            System.out.println("Reservation Actions (choose -1 to quit) :");
             System.out.println("===============================================");
             int i=0; 
             for (String option : options) {
