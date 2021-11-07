@@ -187,9 +187,10 @@ public class Menu {
         return tempItemArray;
     }
 
-    public void add(String name, String type, ArrayList<String> description, float price, int stock){
+    public int add(String name, String type, ArrayList<String> description, float price, int stock){
         Item newItem = new Item(name, type, description, price, stock);
-        allocateItem(newItem, newItem.getType());
+        int check = allocateItem(newItem, newItem.getType());
+        return check;
     }
 
     public void removeItem(int number, String typeCategory, String itemType) {
