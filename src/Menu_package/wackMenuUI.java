@@ -2,9 +2,13 @@ package Menu_package;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import Menu_package.Menus.AlaCarteMenu;
+import Menu_package.Menus.GenericMenu;
+import Menu_package.Menus.PromoMenu;
+
+
 public class wackMenuUI {
-	AlaCarteMenu alaCarteMenu = new AlaCarteMenu(); 
-	PromoMenu promoMenu = new PromoMenu(); 
+	GenericMenu Menu=new AlaCarteMenu(); 
 	Scanner sc = new Scanner(System.in);
 	int choice;
 	
@@ -30,9 +34,11 @@ public class wackMenuUI {
 			int menuChoice = sc.nextInt();
 			sc.nextLine(); //consume next line
 			if (menuChoice == 1){
-				alaCarteMenu.displayMenu();
+				this.Menu=new AlaCarteMenu();
+				this.Menu.displayMenu();
 			} else {
-				promoMenu.displayMenu();
+				this.Menu=new PromoMenu();
+				this.Menu.displayMenu();
 			}
 	        break;
 
@@ -41,13 +47,13 @@ public class wackMenuUI {
 			System.out.println("\nWhat type of item is this?");
 			String typeInput = sc.nextLine();
 
-			String typeCategory = alaCarteMenu.findItemTypeCategory(typeInput);
+			String typeCategory = this.Menu.findItemTypeCategory(typeInput);
 			int i;
 			for (i=0; i<2; i++){
 				if (typeCategory=="Invalid Type"){
 					System.out.println("Type Idenitifed Unsuccessful - Please enter the type again :");
 					typeInput = sc.nextLine();
-					typeCategory = alaCarteMenu.findItemTypeCategory(typeInput);
+					typeCategory = this.Menu.findItemTypeCategory(typeInput);
 				} else
 				{
 					System.out.println("Type Identfied Successful - This is a " + typeInput + " from " + typeCategory);
@@ -78,7 +84,7 @@ public class wackMenuUI {
 			float price = sc.nextFloat();
 			System.out.println("Enter stock : ");
 			int stock = sc.nextInt();
-			alaCarteMenu.add(name,typeInput,description,price,stock);
+			this.Menu.add(name,typeInput,description,price,stock);
 		
 			break;
 

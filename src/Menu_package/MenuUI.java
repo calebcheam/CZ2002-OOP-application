@@ -3,6 +3,9 @@ package Menu_package;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import Menu_package.Menus.AlaCarteMenu;
+import Menu_package.Menus.PromoMenu;
+
 public class MenuUI {
 	Menu menu = new Menu();
 	AlaCarteMenu alaCarteMenu = new AlaCarteMenu(); 

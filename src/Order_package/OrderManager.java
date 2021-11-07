@@ -2,7 +2,7 @@ package Order_package;
 
 import Menu_package.Item;
 import Menu_package.Menu;
-import Restaurant_interface_package.Restaurant;
+import Restaurant_package.Restaurant;
 
 import java.util.Scanner;
 
