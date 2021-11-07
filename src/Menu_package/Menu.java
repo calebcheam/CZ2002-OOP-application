@@ -1,4 +1,3 @@
-package Menu_package;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -12,308 +11,432 @@ public class Menu {
     private ArrayList<Item> dessertItems;
     private ArrayList<Item> drinkItems;
     private ArrayList<Item> setItems;
-    private final String[] mainCourseTypes = {"Appetiser", "Salad", "Soup", "Vegetarian",
-            "Local Favourites", "Meat and Seafood", "Pasta", "Pizza", "Burger & Sandwich", "Set"};
-    private final String[] dessertTypes = {"Dessert"};
-    private final String[] drinkTypes = {"Fizzy Drinks", "Juices", "Tea", "Coffee"};
-    private final String[] setTypes = {"Set"};
+    private int longestStringSize;
+    private final String csvPath = "MenuItem.csv";
+    //This message below is later used for the display menu method
+    private final String priceDisclaimerMessage = "* Prices do not include GST & Service charges *";
+    private final String priceTag = "Price: SGD$"; //used for display menu method
 
     //Read and Create arrays of menuItems
     public Menu(){
-        ArrayList<String> mainCourseTypesList = new ArrayList<String>(Arrays.asList(mainCourseTypes));
-        ArrayList<String> dessertTypesList = new ArrayList<String>(Arrays.asList(dessertTypes));
-        ArrayList<String> drinkTypesList = new ArrayList<String>(Arrays.asList(drinkTypes));
-        ArrayList<String> setTypesList = new ArrayList<String>(Arrays.asList(setTypes));
+        //Create ArrayList to store Item object according to the Item type
+        mainCourseItems = new ArrayList<>();
+        dessertItems = new ArrayList<>();
+        drinkItems = new ArrayList<>();
+        setItems = new ArrayList<>();
 
-        mainCourseItems = new ArrayList<Item>();
-        dessertItems = new ArrayList<Item>();
-        drinkItems = new ArrayList<Item>();
-        setItems = new ArrayList<Item>();
+        //A class used to extract attributes from a row in the csv file
+        CSVHandler csvHandler = new CSVHandler();
 
-        String csvPath = "MenuItem.csv";
-        String line = "";
+        //This Arraylist is used to get the longest string (from menuItems names and description,
+        //to format line spacing for displaying the menu (displayMenu())
+        ArrayList<String> itemsStringList = new ArrayList<>();
+
+        String line = ""; //temporary variable to store each line of the csv file
+
+        ArrayList<Item> invalidItems = new ArrayList<>();//ArrayList to store any Item with invalid type
+
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         try {
             BufferedReader br = new BufferedReader(new FileReader(csvPath));
             br.readLine();//read first line and ignore as first line is header
 
-            while ((line = br.readLine()) != null){
-                String[] csvRow = line.split(",");//get the csv row value into String array
+            while ((line = br.readLine()) != null){//while there is a row of values in the csv
+                Item menuItem = csvHandler.createItem(line);//create Item object from current row in the csv file
 
-                Item menuItem = new Item(csvRow);//create Item object
+                //allocate Item into ArrayList according to its type
+                int allocSuccess = allocateItem(menuItem, menuItem.getType());
 
-                //extract the type of the current row's Menu Item Type
-                String itemType = csvRow[1];
+                if (allocSuccess == 1){
+                    itemsStringList.add(menuItem.getName());
+                    itemsStringList.addAll(menuItem.getDescription());
+                }
+                else invalidItems.add(menuItem); //add Item with invalid type
 
-                //add menuItem to the items list (eg. mainCourseItems) according to its type
-                if (mainCourseTypesList.contains(itemType)){
-                    mainCourseItems.add(menuItem);
-                }
-                else if (dessertTypesList.contains(itemType)){
-                    dessertItems.add(menuItem);
-                }
-                else if (drinkTypesList.contains(itemType)){
-                    drinkItems.add(menuItem);
-                }
-                else if (setTypesList.contains(itemType)) {
-                	setItems.add(menuItem);
-                }
-                else{
-                    throw new MenuItemTypeInvalid(itemType);
-                }
             }
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
-        } catch (MenuItemTypeInvalid e) {
-            System.out.println(e.getMessage());
         }
-    }
-    public Item getItem(){
-        Scanner sc = new Scanner(System.in);
-        displaymenu();
-        System.out.println("Enter Item Type number: ");
-        int type = sc.nextInt();
-        System.out.println("Enter Item number: ");
-        int itemindex = sc.nextInt() - 1;
-        switch (type) {
-        	case 1:
-                return mainCourseItems.get(itemindex);
-            
-            case 2:
-                return dessertItems.get(itemindex);
-            	
-            case 3:
-                return drinkItems.get(itemindex);
-            	
-            case 4:
-                return setItems.get(itemindex);
-			
-			default:
-				return null;
-		
-   		}
-	}
-    public void add() {
-    	Scanner sc = new Scanner(System.in);
-    	Item newitem = new Item();
-    	System.out.println("Name of new item?: ");
-    	newitem.setName(sc.nextLine());
-    	System.out.println("Type of new item?: ");
-    	newitem.setType(sc.nextLine());
-    	System.out.println("Description of new item?: ");
-    	newitem.setDescription(sc.nextLine());
-    	System.out.println("Price of new item?: ");
-    	newitem.setPrice(sc.nextFloat());
-    	System.out.println("Amount of stock of new item?: ");
-    	newitem.setStock(sc.nextInt());    	
-    }
-    public void remove(int number, int type) {
-    	int index = number-1;
-    	if (type == 1) {
-    		mainCourseItems.remove(index);    		
-    	}
-    	if (type == 2) {
-    		dessertItems.remove(index);
-    	}
-    	if (type == 3) {
-    		drinkItems.remove(index);
-    	}
-    	if (type == 4) {
-    		setItems.remove(index);
-    	}
-    }
-    public void update(int number, int type) {
-    	int choice;
-    	do {
-    		System.out.println("Update choice?");
-        	System.out.println("Name(1)");
-        	System.out.println("Type(2)");
-        	System.out.println("Description(3)");
-        	System.out.println("Price(4)");
-        	System.out.println("Stock(5)");
-        	Scanner sc = new Scanner(System.in);
-            choice = sc.nextInt();
-        	int index = number-1;
-        	switch (choice) {
-        	case 1:
-    	    	 if (type == 1) {
-    	    		 System.out.println("Enter new name:");
-    	    		 this.mainCourseItems.get(index).setName(sc.nextLine());
-    	    	 }
-    	    	 if (type == 2) {
-    	    		 System.out.println("Enter new name:");
-    	    		 this.dessertItems.get(index).setName(sc.nextLine());
-    	    	 }
-    	    	 if (type == 3) {
-    	    		 System.out.println("Enter new name:");
-    	    		 this.drinkItems.get(index).setName(sc.nextLine());
-    	    	 }
-    	    	 if (type == 4) {
-    	    		 System.out.println("Enter new name:");
-    	    		 this.setItems.get(index).setName(sc.nextLine());
-    	    	 }
-    		 break;
-    		 case 2:
-    			 if (type == 1) {
-    	    		 System.out.println("Enter new type:");
-    	    		 this.mainCourseItems.get(index).setType(sc.nextLine());
-    	    	 }
-    	    	 if (type == 2) {
-    	    		 System.out.println("Enter new type:");
-    	    		 this.dessertItems.get(index).setType(sc.nextLine());
-    	    	 }
-    	    	 if (type == 3) {
-    	    		 System.out.println("Enter new type:");
-    	    		 this.drinkItems.get(index).setType(sc.nextLine());
-    	    	 }
-    	    	 if (type == 4) {
-    	    		 System.out.println("Enter new type:");
-    	    		 this.setItems.get(index).setType(sc.nextLine());
-    	    	 }				 
-    		 break;
-    		 case 3:
-    			 if (type == 1) {
-    	    		 System.out.println("Enter new description:");
-    	    		 this.mainCourseItems.get(index).setDescription(sc.nextLine());
-    	    	 }
-    	    	 if (type == 2) {
-    	    		 System.out.println("Enter new description:");
-    	    		 this.dessertItems.get(index).setDescription(sc.nextLine());
-    	    	 }
-    	    	 if (type == 3) {
-    	    		 System.out.println("Enter new description:");
-    	    		 this.drinkItems.get(index).setDescription(sc.nextLine());
-    	    	 }
-    	    	 if (type == 4) {
-    	    		 System.out.println("Enter new description:");
-    	    		 this.setItems.get(index).setDescription(sc.nextLine());
-    	    	 }				 
-    		 break;
-    		 case 4: 
-    			 if (type == 1) {
-    	    		 System.out.println("Enter new price:");
-    	    		 this.mainCourseItems.get(index).setPrice(sc.nextFloat());
-    	    	 }
-    	    	 if (type == 2) {
-    	    		 System.out.println("Enter new price:");
-    	    		 this.dessertItems.get(index).setPrice(sc.nextFloat());
-    	    	 }
-    	    	 if (type == 3) {
-    	    		 System.out.println("Enter new price:");
-    	    		 this.drinkItems.get(index).setPrice(sc.nextFloat());
-    	    	 }
-    	    	 if (type == 4) {
-    	    		 System.out.println("Enter new price:");
-    	    		 this.setItems.get(index).setPrice(sc.nextFloat());
-    	    	 }				 
-    		 break;
-    		 case 5: 
-    			 if (type == 1) {
-    	    		 System.out.println("Enter new stock:");
-    	    		 this.mainCourseItems.get(index).setStock(sc.nextInt());
-    	    	 }
-    	    	 if (type == 2) {
-    	    		 System.out.println("Enter new stock:");
-    	    		 this.dessertItems.get(index).setPrice(sc.nextInt());
-    	    	 }
-    	    	 if (type == 3) {
-    	    		 System.out.println("Enter new stock:");
-    	    		 this.drinkItems.get(index).setPrice(sc.nextInt());
-    	    	 }
-    	    	 if (type == 4) {
-    	    		 System.out.println("Enter new stock:");
-    	    		 this.setItems.get(index).setPrice(sc.nextInt());
-    	    	 }				 
-    		 break;
-    		 case 6: 
-    			 System.out.println("Update Complete");
-        	}
-    	}while (choice < 6);
-}
 
-    public void testPrint(){
-        //this is just to check if the class is working properly, not for the project
-        int number = 1;
-        for (int i=0; i<this.mainCourseItems.size(); i++){
-            System.out.println(number);
-            System.out.println(this.mainCourseItems.get(i).getName());
-            number++;
-        }
-        for (int i=0; i<this.dessertItems.size(); i++){
-            System.out.println(number);
-            System.out.println(this.dessertItems.get(i).getName());
-            number++;
-        }
-        for (int i=0; i<this.drinkItems.size(); i++){
-            System.out.println(number);
-            System.out.println(this.drinkItems.get(i).getName());
-            number++;
+        //find the longest string to be displayed in the menu
+        longestStringSize = findLongestStringSize(itemsStringList);
+
+        //If there is any Item not added due to its invalid Item type, print message to indicate that
+        if (invalidItems.size() > 0) invalidItemMessage(invalidItems);
+    }
+
+    public void invalidItemMessage(ArrayList<Item> invalidItems){
+        System.out.println("Item(s) listed below is/are not added due to its invalid Item type: ");
+        for (int i = 0; i < invalidItems.size(); i++){
+            System.out.printf("%d. %s\n", i+1, invalidItems.get(i).getName());
+            System.out.printf("\tType: %s\n", invalidItems.get(i).getType());
+            System.out.println();
         }
     }
-    
-    public void displaymenu() {
-    	String name;
-    	System.out.println("============================");
-        System.out.println("|           MENU           |");
-        System.out.println("============================");
-        int i = 0,j;
+
+    public String findItemTypeCategory(String itemType){
+        /* Method to find which category is itemType in.
+        * (e.g. itemType = "Appetiser" => Appetiser Category)
+        * return "Invalid Type" if the type is not in any category*/
+
+        //Create Arraylists from the item types' array to use
+        //for allocation of Item object into its respective ArrayList (the ArrayLists created above)
+        ArrayList<String> mainCourseTypesList = new ArrayList<>(Arrays.asList(MenuItemCategoryTypes.mainCourseTypes));
+        ArrayList<String> dessertTypesList = new ArrayList<>(Arrays.asList(MenuItemCategoryTypes.dessertTypes));
+        ArrayList<String> drinkTypesList = new ArrayList<>(Arrays.asList(MenuItemCategoryTypes.drinkTypes));
+        ArrayList<String> setTypesList = new ArrayList<>(Arrays.asList(MenuItemCategoryTypes.setTypes));
+
+        if (mainCourseTypesList.contains(itemType)){
+            return "Main Course";
+        }
+        else if (dessertTypesList.contains(itemType)){
+            return "Dessert";
+        }
+        else if (drinkTypesList.contains(itemType)){
+            return "Drink";
+        }
+        else if (setTypesList.contains(itemType)) {
+            return "Set";
+        }
+        else{
+            return "Invalid Type";
+        }
+    }
+
+    public int allocateItem(Item menuItem, String itemType){
+        /*Allocate Item object into the ArrayList of Items, according to its type*/
+
+        String typeCategory = findItemTypeCategory(itemType);
+
+        //add menuItem to the items list (eg. mainCourseItems) according to its type
+        switch(typeCategory){
+            case "Main Course":
+                mainCourseItems.add(menuItem);
+                return 1; //return success
+            case "Dessert":
+                dessertItems.add(menuItem);
+                return 1; //return success
+            case "Drink":
+                drinkItems.add(menuItem);
+                return 1; //return success
+            case "Set":
+                setItems.add(menuItem);
+                return 1; //return success
+            default:
+                return -1; //return unsuccessful
+        }
+    }
+
+    public int findFirstTypeOccurrence(String typeCategory, String itemType){
+        /*Find the first occurrence of a type (e.g. Appetiser) in the ArrayList of Items of "typeCategory" category
+        * This method is used to delete/update an Item*/
+
+        ArrayList<Item> tempItemArray;
+
+        switch(typeCategory){
+            case "Main Course":
+                tempItemArray = mainCourseItems;
+                break;
+            case "Dessert":
+                tempItemArray = dessertItems;
+                break;
+            case "Drink":
+                tempItemArray = drinkItems;
+                break;
+            case "Set":
+                tempItemArray = setItems;
+                break;
+            default:
+                return -2;//return -2 if itemType is not in any category
+        }
+
+        String tempType;
+        //Search first occurrence of the Item type
+        for (int i = 0; i < tempItemArray.size(); i++){
+            tempType = tempItemArray.get(i).getType();
+            if (tempType.equals(itemType)) return i;//return index of first occurrence of itemType
+        }
+        return -1;//return -1 if itemType is in a category but not found
+    }
+
+    public ArrayList<Item> returnItemListReference(String typeCategory){
+        /*This method returns the reference of ArrayList of Item (one of the attributes of Menu class),
+        that contains Items that is classified under "typeCategory" (Item type) category
+        * Only use this method when itemType parameter is always a valid Item type*/
+
+        ArrayList<Item> tempItemArray;
+
+        switch(typeCategory) {
+            case "Main Course":
+                tempItemArray = mainCourseItems;
+                break;
+            case "Dessert":
+                tempItemArray = dessertItems;
+                break;
+            case "Drink":
+                tempItemArray = drinkItems;
+                break;
+            default: //case "Set":
+                tempItemArray = setItems;
+                break;
+        }
+        return tempItemArray;
+    }
+
+    public void add(String name, String type, ArrayList<String> description, float price, int stock){
+        Item newItem = new Item(name, type, description, price, stock);
+        allocateItem(newItem, newItem.getType());
+    }
+
+    public void removeItem(int number, String typeCategory, String itemType) {
+        //remove the specified Item according to the type category, Item type,
+        //the numbering of the Item in the Menu display.
+        //this method will assume that no invalid "itemType" will be passed into the parameter
+        //as it will be settled in the MenuUI (boundary) class
+
+        //Find first occurrence of itemType
+        int firstOccurIndex = findFirstTypeOccurrence(typeCategory, itemType);
+        //will not consider failure of getting an index number from the above method as the MenuUI will not display
+        //any non-existent Item type for selection
+
+        //get ArrayList (Menu attribute) that contains the Item to be removed
+        ArrayList<Item> tempItemArray;
+        tempItemArray = returnItemListReference(typeCategory);
+
+        //remove Item
+        tempItemArray.remove(firstOccurIndex + number - 1);
+    }
+
+    public void updateItem(int number, String typeCategory, String itemType, ArrayList<String> updateInfo)
+    {
+        /*Update the specified Item's attributes according to the type category, Item type, first element in updateInfo,
+            the numbering of the Item in the Menu display.
+          The updateInfo's (last parameter) first element will state what attribute to change.
+            -if "1" - change Item name
+            -if "2" - change Item type
+            -if "3" - change Item description
+            -if "4" - change Item price
+            -if "5" - change Item stock
+            -other values will not be considered as invalid input will be taken care by the MenuUI
+
+          For Item type update, it must be a type that is in "typeCategory" category. This must be ensured in the MenuUI
+
+        This method will assume that no invalid "itemCategory" and "itemType" will be passed into the parameter,
+         as it will be settled in the MenuUI (boundary) class.
+         */
+
+        //find first occurrence of Item type in the category
+        int firstOccurIndex = findFirstTypeOccurrence(typeCategory, itemType);
+        //will not consider failure of getting an index number from the above method as the MenuUI will not display
+        //any non-existent Item type for selection
+
+        //get ArrayList (Menu attribute) that contains the Item to be updated
+        ArrayList<Item> tempItemArray;
+        tempItemArray = returnItemListReference(typeCategory);
+
+        //get the first element of updateInfo, to know which attribute of the Item requires change
+        String updateChoice = updateInfo.get(0);
+
+        switch (updateChoice){
+            case "1":
+                //change Item name of Item specified,to the second element in the updateInfo
+                tempItemArray.get(firstOccurIndex).setName(updateInfo.get(1));
+                break;
+            case "2":
+                //change Item type of Item specified,to the second element in the updateInfo
+                tempItemArray.get(firstOccurIndex).setType(updateInfo.get(1));
+                break;
+            case "3":
+                //change Item description of Item specified, using all elements in updateInfo,
+                // excluding the first element
+                updateInfo.remove(0);
+                tempItemArray.get(firstOccurIndex).setDescription(updateInfo);
+                break;
+            case "4":
+                //change Item price of Item specified,to the second element in the updateInfo
+                tempItemArray.get(firstOccurIndex).setPrice(Integer.parseInt(updateInfo.get(1)));
+                break;
+            default: //case "5"
+                //change Item stock of Item specified,to the second element in the updateInfo
+                tempItemArray.get(firstOccurIndex).setStock(Integer.parseInt(updateInfo.get(1)));
+                break;
+        }
+    }
+
+    public int findLongestStringSize(ArrayList<String> itemsNamesTypesList){
+        //Find the longest string in the itemsNamesTypesList
+        int longestStringSize = 0;
+        for (int i = 0; i < itemsNamesTypesList.size(); i++){
+            int curStringSize = itemsNamesTypesList.get(i).length();
+            if (curStringSize > longestStringSize){
+                //if current string longer than current longestStringSize
+                longestStringSize = curStringSize;
+            }
+        }
+        if (longestStringSize % 2 != 0){
+            //if not even
+            longestStringSize++;//make it even for the (menu) display to be symmetric
+        }
+        if(longestStringSize < priceDisclaimerMessage.length()){
+            //if the longestString size is smaller than the price message (message to indicating
+            //GST & Service charges are not included) length
+            longestStringSize = priceDisclaimerMessage.length();
+        }
+        return longestStringSize;
+    }
+
+    public void printHeaderLines(int numOfLines){
+        for (int i = 0; i < numOfLines; i++){
+            System.out.printf("=");
+        }
+        System.out.println();
+    }
+
+    public void printSubHeaderLines(int numOfLines){
+        for (int i = 0; i < numOfLines; i++){
+            System.out.printf("-");
+        }
+        System.out.println();
+    }
+
+    public void printMenuHeader(int spacing){
+        printHeaderLines(spacing);
+
+        //print the line with "MENU"
+        System.out.printf("|" +
+                "%"+(spacing/2 +2-1)+"s" +
+                "%"+(spacing/2 - 2)+"c\n", "MENU", '|');
+
+        printHeaderLines(spacing);
+    }
+
+    public void printItemSection(ArrayList<Item> menuItems, int spacing, boolean isDrinkType){
+        //only for non-Set type items
+        int i;
+        String menuItemName;
+        ArrayList<String> menuItemDescription;
+        float menuPrice;
         String type;
-        for (j=0;j<this.mainCourseItems.size();j++) {
-        	type = this.mainCourseItems.get(j).getType();
-        	System.out.println("| " + type + "(1):                 |");
-        	while (type.equals(this.mainCourseItems.get(j).getType())){
-        		i = j+1;
-        		System.out.println("|        " + i + ". " + this.mainCourseItems.get(j).getName() +"       |");
-        		j = j+1;
-        	}
+        for (int j = 0; j < menuItems.size(); j++) {
+            i = 1;
+            type = menuItems.get(j).getType();
+            System.out.printf("| " + type + ":%"+(spacing-type.length()-3)+"c\n", '|');
+            printSubHeaderLines(spacing);
+
+            while (type.equals(menuItems.get(j).getType())){ //while the current Item type equals to type
+                menuItemName = menuItems.get(j).getName();
+                menuItemDescription = menuItems.get(j).getDescription();
+                menuPrice = menuItems.get(j).getPrice();
+
+                System.out.printf("|%6d. %s", i, menuItemName);
+                System.out.printf("%"+(spacing-menuItemName.length()-9-priceTag.length())+"s %.2f",
+                        priceTag, menuPrice);
+                if (menuPrice < 10) System.out.printf("%6c\n", '|');
+                else System.out.printf("%5c\n", '|');
+
+
+                if (isDrinkType == false){//if Item is not Drink type
+                    for (int k = 0; k < menuItemDescription.size(); k++){
+                        int curPartDescriptionLength = menuItemDescription.get(k).length();
+                        //9 whitespaces in between left '|' and '-'
+                        if (k == 0) System.out.printf("|\t\t - ");
+                        else System.out.printf("|\t\t   + ");
+
+                        System.out.printf("%s", menuItemDescription.get(k));
+                        if (k == 0){
+                            System.out.printf("%"+(spacing-curPartDescriptionLength-11)+"c\n", '|');
+                        }
+                        else System.out.printf("%"+(spacing-curPartDescriptionLength-13)+"c\n", '|');
+
+                    }
+                }
+
+                j++;
+                if (j < menuItems.size()) printSubHeaderLines(spacing);
+                else break;
+                i++;
+            }
         }
-        System.out.println("============================");
-        i = 0;
-        j = 0;
-        for (j=0;j<this.dessertItems.size();j++) {
-        	type = this.dessertItems.get(j).getType();
-        	System.out.println("| " + type + "(2):                 |");
-        	while (type.equals(this.dessertItems.get(j).getType())){
-        		i = j+1;
-        		System.out.println("|        " + i + ". " + this.dessertItems.get(j).getName() + "       |");
-        		j = j+1;
-        	}
+        printHeaderLines(spacing);
+        printHeaderLines(spacing);
+    }
+
+    public void printSetSection(ArrayList<Item> setItems, int spacing){
+        String type;
+        int i;
+
+        for (int j = 0; j < setItems.size(); j++) {
+            i = 1;
+            type = setItems.get(j).getType();
+            System.out.printf("| " + type + ":%"+(spacing-type.length()-3)+"c\n", '|');
+
+            printSubHeaderLines(spacing);
+
+            while (type.equals(setItems.get(j).getType())){
+                String setItemName = setItems.get(j).getName();
+                ArrayList<String> setItemDescription = setItems.get(j).getDescription();
+                float setPrice = setItems.get(j).getPrice();
+
+                System.out.printf("|%6d. %s", i, setItemName);
+                System.out.printf("%"+(spacing-setItemName.length()-9-priceTag.length())+"s %.2f",
+                        priceTag, setPrice);
+                if (setPrice < 10) System.out.printf("%4c\n", '|');//4 is the length of the price (e.g. "4.00")
+                else System.out.printf("%5c\n", '|');//5 is the length of the price (e.g. "24.00")
+
+                for (int k = 0; k < setItemDescription.size(); k++){
+                    int curPartDescriptionLength = setItemDescription.get(k).length();
+                    if (k % 2 == 0){ //if even index
+                        System.out.printf("|\t\t - ");
+                        System.out.printf("%s", setItemDescription.get(k));
+                        System.out.printf("%"+(spacing-curPartDescriptionLength-11)+"c\n", '|');
+                    }
+                    else{
+                        System.out.printf("|\t\t   ");
+                        System.out.printf("(%s)", setItemDescription.get(k));
+                        System.out.printf("%"+(spacing-curPartDescriptionLength-13)+"c\n", '|');
+                    }
+                }
+                j++;
+                if (j < setItems.size()) printSubHeaderLines(spacing);
+                else break;
+                i++;
+            }
         }
-        System.out.println("============================");
-        i = 0;
-        j = 0;
-        for (j=0;j<this.drinkItems.size();j++) {
-        	type = this.drinkItems.get(j).getType();
-        	System.out.println("| " + type + "(3):                 |");
-        	while (type.equals(this.drinkItems.get(j).getType())){
-        		i = j+1;
-        		System.out.println("|        " + i + ". " + this.drinkItems.get(j).getName() + "       |");
-        		j = j+1;
-        	}
-        }
-        System.out.println("============================");
-        i = 0;
-        j = 0;
-        for (j=0;j<this.setItems.size();j++) {
-        	type = this.setItems.get(j).getType();
-        	System.out.println("| " + type + "(4):                 |");
-        	while (type.equals(this.setItems.get(j).getType())){
-        		i = j+1;
-        		System.out.println("|        " + i + ". " + this.setItems.get(j).getName() + "       |");
-        		j = j+1;
-        	}
-        }
-        System.out.println("============================");
+        printHeaderLines(spacing);
+    }
+
+    public void displayMenu(int longestStringSize) {
+        int spacing = longestStringSize+20; //number of spacing to format the menu display spacing
+
+        printMenuHeader(spacing);
+
+        System.out.printf("| %s%"+(spacing-priceDisclaimerMessage.length()-2)+"c\n", priceDisclaimerMessage, '|');
+        printHeaderLines(spacing);
+
+        printItemSection(mainCourseItems, spacing, false);
+        printItemSection(dessertItems, spacing, false);
+        printItemSection(drinkItems, spacing, true);
+        printSetSection(setItems, spacing);
+    }
+
+    public int getLongestStringSize(){
+        return this.longestStringSize;
     }
 
     public static void main(String[] args){
-        //this 2 lines are just to check if the class is working properly, not for the project
+        //the main method is just to check if the class is working properly, not for the project
         Menu menu = new Menu();
-        menu.testPrint();
+        System.out.printf("Longest string: %d\n", menu.getLongestStringSize());
+        menu.displayMenu(menu.getLongestStringSize());
+        String[] updateInfoArray = {"1", "Hello World"};
+        ArrayList<String> updateInfo = new ArrayList<>(Arrays.asList(updateInfoArray));
+        menu.updateItem(1, "Main Course", "Appetiser", updateInfo);
+        menu.displayMenu(menu.getLongestStringSize());
+
     }
 
 }
-

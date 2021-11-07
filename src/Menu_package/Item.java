@@ -1,23 +1,21 @@
-package Menu_package;
+import java.util.ArrayList;
 
 public class Item {
     private String name;
     private String type;
-    private String description;
+    private ArrayList<String> description;
     private float price;
     private int stock;
 
-    public Item(String[] csvRow){
-        //csvRow is list of String with all values in a single row in the csv file
-        this.name = csvRow[0];
-        this.type = csvRow[1];
-        this.description = csvRow[2];
-        this.price = Float.parseFloat(csvRow[3]);
-        this.stock = Integer.parseInt(csvRow[4]);
+    public Item(String name, String type, ArrayList<String> description, float price, int stock){
+        this.name = name;
+        this.type = type;
+        this.description = description;
+        this.price = price;
+        this.stock = stock;
     }
-    public Item() {
-    	
-    }
+
+    public Item(){}
 
     public String getName(){
         return this.name;
@@ -27,7 +25,7 @@ public class Item {
         return this.type;
     }
 
-    public String getDescription(){
+    public ArrayList<String> getDescription(){
         return this.description;
     }
 
@@ -47,7 +45,32 @@ public class Item {
         this.type = type;
     }
 
-    public void setDescription(String description){
+    public void setDescription(String descriptionString){
+        //description is csvRow[2]
+        boolean isSet;
+        if (this.type.equals("Set")) isSet = true;
+        else isSet = false;
+
+        this.description = new ArrayList<String>();
+
+        String[] itemDescription;
+        if (!isSet){
+            itemDescription = descriptionString.split(" \\+ ");
+            for (int i = 0; i < itemDescription.length; i++){
+                this.description.add(itemDescription[i]);
+            }
+        }
+        else{
+            //split the description by ") + " to get each item in the Set
+            itemDescription = descriptionString.split("\\) \\+ ");
+            for (int i = 0; i < 3; i++){
+                this.description.add(itemDescription[i]+ ")");
+            }
+            this.description.add(itemDescription[3]);
+        }
+    }
+
+    public void setDescription(ArrayList<String> description){
         this.description = description;
     }
 
@@ -57,5 +80,11 @@ public class Item {
 
     public void setStock(int stock){
         this.stock = stock;
+    }
+
+    public void printDescription(){
+        for (int i=0; i<this.description.size(); i++){
+            System.out.println(this.description.get(i));
+        }
     }
 }
