@@ -23,11 +23,46 @@ public class MenuUI {
 	        System.out.print("Enter Option: ");
 	        choice = sc.nextInt();
 	        switch(choice) {
-	        case 1:	        	
+	        case 1:
+			this.menu.displaymenu(this.menu.getLongestStringSize());
 	        break;
 	        case 2:
+			int i = 0;
+			while (i == 0){
+				System.out.println("Enter new item name:");
+			        String name = sc.nextLine();
+			        System.out.println("Enter new item type:");
+				String type = sc.nextLine();
+				System.out.println("Enter new item description:");
+				ArrayList<String> description = sc.nextLine();
+				System.out.println("Enter new item price:");
+				float price = sc.nextFloat();
+				System.out.println("Enter new item stock:");
+				int stock = sc.nextInt();
+				int check = this.menu.add(name,type,description,price,stock);
+				if (check == 1){
+					System.out.println("New item added successfully");
+					System.out.println("Enter 0 to add another item");
+					System.out.println("Enter 1 to end application");
+					i = sc.nextInt();
+				}
+				else{
+					System.out.println("New item not added successfully, please try again");
+				}
+			}		
 	        break;
 	        case 3:
+			this.menu.displaymenu(this.menu.getLongestStringSize());
+			int i = 0;
+			while (i == 0){
+				System.out.println("Enter item number to be removed:");
+			        int number = sc.nextInt();
+			        System.out.println("Enter typeCategory of item to be removed:");
+				String typeCategory = sc.nextLine();
+				System.out.println("Enter itemType of item to be removed");
+				String itemType = sc.nextLine();
+			}		
+			
 	        break;
 	        case 4:
 	        break;
