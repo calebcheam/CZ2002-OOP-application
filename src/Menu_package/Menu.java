@@ -80,7 +80,7 @@ public class Menu {
 
     public String findItemTypeCategory(String itemType){
         /* Method to find which category is itemType in.
-        * (e.g. itemType = "Appetiser" => Appetiser Category)
+        * (e.g. itemType = "Appetiser" => Main Course Category)
         * return "Invalid Type" if the type is not in any category*/
 
         //Create Arraylists from the item types' array to use
