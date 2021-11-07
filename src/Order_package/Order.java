@@ -40,7 +40,7 @@ public class Order {
     {
         for (Item item : this.orders.keySet())
         {
-            System.out.print(item.getName()+" x"+this.orders.get(item)+", ");
+            System.out.print(item.getName()+" x"+this.orders.get(item)+" / ");
         }
         System.out.println();
         

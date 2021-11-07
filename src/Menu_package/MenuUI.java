@@ -9,8 +9,7 @@ public class MenuUI {
 	PromoMenu promoMenu = new PromoMenu(); 
 	Scanner sc = new Scanner(System.in);
 	int choice;
-	
-	public void start() {
+	public Item start() {
 		do {
 		System.out.println("============================");
 	        System.out.println("|       Menu Options       |");
@@ -27,63 +26,28 @@ public class MenuUI {
 	        choice = sc.nextInt();
 			sc.nextLine(); //consume next line
 	        switch(choice) {
-	        case 1:	        	
-			menu.displayMenu();
-			//System.out.println("Which menu to display? (1) Ala Carte (2) Promotional ");
-			// int menuChoice = sc.nextInt();
-			// sc.nextLine(); //consume next line
-			// if (menuChoice == 1){
-			// 	alaCarteMenu.displayMenu();
-			// } else {
-			// 	promoMenu.displayMenu();
-			// }
+	        case 1:
+			this.menu.displayMenu(this.menu.getLongestStringSize());
 	        break;
 
 	        case 2:
-			System.out.println("\n========== Create New Menu Item =========\n");
-			System.out.println("\nWhat type of item is this?");
-			String typeInput = sc.nextLine();
-
-			String typeCategory = menu.findItemTypeCategory(typeInput);
-			int i;
-			for (i=0; i<2; i++){
-				if (typeCategory=="Invalid Type"){
-					System.out.println("Type Idenitifed Unsuccessful - Please enter the type again :");
-					typeInput = sc.nextLine();
-					typeCategory = menu.findItemTypeCategory(typeInput);
-				} else
-				{
-					System.out.println("Type Identfied Successful - This is a " + typeInput + " from " + typeCategory);
-					break;
-				} 
-			}
-			if (i>=2){
-				System.out.println("Too many invalid inputs! You are clearly not in the right mind to add a menu item.");
-				System.out.println("Quitting...");
-				break;
-			}
-			
-			System.out.println("\nWhat is the name of the new " + typeInput + " ?");
-			String name = sc.nextLine();
-
-			System.out.println("Enter description for the new item, " + name);
-			System.out.println("Enter each ingredient one by one. Enter \'x\' only to indicate end of description");
-			ArrayList<String> description = new ArrayList<String>(); 
-			String input = sc.nextLine();
-			boolean isFirst=true;
-			do {
-				description.add(input);
-				System.out.println(input + " was added! Enter next ingredient (or x to quit) : ");
-				input = sc.nextLine(); 
-			}
-			while (!input.contains("x"));
-
-			System.out.println("Enter price : ");
-			float price = sc.nextFloat();
-			System.out.println("Enter stock : ");
-			int stock = sc.nextInt();
-			int check = menu.add(name,typeInput,description,price,stock);
+			int i = 0;
+			while (i == 0){
+				System.out.println("Enter new item name:");
+			        String name = sc.nextLine();
+			        System.out.println("Enter new item type:");
+				String type = sc.nextLine();
+				System.out.println("Enter new item description:");
+				ArrayList<String> temp = new ArrayList<>();
+				String description = sc.nextLine();
+				temp.add(description);
+				System.out.println("Enter new item price:");
+				float price = sc.nextFloat();
+				System.out.println("Enter new item stock:");
+				int stock = sc.nextInt();
+				int check = this.menu.add(name,type,temp,price,stock);
 				if (check == 1){
+					System.out.println("New item added successfully");
 					System.out.println("Enter 0 to add another item");
 					System.out.println("Enter 1 to end application");
 					i = sc.nextInt();
@@ -91,22 +55,113 @@ public class MenuUI {
 				else{
 					System.out.println("New item not added successfully, please try again");
 				}
-
-			break;
-
+			}		
+	        break;
 	        case 3:
-			//menu.removeItem(number, typeCategory, itemType);
+	        int length = this.menu.getLongestStringSize();
+		this.menu.displayMenu(length);
+		int j = 0;
+		while (j == 0){
+			System.out.println("Enter item number to be removed:");
+			int number = sc.nextInt();
+		        System.out.println("Enter typeCategory of item to be removed:");
+			String typeCategory = sc.nextLine();
+			System.out.println("Enter itemType of item to be removed");
+			String itemType = sc.nextLine();
+			while (this.menu.findItemTypeCategory(itemType) == "Invalid Type") {
+				System.out.println("Invalid itemType");
+				System.out.println("Please Re-Enter itemType of item to be removed");
+				itemType = sc.nextLine();
+			}
+			this.menu.removeItem(number,typeCategory,itemType);
+			System.out.println("Item removed successfully");
+			System.out.println("Enter 0 to add another item");
+			System.out.println("Enter 1 to end application");
+			j = sc.nextInt();
+		      }		
 	        break;
 
 	        case 4:
+	        this.menu.displayMenu(this.menu.getLongestStringSize());
+	        int k = 0;
+		while (k == 0){
+			System.out.println("Enter item number to be updated:");
+		        int number = sc.nextInt();
+	        	System.out.println("Enter typeCategory of item to be updated:");
+			String typeCategory = sc.nextLine();
+			System.out.println("Enter itemType of item to be updated");
+			String itemType = sc.nextLine();
+			while (this.menu.findItemTypeCategory(itemType) == "Invalid Type") {
+				System.out.println("Invalid itemType");
+				System.out.println("Please Re-Enter itemType of item to be updated");
+				itemType = sc.nextLine();
+			}
+			System.out.println("1 - change item name");				
+			System.out.println("2 - change item type");
+			System.out.println("3 - change item description");
+			System.out.println("4 - change item price");
+			System.out.println("5 - change item stock");
+			System.out.println("Enter choice of item attribute to be updated:");
+			String choice = sc.nextLine();
+			int checkchoice = Integer.parseInt(choice);
+			while ((checkchoice < 1 ) || (checkchoice > 5 )) {
+				System.out.println("Invalid choice please re-enter:");
+				choice = sc.nextLine();
+				checkchoice = Integer.parseInt(choice);
+			}
+			ArrayList<String> info = new ArrayList<>();
+			info.add(choice);
+			switch (choice){
+			case "1":
+				System.out.println("Enter item name");
+	            	        info.add(sc.nextLine());
+	                break;
+	                case "2":
+	            	        System.out.println("Enter item type");
+	            	        info.add(sc.nextLine());
+	                break;
+	                case "3":
+	            	        System.out.println("Enter item description");
+	            	        info.add(sc.nextLine());
+	                break;
+	                case "4":
+	            	        System.out.println("Enter item price");
+	            	        info.add(sc.nextLine());
+	                break;
+	                case "5":
+	            	        System.out.println("Enter item stock");
+	            	        info.add(sc.nextLine());
+	                default: 
+	            	        System.out.println("Invalid choice");
+	                break;
+			}
+			this.menu.updateItem(number,typeCategory,itemType,info);
+			System.out.println("Item updated successfully");
+			System.out.println("Enter 0 to add update another item");
+			System.out.println("Enter 1 to end application");
+			k = sc.nextInt();
+		}
 	        break;
 	        case 5:
+	        	this.menu.displayMenu(this.menu.getLongestStringSize());
+		        System.out.println("Enter item number to be accessed:");
+			int number = sc.nextInt();
+		        System.out.println("Enter typeCategory of item to be accessed:");
+			String typeCategory = sc.nextLine();
+			System.out.println("Enter itemType of item to be accessed");
+			String itemType = sc.nextLine();
+			while (this.menu.findItemTypeCategory(itemType) == "Invalid Type") {
+				System.out.println("Invalid itemType");
+				System.out.println("Please Re-Enter itemType of item to be accessed");
+				itemType = sc.nextLine();
+			}
+			return this.menu.accessItem(number,typeCategory,itemType);
 	        break;
 	        case 6:
 	        	System.out.println("Menu Interface closed");
 	        break;
 	        }
-		}while (choice != 6);
+	    }while (choice != 6);
 	}
 	public static void main(String[] args) {
 		MenuUI menuui= new MenuUI();

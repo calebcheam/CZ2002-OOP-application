@@ -190,19 +190,9 @@ public class Menu {
         return tempItemArray;
     }
 
-    // public void add(String name, String type, ArrayList<String> description, float price, int stock){
-    //     Item newItem = new Item(name, type, description, price, stock);
-    //     allocateItem(newItem, newItem.getType());
-    // }
-
     public int add(String name, String type, ArrayList<String> description, float price, int stock){
         Item newItem = new Item(name, type, description, price, stock);
-        System.out.println("Trying to add this to CSV : " + newItem.toCSVString());
-        System.out.println("Type : " + newItem.getType());
         int check = allocateItem(newItem, newItem.getType());
-        if (check==1){
-            this.csvHandler.addItemToCSV(newItem, this.csvPath);
-        } else System.out.println("ERROR! Item was not created successfully");
         return check;
     }
 
@@ -223,6 +213,13 @@ public class Menu {
 
         //remove Item
         tempItemArray.remove(firstOccurIndex + number - 1);
+    }
+    
+    public Item accessItem(int number, String typeCategory, String itemType){
+        int firstOccurIndex = findFirstTypeOccurrence(typeCategory, itemType);
+        ArrayList<Item> tempItemArray;
+        tempItemArray = returnItemListReference(typeCategory);
+        return tempItemArray.get(firstOccurIndex + number - 1);
     }
 
     public void updateItem(int number, String typeCategory, String itemType, ArrayList<String> updateInfo)
