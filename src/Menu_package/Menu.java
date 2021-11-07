@@ -1,3 +1,4 @@
+package Menu_package;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -210,6 +211,13 @@ public class Menu {
 
         //remove Item
         tempItemArray.remove(firstOccurIndex + number - 1);
+    }
+    
+    public Item accessItem(int number, String typeCategory, String itemType){
+        int firstOccurIndex = findFirstTypeOccurrence(typeCategory, itemType);
+        ArrayList<Item> tempItemArray;
+        tempItemArray = returnItemListReference(typeCategory);
+        return tempItemArray.get(firstOccurIndex + number - 1);
     }
 
     public void updateItem(int number, String typeCategory, String itemType, ArrayList<String> updateInfo)
