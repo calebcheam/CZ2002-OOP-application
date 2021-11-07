@@ -39,7 +39,7 @@ public class Restaurant {
     public void printTimeSlots(){
         System.out.println("-------Timeslots------");
         for (int i=0; i<6; i++) {
-            System.out.printf("( %d )", i+1);
+            System.out.printf("( %d ) ", i+1);
             System.out.print(timeslots[i] + "\n");
         }
     }
@@ -54,7 +54,7 @@ public class Restaurant {
             {
                 System.out.print("      : " + table.getCustomerAtTime(timeIndex).getName()); 
             } else{
-                System.out.print("      : Unoccupied");
+                System.out.printf("      : Unoccupied\t(max %d pax)", table.getSize());
             }
         }
         System.out.println();
@@ -62,7 +62,6 @@ public class Restaurant {
     public void printTableAvailabilityByTable(int table){
         System.out.printf("\nFor table %d : \n", table); 
         tables[table-1].printReservations(timeslots);
-        
     }
 
     public void printTableAvailabilityAll()

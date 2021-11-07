@@ -50,6 +50,7 @@ public class ReservationUI {
                     break;
                 case 3:
                     this.manager.viewTableAvailability();
+                    break;
             }
         } while (choice!=-1); 
         
