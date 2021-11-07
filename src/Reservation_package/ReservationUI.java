@@ -3,7 +3,7 @@ package Reservation_package;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import Restaurant_interface_package.Restaurant;
+import Restaurant_package.Restaurant;
 
 public class ReservationUI {
     

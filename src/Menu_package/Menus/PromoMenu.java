@@ -7,7 +7,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import Menu_package.CSVHandler;
 import Menu_package.Item;
 import Menu_package.MenuItemCategoryTypes;
 
@@ -157,7 +156,8 @@ public class PromoMenu extends GenericMenu{
 
 
 	@Override
-	public void displayMenu() {
+	
+    public void displayMenu() {
 		int spacing = this.getLongestStringSize()+20;
         printMenuHeader(spacing);
         System.out.printf("| %s%"+(spacing-priceDisclaimerMessage.length()-2)+"c\n", priceDisclaimerMessage, '|');
