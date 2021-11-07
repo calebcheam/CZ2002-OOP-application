@@ -16,12 +16,38 @@ public final class MenuItemCategoryTypes {
     public String[] getCategoryTypes(){
         return this.categoryTypes;
     }
+
+    public String indexToCategory(int index){
+        return this.categoryTypes[index];
+    }
+
+    public String[] stringToCategoryList(int categoryIndex){
+        return this.categories[categoryIndex];
+    }
+
+    public String indexToSubcategory(int index, int categoryIndex){
+        String[] subcategoryList = this.stringToCategoryList(categoryIndex);
+        return subcategoryList[index]; 
+    }
     
     public void printCategories(){
-        int index=1; 
+        int i=1; 
         for (String category : this.categoryTypes){
-            System.out.println(index + " : " + category);
+            System.out.println(i + " : " + category);
+            i++;
         }
     }
+
+    public void printSubCategories(int categoryIndex){
+        String[] subcategoryList = this.stringToCategoryList(categoryIndex);
+
+        int i = 1;
+        for (String subcategory : subcategoryList){
+            System.out.println(i + " : " + subcategory);
+            i++;
+        }
+    }
+
+
 
 }

@@ -11,14 +11,27 @@ public class MenuManager {
 
     public MenuManager(){
         this.menuCategories = new MenuItemCategoryTypes(); 
+        this.menu = new AlaCarteMenu();
         this.sc = new Scanner(System.in);
     }
 
-    public void selectItemFromMenu(){
-        System.out.println("=================== MENU SELECTION ====================");
+    public Item selectItemFromMenu(){
+        System.out.println("=================== MENU CATEGORY SELECTION ====================");
         this.menuCategories.printCategories();
         System.out.println("Which category would you like to view?");
-        int categorySelected = sc.nextInt();
-        
+        int categorySelectedIndex = sc.nextInt()-1;
+        String categorySelected = this.menuCategories.indexToCategory(categorySelectedIndex);
+        this.menu.displayMenuByCategory(categorySelected);
+
+        System.out.println("Which subcategory?");
+        this.menuCategories.printSubCategories(categorySelectedIndex);
+        int subcategorySelectedIndex = sc.nextInt()-1; 
+        String subcategory = this.menuCategories.indexToSubcategory(subcategorySelectedIndex, categorySelectedIndex);
+        System.out.println("Im sorry our system is  a bit lousy. Please input yourself the item number : ");
+        int menuItemNumber = sc.nextInt();
+        return this.menu.getItem(menuItemNumber, categorySelected, subcategory);
+
     }
+
+    
 }

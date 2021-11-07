@@ -32,14 +32,17 @@ public class wackMenuUI {
 	        case 1:	        	
 			System.out.println("Which menu to display? (1) Ala Carte (2) Promotional ");
 			int menuChoice = sc.nextInt();
-			sc.nextLine(); //consume next line
+			int submenuChoice; 
+
+			
 			if (menuChoice == 1){
 				this.Menu=new AlaCarteMenu();
 				this.Menu.displayMenu();
 			} else {
 				this.Menu=new PromoMenu();
-				this.Menu.displayMenu();
 			}
+
+			
 	        break;
 
 	        case 2:

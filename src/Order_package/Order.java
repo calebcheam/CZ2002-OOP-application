@@ -1,7 +1,9 @@
 package Order_package;
+import java.util.ArrayList;
 import java.util.HashMap;
 import Menu_package.Item;
 import java.util.Scanner;
+import java.util.Set;
 
 public class Order {
     protected HashMap<Item, Integer> orders=new HashMap<Item,Integer>();
@@ -32,15 +34,32 @@ public class Order {
 
     public void setOrders(Item item, Integer quantity)
     {
-        this.orders.put(item, quantity);
+        if (quantity>0){
+            this.orders.put(item, quantity);
+        } else {
+            this.orders.remove(item);
+        }
+        
 
+    }
+
+    public ArrayList<String> getOrderedItemsNames(){
+        Set<Item> items = this.getOrderedItems().keySet();
+        ArrayList<String> nameList = new ArrayList<String>();
+        for (Item item : items){
+            nameList.add(item.getName());
+        }
+        return nameList;
     }
 
     public void viewOrders()
     {
+        
+        int index=1;
         for (Item item : this.orders.keySet())
         {
-            System.out.print(item.getName()+" x"+this.orders.get(item)+" / ");
+            System.out.println(index + " : " + item.getName()+" x"+this.orders.get(item)+" / ");
+            index++;
         }
         System.out.println();
         

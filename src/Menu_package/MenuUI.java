@@ -12,7 +12,7 @@ public class MenuUI {
 	PromoMenu promoMenu = new PromoMenu(); 
 	Scanner sc = new Scanner(System.in);
 	int choice;
-	public Item start() {
+	public void start() {
 		do {
 		System.out.println("============================");
 	        System.out.println("|       Menu Options       |");
@@ -158,7 +158,7 @@ public class MenuUI {
 				System.out.println("Please Re-Enter itemType of item to be accessed");
 				itemType = sc.nextLine();
 			}
-			return this.menu.accessItem(number,typeCategory,itemType);
+			//return this.menu.accessItem(number,typeCategory,itemType);
 	        break;
 	        case 6:
 	        	System.out.println("Menu Interface closed");

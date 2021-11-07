@@ -7,7 +7,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import Menu_package.CSVHandler;
 import Menu_package.Item;
 import Menu_package.MenuItemCategoryTypes;
 
@@ -217,9 +216,6 @@ public class AlaCarteMenu extends GenericMenu{
         return tempItemArray;
 	}
 	
-		
-
-	
 	public void displayMenu() {
 		int spacing = longestStringSize+20; //number of spacing to format the menu display spacing
 
@@ -233,10 +229,7 @@ public class AlaCarteMenu extends GenericMenu{
 		
 	}
 
-    public void displayMenuByCategory(int categoryIndex){
-        MenuItemCategoryTypes categoryTypes = new MenuItemCategoryTypes(); 
-        String[] categories = categoryTypes.getCategoryTypes();
-        String category = categories[categoryIndex];
+    public void displayMenuByCategory(String category){
         
         int spacing = longestStringSize+20; //number of spacing to format the menu display spacing
         printMenuHeader(spacing);
@@ -247,6 +240,8 @@ public class AlaCarteMenu extends GenericMenu{
         if (category!="Drink") printItemSection(categoryList, spacing, false);
         else printItemSection(drinkItems, spacing, true);
     }
+
+
     
     
 

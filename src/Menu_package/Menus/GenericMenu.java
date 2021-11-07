@@ -15,8 +15,15 @@ public abstract class GenericMenu {
     protected final String priceTag = "Price: SGD$"; //used for display menu method
     protected String name=null;
 
-
-
+    public Item getItem(int number, String typeCategory, String itemType){
+        //typeCategory referring to categories eg. Main Course / Drink
+        //itemType referring to subcategories eg. Appetisers / Salad 
+        int firstOccurIndex = findFirstTypeOccurrence(typeCategory, itemType);
+        ArrayList<Item> tempItemArray;
+        tempItemArray = returnItemListReference(typeCategory);
+        return tempItemArray.get(firstOccurIndex + number - 1);
+    }
+ 
     /////////////////////// methods relating to changing the menu//////////////
     public String findItemTypeCategory(String itemType){
         
