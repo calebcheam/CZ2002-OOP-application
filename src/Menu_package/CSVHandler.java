@@ -1,3 +1,10 @@
+package Menu_package;
+
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -15,6 +22,26 @@ public class CSVHandler {
         int stock = Integer.parseInt(itemAttributes[4]);
         Item item = new Item(name, type, description, price, stock);
         return item;
+    }
+
+    public void addItemToCSV(Item item, String path){
+        try{
+            File file =new File(path);
+            
+            
+            FileWriter fw = new FileWriter(file,true);
+            BufferedWriter bw = new BufferedWriter(fw);
+            PrintWriter pw = new PrintWriter(bw);
+            
+            pw.print(item.toCSVString());
+            pw.close();
+  
+        System.out.println("Successfully added new Item to the CSV! This is what we added : " + item.toCSVString());
+  
+         }catch(IOException ioe){
+             System.out.println("Exception occurred:");
+             ioe.printStackTrace();
+        }
     }
 
     public ArrayList<String> splitDescription(String descriptionString, String type){

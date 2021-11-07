@@ -1,3 +1,4 @@
+package Menu_package;
 import java.util.ArrayList;
 
 public class Item {
@@ -16,6 +17,21 @@ public class Item {
     }
 
     public Item(){}
+
+    public String toCSVString(){
+        String descriptionString = "";
+        boolean isFirst = true;
+        for (String string : this.description){
+            if (isFirst){
+                string = "With " + string + " "; 
+                isFirst = false;
+            } else {
+                string = "+ " + string + " "; 
+            }
+            descriptionString = descriptionString + string; 
+        }
+        return this.name + "," + this.type + "," + descriptionString + "," + String.valueOf(this.price) + "," + String.valueOf(this.stock);
+    }
 
     public String getName(){
         return this.name;

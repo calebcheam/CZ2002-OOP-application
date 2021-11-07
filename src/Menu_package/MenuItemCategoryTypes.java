@@ -1,3 +1,4 @@
+package Menu_package;
 public final class MenuItemCategoryTypes {
     //Hide constructor
     private MenuItemCategoryTypes(){};
