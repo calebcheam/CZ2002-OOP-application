@@ -8,7 +8,7 @@ import Menu_package.Menus.PromoMenu;
 
 
 public class wackMenuUI {
-	GenericMenu Menu=new AlaCarteMenu(); 
+	GenericMenu Menu=null; 
 	Scanner sc = new Scanner(System.in);
 	int choice;
 	
