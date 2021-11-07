@@ -2,6 +2,9 @@ package Menu_package;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import Menu_package.Menus.AlaCarteMenu;
+import Menu_package.Menus.PromoMenu;
+
 public class wackMenuUI {
 	AlaCarteMenu alaCarteMenu = new AlaCarteMenu(); 
 	PromoMenu promoMenu = new PromoMenu(); 

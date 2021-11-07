@@ -13,8 +13,6 @@ import Menu_package.MenuItemCategoryTypes;
 
 public class AlaCarteMenu extends GenericMenu{
 
-    
-    
     private ArrayList<Item> mainCourseItems=new ArrayList<>();
     private ArrayList<Item> dessertItems=new ArrayList<>();
     private ArrayList<Item> drinkItems=new ArrayList<>();
@@ -226,7 +224,6 @@ public class AlaCarteMenu extends GenericMenu{
 		int spacing = longestStringSize+20; //number of spacing to format the menu display spacing
 
         printMenuHeader(spacing);
-
         System.out.printf("| %s%"+(spacing-priceDisclaimerMessage.length()-2)+"c\n", priceDisclaimerMessage, '|');
         printHeaderLines(spacing);
 
@@ -236,6 +233,21 @@ public class AlaCarteMenu extends GenericMenu{
 		
 	}
 
+    public void displayMenuByCategory(int categoryIndex){
+        MenuItemCategoryTypes categoryTypes = new MenuItemCategoryTypes(); 
+        String[] categories = categoryTypes.getCategoryTypes();
+        String category = categories[categoryIndex];
+        
+        int spacing = longestStringSize+20; //number of spacing to format the menu display spacing
+        printMenuHeader(spacing);
+        System.out.printf("| %s%"+(spacing-priceDisclaimerMessage.length()-2)+"c\n", priceDisclaimerMessage, '|');
+        printHeaderLines(spacing);
+        
+        ArrayList<Item> categoryList = returnItemListReference(category);
+        if (category!="Drink") printItemSection(categoryList, spacing, false);
+        else printItemSection(drinkItems, spacing, true);
+    }
+    
     
 
    
