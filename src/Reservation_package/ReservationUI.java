@@ -21,6 +21,7 @@ public class ReservationUI {
         options.add("Create new Reservation");
         options.add("Delete Reservation");
         options.add("View Reservations");
+        options.add("Check Bill");
         
     }
 
@@ -51,6 +52,10 @@ public class ReservationUI {
                 case 3:
                     this.manager.viewTableAvailability();
                     break;
+                case 4:
+                    this.manager.checkbill();
+                    break;
+                
             }
         } while (choice!=-1); 
         
