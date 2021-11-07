@@ -34,8 +34,9 @@ public class MenuUI {
 			    System.out.println("Enter new item type:");
 				String type = sc.nextLine();
 				System.out.println("Enter new item description:");
-				//help, no idea what to pass into ArrayList<String> description for add method in menu
-				ArrayList<String> description = sc.nextLine();
+				ArrayList<String> temp = new ArrayList<>();
+				String description = sc.nextLine();
+				temp.add(description);
 				System.out.println("Enter new item price:");
 				float price = sc.nextFloat();
 				System.out.println("Enter new item stock:");
@@ -76,6 +77,7 @@ public class MenuUI {
 		}		
 	        break;
 	        case 4:
+		//nt dne yet holdup
 	        this.menu.displayMenu(this.menu.getLongestStringSize());
 	        int k = 0;
 		while (k == 0){
