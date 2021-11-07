@@ -1,4 +1,4 @@
-package Restaurant_interface_package;
+package Restaurant_package;
 
 import Reservation_package.Customer;
 import Reservation_package.Table;

@@ -1,4 +1,4 @@
-package Restaurant_interface_package;
+package Restaurant_package;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -74,19 +74,19 @@ public class RestaurantInterface {
 
                     break; 
                 case 2:
-                    orderUI.start();
-                    break;
+                    
+                orderUI.start();
+                break;
                 
                 case 3: //for reservations
                     
-                    reservationUI.start();
-                   
-                    break; 
+                reservationUI.start();
+                break; 
                 
                 case 4: //for sales report
                    
-                    salesUI.start(); 
-                   break;
+                salesUI.start(); 
+                break;
             }
             
         } while (choice!=-1); 
