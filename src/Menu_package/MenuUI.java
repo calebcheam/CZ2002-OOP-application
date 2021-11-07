@@ -5,6 +5,8 @@ import java.util.Scanner;
 
 public class MenuUI {
 	Menu menu = new Menu();
+	AlaCarteMenu alaCarteMenu = new AlaCarteMenu(); 
+	PromoMenu promoMenu = new PromoMenu(); 
 	Scanner sc = new Scanner(System.in);
 	int choice;
 	public Item start() {
@@ -22,10 +24,12 @@ public class MenuUI {
 	        System.out.println("============================");
 	        System.out.print("Enter Option: ");
 	        choice = sc.nextInt();
+			sc.nextLine(); //consume next line
 	        switch(choice) {
 	        case 1:
 			this.menu.displayMenu(this.menu.getLongestStringSize());
 	        break;
+
 	        case 2:
 			int i = 0;
 			while (i == 0){
@@ -76,6 +80,7 @@ public class MenuUI {
 			j = sc.nextInt();
 		      }		
 	        break;
+
 	        case 4:
 	        this.menu.displayMenu(this.menu.getLongestStringSize());
 	        int k = 0;

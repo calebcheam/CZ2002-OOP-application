@@ -16,7 +16,8 @@ public class Menu {
     private final String csvPath = "MenuItem.csv";
     //This message below is later used for the display menu method
     private final String priceDisclaimerMessage = "* Prices do not include GST & Service charges *";
-    private final String priceTag = "Price: SGD$"; //used for display menu method
+    private final String priceTag = "Price: SGD$"; //used for display menu method  
+    private CSVHandler csvHandler;
 
     //Read and Create arrays of menuItems
     public Menu(){
@@ -27,7 +28,7 @@ public class Menu {
         setItems = new ArrayList<>();
 
         //A class used to extract attributes from a row in the csv file
-        CSVHandler csvHandler = new CSVHandler();
+        this.csvHandler = new CSVHandler();
 
         //This Arraylist is used to get the longest string (from menuItems names and description,
         //to format line spacing for displaying the menu (displayMenu())
@@ -112,6 +113,7 @@ public class Menu {
         /*Allocate Item object into the ArrayList of Items, according to its type*/
 
         String typeCategory = findItemTypeCategory(itemType);
+        //System.out.println(typeCategory);
 
         //add menuItem to the items list (eg. mainCourseItems) according to its type
         switch(typeCategory){
@@ -432,20 +434,31 @@ public class Menu {
         printSetSection(setItems, spacing);
     }
 
+    public void displayMenu() {
+        int spacing = this.getLongestStringSize()+20;
+        printMenuHeader(spacing);
+        System.out.printf("| %s%"+(spacing-priceDisclaimerMessage.length()-2)+"c\n", priceDisclaimerMessage, '|');
+        printHeaderLines(spacing);
+        printItemSection(mainCourseItems, spacing, false);
+        printItemSection(dessertItems, spacing, false);
+        printItemSection(drinkItems, spacing, true);
+        printSetSection(setItems, spacing);
+    }
+
     public int getLongestStringSize(){
         return this.longestStringSize;
     }
 
-    public static void main(String[] args){
-        //the main method is just to check if the class is working properly, not for the project
-        Menu menu = new Menu();
-        System.out.printf("Longest string: %d\n", menu.getLongestStringSize());
-        menu.displayMenu(menu.getLongestStringSize());
-        String[] updateInfoArray = {"1", "Hello World"};
-        ArrayList<String> updateInfo = new ArrayList<>(Arrays.asList(updateInfoArray));
-        menu.updateItem(1, "Main Course", "Appetiser", updateInfo);
-        menu.displayMenu(menu.getLongestStringSize());
+    // public static void main(String[] args){
+    //     //the main method is just to check if the class is working properly, not for the project
+    //     Menu menu = new Menu();
+    //     System.out.printf("Longest string: %d\n", menu.getLongestStringSize());
+    //     menu.displayMenu(menu.getLongestStringSize());
+    //     String[] updateInfoArray = {"1", "Hello World"};
+    //     ArrayList<String> updateInfo = new ArrayList<>(Arrays.asList(updateInfoArray));
+    //     menu.updateItem(1, "Main Course", "Appetiser", updateInfo);
+    //     menu.displayMenu(menu.getLongestStringSize());
 
-    }
+    // }
 
 }
