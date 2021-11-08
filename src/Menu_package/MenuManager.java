@@ -8,13 +8,12 @@ import Menu_package.Menus.PromoMenu;
 
 public class MenuManager {
     private MenuItemCategoryTypes menuCategories;
-    private Scanner sc;
+    private Scanner sc=new Scanner(System.in);
     private GenericMenu Menu=null; 
     private AlaCarteMenu menu; 
 
     public MenuManager(){
-        this.menu = new AlaCarteMenu();
-        this.sc = new Scanner(System.in);
+        
     }
     public void viewMenu(){
         System.out.println("Which menu to display? (1) Ala Carte (2) Promotional ");
@@ -27,6 +26,8 @@ public class MenuManager {
             this.Menu.displayMenu();
         } else {
             this.Menu=new PromoMenu();
+            this.Menu.displayMenu();
+
         }
     }
 
