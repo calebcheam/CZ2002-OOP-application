@@ -57,7 +57,7 @@ public class MenuManager {
         int subcategorySelectedIndex = this.viewOneSubCategory(categorySelectedIndex);
         
         String subcategory = this.menuCategories.indexToSubcategory(subcategorySelectedIndex, categorySelectedIndex);
-        System.out.println("Im sorry our system is  a bit lousy. Please input yourself the item number : ");
+        System.out.println("Im sorry our system is a bit lousy. Please input yourself the item number : ");
         int menuItemNumber = sc.nextInt();
         return this.menu.getItem(menuItemNumber, categorySelected, subcategory);
 
