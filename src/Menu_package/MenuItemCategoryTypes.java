@@ -1,6 +1,6 @@
 package Menu_package;
 public final class MenuItemCategoryTypes {
-    private String[] categoryTypes = {"Main Course", "Dessert", "Drink", "Set"};
+    private String[] categoryTypes ;
     public static final String[] mainCourseTypes = {"Appetiser", "Salad", "Soup", "Vegetarian",
             "Local Favourites", "Meat and Seafood", "Pasta", "Pizza", "Burger & Sandwich"};
     public static final String[] dessertTypes = {"Dessert"};
@@ -13,11 +13,18 @@ public final class MenuItemCategoryTypes {
     public MenuItemCategoryTypes(String menuName){
         if (menuName == "Promotion Menu"){
             this.categories = new String[][] {setTypes};
+            this.categoryTypes = new String[] {"Set"};
         } else {
             this.categories = new String[][] { mainCourseTypes, dessertTypes, drinkTypes };
+            this.categoryTypes = new String[] {"Main Course", "Dessert", "Drink"};
         }
        
     };
+
+    public int getNumberOfCategories(){
+        return this.categories.length;
+    }
+    
 
     public String[] getCategoryTypes(){
         return this.categoryTypes;

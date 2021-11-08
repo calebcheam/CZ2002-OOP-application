@@ -146,11 +146,12 @@ public class CSVHandler {
             boolean friendPrinted = false;
             
             while ((st = br.readLine()) != null){
-                pw.println(st);
+
                 if (friendPrinted==false){
                     pw.println(newLine);
                     friendPrinted=true;
                 }
+                pw.println(st);
             }
             
             br.close();
@@ -171,12 +172,20 @@ public class CSVHandler {
         int x = this.saveItemsAfter(path, friendLine); //copy remaining contents to temp csv from to the specific line
 
         int y = this.overwriteCSV(path); //rewrite the first part from copied csv
-        int z = this.appendToCSV(path, item.toCSVString()); //add new line and append remaining parts from copied csv
+
+        String newItemString; 
+        if (item.getType()=="Set"){
+            newItemString = item.SetToString();
+        } else {
+            newItemString = item.AlaCarteToCSVString();
+        }
+        int z = this.appendToCSV(path, newItemString); //add new line and append remaining parts from copied csv
 
         if (w + x + y + z ==4) {
-            System.out.println("Successfully added new Item to the CSV! This is what we added : " + item.toCSVString());
+            System.out.println("Item addded successfully! This is what we added : " + newItemString);
         } else System.out.println("Item not added successfully.");
     }
+
     public ArrayList<String> splitDescription(String descriptionString, String type){
         //Create ArrayList to return at the end
         ArrayList<String> descriptionList = new ArrayList<>();

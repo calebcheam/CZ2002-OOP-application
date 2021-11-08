@@ -61,7 +61,7 @@ public abstract class GenericMenu {
     
     public int add(String name, String itemType, String typeCategory, ArrayList<String> description, float price, int stock){
         Item newItem = new Item(name, itemType, description, price, stock);
-        System.out.println("Trying to add this to CSV : " + newItem.toCSVString());
+        // System.out.println("Trying to add this to CSV : " + newItem.AlaCarteToCSVString());
         int check = allocateItem(newItem, newItem.getType());
         if (check==1){
 
@@ -157,11 +157,22 @@ public abstract class GenericMenu {
 		return this.longestStringSize;
 	}
 
+    public MenuItemCategoryTypes getMenuItemCategoryTypes(){
+        return this.menuCategories;
+    }
+
+    public int getNumofCategories(){
+        return this.menuCategories.getNumberOfCategories();
+    }
 
     public void displayMenu()
     {
         return;
     };
+
+    public void displayMenuCategory(String category){
+
+    }
 
     public void printHeaderLines(int numOfLines) {
 		for (int i = 0; i < numOfLines; i++){
