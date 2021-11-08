@@ -334,6 +334,7 @@ public class Menu {
         String type;
         for (int j = 0; j < menuItems.size(); j++) {
             i = 1;
+            if (j > 0) j--;
             type = menuItems.get(j).getType();
             System.out.printf("| " + type + ":%"+(spacing-type.length()-3)+"c\n", '|');
             printSubHeaderLines(spacing);
@@ -382,6 +383,7 @@ public class Menu {
 
         for (int j = 0; j < setItems.size(); j++) {
             i = 1;
+            if (j > 0) j--;
             type = setItems.get(j).getType();
             System.out.printf("| " + type + ":%"+(spacing-type.length()-3)+"c\n", '|');
 
