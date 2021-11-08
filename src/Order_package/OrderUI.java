@@ -25,7 +25,7 @@ public class OrderUI {
         do {
             System.out.println("===============================================");
 	        System.out.println("|                 Order Options               |");
-            System.out.println("|               (Enter -1 to Exit)            |");
+            System.out.println("|              (Enter -1 to Exit)             |");
 	        System.out.println("===============================================");
             int i=0; 
             for (String option : options) {

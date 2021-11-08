@@ -31,21 +31,22 @@ public class wackMenuUI {
 			sc.nextLine(); //consume next line
 	        switch(choice) {
 	        case 1:	 
-			this.menuManager.viewMenu();       	
-			// System.out.println("Which menu to display? (1) Ala Carte (2) Promotional ");
-			// int menuChoice = sc.nextInt();
+			//this.menuManager.viewMenu();       	
+			System.out.println("Which menu to display? (1) Ala Carte (2) Promotional ");
+			int menuChoice = sc.nextInt();
 	
-			// if (menuChoice == 1){
-			// 	this.Menu=new AlaCarteMenu();
-			// 	this.Menu.displayMenu();
-			// } else {
-			// 	this.Menu=new PromoMenu();
-			// }
+			if (menuChoice == 1){
+				this.Menu=new AlaCarteMenu();
+				this.Menu.displayMenu();
+			} else {
+				this.Menu=new PromoMenu();
+			}
 
 			
 	        break;
 
 	        case 2:
+			this.Menu=new AlaCarteMenu();
 			System.out.println("\n========== Create New Menu Item =========\n");
 			System.out.println("\nWhat type of item is this?");
 			String typeInput = sc.nextLine();
@@ -87,7 +88,7 @@ public class wackMenuUI {
 			float price = sc.nextFloat();
 			System.out.println("Enter stock : ");
 			int stock = sc.nextInt();
-			this.Menu.add(name,typeInput,description,price,stock);
+			this.Menu.add(name,typeInput,typeCategory,description,price,stock);
 		
 			break;
 

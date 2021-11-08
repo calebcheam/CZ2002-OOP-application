@@ -33,6 +33,7 @@ public class Item {
         return this.name + "," + this.type + "," + descriptionString + "," + String.valueOf(this.price) + "," + String.valueOf(this.stock);
     }
 
+
     public String getName(){
         return this.name;
     }

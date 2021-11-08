@@ -49,13 +49,25 @@ public abstract class GenericMenu {
         return null;
 
     }
+
+    public String findFriend(String typeCategory, String itemType) { //to insert into correct location in the CSV
+       
+        int firstOccurIndex = findFirstTypeOccurrence(typeCategory, itemType);
+        ArrayList<Item> tempItemArray;
+        tempItemArray = returnItemListReference(typeCategory);
+
+        return tempItemArray.get(firstOccurIndex).getName();
+    }
     
-    public int add(String name, String type, ArrayList<String> description, float price, int stock){
-        Item newItem = new Item(name, type, description, price, stock);
+    public int add(String name, String itemType, String typeCategory, ArrayList<String> description, float price, int stock){
+        Item newItem = new Item(name, itemType, description, price, stock);
         System.out.println("Trying to add this to CSV : " + newItem.toCSVString());
         int check = allocateItem(newItem, newItem.getType());
         if (check==1){
-            this.csvHandler.addItemToCSV(newItem, this.csvPath);
+
+            String friendItemName= this.findFriend(typeCategory, itemType);
+            System.out.println("I want to find friend " + friendItemName);
+            this.csvHandler.addItemToCSV(newItem, this.csvPath, friendItemName);
         } else System.out.println("ERROR! Item was not created successfully");
         return check;
     }

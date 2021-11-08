@@ -44,7 +44,7 @@ public class MenuManager {
         String categorySelected = this.menuCategories.indexToCategory(categorySelectedIndex);
         this.menu.displayMenuByCategory(categorySelected);
 
-        if (this.menuCategories.)
+
         System.out.println("Which subcategory?");
         this.menuCategories.printSubCategories(categorySelectedIndex);
         int subcategorySelectedIndex = sc.nextInt()-1; 

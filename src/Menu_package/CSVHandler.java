@@ -1,7 +1,10 @@
 package Menu_package;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -24,26 +27,156 @@ public class CSVHandler {
         return item;
     }
 
-    public void addItemToCSV(Item item, String path){
+    private int saveItemsBefore(String path, String friendLine){
+        //this saves the contents of the CSV before the line we want to stop at 
         try{
-            File file =new File(path);
-            
-            
-            FileWriter fw = new FileWriter(file,true);
+            File file = new File(path);
+            File tempBefore = new File("TempBefore.csv");
+
+            BufferedReader br = new BufferedReader(new FileReader(file));
+            String st;
+
+            FileWriter fw = new FileWriter(tempBefore,false); // false -- overwrite the file
             BufferedWriter bw = new BufferedWriter(fw);
             PrintWriter pw = new PrintWriter(bw);
+            boolean friendFound = false;
+            while ((st = br.readLine()) != null){
+                if (st.contains(friendLine)){
+                    System.out.println("I'VE FOUND MY FRIEND. Stop writing here!");
+                    friendFound = true;
+                    break;
+                }
+                pw.println(st);
+            }
             
-            pw.print(item.toCSVString());
+            br.close();
+            bw.close();
             pw.close();
-  
-        System.out.println("Successfully added new Item to the CSV! This is what we added : " + item.toCSVString());
-  
-         }catch(IOException ioe){
-             System.out.println("Exception occurred:");
-             ioe.printStackTrace();
-        }
+            if (!friendFound){
+                System.out.println("FRIEND NOT FOUND :(");
+                return -1;
+            }
+            return 1; //successful
+        }catch(IOException ioe){
+            System.out.println("Exception occurred:");
+            ioe.printStackTrace();
+       } 
+        return -1; 
     }
 
+    private int saveItemsAfter(String path, String friendLine){
+        //this saves the contents of the CSV before the line we want to stop at 
+        try{
+            File file = new File(path);
+            File tempBefore = new File("TempAfter.csv");
+
+            BufferedReader br = new BufferedReader(new FileReader(file));
+            String st;
+
+            FileWriter fw = new FileWriter(tempBefore,false); // false -- overwrite the file
+            BufferedWriter bw = new BufferedWriter(fw);
+            PrintWriter pw = new PrintWriter(bw);
+
+            boolean friendFound=false;
+            while ((st = br.readLine()) != null){
+                
+                if (st.contains(friendLine)){
+                    System.out.println("I'VE FOUND MY FRIEND. Start writing here!");
+                    friendFound = true;
+                }
+                if (friendFound){
+                    //System.out.println(st);
+                    pw.println(st);
+                }
+                
+            }
+            br.close();
+            bw.close();
+            pw.close();
+            if (friendFound==false){
+                System.out.println("I never found my friend...");
+                return -1;
+            }
+            return 1; 
+        }catch(IOException ioe){
+            System.out.println("Exception occurred:");
+            ioe.printStackTrace();
+       } 
+       return -1; 
+            
+    }
+
+    private int overwriteCSV(String filetoWritepath){
+        try{
+            File fileToRead = new File("TempBefore.csv");
+            File fileToWrite = new File(filetoWritepath);
+
+            BufferedReader br = new BufferedReader(new FileReader(fileToRead));
+            String st;
+
+            FileWriter fw = new FileWriter(fileToWrite,false); 
+            BufferedWriter bw = new BufferedWriter(fw);
+            PrintWriter pw = new PrintWriter(bw);
+            while ((st = br.readLine()) != null){
+                pw.println(st);
+            }
+            
+            br.close();
+            bw.close();
+            pw.close();
+            return 1;
+        }catch(IOException ioe){
+            System.out.println("Exception occurred:");
+            ioe.printStackTrace();
+       } 
+       return -1;
+    }
+
+    private int appendToCSV(String fileToWritepath, String newLine){
+        try{
+            File fileToRead = new File("TempAfter.csv");
+            File fileToWrite = new File(fileToWritepath);
+
+            BufferedReader br = new BufferedReader(new FileReader(fileToRead));
+            String st;
+
+            FileWriter fw = new FileWriter(fileToWrite,true);  //append
+            BufferedWriter bw = new BufferedWriter(fw);
+            PrintWriter pw = new PrintWriter(bw);
+            boolean friendPrinted = false;
+            
+            while ((st = br.readLine()) != null){
+                pw.println(st);
+                if (friendPrinted==false){
+                    pw.println(newLine);
+                    friendPrinted=true;
+                }
+            }
+            
+            br.close();
+            bw.close();
+            pw.close();
+            return 1;
+        }catch(IOException ioe){
+            System.out.println("Exception occurred:");
+            ioe.printStackTrace();
+       } 
+       return -1;
+    }
+
+
+    public void addItemToCSV(Item item, String path, String friendLine){
+  
+        int w = this.saveItemsBefore(path, friendLine); //copy original contents to temp csv up to the specific line
+        int x = this.saveItemsAfter(path, friendLine); //copy remaining contents to temp csv from to the specific line
+
+        int y = this.overwriteCSV(path); //rewrite the first part from copied csv
+        int z = this.appendToCSV(path, item.toCSVString()); //add new line and append remaining parts from copied csv
+
+        if (w + x + y + z ==4) {
+            System.out.println("Successfully added new Item to the CSV! This is what we added : " + item.toCSVString());
+        } else System.out.println("Item not added successfully.");
+    }
     public ArrayList<String> splitDescription(String descriptionString, String type){
         //Create ArrayList to return at the end
         ArrayList<String> descriptionList = new ArrayList<>();

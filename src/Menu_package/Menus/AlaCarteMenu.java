@@ -45,10 +45,12 @@ public class AlaCarteMenu extends GenericMenu{
                 if (allocSuccess == 1){
                     itemsStringList.add(menuItem.getName());
                     itemsStringList.addAll(menuItem.getDescription());
+                    //System.out.println("I CREATED A " + menuItem.getName());
                 }
                 else invalidItems.add(menuItem); //add Item with invalid type
 
             }
+
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -69,6 +71,7 @@ public class AlaCarteMenu extends GenericMenu{
         ArrayList<String> menuItemDescription;
         float menuPrice;
         String type;
+       
         for (int j = 0; j < menuItems.size(); j++) {
             i = 1;
             type = menuItems.get(j).getType();
@@ -86,7 +89,7 @@ public class AlaCarteMenu extends GenericMenu{
                 if (menuPrice < 10) System.out.printf("%6c\n", '|');
                 else System.out.printf("%5c\n", '|');
 
-
+                
                 if (isDrinkType == false){//if Item is not Drink type
                     for (int k = 0; k < menuItemDescription.size(); k++){
                         int curPartDescriptionLength = menuItemDescription.get(k).length();
@@ -106,6 +109,7 @@ public class AlaCarteMenu extends GenericMenu{
                 j++;
                 if (j < menuItems.size()) printSubHeaderLines(spacing);
                 else break;
+                
                 i++;
             }
         }
@@ -229,7 +233,8 @@ public class AlaCarteMenu extends GenericMenu{
 		
 	}
 
-    public void displayMenuByCategory(String category){
+    public void displayMenuByCategory(String category){ 
+        // used in Order section so that we wont print whole menu every time
         
         int spacing = longestStringSize+20; //number of spacing to format the menu display spacing
         printMenuHeader(spacing);
