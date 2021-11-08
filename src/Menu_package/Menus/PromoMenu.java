@@ -71,6 +71,7 @@ public class PromoMenu extends GenericMenu{
 
         for (int j = 0; j < setItems.size(); j++) {
             i = 1;
+            if (j > 0) j--;
             type = setItems.get(j).getType();
             System.out.printf("| " + type + ":%"+(spacing-type.length()-3)+"c\n", '|');
 

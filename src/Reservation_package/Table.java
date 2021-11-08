@@ -1,15 +1,31 @@
 package Reservation_package;
 
+import java.time.LocalDateTime;
+
 public class Table {
     private int id;
     private int size;
     private Customer[] reservations;
+    private LocalDateTime[] times;
 
     public Table(int id, int size)
     {
         this.id=id;
         this.size=size;
         this.reservations=new Customer[6]; // indexes denote timeslots, value will be customer if reserved, null if not
+        this.times=new LocalDateTime[6];
+        
+        LocalDateTime now = LocalDateTime.now(); 
+        int time=10;
+        for(int i=0;i<this.times.length;i++)
+        {
+            int day=now.getDayOfMonth();
+            int month=now.getMonthValue();
+            int year=now.getYear();
+            LocalDateTime temp= LocalDateTime.of(year,month,day,time,0);
+            this.times[i]=temp;
+            time+=2;
+        }
     }
 
     public int getId()
@@ -57,7 +73,9 @@ public class Table {
         }
         
         this.reservations[time] = customer;
+        customer.setExpiry(this.times[time]);
         System.out.printf("Table %d at timeslot %d successfully reserved%n", getId(), time+1);
+        customer.print_customer();
     }
 
     public void removeReservationAtTime(int time)

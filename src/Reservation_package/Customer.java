@@ -1,5 +1,7 @@
 package Reservation_package;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Random;
 
 import Order_package.Order;
@@ -11,6 +13,8 @@ public class Customer {
     private int pax; //number of customers for specific reservation
     private Boolean membership; //whether a customer is a member or not
     private Order order;//stores the orders of that customer
+    private LocalDateTime expiry;
+    
 
     public Customer(String name,int pax,Boolean membership)
     {
@@ -20,6 +24,11 @@ public class Customer {
         this.pax=pax;
         this.membership=membership;
         
+    }
+
+    public void setExpiry(LocalDateTime bookingtime)
+    {
+        this.expiry=bookingtime.plusMinutes(10);
     }
 
     public void addOrder(Order order)
@@ -84,6 +93,8 @@ public class Customer {
         System.out.println("Customer name:"+this.name);
         System.out.println("Id:"+this.customerID);
         System.out.println("Pax:"+this.pax);
+        DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");  
+        System.out.println("Reservation will expire at "+this.expiry.format(format));
         
         if (this.membership==true)
         {
