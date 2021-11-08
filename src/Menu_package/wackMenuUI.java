@@ -37,13 +37,14 @@ public class wackMenuUI {
 	
 			if (menuChoice == 1){
 				this.Menu=new AlaCarteMenu();
-				this.Menu.displayMenu();
+				
 			} else {
 				this.Menu=new PromoMenu();
+				
 			}
 
-			
-	        break;
+			this.Menu.displayMenu();
+			break;
 
 	        case 2:
 			this.Menu=new AlaCarteMenu();

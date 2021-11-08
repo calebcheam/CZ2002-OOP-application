@@ -75,8 +75,8 @@ public class RestaurantInterface {
             switch(choice){
                  
                 case 1:
-                    menuUI.start();
-                    break; 
+                menuUI.start();
+                break; 
                 case 2:
                     
                 orderUI.start();
