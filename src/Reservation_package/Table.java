@@ -75,6 +75,7 @@ public class Table {
         this.reservations[time] = customer;
         customer.setExpiry(this.times[time]);
         System.out.printf("Table %d at timeslot %d successfully reserved%n", getId(), time+1);
+        customer.print_customer();
     }
 
     public void removeReservationAtTime(int time)
