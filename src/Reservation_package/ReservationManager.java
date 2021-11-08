@@ -55,6 +55,7 @@ public class ReservationManager {
         int tableChoice = this.sc.nextInt();
         
         this.restaurant.getTables()[tableChoice-1].reserveAtTime(customer, time-1); 
+        customer.print_customer();
         // need to minus one because the method from Table class takes in the index itself
         
     }
