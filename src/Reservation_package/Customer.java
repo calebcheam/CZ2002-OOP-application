@@ -14,6 +14,7 @@ public class Customer {
     private Boolean membership; //whether a customer is a member or not
     private Order order;//stores the orders of that customer
     private LocalDateTime expiry;
+    private Boolean arrived=false;
     
 
     public Customer(String name,int pax,Boolean membership)
@@ -24,6 +25,12 @@ public class Customer {
         this.pax=pax;
         this.membership=membership;
         
+    }
+
+
+    public LocalDateTime getExpiry()
+    {
+        return this.expiry;
     }
 
     public void setExpiry(LocalDateTime bookingtime)
