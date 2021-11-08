@@ -74,6 +74,7 @@ public class AlaCarteMenu extends GenericMenu{
        
         for (int j = 0; j < menuItems.size(); j++) {
             i = 1;
+            if (j > 0) j--;
             type = menuItems.get(j).getType();
             System.out.printf("| " + type + ":%"+(spacing-type.length()-3)+"c\n", '|');
             printSubHeaderLines(spacing);
