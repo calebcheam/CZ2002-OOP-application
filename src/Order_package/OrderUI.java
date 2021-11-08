@@ -10,10 +10,10 @@ public class OrderUI {
     ArrayList<String> options=new ArrayList<>();
     Scanner sc=new Scanner(System.in);
     
-    public OrderUI(Restaurant res, Menu menu)
+    public OrderUI(Restaurant res)
     {
         this.restaurant=res;
-        this.manager=new OrderManager(this.restaurant, menu); 
+        this.manager=new OrderManager(this.restaurant); 
            
         options.add("Create new order");
         options.add("Edit existing order");
@@ -23,8 +23,10 @@ public class OrderUI {
     {
         int choice;
         do {
-            
             System.out.println("===============================================");
+	        System.out.println("|                 Order Options               |");
+            System.out.println("|               (Enter -1 to Exit)            |");
+	        System.out.println("===============================================");
             int i=0; 
             for (String option : options) {
                 i+=1; 

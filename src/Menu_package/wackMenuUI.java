@@ -8,6 +8,7 @@ import Menu_package.Menus.PromoMenu;
 
 
 public class wackMenuUI {
+	MenuManager menuManager= new MenuManager();
 	GenericMenu Menu=null; 
 	Scanner sc = new Scanner(System.in);
 	int choice;
@@ -29,18 +30,17 @@ public class wackMenuUI {
 	        choice = sc.nextInt();
 			sc.nextLine(); //consume next line
 	        switch(choice) {
-	        case 1:	        	
-			System.out.println("Which menu to display? (1) Ala Carte (2) Promotional ");
-			int menuChoice = sc.nextInt();
-			int submenuChoice; 
-
-			
-			if (menuChoice == 1){
-				this.Menu=new AlaCarteMenu();
-				this.Menu.displayMenu();
-			} else {
-				this.Menu=new PromoMenu();
-			}
+	        case 1:	 
+			this.menuManager.viewMenu();       	
+			// System.out.println("Which menu to display? (1) Ala Carte (2) Promotional ");
+			// int menuChoice = sc.nextInt();
+	
+			// if (menuChoice == 1){
+			// 	this.Menu=new AlaCarteMenu();
+			// 	this.Menu.displayMenu();
+			// } else {
+			// 	this.Menu=new PromoMenu();
+			// }
 
 			
 	        break;

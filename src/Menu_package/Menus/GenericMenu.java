@@ -4,9 +4,10 @@ import java.util.ArrayList;
 
 import Menu_package.CSVHandler;
 import Menu_package.Item;
+import Menu_package.MenuItemCategoryTypes;
 
 public abstract class GenericMenu {
-
+    protected MenuItemCategoryTypes menuCategories;
     protected CSVHandler csvHandler=new CSVHandler();  //we need this to be shared within the package
     protected int longestStringSize;
     protected String csvPath=null;

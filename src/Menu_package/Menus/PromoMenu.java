@@ -18,7 +18,7 @@ public class PromoMenu extends GenericMenu{
     public PromoMenu(){
         
         this.name="Promotion Menu";
-
+        this.menuCategories = new MenuItemCategoryTypes(this.name);
         this.csvPath="PromoMenuItem.csv";
 
         //Create ArrayList to store Item object according to the Item type

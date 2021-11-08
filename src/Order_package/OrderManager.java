@@ -4,6 +4,7 @@ import Menu_package.Item;
 import Menu_package.Menu;
 import Menu_package.MenuManager;
 import Menu_package.Menus.AlaCarteMenu;
+import Menu_package.Menus.GenericMenu;
 import Restaurant_package.Restaurant;
 
 import java.util.ArrayList;
@@ -12,14 +13,12 @@ import java.util.Scanner;
 public class OrderManager {
     private Scanner sc;
     private Restaurant tables;
-    private Menu menu;
 
     private MenuManager menuManager;
 
-    public OrderManager(Restaurant tables, Menu menu)
+    public OrderManager(Restaurant tables)
     {
         this.tables = tables;
-        this.menu = menu;
         this.sc = new Scanner(System.in);
         this.menuManager = new MenuManager(); 
     
@@ -45,17 +44,17 @@ public class OrderManager {
         System.out.println("Table ID : " + tableId);
         System.out.println("----------------------------------------------------------");
         while (true){
-            System.out.println("(1) Add items (2) Remove items (3) Confirm order (4) Quit");
+            System.out.println("(1) Add new item (2) Edit existing item qty (3) Confirm order (4) Quit");
             int c = sc.nextInt();
 
             if (c == 4){
                 break;
             }
             else if (c==1){
-                this.addItemToOrder(order);
+                this.addNewItemToOrder(order);
             }
             else if (c==2){
-                this.removeItemFromOrder(order);
+                this.updateItemQty(order);
             }
             else if (c==3){
                 System.out.println("Confirm current order to be:");
@@ -78,10 +77,7 @@ public class OrderManager {
                 }
 
             }
-            else if (c==4)
-            {
-                break;
-            }
+
         }
     }
 
@@ -96,8 +92,33 @@ public class OrderManager {
         int check = this.checkIfOrderExists(tableId, timeslot);
         if (check==1){
             Order order = this.tables.getTables()[tableId-1].getCustomerAtTime(timeslot-1).getOrder();
+            System.out.println(" - - - - - - - - - - - -\tCURRENT ORDER\t- - - - - - - - - - - - -");
             order.viewOrders();
-            this.addItemToOrder(order);
+            System.out.println(" - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
+            
+            while (true){
+                System.out.println("(1) Add new item (2) Edit existing item qty (3) Quit");
+                int c = sc.nextInt();
+    
+                if (c == 3){
+                    break;
+                }
+                else if (c==1){
+                    this.addNewItemToOrder(order);
+                    System.out.println("Order Changed!");
+                    System.out.println(" - - - - - - - - - - - -\tUPDATED ORDER\t- - - - - - - - - - - - -");
+                    order.viewOrders();
+                    System.out.println(" - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
+                }
+                else if (c==2){
+                    this.updateItemQty(order);
+                    System.out.println("Order Changed!");
+                    System.out.println(" - - - - - - - - - - - -\tUPDATED ORDER\t- - - - - - - - - - - - -");
+                    order.viewOrders();
+                    System.out.println(" - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
+                }
+                
+            }
 
         } else if (check==-1){
             System.out.println("ERROR : Reservation found, but there is no order.");
@@ -121,18 +142,19 @@ public class OrderManager {
         }
     }
 
-    private void addItemToOrder(Order order){
+    private void addNewItemToOrder(Order order){
         Item item = this.menuManager.selectItemFromMenu();
         System.out.println("Select quantity of "+item.getName()+" to be added:");
         int quantity = sc.nextInt();
         order.setOrders(item, quantity);
     }
 
-    private void removeItemFromOrder(Order order){
+
+    private void updateItemQty(Order order){
         order.viewOrders();
         int itemIndex;
         
-        System.out.println("Which item to remove? (Enter -1 to cancel) ");
+        System.out.println("Which item to change? (Enter -1 to cancel) ");
         itemIndex = sc.nextInt();
         while (itemIndex>order.getOrderedItems().size() || itemIndex<=0){
             if (itemIndex == -1) return;
@@ -142,18 +164,18 @@ public class OrderManager {
         }
 
         ArrayList<String> itemNames = order.getOrderedItemsNames();
-        String remove = itemNames.get(itemIndex-1);
-    
-        System.out.println("Enter quantity of "+remove+" to be removed:");
+        String selectedItem = itemNames.get(itemIndex-1);
+
+        System.out.println("Enter new quantity of "+selectedItem + ":");
         int quantity = sc.nextInt();
         for (Item key: order.getOrderedItems().keySet())
         {
-            if (key.getName().equals(remove)){
+            if (key.getName().equals(selectedItem)){
 
-                int oldQuant = order.getOrderedItems().get(key);
-                order.setOrders(key, oldQuant-quantity);
+                //int oldQuant = order.getOrderedItems().get(key);
+                order.setOrders(key, quantity);
                 System.out.println("======================================================");
-                System.out.println("Order Edited Successfully! New Quantity of "+key.getName()+" is "+order.getOrderedItems().get(key));
+                System.out.println("Order Edited Successfully!\nNew quantity of "+key.getName()+" is "+order.getOrderedItems().get(key));
                 System.out.println("");
                 order.viewOrders();
             } 

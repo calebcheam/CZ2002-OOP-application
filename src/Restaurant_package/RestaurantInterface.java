@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 import Menu_package.Menu;
 import Menu_package.MenuUI;
+import Menu_package.wackMenuUI;
 import Order_package.OrderUI;
 import Reservation_package.ReservationUI;
 import SalesReport_package.SalesUI;
@@ -63,18 +64,18 @@ public class RestaurantInterface {
             System.out.println("===============================================");
             choice = sc.nextInt(); 
 
-            //MenuUI menuUI = new MenuUI(); 
+            wackMenuUI menuUI = new wackMenuUI(); 
 
             ReservationUI reservationUI=new ReservationUI(restaurant);
 
-            OrderUI orderUI = new OrderUI(restaurant, menu);
+            OrderUI orderUI = new OrderUI(restaurant);
 
             SalesUI salesUI = new SalesUI(restaurant);
 
             switch(choice){
                  
                 case 1:
-                    //menuUI.start();
+                    menuUI.start();
                     break; 
                 case 2:
                     

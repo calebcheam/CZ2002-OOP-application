@@ -7,9 +7,15 @@ public final class MenuItemCategoryTypes {
     public static final String[] drinkTypes = {"Fizzy Drinks", "Juices", "Tea", "Coffee"};
     public static final String[] setTypes = {"Set"};
 
-    private String[][] categories = new String[][] { mainCourseTypes, dessertTypes, drinkTypes, setTypes };
+    private String[][] categories;
+    
 
-    public MenuItemCategoryTypes(){
+    public MenuItemCategoryTypes(String menuName){
+        if (menuName == "Promotion Menu"){
+            this.categories = new String[][] {setTypes};
+        } else {
+            this.categories = new String[][] { mainCourseTypes, dessertTypes, drinkTypes };
+        }
        
     };
 
@@ -21,12 +27,12 @@ public final class MenuItemCategoryTypes {
         return this.categoryTypes[index];
     }
 
-    public String[] stringToCategoryList(int categoryIndex){
+    public String[] indexToCategoryList(int categoryIndex){
         return this.categories[categoryIndex];
     }
 
     public String indexToSubcategory(int index, int categoryIndex){
-        String[] subcategoryList = this.stringToCategoryList(categoryIndex);
+        String[] subcategoryList = this.indexToCategoryList(categoryIndex);
         return subcategoryList[index]; 
     }
     
@@ -39,7 +45,7 @@ public final class MenuItemCategoryTypes {
     }
 
     public void printSubCategories(int categoryIndex){
-        String[] subcategoryList = this.stringToCategoryList(categoryIndex);
+        String[] subcategoryList = this.indexToCategoryList(categoryIndex);
 
         int i = 1;
         for (String subcategory : subcategoryList){
@@ -47,7 +53,5 @@ public final class MenuItemCategoryTypes {
             i++;
         }
     }
-
-
 
 }

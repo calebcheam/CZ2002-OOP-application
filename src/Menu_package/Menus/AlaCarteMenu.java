@@ -20,7 +20,7 @@ public class AlaCarteMenu extends GenericMenu{
     public AlaCarteMenu(){ //constructor
 
         this.name="Ala Carte Menu";
-        
+        this.menuCategories = new MenuItemCategoryTypes(this.name);
         this.csvPath="AlaCarteMenuItem.csv";
         
         
