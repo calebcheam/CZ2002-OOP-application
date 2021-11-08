@@ -26,12 +26,21 @@ public class Refresh implements Runnable{
                 if(this.restaurant.getTables()[i].getReservations()[j]!=null)
                 {
                     //check if the reservation has expired
+                    LocalDateTime reservationDeadline = this.restaurant.getTables()[i].getReservations()[j].getExpiry();
+                    // give the fella 20 minutes buffer time
+                    reservationDeadline = reservationDeadline.plusMinutes(20);
 
-                    if(this.restaurant.getTables()[i].getReservations()[j].getExpiry().isAfter(this.currentTime)) //expired
+                    if(this.currentTime.isAfter(reservationDeadline)) //expired
                     {
-
-                        System.out.println("hi");
-
+                        System.out.println("Reservation deadline: " + reservationDeadline);
+                        if(this.restaurant.getTables()[i].getReservations()[j].getOrder()==null)
+                        {
+                            System.out.println("AHA! IM GNA RMEMOVE U");
+                        } else {
+                            System.out.println("Customer showed up and ordered!");
+                        }
+                    // } else {
+                    //     System.out.println("Awaiting customer.. ");
                     }
 
                 }
@@ -40,12 +49,10 @@ public class Refresh implements Runnable{
         }
     
 
-
-        
 {
     
     try {
-        Thread.sleep(5000);
+        Thread.sleep(10000);
     } catch (InterruptedException e) {
         
         e.printStackTrace();

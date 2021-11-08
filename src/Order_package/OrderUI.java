@@ -17,6 +17,7 @@ public class OrderUI {
            
         options.add("Create new order");
         options.add("Edit existing order");
+        options.add("View existing order");
         
     }
     public void start()
@@ -44,6 +45,8 @@ public class OrderUI {
                 case 2:
                     this.manager.editOrder();
                     break;
+                case 3:
+                    this.manager.viewOrder();
                 default:
                     break;
             } 

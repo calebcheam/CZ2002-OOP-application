@@ -66,7 +66,7 @@ public class MenuManager {
         System.out.println("\n========== Remove Menu Item =========\n");
         if (menuChoice == 1){
             this.Menu=new AlaCarteMenu();
-            itemToRemove = this.selectItemFromMenu();
+            itemToRemove = this.selectAlaCarteItemFromMenu();
             System.out.println("I WANT TO REMOVE " + itemToRemove.getName());
             this.Menu.remove(itemToRemove);
         } else if (menuChoice ==2) {
@@ -82,18 +82,33 @@ public class MenuManager {
 
         
     }
+    public Item orderItemfromMenu(){
+        System.out.println("Which menu would you like to order from?");
+        System.out.println("(1) Ala Carte (2) Promotional");
+        int choice = sc.nextInt();
+        Item orderedItem;
+        if (choice == 1 ){
+            this.Menu = new AlaCarteMenu();
+            orderedItem = this.selectAlaCarteItemFromMenu();
+            
+        } else{
+            this.Menu = new PromoMenu();
+            this.Menu.displayMenu();
+            System.out.println("Please enter set number : ");
+            int itemSelected = sc.nextInt(); 
+            orderedItem = this.Menu.getItem(itemSelected, "Set", "Set");
+        }
+       return orderedItem;
+    }
 
-
-    public Item selectItemFromMenu(){
+    private Item selectAlaCarteItemFromMenu(){
         int categorySelectedIndex = this.selectCategory();
         String categorySelected = this.Menu.getMenuItemCategoryTypes().indexToCategory(categorySelectedIndex);
         int subcategorySelectedIndex = this.selectSubCategory(categorySelectedIndex);
-        
         String subcategory = this.Menu.getMenuItemCategoryTypes().indexToSubcategory(subcategorySelectedIndex, categorySelectedIndex);
         System.out.println("Im sorry our system is  a bit lousy. Please input yourself the item number : ");
         int menuItemNumber = sc.nextInt();
         return this.Menu.getItem(menuItemNumber, categorySelected, subcategory);
-
     }
 
     private int selectSubCategory(int categorySelectedIndex){
@@ -128,6 +143,7 @@ public class MenuManager {
             return "Invalid";
     }
 
+    
     public void addItemtoMenu(){
         System.out.println("Which menu to add item to? (1) Ala Carte (2) Promotional (3) Return to Main Menu Actions");
         int menuChoice = sc.nextInt();
