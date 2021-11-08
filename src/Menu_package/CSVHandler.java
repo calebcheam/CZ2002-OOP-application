@@ -132,7 +132,9 @@ public class CSVHandler {
        return -1;
     }
 
-    private int appendToCSV(String fileToWritepath, String newLine){
+    private int appendToCSV(String fileToWritepath, String lineToDelete){
+        // skips over the line to delete
+        // then appends the rest as per normal
         try{
             File fileToRead = new File("TempAfter.csv");
             File fileToWrite = new File(fileToWritepath);
@@ -143,14 +145,11 @@ public class CSVHandler {
             FileWriter fw = new FileWriter(fileToWrite,true);  //append
             BufferedWriter bw = new BufferedWriter(fw);
             PrintWriter pw = new PrintWriter(bw);
-            boolean friendPrinted = false;
+            br.readLine(); //skip over the line to delete
+            
             
             while ((st = br.readLine()) != null){
                 pw.println(st);
-                if (friendPrinted==false){
-                    pw.println(newLine);
-                    friendPrinted=true;
-                }
             }
             
             br.close();
@@ -165,18 +164,71 @@ public class CSVHandler {
     }
 
 
+    private int appendNewLineToCSV(String fileToWritepath, String newLine){
+        try{
+            File fileToRead = new File("TempAfter.csv");
+            File fileToWrite = new File(fileToWritepath);
+
+            BufferedReader br = new BufferedReader(new FileReader(fileToRead));
+            String st;
+
+            FileWriter fw = new FileWriter(fileToWrite,true);  //append
+            BufferedWriter bw = new BufferedWriter(fw);
+            PrintWriter pw = new PrintWriter(bw);
+            boolean friendPrinted = false;
+            
+            while ((st = br.readLine()) != null){
+
+                if (friendPrinted==false){
+                    pw.println(newLine);
+                    friendPrinted=true;
+                }
+                pw.println(st);
+            }
+            
+            br.close();
+            bw.close();
+            pw.close();
+            return 1;
+        }catch(IOException ioe){
+            System.out.println("Exception occurred:");
+            ioe.printStackTrace();
+       } 
+       return -1;
+    }
+
+
+    public void removeItemFromCSV(String path, String lineToDelete){
+        int w = this.saveItemsBefore(path, lineToDelete); //copy original contents to temp csv up to the specific line
+        int x = this.saveItemsAfter(path, lineToDelete); //copy remaining contents to temp csv from to the specific line
+
+        int y = this.overwriteCSV(path); //rewrite the first part from copied csv
+        int z = this.appendToCSV(path, lineToDelete); //skips over the line to delete, then appends the rest
+        if (w + x + y + z ==4) {
+            System.out.println("Item removed successfully! ");
+        } else System.out.println("ERROR : Item was not removed successfully.");
+
+    }
     public void addItemToCSV(Item item, String path, String friendLine){
   
         int w = this.saveItemsBefore(path, friendLine); //copy original contents to temp csv up to the specific line
         int x = this.saveItemsAfter(path, friendLine); //copy remaining contents to temp csv from to the specific line
 
         int y = this.overwriteCSV(path); //rewrite the first part from copied csv
-        int z = this.appendToCSV(path, item.toCSVString()); //add new line and append remaining parts from copied csv
+
+        String newItemString; 
+        if (item.getType()=="Set"){
+            newItemString = item.SetToString();
+        } else {
+            newItemString = item.AlaCarteToCSVString();
+        }
+        int z = this.appendNewLineToCSV(path, newItemString); //add new line and append remaining parts from copied csv
 
         if (w + x + y + z ==4) {
-            System.out.println("Successfully added new Item to the CSV! This is what we added : " + item.toCSVString());
+            System.out.println("Item addded successfully! This is what we added : " + newItemString);
         } else System.out.println("Item not added successfully.");
     }
+
     public ArrayList<String> splitDescription(String descriptionString, String type){
         //Create ArrayList to return at the end
         ArrayList<String> descriptionList = new ArrayList<>();

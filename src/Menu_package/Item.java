@@ -18,7 +18,7 @@ public class Item {
 
     public Item(){}
 
-    public String toCSVString(){
+    public String AlaCarteToCSVString(){
         String descriptionString = "";
         boolean isFirst = true;
         for (String string : this.description){
@@ -31,6 +31,12 @@ public class Item {
             descriptionString = descriptionString + string; 
         }
         return this.name + "," + this.type + "," + descriptionString + "," + String.valueOf(this.price) + "," + String.valueOf(this.stock);
+    }
+
+    public String SetToString(){
+        String descriptionString = String.join(" + ", this.description);
+        return this.name + "," + this.type + "," + descriptionString + "," + String.valueOf(this.price) + "," + String.valueOf(this.stock);
+
     }
 
 
