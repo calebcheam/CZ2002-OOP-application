@@ -132,7 +132,39 @@ public class CSVHandler {
        return -1;
     }
 
-    private int appendToCSV(String fileToWritepath, String newLine){
+    private int appendToCSV(String fileToWritepath, String lineToDelete){
+        // skips over the line to delete
+        // then appends the rest as per normal
+        try{
+            File fileToRead = new File("TempAfter.csv");
+            File fileToWrite = new File(fileToWritepath);
+
+            BufferedReader br = new BufferedReader(new FileReader(fileToRead));
+            String st;
+
+            FileWriter fw = new FileWriter(fileToWrite,true);  //append
+            BufferedWriter bw = new BufferedWriter(fw);
+            PrintWriter pw = new PrintWriter(bw);
+            br.readLine(); //skip over the line to delete
+            
+            
+            while ((st = br.readLine()) != null){
+                pw.println(st);
+            }
+            
+            br.close();
+            bw.close();
+            pw.close();
+            return 1;
+        }catch(IOException ioe){
+            System.out.println("Exception occurred:");
+            ioe.printStackTrace();
+       } 
+       return -1;
+    }
+
+
+    private int appendNewLineToCSV(String fileToWritepath, String newLine){
         try{
             File fileToRead = new File("TempAfter.csv");
             File fileToWrite = new File(fileToWritepath);
@@ -166,6 +198,17 @@ public class CSVHandler {
     }
 
 
+    public void removeItemFromCSV(String path, String lineToDelete){
+        int w = this.saveItemsBefore(path, lineToDelete); //copy original contents to temp csv up to the specific line
+        int x = this.saveItemsAfter(path, lineToDelete); //copy remaining contents to temp csv from to the specific line
+
+        int y = this.overwriteCSV(path); //rewrite the first part from copied csv
+        int z = this.appendToCSV(path, lineToDelete); //skips over the line to delete, then appends the rest
+        if (w + x + y + z ==4) {
+            System.out.println("Item removed successfully! ");
+        } else System.out.println("ERROR : Item was not removed successfully.");
+
+    }
     public void addItemToCSV(Item item, String path, String friendLine){
   
         int w = this.saveItemsBefore(path, friendLine); //copy original contents to temp csv up to the specific line
@@ -179,7 +222,7 @@ public class CSVHandler {
         } else {
             newItemString = item.AlaCarteToCSVString();
         }
-        int z = this.appendToCSV(path, newItemString); //add new line and append remaining parts from copied csv
+        int z = this.appendNewLineToCSV(path, newItemString); //add new line and append remaining parts from copied csv
 
         if (w + x + y + z ==4) {
             System.out.println("Item addded successfully! This is what we added : " + newItemString);

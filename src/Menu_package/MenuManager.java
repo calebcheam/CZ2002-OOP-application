@@ -58,6 +58,31 @@ public class MenuManager {
         return categorySelectedIndex;
     }
 
+    public void removeItemFromMenu(){
+        System.out.println("Which menu to remove item from? (1) Ala Carte (2) Promotional (3) Return to Main Menu Actions");
+        int menuChoice = sc.nextInt();
+        Item itemToRemove;
+        sc.nextLine(); //consume next line input
+        System.out.println("\n========== Remove Menu Item =========\n");
+        if (menuChoice == 1){
+            this.Menu=new AlaCarteMenu();
+            itemToRemove = this.selectItemFromMenu();
+            System.out.println("I WANT TO REMOVE " + itemToRemove.getName());
+            this.Menu.remove(itemToRemove);
+        } else if (menuChoice ==2) {
+            this.Menu=new PromoMenu();
+            this.Menu.displayMenu();
+            System.out.println("Please enter item to be removed : ");
+            int itemSelected = sc.nextInt(); 
+            itemToRemove = this.Menu.getItemToBeRemoved(itemSelected, "Set", "Set");
+        } else {
+            return;
+        }
+        this.Menu.remove(itemToRemove);
+
+        
+    }
+
 
     public Item selectItemFromMenu(){
         int categorySelectedIndex = this.selectCategory();
@@ -70,18 +95,6 @@ public class MenuManager {
         return this.Menu.getItem(menuItemNumber, categorySelected, subcategory);
 
     }
-
-    // public Item selectItemFromSubMenu(int categorySelectIndex){
-    //     AlaCarteMenu menu = new AlaCarteMenu();
-    //     String categorySelected = this.Menu.getMenuItemCategoryTypes().indexToCategory(categorySelectedIndex);
-    //     int subcategorySelectedIndex = this.selectSubCategory(categorySelectedIndex);
-        
-    //     String subcategory = this.Menu.getMenuItemCategoryTypes().indexToSubcategory(subcategorySelectedIndex, categorySelectedIndex);
-    //     System.out.println("Im sorry our system is  a bit lousy. Please input yourself the item number : ");
-    //     int menuItemNumber = sc.nextInt();
-    //     return this.Menu.getItem(menuItemNumber, categorySelected, subcategory);
-
-    // }
 
     private int selectSubCategory(int categorySelectedIndex){
        

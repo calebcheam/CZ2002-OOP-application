@@ -61,10 +61,8 @@ public abstract class GenericMenu {
     
     public int add(String name, String itemType, String typeCategory, ArrayList<String> description, float price, int stock){
         Item newItem = new Item(name, itemType, description, price, stock);
-        // System.out.println("Trying to add this to CSV : " + newItem.AlaCarteToCSVString());
         int check = allocateItem(newItem, newItem.getType());
         if (check==1){
-
             String friendItemName= this.findFriend(typeCategory, itemType);
             System.out.println("I want to find friend " + friendItemName);
             this.csvHandler.addItemToCSV(newItem, this.csvPath, friendItemName);
@@ -72,7 +70,12 @@ public abstract class GenericMenu {
         return check;
     }
 
-    public void removeItem(int number, String typeCategory, String itemType) {
+    public void remove(Item item){
+        String lineToDelete = item.getName();
+        this.csvHandler.removeItemFromCSV(this.csvPath, lineToDelete);
+    }
+
+    public Item getItemToBeRemoved(int number, String typeCategory, String itemType) {
 		//remove the specified Item according to the type category, Item type,
         //the numbering of the Item in the Menu display.
         //this method will assume that no invalid "itemType" will be passed into the parameter
@@ -88,7 +91,8 @@ public abstract class GenericMenu {
         tempItemArray = returnItemListReference(typeCategory);
 
         //remove Item
-        tempItemArray.remove(firstOccurIndex + number - 1);
+        return tempItemArray.get(firstOccurIndex + number - 1);
+    
 		
 	}
 
