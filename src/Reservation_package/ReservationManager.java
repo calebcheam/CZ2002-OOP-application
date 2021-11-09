@@ -44,7 +44,7 @@ public class ReservationManager {
         
         System.out.println("=====================\nSelect timeslot : ");
         if (this.restaurant==null){
-            System.out.println("hi");
+            System.out.println("hi restaurant is empty");
         }
         this.restaurant.printTimeSlots();
 

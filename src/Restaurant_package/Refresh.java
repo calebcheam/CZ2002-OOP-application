@@ -6,25 +6,34 @@ import java.time.LocalDateTime;
 public class Refresh implements Runnable{
 
     LocalDateTime currentTime=null;
+    LocalDateTime fakeTime = null; 
+    LocalDateTime[] timeslots=null;
+
     Restaurant restaurant=null;
 
     public Refresh(Restaurant restaurant)
     {
         this.restaurant=restaurant;
+        this.timeslots = this.restaurant.getTables()[0].getTimeslots();
+        this.currentTime = this.timeslots[1]; 
     }
 
+ 
     public void run(){
         while(true)
     {
-        System.out.println("\nRefresher is running...");
-        this.currentTime=LocalDateTime.now();
+        System.out.println("\n\t\t\t\t\t\t\t\t\t\t << (fake) Time : " + this.currentTime.toLocalTime().toString()+ ">>");
+        //this.currentTime=LocalDateTime.now();
+        this.currentTime = this.currentTime.plusMinutes(40);
         
+
         for(int i=0;i<10;i++)
         {
             for(int j=0;j<6;j++)
             {
                 if(this.restaurant.getTables()[i].getReservations()[j]!=null)
                 {
+
                     //check if the reservation has expired
                     LocalDateTime reservationDeadline = this.restaurant.getTables()[i].getReservations()[j].getExpiry();
                     // give the fella 20 minutes buffer time
@@ -32,15 +41,17 @@ public class Refresh implements Runnable{
 
                     if(this.currentTime.isAfter(reservationDeadline)) //expired
                     {
-                        System.out.println("Reservation deadline: " + reservationDeadline);
                         if(this.restaurant.getTables()[i].getReservations()[j].getOrder()==null)
                         {
-                            System.out.println("AHA! IM GNA RMEMOVE U");
-                        } else {
-                            System.out.println("Customer showed up and ordered!");
-                        }
+                            //System.out.printf("\t\t\t\t\t\t\t AHA! U R PAST UR DEADLINE %s IM GNA RMEMOVE U\n", reservationDeadline);
+                            this.restaurant.getTables()[i].removeReservationAtTime(j);
+                        } 
+                        // else {
+                        //     System.out.println("Customer showed up and ordered!");
+                        // }
                     // } else {
                     //     System.out.println("Awaiting customer.. ");
+
                     }
 
                 }
@@ -52,9 +63,8 @@ public class Refresh implements Runnable{
 {
     
     try {
-        Thread.sleep(10000);
+        Thread.sleep(15000);
     } catch (InterruptedException e) {
-        
         e.printStackTrace();
     }
 }

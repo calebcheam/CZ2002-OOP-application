@@ -16,7 +16,7 @@ public class Table {
         this.times=new LocalDateTime[6];
         
         LocalDateTime now = LocalDateTime.now(); 
-        int time=10;
+        int time=10; //start from 10:00 am
         for(int i=0;i<this.times.length;i++)
         {
             int day=now.getDayOfMonth();
@@ -24,7 +24,7 @@ public class Table {
             int year=now.getYear();
             LocalDateTime temp= LocalDateTime.of(year,month,day,time,0);
             this.times[i]=temp;
-            time+=2;
+            time+=2; // 2 hour slots; from 10:00 am to 10:00 pm
         }
     }
 
@@ -41,6 +41,9 @@ public class Table {
     public Customer[] getReservations()
     {
         return this.reservations;
+    }
+    public LocalDateTime[] getTimeslots(){
+        return this.times;
     }
 
     public Customer getCustomerAtTime(int time) // can be used to check reservation status
@@ -85,9 +88,11 @@ public class Table {
             System.out.println("There is no customer at this table/timeslot!");
             return;
         }
+        String customerName = this.reservations[time].getName();
         this.reservations[time] = null;
-        System.out.printf("Customer at Table %d at timeslot %d successfully removed%n", getId(), time+1);
-    
+
+        System.out.printf("\t\t\t\t\t\t ALERT! Customer %s at Table %d at timeslot %d successfully removed%n", customerName, getId(), time+1);
+
     }
 
     public void printReservations(String[] timeslot)
