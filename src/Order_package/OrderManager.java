@@ -27,14 +27,15 @@ public class OrderManager {
     private void createOrderGivenReservation(int tableId, int timeslot){
         Order order = new Order();
         System.out.println("--------------------- CREATING ORDER ---------------------");
+        System.out.println("                    (Enter -1 to exit)                    ");
         System.out.println("Customer Name : " + this.tables.getTables()[tableId-1].getCustomerAtTime(timeslot-1).getName());
         System.out.println("Table ID : " + tableId);
         System.out.println("----------------------------------------------------------");
         while (true){
-            System.out.println("(1) Add new item (2) Edit existing item qty (3) Confirm order (4) Quit");
+            System.out.println("(1) Add new item (2) Edit existing item qty (3) Confirm order");
             int c = sc.nextInt();
 
-            if (c == 4){
+            if (c == -1){
                 break;
             }
             else if (c==1){
@@ -46,7 +47,7 @@ public class OrderManager {
             else if (c==3){
                 System.out.println("Confirm current order to be:");
                 order.viewOrders();
-                System.out.println("(1) Yes (2) FUck u");
+                System.out.println("(1) Yes (2) No");
                 
                 int cfm = sc.nextInt();
                 if (cfm==1){
@@ -76,7 +77,7 @@ public class OrderManager {
         System.out.println("________________________________________");
         int check = this.checkIfOrderExists(tableId, timeslot);
         if (check==1){
-            System.out.println("excuse me order alr exists");
+            System.out.println("Order already exists!");
             return;
         } else if (check==-2){
             return; 
@@ -132,7 +133,7 @@ public class OrderManager {
 
     private void promptNewOrder(int tableId, int timeslot){
         System.out.println("Order does not exist for this customer.Would you like to create a new order now?");
-        System.out.println("(1) YES! (2) Nah ");
+        System.out.println("(1) Yes (2) No ");
         int choice = sc.nextInt();
         if (choice==1){
             this.createOrderGivenReservation(tableId, timeslot);
