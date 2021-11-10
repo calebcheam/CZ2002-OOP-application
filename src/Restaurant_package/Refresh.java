@@ -14,16 +14,18 @@ public class Refresh implements Runnable{
     public Refresh(Restaurant restaurant)
     {
         this.restaurant=restaurant;
+        this.timeslots = this.restaurant.getTables()[0].getTimeslots();
+        this.currentTime = null;
     }
 
  
     public void run(){
         while(true)
     {
+
         this.currentTime=LocalDateTime.now();
-        System.out.println("\n\t\t\t\t\t\t\t\t\t\t << Time : " + this.currentTime.toLocalTime().toString()+ ">>");
         
-       // this.currentTime = this.currentTime.plusMinutes(40);
+        
         
 
         for(int i=0;i<10;i++)
@@ -35,11 +37,15 @@ public class Refresh implements Runnable{
 
                     //check if the reservation has expired
                     LocalDateTime reservationDeadline = this.restaurant.getTables()[i].getReservations()[j].getExpiry();
+                    // give the fella 20 minutes buffer time
+                    reservationDeadline = reservationDeadline.plusMinutes(20);
 
                     if(this.currentTime.isAfter(reservationDeadline)) //expired
                     {
                         if(this.restaurant.getTables()[i].getReservations()[j].getOrder()==null)
                         {
+                            System.out.println("A customer reservation has just expired!\n");
+
                             //System.out.printf("\t\t\t\t\t\t\t AHA! U R PAST UR DEADLINE %s IM GNA RMEMOVE U\n", reservationDeadline);
                             this.restaurant.getTables()[i].removeReservationAtTime(j);
                         } 

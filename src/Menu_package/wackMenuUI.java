@@ -23,8 +23,6 @@ public class wackMenuUI {
 	        System.out.println("2. Add new item             ");
 	        System.out.println("3. Remove existing item     ");
 	        System.out.println("4. Update an existing item  ");
-	        // System.out.println("5. Access an item           ");
-	        // System.out.println("6. Exit                     ");
 	        System.out.println("============================");
 	        System.out.print("Enter Option: ");
 	        choice = sc.nextInt();
