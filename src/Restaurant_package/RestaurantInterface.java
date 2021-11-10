@@ -3,9 +3,9 @@ package Restaurant_package;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import Menu_package.Menu;
+
 import Menu_package.MenuUI;
-import Menu_package.wackMenuUI;
+import Menu_package.MenuUI;
 import Order_package.OrderUI;
 import Reservation_package.ReservationUI;
 import SalesReport_package.SalesUI;
@@ -15,7 +15,7 @@ public class RestaurantInterface {
     ArrayList<String> options;
     Scanner sc; 
     Restaurant restaurant=new Restaurant();
-    Menu menu = new Menu();
+    
 
 
     public void Start(){
@@ -33,7 +33,7 @@ public class RestaurantInterface {
 
 
         
-        wackMenuUI menuUI = new wackMenuUI(); 
+        MenuUI menuUI = new MenuUI(); 
 
         ReservationUI reservationUI=new ReservationUI(this.restaurant);
 
