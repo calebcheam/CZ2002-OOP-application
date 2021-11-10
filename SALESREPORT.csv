@@ -1,28 +1,74 @@
-Date,2021-10-31
-Item,Quantity,Revenue (w/o Discount)
-halloween weheeeee,1,1200.0
--
-DAY'S TOTAL,1200.00
-TOTAL DISC GIVEN,100.00
-=======================================================
-Date,2021-11-01
-Item,Quantity,Revenue (w/o Discount)
-waheyyyyyy,10,1000.0
--
-DAY'S TOTAL,900.00
-TOTAL DISC GIVEN,100.00
 =======================================================
 Date,2021-11-02
 Item,Quantity,Revenue (w/o Discount)
-broliterallyfuckoop,10,1000.0
+Hot Chocolate,3,24.0
+Set B,4,349.2
+Old Fashion Tiramisu,3,66.0
 -
-DAY'S TOTAL,1170.00
+DAY'S TOTAL,513.86
 TOTAL DISC GIVEN,0.00
 =======================================================
 Date,2021-11-03
 Item,Quantity,Revenue (w/o Discount)
-broliterallyfuckoop,2,500.0
+(Discounted)Set A,2,149.4
+(Discounted)Chicken SALAD,6,1200.0
+(Discounted)Set B,5,436.5
+(Discounted)Chocolate Marquise,8,192.0
 -
-DAY'S TOTAL,500.00
-TOTAL DISC GIVEN,10.00
+DAY'S TOTAL,2082.73
+TOTAL DISC GIVEN,231.41
+=======================================================
+Date,2021-11-04
+Item,Quantity,Revenue (w/o Discount)
+Set A,4,298.8
+W Burger,1,36.0
+Roasted Shellfish Bisque,1,28.0
+Set B,3,261.90002
+Seafood saladie,1,20.0
+-
+DAY'S TOTAL,754.30
+TOTAL DISC GIVEN,0.00
+=======================================================
+Date,2021-11-05
+Item,Quantity,Revenue (w/o Discount)
+Set A,4,298.8
+W Burger,1,36.0
+Caesar Salad,1,24.0
+Roasted Shellfish Bisque,1,28.0
+Garlic Bread,1,2.0
+Set B,3,261.90002
+Seafood saladie,1,20.0
+Set B,8,698.4
+Wok Fried Char Kway Teow,3,96.0
+-
+DAY'S TOTAL,1714.17
+TOTAL DISC GIVEN,0.00
+=======================================================
+Date,2021-11-06
+Item,Quantity,Revenue (w/o Discount)
+Fusilli Bolognese,10,280.0
+Wild Mushroom Soup,2,44.0
+Old Fashion Tiramisu,3,66.0
+-
+DAY'S TOTAL,456.30
+TOTAL DISC GIVEN,0.00
+=======================================================
+Date,2021-11-07
+Item,Quantity,Revenue (w/o Discount)
+Garlic Bread,1,2.0
+Set A,1,74.7
+-
+DAY'S TOTAL,89.74
+TOTAL DISC GIVEN,0.00
+=======================================================
+Date,2021-11-08
+Item,Quantity,Revenue (w/o Discount)
+Jackfruit Tart Tatin,11,242.0
+Garlic Bread,8,16.0
+(Discounted)Caesar Salad,1,24.0
+Chocolate Marquise,7,168.0
+(Discounted)Set A,3,224.09999
+-
+DAY'S TOTAL,759.67
+TOTAL DISC GIVEN,29.03
 =======================================================

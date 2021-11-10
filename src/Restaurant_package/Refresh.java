@@ -2,12 +2,11 @@ package Restaurant_package;
 
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Refresh implements Runnable{
 
     LocalDateTime currentTime=null;
-    LocalDateTime fakeTime = null; 
-    LocalDateTime[] timeslots=null;
 
     Restaurant restaurant=null;
 
@@ -21,11 +20,7 @@ public class Refresh implements Runnable{
         while(true)
     {
         this.currentTime=LocalDateTime.now();
-        System.out.println("\n\t\t\t\t\t\t\t\t\t\t << Time : " + this.currentTime.toLocalTime().toString()+ ">>");
-        
-       // this.currentTime = this.currentTime.plusMinutes(40);
-        
-
+    
         for(int i=0;i<10;i++)
         {
             for(int j=0;j<6;j++)
@@ -40,6 +35,8 @@ public class Refresh implements Runnable{
                     {
                         if(this.restaurant.getTables()[i].getReservations()[j].getOrder()==null)
                         {
+                            DateTimeFormatter format = DateTimeFormatter.ofPattern("HH:mm"); 
+                            System.out.println("\n\t\t\t\t\t\t\t\t\t\t << Time : " + this.currentTime.format(format)+ " >>");
                             //System.out.printf("\t\t\t\t\t\t\t AHA! U R PAST UR DEADLINE %s IM GNA RMEMOVE U\n", reservationDeadline);
                             this.restaurant.getTables()[i].removeReservationAtTime(j);
                         } 

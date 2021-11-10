@@ -176,7 +176,7 @@ public class OrderManager {
         while (itemIndex>order.getOrderedItems().size() || itemIndex<=0){
             if (itemIndex == -1) return;
 
-            System.out.println("eh hello choose properly. Try again? ");
+            System.out.println("Error. Please try again? ");
             itemIndex = sc.nextInt();
         }
 

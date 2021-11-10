@@ -106,7 +106,7 @@ public class MenuManager {
         String categorySelected = this.Menu.getMenuItemCategoryTypes().indexToCategory(categorySelectedIndex);
         int subcategorySelectedIndex = this.selectSubCategory(categorySelectedIndex);
         String subcategory = this.Menu.getMenuItemCategoryTypes().indexToSubcategory(subcategorySelectedIndex, categorySelectedIndex);
-        System.out.println("Im sorry our system is  a bit lousy. Please input yourself the item number : ");
+        System.out.println("Please input the item number : ");
         int menuItemNumber = sc.nextInt();
         return this.Menu.getItem(menuItemNumber, categorySelected, subcategory);
     }
@@ -116,9 +116,9 @@ public class MenuManager {
         String categorySelected = this.Menu.getMenuItemCategoryTypes().indexToCategory(categorySelectedIndex);
         this.Menu.displayMenuCategory(categorySelected);
 
-        System.out.println("=================== SUBCATEGORY SELECTION ====================");
+        System.out.printf("\n%s Subcategories : \n", categorySelected);
         this.Menu.getMenuItemCategoryTypes().printSubCategories(categorySelectedIndex);
-        System.out.println("Which subcategory would you like to view?");
+        System.out.println("Which subcategory is this item from?");
         int subcategorySelectedIndex = sc.nextInt()-1; 
         return subcategorySelectedIndex;
     }

@@ -36,6 +36,9 @@ public class SalesUI {
         do {
             
             System.out.println("===============================================");
+	        System.out.println("|              Sale Report Options            |");
+            System.out.println("|              (Enter -1 to Exit)             |");
+	        System.out.println("===============================================");
             int i=0; 
             for (String option : options) {
                 i+=1; 
@@ -48,14 +51,14 @@ public class SalesUI {
             switch(choice){
                  
                 case 1:
-                    
                     dsr.printFromObject();
                     break; 
                 case 2:
                     dsr.printFromObject();
-                    System.out.println("\n\nThis is how the current sales report looks like... Do you wish to save this to our records? (Y/N)");
+                    System.out.println("\n\nThis is how the current sales report looks like... Do you wish to save this to our records?");
+                    System.out.println("(1) Yes (2) No");
                     System.out.println("*****NOTE : Please only do this when the restaurant is closing for the day.*****");
-                    if (sc.next().charAt(0)=='Y')
+                    if (sc.nextInt()==1)
                     {
                         dsr.writeReportToCSV();
                         this.refreshSR();

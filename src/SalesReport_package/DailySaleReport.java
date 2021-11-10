@@ -128,9 +128,9 @@ public class DailySaleReport { //this stores one day's worth orders
             double quantity = this.tempMap.get(item);
             List<Double> list = new ArrayList<Double>();
             list.add(quantity); 
-            System.out.println(quantity);
+            //System.out.println(quantity);
             list.add(quantity*item.getPrice()); 
-            System.out.println(quantity*item.getPrice());
+            //System.out.println(quantity*item.getPrice());
             this.map.put(item.getName(), list);
         }
     }
@@ -181,16 +181,21 @@ public class DailySaleReport { //this stores one day's worth orders
 
     public void printFromObject(){
         System.out.printf("\n==============================         DAY REPORT FOR %s      ===========================\n", this.date);
-        System.out.println("Item \t\t\t\t\t  Quantity \t\t\t  Revenue (w/o discount)\n");
+        System.out.println("Item \t\t\t\t\t\t  Quantity \t\t  Revenue (w/o discount)\n");
 
         for (String key : this.map.keySet()){
-            System.out.print(key + " \t\t\t\t ");
+            System.out.print(this.padString(key) + " \t\t\t\t ");
             List<Double> list = this.map.get(key);
-            System.out.println(list.get(0) + "\t\t\t\t  " + list.get(1)); 
+            System.out.printf(+ list.get(0) + "\t\t\t\t  %.2f\n",list.get(1)); 
         }
         System.out.println();
-        System.out.println("DAY'S TOTAL : " + this.dailyTotal);
-        System.out.println("TOTAL DISCOUNT GIVEN : " + this.dailyDiscount);
+        System.out.printf("\nDAY'S TOTAL : %.2f",this.dailyTotal);
+        System.out.printf("\nTOTAL DISCOUNT GIVEN : %.2f\n",this.dailyDiscount);
+    }
+
+    private String padString(String original){
+        return String.format("%-" + 30 + "s", original);  
+
     }
 
     
