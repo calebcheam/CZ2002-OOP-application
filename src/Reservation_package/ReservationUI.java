@@ -39,7 +39,7 @@ public class ReservationUI {
             }
             System.out.println("===============================================");
             
-            choice = sc.nextInt(); 
+            choice = Integer.parseInt(sc.nextLine()); 
 
             switch(choice){
                  

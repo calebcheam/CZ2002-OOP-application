@@ -71,6 +71,7 @@ public class ReservationManager {
 
         System.out.println("=====================\nSelect table : ");
         int tableChoice = this.sc.nextInt();
+        sc.nextLine();
         
         this.restaurant.getTables()[tableChoice-1].reserveAtTime(customer, time-1); 
 
