@@ -1,22 +1,20 @@
 package Reservation_package;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 
 
 public class ReservationUI {
     
-    private static ArrayList<String> options=new ArrayList<String>();
+    private static ArrayList<String> options=new ArrayList<String>(Arrays.asList("Create new Reservation","Delete Reservation","View Reservations","Check Bill"));
     private static Scanner sc=new Scanner(System.in); 
-
+    
+    
 
     public static void start()
     {
-        options.add("Create new Reservation");
-        options.add("Delete Reservation");
-        options.add("View Reservations");
-        options.add("Check Bill");
         int choice;
         do {
             System.out.println("");

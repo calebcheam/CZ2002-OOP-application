@@ -33,7 +33,7 @@ public class RestaurantInterface {
 
 
         
-        MenuUI menuUI = new MenuUI(); 
+        
 
         
         OrderUI orderUI = new OrderUI(this.restaurant);
@@ -64,7 +64,7 @@ public class RestaurantInterface {
             switch(choice){
                  
                 case 1:
-                menuUI.start();
+                MenuUI.start();
                 break; 
                 case 2:
                 orderUI.start();
