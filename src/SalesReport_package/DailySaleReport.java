@@ -166,7 +166,7 @@ public class DailySaleReport { //this stores one day's worth orders
                 pw.println(item.getName() + "," + quantity + "," + item.getPrice()*quantity);
             }
             pw.print('-');
-            pw.printf("\nDAY'S TOTAL,%.2f\n" , this.dailyTotal);
+            pw.printf("\n GRAND TOTAL,%.2f\n" , this.dailyTotal);
             pw.printf("TOTAL DISC GIVEN,%.2f\n" , this.dailyDiscount);
             pw.println("=======================================================");
             pw.close();
@@ -189,7 +189,7 @@ public class DailySaleReport { //this stores one day's worth orders
             System.out.printf(+ list.get(0) + "\t\t\t\t  %.2f\n",list.get(1)); 
         }
         System.out.println();
-        System.out.printf("\nDAY'S TOTAL : %.2f",this.dailyTotal);
+        System.out.printf("\n GRAND TOTAL : %.2f",this.dailyTotal);
         System.out.printf("\nTOTAL DISCOUNT GIVEN : %.2f\n",this.dailyDiscount);
     }
 

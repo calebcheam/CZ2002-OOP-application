@@ -43,6 +43,7 @@ public class RestaurantInterface {
 
         Thread t1 = new Thread(new Refresh(this.restaurant));
         t1.start();
+        System.out.println("\n\n\n\n\n\n");
         System.out.println("======================== WELCOME TO THE RESTAURANT =========================");
         System.out.println("What would you like to do today?"
                             + "\nSelect one of the following options (choose -1 to quit) : ");

@@ -42,7 +42,7 @@ public class CSVHandler {
             boolean friendFound = false;
             while ((st = br.readLine()) != null){
                 if (st.contains(friendLine)){
-                    System.out.println("I'VE FOUND MY FRIEND. Stop writing here!");
+                    //System.out.println("I'VE FOUND MY FRIEND. Stop writing here!");
                     friendFound = true;
                     break;
                 }
@@ -53,7 +53,7 @@ public class CSVHandler {
             bw.close();
             pw.close();
             if (!friendFound){
-                System.out.println("FRIEND NOT FOUND :(");
+                //System.out.println("FRIEND NOT FOUND :(");
                 return -1;
             }
             return 1; //successful
@@ -81,7 +81,7 @@ public class CSVHandler {
             while ((st = br.readLine()) != null){
                 
                 if (st.contains(friendLine)){
-                    System.out.println("I'VE FOUND MY FRIEND. Start writing here!");
+                    //System.out.println("I'VE FOUND MY FRIEND. Start writing here!");
                     friendFound = true;
                 }
                 if (friendFound){
@@ -94,7 +94,7 @@ public class CSVHandler {
             bw.close();
             pw.close();
             if (friendFound==false){
-                System.out.println("I never found my friend...");
+                //System.out.println("I never found my friend...");
                 return -1;
             }
             return 1; 
@@ -206,7 +206,10 @@ public class CSVHandler {
         int z = this.appendToCSV(path, lineToDelete); //skips over the line to delete, then appends the rest
         if (w + x + y + z ==4) {
             System.out.println("Item removed successfully! ");
-        } else System.out.println("ERROR : Item was not removed successfully.");
+        } 
+        // else {
+        //     System.out.println("ERROR : Item was not removed successfully.");
+        // }
 
     }
     public void addItemToCSV(Item item, String path, String friendLine){
@@ -225,7 +228,7 @@ public class CSVHandler {
         int z = this.appendNewLineToCSV(path, newItemString); //add new line and append remaining parts from copied csv
 
         if (w + x + y + z ==4) {
-            System.out.println("Item addded successfully! This is what we added : " + newItemString);
+            System.out.println("Item added successfully!");
         } else System.out.println("Item not added successfully.");
     }
 

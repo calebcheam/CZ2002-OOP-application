@@ -67,7 +67,7 @@ public class MenuManager {
         if (menuChoice == 1){
             this.Menu=new AlaCarteMenu();
             itemToRemove = this.selectAlaCarteItemFromMenu();
-            System.out.println("I WANT TO REMOVE " + itemToRemove.getName());
+            //System.out.println("I WANT TO REMOVE " + itemToRemove.getName());
             this.Menu.remove(itemToRemove);
         } else if (menuChoice ==2) {
             this.Menu=new PromoMenu();
@@ -137,7 +137,7 @@ public class MenuManager {
 					return typeCategory;
 				} 
 			}
-			System.out.println("Too many invalid inputs! You are clearly not in the right mind to add a menu item.");
+			System.out.println("Too many invalid inputs!");
 			System.out.println("Quitting...");
 			
             return "Invalid";

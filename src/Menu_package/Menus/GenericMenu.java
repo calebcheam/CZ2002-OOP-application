@@ -64,7 +64,7 @@ public abstract class GenericMenu {
         int check = allocateItem(newItem, newItem.getType());
         if (check==1){
             String friendItemName= this.findFriend(typeCategory, itemType);
-            System.out.println("I want to find friend " + friendItemName);
+            //System.out.println("I want to find friend " + friendItemName);
             this.csvHandler.addItemToCSV(newItem, this.csvPath, friendItemName);
         } else System.out.println("ERROR! Item was not created successfully");
         return check;

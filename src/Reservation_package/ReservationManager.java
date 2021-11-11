@@ -90,7 +90,7 @@ public class ReservationManager {
         int tableChoice = this.sc.nextInt();
 
         this.restaurant.getTables()[tableChoice-1].getCustomerAtTime(time-1).print_invoice();
-        this.restaurant.getTables()[tableChoice-1].removeReservationAtTime(time-1); 
+        this.restaurant.getTables()[tableChoice-1].getCustomerAtTime(time-1).setName("Vacated");
 
         
 

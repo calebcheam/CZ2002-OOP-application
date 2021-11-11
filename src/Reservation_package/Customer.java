@@ -33,6 +33,10 @@ public class Customer {
         return this.expiry;
     }
 
+    public void setName(String name){
+        this.name = name;
+    }
+
     public void setExpiry(LocalDateTime bookingtime)
     {
         this.expiry=bookingtime.plusMinutes(10);
