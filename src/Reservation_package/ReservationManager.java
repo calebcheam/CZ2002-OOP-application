@@ -19,22 +19,40 @@ public class ReservationManager {
 
 
     public Customer createCustomer(){
-        System.out.println("Enter customer details for this reservation");
-        System.out.println("Customer name : ");
-        String name = this.sc.next();
-        System.out.println("Number of pax : ");
-        int pax = this.sc.nextInt();
-        System.out.println("Membership? (Y/N)");
-        boolean membership; 
-        if (sc.next().charAt(0) == 'Y')
+        
+        while (true)
         {
-            membership = true; 
-        } else {
-            membership = false;
+             try {
+                System.out.println("Enter customer details for this reservation");
+                System.out.println("Customer name : ");
+                String name = this.sc.nextLine();
+                System.out.println("Number of pax : ");
+                int pax = Integer.parseInt(sc.nextLine());
+                if (pax<1 || pax>10){
+                    System.out.println("Invalid number of people.");
+                    continue;
+                }
+                System.out.println("Membership? (Y/N)");
+                boolean membership; 
+                String mem = sc.nextLine();
+                if (mem.toLowerCase().equals("y")){
+                    membership = true;
+                }
+                else if (mem.toLowerCase().equals("n")){
+                    membership = false;
+                }
+                else {
+                    throw new Exception();
+                }
+        
+                Customer customer = new Customer(name, pax, membership); 
+                return customer; 
+                
+            } catch (Exception e) {
+                //TODO: handle exception
+                System.out.println("Invalid entries, please re-enter.");
+            }
         }
-
-        Customer customer = new Customer(name, pax, membership); 
-        return customer; 
     }
 
 

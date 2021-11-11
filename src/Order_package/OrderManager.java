@@ -65,15 +65,35 @@ public class OrderManager {
                 }
 
             }
+            else {
+                System.out.println("Invalid option, please re-enter.");
+                continue;
+            }
         }
     }
 
     public void createOrder() // gonna need table id and timeslot
     {
-        System.out.println("Enter Table Id:");
-        int tableId = sc.nextInt();
-        System.out.println("Enter timeslot for table "+tableId+":");
-        int timeslot = sc.nextInt();
+        int tableId;
+        int timeslot;
+        while (true){
+            System.out.println("Enter Table Id:");
+            tableId = sc.nextInt();
+            if (tableId>10 || tableId<1){
+                System.out.println("Invalid Table ID, please re-enter.");
+                continue;
+            }
+            break;
+        }
+        while (true){
+            System.out.println("Enter timeslot for table "+tableId+":");
+            timeslot = sc.nextInt();
+            if (timeslot>6 || timeslot<1){
+                System.out.println("Invalid timeslot, please re-enter.");
+                continue;
+            }
+            break;
+        }
         System.out.println("________________________________________");
         int check = this.checkIfOrderExists(tableId, timeslot);
         if (check==1){
@@ -88,10 +108,26 @@ public class OrderManager {
     public void editOrder() //add and remove
     {
         System.out.println("===================== EDIT ORDER =====================");
-        System.out.println("Enter Table Id:");
-        int tableId = sc.nextInt();
-        System.out.println("Enter timeslot for table "+tableId+":");
-        int timeslot = sc.nextInt();
+        int tableId;
+        int timeslot;
+        while (true){
+            System.out.println("Enter Table Id:");
+            tableId = sc.nextInt();
+            if (tableId>10 || tableId<1){
+                System.out.println("Invalid Table ID, please re-enter.");
+                continue;
+            }
+            break;
+        }
+        while (true){
+            System.out.println("Enter timeslot for table "+tableId+":");
+            timeslot = sc.nextInt();
+            if (timeslot>6 || timeslot<1){
+                System.out.println("Invalid timeslot, please re-enter.");
+                continue;
+            }
+            break;
+        }
         System.out.println("________________________________________");
         int check = this.checkIfOrderExists(tableId, timeslot);
         if (check==1){
@@ -121,6 +157,10 @@ public class OrderManager {
                     order.viewOrders();
                     System.out.println(" - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
                 }
+                else {
+                    System.out.println("Invalid option, please re-enter.");
+                    continue;
+                }
                 
             }
 
@@ -142,10 +182,26 @@ public class OrderManager {
    
     public void viewOrder(){
         System.out.println("===================== VIEW EXISTING ORDER =====================");
-        System.out.println("Enter Table Id:");
-        int tableId = sc.nextInt();
-        System.out.println("Enter timeslot for table "+tableId+":");
-        int timeslot = sc.nextInt();
+        int tableId;
+        int timeslot;
+        while (true){
+            System.out.println("Enter Table Id:");
+            tableId = sc.nextInt();
+            if (tableId>10 || tableId<1){
+                System.out.println("Invalid Table ID, please re-enter.");
+                continue;
+            }
+            break;
+        }
+        while (true){
+            System.out.println("Enter timeslot for table "+tableId+":");
+            timeslot = sc.nextInt();
+            if (timeslot>6 || timeslot<1){
+                System.out.println("Invalid timeslot, please re-enter.");
+                continue;
+            }
+            break;
+        }
         System.out.println("________________________________________");
         this.displayOrder(tableId, timeslot);
     }
