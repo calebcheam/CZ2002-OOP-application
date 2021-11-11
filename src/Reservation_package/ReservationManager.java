@@ -8,7 +8,7 @@ import Restaurant_package.Restaurant;
 public class ReservationManager {
 
     
-    private static Scanner sc=new Scanner(System.in); //scanner attribute to read things;
+   private static Scanner sc=new Scanner(System.in); //scanner attribute to read things;
 
 
    public static Customer createCustomer(){
@@ -65,6 +65,7 @@ public class ReservationManager {
         
         while (true){
             time = sc.nextInt();
+            sc.nextLine();
             if (time>6 || time<1){
                 System.out.println("Invalid timeslot, please re-enter.");
                 continue;
@@ -82,6 +83,7 @@ public class ReservationManager {
         
         while (true){
             tableChoice = sc.nextInt();
+            sc.nextLine();
             if (tableChoice>10 || tableChoice<1)
             {
                 System.out.println("Invalid table, please re-enter.");
