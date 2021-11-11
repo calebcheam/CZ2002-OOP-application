@@ -55,8 +55,12 @@ public class RestaurantInterface {
                 System.out.println(i + " : " + option); 
             }
             System.out.println("===============================================");
-            choice = sc.nextInt(); 
-
+            choice = sc.nextInt();
+            if (choice<-1 || choice>4)
+            {
+                System.out.println("Invalid option, please re-enter.");
+                continue;
+            }
 
             switch(choice){
                  
@@ -74,6 +78,9 @@ public class RestaurantInterface {
                 case 4: //for sales report
                 salesUI.start(); 
                 break;
+
+                default:
+                continue;
             }
             
         } while (choice!=-1); 
