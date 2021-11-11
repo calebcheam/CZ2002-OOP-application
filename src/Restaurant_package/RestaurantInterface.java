@@ -77,9 +77,6 @@ public class RestaurantInterface {
                 case 4: //for sales report
                 salesUI.start(); 
                 break;
-
-                default:
-                continue;
             }
             
         } while (choice!=-1); 
