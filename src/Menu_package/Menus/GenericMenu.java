@@ -6,6 +6,11 @@ import Menu_package.CSVHandler;
 import Menu_package.Item;
 import Menu_package.MenuItemCategoryTypes;
 
+/**
+ * Abstract class for sub classes that handles operation relating to different types of Menu Items.
+ * @see Menus.AlaCarteMenu
+ * @see Menus.PromoMenu
+ */
 public abstract class GenericMenu {
     protected MenuItemCategoryTypes menuCategories;
     protected CSVHandler csvHandler=new CSVHandler();  //we need this to be shared within the package
@@ -59,7 +64,7 @@ public abstract class GenericMenu {
      * @see Menus.PromoMenu#allocateItem(Item menuItem, String itemType)
      * @param menuItem Item Object to be added
      * @param itemType Item Type of the Item object to be added
-     * @return int 
+     * @return int Return positive integer if success, negative if failure (refer to above method links)
      */
     public int allocateItem(Item menuItem, String itemType)
     {
@@ -69,9 +74,12 @@ public abstract class GenericMenu {
 
     
     /** 
-     * @param typeCategory
-     * @param itemType
-     * @return int
+     * Abstract method for subclasses to find first occurrence index of a specified Item Type in ArrayList that stores Items under Item Category specified.
+     * @see Menus.AlaCarteMenu#findFirstTypeOccurrence(String typeCategory, String itemType)
+     * @see Menus.PromoMenu#findFirstTypeOccurrence(String typeCategory, String itemType)
+     * @param typeCategory Item Category 
+     * @param itemType Item Type 
+     * @return int Return positive integer if success, negative if failure (refer to above method links)
      */
     public int findFirstTypeOccurrence(String typeCategory, String itemType)
     {
@@ -81,8 +89,9 @@ public abstract class GenericMenu {
 
     
     /** 
-     * @param typeCategory
-     * @return ArrayList<Item>
+     * Abstract method for subclasses to return ArrayList containing the Items under the Item Category specified
+     * @param typeCategory Item Category
+     * @return ArrayList<Item> ArrayList that contains the Items under the Item Category specified
      */
     public ArrayList<Item> returnItemListReference(String typeCategory)
     {
@@ -92,15 +101,10 @@ public abstract class GenericMenu {
 
     
     /** 
-     * @param typeCategory
-     * @param findFirstTypeOccurrence(typeCategory
-     * @param name
-     * @param itemType
-     * @param typeCategory
-     * @param description
-     * @param price
-     * @param stock
-     * @return String
+     * Returns String of first Item object's name of specified Item Type in the ArrayList of Items, containing Item under specified Item Category.
+     * @param typeCategory Item Category
+     * @param itemType Item Type
+     * @return String String of first Item object's name
      */
     public String findFriend(String typeCategory, String itemType) { //to insert into correct location in the CSV
        
@@ -113,13 +117,14 @@ public abstract class GenericMenu {
     
     
     /** 
-     * @param name
-     * @param itemType
-     * @param typeCategory
-     * @param description
-     * @param price
-     * @param stock
-     * @return int
+     * Add Item with specified attributes, to the csv file given (as the list of information of all Menu Items and Set)
+     * @param name Item name
+     * @param itemType Item Type
+     * @param typeCategory Item Category
+     * @param description Item description
+     * @param price Item price
+     * @param stock Item stock
+     * @return int Returns 1 to indicate successful addition of Item to csv, negative integer to indicate failure
      */
     public int add(String name, String itemType, String typeCategory, ArrayList<String> description, float price, int stock){
         Item newItem = new Item(name, itemType, description, price, stock);
@@ -134,7 +139,8 @@ public abstract class GenericMenu {
 
     
     /** 
-     * @param item
+     * Remove Item from the csv file (that contains information of all Items and Set Menu)
+     * @param item Item to be removed
      */
     public void remove(Item item){
         String lineToDelete = item.getName();
@@ -143,13 +149,15 @@ public abstract class GenericMenu {
 
     
     /** 
-     * @param number
-     * @param typeCategory
-     * @param itemType
-     * @return Item
+     * Get the specified Item according to the type category, Item type, the numbering of the Item in the Menu display,
+     * to prepare for removal of the Item.
+     * @param number Numbering of the Item in the Menu display
+     * @param typeCategory Item Category of specified Item
+     * @param itemType Item Type of specified Item
+     * @return Item Item to be removed
      */
     public Item getItemToBeRemoved(int number, String typeCategory, String itemType) {
-		//remove the specified Item according to the type category, Item type,
+	//remove the specified Item according to the type category, Item type,
         //the numbering of the Item in the Menu display.
         //this method will assume that no invalid "itemType" will be passed into the parameter
         //as it will be settled in the MenuUI (boundary) class
@@ -164,17 +172,23 @@ public abstract class GenericMenu {
         tempItemArray = returnItemListReference(typeCategory);
 
         //remove Item
-        return tempItemArray.get(firstOccurIndex + number - 1);
-    
-		
+        return tempItemArray.get(firstOccurIndex + number - 1);	
 	}
 
     
     /** 
-     * @param number
-     * @param typeCategory
-     * @param itemType
-     * @param updateInfo
+     * Update the specified Item's attribute according to the "choice" in updateInfo.
+     * All other parameters (other than updateInfo) are used to locate the Item in the ArrayList of Items.
+     * "Choice" refers to the first element of updateInfo and it is a String number. If the first element is:
+     * "1" - change Item name
+     * "2" - change Item Type
+     * "3" - change Item description
+     * "4" - change Item price
+     * "5" - change Item stock
+     * @param number Numbering of the Item in the Menu display
+     * @param typeCategory Item Category of specified Item
+     * @param itemType Item Type of specified Item
+     * @param updateInfo ArrayList that contains the "choice" (that indicates which Item attributes to change), and information to replace the specified Item attribute 
      */
     public void updateItem(int number, String typeCategory, String itemType, ArrayList<String> updateInfo) {
 		int firstOccurIndex = findFirstTypeOccurrence(typeCategory, itemType);
@@ -216,8 +230,10 @@ public abstract class GenericMenu {
 
     
     /** 
-     * @param itemsNamesTypesList
-     * @return int
+     * Return length of the longest String to be displayed (in a single line) in the Menu display.
+     * This is to format the display positioning of the Menu's words and headers.
+     * @param itemsNamesTypesList ArrayList that contains all Strings that will be displayed in the Menu. The max length out of these Strings will be returned.
+     * @return int Length of the longest String to be displayed in a single line.
      */
     ///////////////////// methods relating to displaying the menu
     public int findLongestStringSize(ArrayList<String> itemsNamesTypesList) {
@@ -244,7 +260,8 @@ public abstract class GenericMenu {
     
     
     /** 
-     * @return int
+     * Returns the longest String size (to be displayed in a single line in the Menu display), stored in this class.
+     * @return int Longest String size
      */
     public int getLongestStringSize() {
 		return this.longestStringSize;
@@ -252,7 +269,8 @@ public abstract class GenericMenu {
 
     
     /** 
-     * @return MenuItemCategoryTypes
+     * Returns menuCategories of this class
+     * @return MenuItemCategoryTypes menuCategories of this class
      */
     public MenuItemCategoryTypes getMenuItemCategoryTypes(){
         return this.menuCategories;
@@ -260,12 +278,18 @@ public abstract class GenericMenu {
 
     
     /** 
-     * @return int
+     * Returns number of Item Categories associated with this class
+     * @return int Number of Item Categories
      */
     public int getNumofCategories(){
         return this.menuCategories.getNumberOfCategories();
     }
-
+	
+    /**
+     * Abstract method for subclasses to implement a method to display their Menu Items
+     * @see Menus.AlaCarteMenu#displayMenu()
+     * @see Menus.PromoMenu#displayMenu()
+     */
     public void displayMenu()
     {
         return;
@@ -273,7 +297,10 @@ public abstract class GenericMenu {
 
     
     /** 
-     * @param category
+     * Abstract method for subclasses to implement a method to display their Menu Items of a specified Item Category
+     * @see Menus.AlaCarteMenu#displayMenu()
+     * @see Menus.PromoMenu#displayMenu()
+     * @param category Item Category specified to display Items under the Item Category
      */
     public void displayMenuCategory(String category){
 
@@ -281,7 +308,8 @@ public abstract class GenericMenu {
 
     
     /** 
-     * @param numOfLines
+     * Prints header line of length specified
+     * @param numOfLines Length of header line to be printed
      */
     public void printHeaderLines(int numOfLines) {
 		for (int i = 0; i < numOfLines; i++){
@@ -293,7 +321,8 @@ public abstract class GenericMenu {
 	
 	
     /** 
-     * @param numOfLines
+     * Prints sub header line of length specified
+     * @param numOfLines Length of sub header line to be printed
      */
     public void printSubHeaderLines(int numOfLines) {
 		for (int i = 0; i < numOfLines; i++){
@@ -305,7 +334,8 @@ public abstract class GenericMenu {
 	
 	
     /** 
-     * @param spacing
+     * Prints Menu header of length specified
+     * @param spacing Length of Menu header to be printed
      */
     public void printMenuHeader(int spacing) {
         printHeaderLines(spacing);
@@ -318,8 +348,5 @@ public abstract class GenericMenu {
         printHeaderLines(spacing);
 		
 	}
-    
-	
-		
-    
+
 }
