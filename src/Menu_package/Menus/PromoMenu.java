@@ -10,11 +10,17 @@ import java.util.Arrays;
 import Menu_package.Item;
 import Menu_package.MenuItemCategoryTypes;
 
+/**
+ * Subclass of GenericMenu, that specifically handles operation relating to Menu Items under the Set category
+ */
 public class PromoMenu extends GenericMenu{
 
     private ArrayList<Item> setItems;
 
-
+    /**
+     * Constructor of this class.
+     * Creates ArrayList of Set Items using the csv file provided (with information of all Menu Items and Set)
+     */
     public PromoMenu(){
         
         this.name="Promotion Menu";
@@ -67,8 +73,9 @@ public class PromoMenu extends GenericMenu{
 
     
     /** 
-     * @param setItems
-     * @param spacing
+     * Prints the Menu of Set Items.
+     * @param setItems ArrayList containing Set Items to be printed
+     * @param spacing Number to format the display positioning of the words and headers in the Menu display
      */
     public void printSetSection(ArrayList<Item> setItems, int spacing){
         String type;
@@ -118,26 +125,29 @@ public class PromoMenu extends GenericMenu{
     
 
 	
-    /** 
-     * @param itemType
-     * @return String
+    /**
+     * Returns String that indicates the Item Type specified is under the Set Category.
+     * If the Item Type is not under Set Category, this method returns "Invalid Type".
+     * @param itemType Item Type
+     * @return String String indicating if Item Type specified is under the Set Category
      */
     @Override
-	public String findItemTypeCategory(String itemType) {
-		ArrayList<String> setTypesList = new ArrayList<>(Arrays.asList(MenuItemCategoryTypes.setTypes));
+    public String findItemTypeCategory(String itemType) {
+        ArrayList<String> setTypesList = new ArrayList<>(Arrays.asList(MenuItemCategoryTypes.setTypes));
         if (setTypesList.contains(itemType)) {
             return "Set";
         }
         else{
             return "Invalid Type";
         }
-	}
+    }
 
 	
     /** 
-     * @param menuItem
-     * @param itemType
-     * @return int
+     * Adds Item to the ArrayList of Set Items if the Item's type is under the Set Category
+     * @param menuItem Item to be added
+     * @param itemType Item Type of the Item to be added
+     * @return int Return 1 if Item is added successfully, otherwise returns -1.
      */
     @Override
 	public int allocateItem(Item menuItem, String itemType) {
@@ -151,14 +161,17 @@ public class PromoMenu extends GenericMenu{
 	}
 
 	
-    /** 
-     * @param typeCategory
-     * @param itemType
-     * @return int
+    /**
+     * Find the first occurrence of an Item type in the ArrayList of Set Items.
+     * This method is used in the proccess of deleting/updating a Set Item's information.
+     * @param typeCategory Category the Item type is under
+     * @param itemType Item type, to find the first occurrence in the ArrayList
+     * @return int Returns the index of the first occurrence of the specified Item type. Returns -2 if Item type is not in any category, -1 if Item type is in a category, but Item type is not found in the ArrayList.
+     */
      */
     @Override
-	public int findFirstTypeOccurrence(String typeCategory, String itemType) {
-		ArrayList<Item> tempItemArray;
+    public int findFirstTypeOccurrence(String typeCategory, String itemType) {
+	ArrayList<Item> tempItemArray;
         if (typeCategory=="Set") tempItemArray = setItems;
         else return -2; 
         
@@ -169,12 +182,12 @@ public class PromoMenu extends GenericMenu{
             if (tempType.equals(itemType)) return i;//return index of first occurrence of itemType
         }
         return -1;//return -1 if itemType is in a category but not found
-	}
+     }
 
 	
     /** 
-     * @param typeCategory
-     * @return ArrayList<Item>
+     * Returns the reference of ArrayList of Set Item
+     * @param typeCategory Item Category
      */
     @Override
 	public ArrayList<Item> returnItemListReference(String typeCategory) {
@@ -182,9 +195,10 @@ public class PromoMenu extends GenericMenu{
 	}
 
 
-
-	@Override
-	
+    /**
+     * Prints the Menu of Set Items.
+     */
+    @Override	
     public void displayMenu() {
 		int spacing = this.getLongestStringSize()+20;
         printMenuHeader(spacing);
