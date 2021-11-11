@@ -32,16 +32,13 @@ public class Refresh implements Runnable{
 
                     //check if the reservation has expired
                     LocalDateTime reservationDeadline = this.restaurant.getTables()[i].getReservations()[j].getExpiry();
-                    // give the fella 20 minutes buffer time
-                    reservationDeadline = reservationDeadline.plusMinutes(20);
-
                     if(this.currentTime.isAfter(reservationDeadline)) //expired
                     {
                         if(this.restaurant.getTables()[i].getReservations()[j].getOrder()==null)
                         {
                             DateTimeFormatter format = DateTimeFormatter.ofPattern("HH:mm"); 
                             System.out.println("\n\t\t\t\t\t\t\t\t\t\t << Time : " + this.currentTime.format(format)+ " >>");
-                            System.out.println("A customer reservation has just expired!\n");
+                            System.out.println("A customer reservation has just expired!");
 
                             //System.out.printf("\t\t\t\t\t\t\t AHA! U R PAST UR DEADLINE %s IM GNA RMEMOVE U\n", reservationDeadline);
                             this.restaurant.getTables()[i].removeReservationAtTime(j);

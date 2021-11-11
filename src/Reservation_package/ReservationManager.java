@@ -67,8 +67,14 @@ public class ReservationManager {
         this.restaurant.printTimeSlots();
 
         int time = this.sc.nextInt();
-        this.restaurant.printTableAvailabilityByTime(time);
 
+        if (this.restaurant.checkTimeslotFullyBooked(time)==true){
+            System.out.println("This timeslot is fully booked!");
+            this.restaurant.printTableAvailabilityByTime(time);
+            return;
+        }
+
+        this.restaurant.printTableAvailabilityByTime(time);
         System.out.println("=====================\nSelect table : ");
         int tableChoice = this.sc.nextInt();
         sc.nextLine();

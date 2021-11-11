@@ -246,10 +246,17 @@ public class OrderManager {
         {
             if (key.getName().equals(selectedItem)){
 
-                //int oldQuant = order.getOrderedItems().get(key);
+                
                 order.setOrders(key, quantity);
                 System.out.println("======================================================");
-                System.out.println("Order Edited Successfully!\nNew quantity of "+key.getName()+" is "+order.getOrderedItems().get(key));
+                if (order.getOrderedItems().get(key)!=null)
+                {
+                    System.out.println("Order Edited Successfully!\nNew quantity of "+key.getName()+" is "+order.getOrderedItems().get(key));
+                } else {
+                    System.out.println("Order Edited Successfully!");
+                    System.out.println(key.getName() + " has been removed from the order. ");
+                }
+                
                 System.out.println("");
                 order.viewOrders();
             } 

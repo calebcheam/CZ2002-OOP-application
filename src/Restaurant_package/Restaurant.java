@@ -43,7 +43,22 @@ public class Restaurant {
             System.out.print(timeslots[i] + "\n");
         }
     }
-    
+
+    public boolean checkTimeslotFullyBooked(int time){
+        int timeIndex = time-1; 
+        int booked=0;
+        for (Table table: tables){
+            if (table.isReservedAtTime(timeIndex)==true){
+                booked+=1; 
+            }
+        }
+        if (booked==tables.length){
+            return true;
+        }
+
+        return false; 
+    }
+
     public void printTableAvailabilityByTime(int time){
         int timeIndex = time-1; 
         System.out.println("Table Availability at "+  timeslots[timeIndex]);

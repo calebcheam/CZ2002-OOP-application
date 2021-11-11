@@ -91,7 +91,7 @@ public class Table {
         String customerName = this.reservations[time].getName();
         this.reservations[time] = null;
 
-        System.out.printf("\nALERT! Customer %s at Table %d at timeslot %d successfully removed%n", customerName, getId(), time+1);
+        System.out.printf("\nCustomer %s at Table %d at Timeslot %d successfully removed%n", customerName, getId(), time+1);
 
     }
 
