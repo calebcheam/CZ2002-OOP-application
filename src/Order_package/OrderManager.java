@@ -3,32 +3,20 @@ package Order_package;
 import Menu_package.Item;
 
 import Menu_package.MenuManager;
-import Menu_package.Menus.AlaCarteMenu;
-import Menu_package.Menus.GenericMenu;
 import Restaurant_package.Restaurant;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class OrderManager {
-    private Scanner sc;
-    private Restaurant tables;
-
-    private MenuManager menuManager;
-
-    public OrderManager(Restaurant tables)
-    {
-        this.tables = tables;
-        this.sc = new Scanner(System.in);
-        this.menuManager = new MenuManager(); 
     
-    }
-
-    private void createOrderGivenReservation(int tableId, int timeslot){
+    private static Scanner sc=new Scanner(System.in);
+    
+    private static void createOrderGivenReservation(int tableId, int timeslot){
         Order order = new Order();
         System.out.println("--------------------- CREATING ORDER ---------------------");
         System.out.println("                    (Enter -1 to exit)                    ");
-        System.out.println("Customer Name : " + this.tables.getTables()[tableId-1].getCustomerAtTime(timeslot-1).getName());
+        System.out.println("Customer Name : " + Restaurant.getTables()[tableId-1].getCustomerAtTime(timeslot-1).getName());
         System.out.println("Table ID : " + tableId);
         System.out.println("----------------------------------------------------------");
         while (true){
@@ -39,10 +27,10 @@ public class OrderManager {
                 break;
             }
             else if (c==1){
-                this.addNewItemToOrder(order);
+                addNewItemToOrder(order);
             }
             else if (c==2){
-                this.updateItemQty(order);
+                updateItemQty(order);
             }
             else if (c==3){
                 System.out.println("Confirm current order to be:");
@@ -52,10 +40,10 @@ public class OrderManager {
                 int cfm = sc.nextInt();
                 if (cfm==1){
 
-                    this.tables.getTables()[tableId-1].getCustomerAtTime(timeslot-1).addOrder(order);
+                    Restaurant.getTables()[tableId-1].getCustomerAtTime(timeslot-1).addOrder(order);
                     System.out.println("Order created successfully! This is the order added : ");
                     System.out.println(" - - - - - - - - - - - - - - - -\tORDER\t- - - - - - -- - - - - - - - - -");
-                    this.displayOrder(tableId, timeslot);
+                    displayOrder(tableId, timeslot);
                     break;
 
                 }
@@ -72,7 +60,7 @@ public class OrderManager {
         }
     }
 
-    public void createOrder() // gonna need table id and timeslot
+    public static void createOrder() // gonna need table id and timeslot
     {
         int tableId;
         int timeslot;
@@ -95,17 +83,17 @@ public class OrderManager {
             break;
         }
         System.out.println("________________________________________");
-        int check = this.checkIfOrderExists(tableId, timeslot);
+        int check = checkIfOrderExists(tableId, timeslot);
         if (check==1){
             System.out.println("Order already exists!");
             return;
         } else if (check==-2){
             return; 
         }
-        this.createOrderGivenReservation(tableId, timeslot);
+        createOrderGivenReservation(tableId, timeslot);
     }
 
-    public void editOrder() //add and remove
+    public static void editOrder() //add and remove
     {
         System.out.println("===================== EDIT ORDER =====================");
         int tableId;
@@ -129,9 +117,9 @@ public class OrderManager {
             break;
         }
         System.out.println("________________________________________");
-        int check = this.checkIfOrderExists(tableId, timeslot);
+        int check = checkIfOrderExists(tableId, timeslot);
         if (check==1){
-            Order order = this.tables.getTables()[tableId-1].getCustomerAtTime(timeslot-1).getOrder();
+            Order order = Restaurant.getTables()[tableId-1].getCustomerAtTime(timeslot-1).getOrder();
             System.out.println(" - - - - - - - - - - - -\tCURRENT ORDER\t- - - - - - - - - - - - -");
             order.viewOrders();
             System.out.println(" - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
@@ -144,14 +132,14 @@ public class OrderManager {
                     break;
                 }
                 else if (c==1){
-                    this.addNewItemToOrder(order);
+                    addNewItemToOrder(order);
                     System.out.println("Order Changed!");
                     System.out.println(" - - - - - - - - - - - -\tUPDATED ORDER\t- - - - - - - - - - - - -");
                     order.viewOrders();
                     System.out.println(" - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
                 }
                 else if (c==2){
-                    this.updateItemQty(order);
+                    updateItemQty(order);
                     System.out.println("Order Changed!");
                     System.out.println(" - - - - - - - - - - - -\tUPDATED ORDER\t- - - - - - - - - - - - -");
                     order.viewOrders();
@@ -166,21 +154,21 @@ public class OrderManager {
 
         } else if (check==-1){
             
-            this.promptNewOrder(tableId, timeslot);
+            promptNewOrder(tableId, timeslot);
         } 
         
     }   
 
-    private void promptNewOrder(int tableId, int timeslot){
+    private static void promptNewOrder(int tableId, int timeslot){
         System.out.println("Order does not exist for this customer.Would you like to create a new order now?");
         System.out.println("(1) Yes (2) No ");
         int choice = sc.nextInt();
         if (choice==1){
-            this.createOrderGivenReservation(tableId, timeslot);
+            createOrderGivenReservation(tableId, timeslot);
         }
     }
    
-    public void viewOrder(){
+    public static void viewOrder(){
         System.out.println("===================== VIEW EXISTING ORDER =====================");
         int tableId;
         int timeslot;
@@ -203,28 +191,28 @@ public class OrderManager {
             break;
         }
         System.out.println("________________________________________");
-        this.displayOrder(tableId, timeslot);
+        displayOrder(tableId, timeslot);
     }
 
-    private void displayOrder(int tableId, int timeslot)
+    private static void displayOrder(int tableId, int timeslot)
     {
         int check = checkIfOrderExists(tableId, timeslot);
         if (check==1){ // order found
-            this.tables.getTables()[tableId-1].getCustomerAtTime(timeslot-1).getOrder().viewOrders();
+            Restaurant.getTables()[tableId-1].getCustomerAtTime(timeslot-1).getOrder().viewOrders();
         } else if (check==-1){
-            this.promptNewOrder(tableId, timeslot);
+            promptNewOrder(tableId, timeslot);
         }
     }
 
-    private void addNewItemToOrder(Order order){
-        Item item = this.menuManager.orderItemfromMenu();
+    private static void addNewItemToOrder(Order order){
+        Item item = MenuManager.orderItemfromMenu();
         System.out.println("Select quantity of "+item.getName()+" to be added:");
         int quantity = sc.nextInt();
         order.setOrders(item, quantity);
     }
 
 
-    private void updateItemQty(Order order){
+    private static void updateItemQty(Order order){
         order.viewOrders();
         int itemIndex;
         
@@ -264,13 +252,13 @@ public class OrderManager {
         
     }
 
-    private int checkIfOrderExists(int tableId, int timeslot){
+    private static int checkIfOrderExists(int tableId, int timeslot){
 
-        if (this.tables.getTables()[tableId-1].getCustomerAtTime(timeslot-1)!=null){
+        if (Restaurant.getTables()[tableId-1].getCustomerAtTime(timeslot-1)!=null){
             System.out.println("Reservation at table " + tableId + " found for " +
-                this.tables.getTables()[tableId-1].getCustomerAtTime(timeslot-1).getName());
+            Restaurant.getTables()[tableId-1].getCustomerAtTime(timeslot-1).getName());
 
-            if (this.tables.getTables()[tableId-1].getCustomerAtTime(timeslot-1).getOrder()!=null)
+            if (Restaurant.getTables()[tableId-1].getCustomerAtTime(timeslot-1).getOrder()!=null)
             {
                 return 1; // order found at this slot
             } else return -1; // reservation found, but no order assigned yet

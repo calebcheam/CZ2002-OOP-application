@@ -14,7 +14,7 @@ public class Customer {
     private Boolean membership; //whether a customer is a member or not
     private Order order;//stores the orders of that customer
     private LocalDateTime expiry;
-    private Boolean arrived=false;
+    
     
 
     public Customer(String name,int pax,Boolean membership)
@@ -119,7 +119,11 @@ public class Customer {
     }
     public void print_invoice()
     {
-        if (this.membership==false)
+        if (this.order == null){
+            System.out.println("Order doesn't exist!");
+            return;
+        }
+        else if (this.membership==false)
         {
             System.out.println("Customer ID:"+this.customerID);
             this.order.printInvoiceRaw();

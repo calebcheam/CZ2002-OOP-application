@@ -1,26 +1,16 @@
 package Order_package;
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import Restaurant_package.Restaurant;
 
 public class OrderUI {
-    protected Restaurant restaurant;
-    private OrderManager manager;
-    ArrayList<String> options=new ArrayList<>();
-    Scanner sc=new Scanner(System.in);
     
-    public OrderUI(Restaurant res)
-    {
-        this.restaurant=res;
-        this.manager=new OrderManager(this.restaurant); 
-           
-        options.add("Create new order");
-        options.add("Edit existing order");
-        options.add("View existing order");
-        
-    }
-    public void start()
+    private static ArrayList<String> options=new ArrayList<>(Arrays.asList("Create new order","Edit existing order","View existing order"));
+    private static Scanner sc=new Scanner(System.in);
+
+    public static void start()
     {
         int choice;
         do {
@@ -40,13 +30,13 @@ public class OrderUI {
             switch(choice){
                  
                 case 1:
-                    this.manager.createOrder();
+                    OrderManager.createOrder();
                     break; 
                 case 2:
-                    this.manager.editOrder();
+                    OrderManager.editOrder();
                     break;
                 case 3:
-                    this.manager.viewOrder();
+                    OrderManager.viewOrder();
                 default:
                     break;
             } 

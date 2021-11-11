@@ -2,18 +2,17 @@ package Menu_package;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import Menu_package.Menus.AlaCarteMenu;
-import Menu_package.Menus.GenericMenu;
-import Menu_package.Menus.PromoMenu;
+
 
 
 public class MenuUI {
-	MenuManager menuManager= new MenuManager();
-	GenericMenu Menu=null; 
-	Scanner sc = new Scanner(System.in);
-	int choice;
 	
-	public void start() {
+	 
+	private static Scanner sc = new Scanner(System.in);
+	
+	
+	public static void start() {
+		int choice;
 		do {
 			System.out.println("====================================");
 	        System.out.println("|             Menu Options         |");
@@ -29,15 +28,15 @@ public class MenuUI {
 	        switch(choice) {
 
 	        case 1:	 
-			this.menuManager.viewMenu();       	
+			MenuManager.viewMenu();       	
 			break;
 
 	        case 2:
-			this.menuManager.addItemtoMenu();
+			MenuManager.addItemtoMenu();
 			break;
 
 	        case 3:
-			this.menuManager.removeItemFromMenu();
+			MenuManager.removeItemFromMenu();
 	        break;
 	        }
 		}while (choice != -1);
