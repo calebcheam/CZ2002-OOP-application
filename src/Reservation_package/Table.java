@@ -8,6 +8,12 @@ public class Table {
     private Customer[] reservations;
     private LocalDateTime[] times;
 
+    /** 
+     * Creates a Table object
+     * @param id The table number 
+     * @param size The max pax taken by the table
+     * @return Table object
+     */
     public Table(int id, int size)
     {
         this.id=id;
@@ -30,7 +36,8 @@ public class Table {
 
     
     /** 
-     * @return int
+     * Gets the table number
+     * @return int table number
      */
     public int getId()
     {
@@ -39,7 +46,8 @@ public class Table {
 
     
     /** 
-     * @return int
+     * Gets max pax of the table
+     * @return int max pax
      */
     public int getSize()
     {
@@ -47,8 +55,9 @@ public class Table {
     }
 
     
-    /** 
-     * @return Customer[]
+    /**
+     * Get list of Customers who have reserved this Table
+     * @return Array of Customer objects assigned to Table
      */
     public Customer[] getReservations()
     {
@@ -56,7 +65,8 @@ public class Table {
     }
     
     /** 
-     * @return LocalDateTime[]
+     * Get list of timeslots for this Table
+     * @return Array of LocalDateTime for Table
      */
     public LocalDateTime[] getTimeslots(){
         return this.times;
@@ -64,8 +74,9 @@ public class Table {
 
     
     /** 
-     * @param time
-     * @return Customer
+     * Get Customer who reserved this table at specific timeslot
+     * @param time index of the timeslot
+     * @return Customer object assigned to specified timeslot
      */
     public Customer getCustomerAtTime(int time) // can be used to check reservation status
     {
@@ -80,18 +91,19 @@ public class Table {
 
     
     /** 
-     * @param time
-     * @return boolean
+     * Get boolean of whether this table is reserved at specified timeslot
+     * @param time index of the timeslot
+     * @return boolean true if reserved, false if not
      */
     public boolean isReservedAtTime(int time)
     {
         return this.reservations[time] != null;
     }
-
     
     /** 
-     * @param customer
-     * @param time
+     * Reserves this table by assigning Customer object to it at specified time
+     * @param customer customer object to be assigned to table
+     * @param time index of timeslot the customer is reserving
      */
     public void reserveAtTime(Customer customer, int time) //takes in the timeslot INDEX
     {
@@ -114,7 +126,8 @@ public class Table {
 
     
     /** 
-     * @param time
+     * Removes reservation at specified timeslot
+     * @param time index of timeslot to be cleared
      */
     public void removeReservationAtTime(int time)
     {
@@ -132,7 +145,8 @@ public class Table {
 
     
     /** 
-     * @param timeslot
+     * Prints reservations made for this table for all timeslots, prints customer name if reserved and nothing if not
+     * @param timeslot Array of timeslots to be iterated through to print reservation status
      */
     public void printReservations(String[] timeslot)
     {

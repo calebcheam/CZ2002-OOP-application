@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /** 
- * Handles all order related activities
+ * Handles all order related activities, including order creating, editing and viewing
  */
   
 public class OrderManager {
@@ -18,8 +18,8 @@ public class OrderManager {
     
     
     /** 
-     * Creates an order at a reserved timeslot and table 
-     * @param tableId Table number the order is for
+     * Creates an order at an already reserved timeslot and table
+     * @param tableId Table number the order is assigned to
      * @param timeslot Timeslot for the respective table
      */
 
@@ -72,7 +72,8 @@ public class OrderManager {
     }
 
     /** 
-     * Creates an Order object, this method prompts user for specific timeslot and table
+     * Creates an Order object, this method prompts user for specific timeslot and table the order is assigned to
+     * Notifies user if order already exists
      */
 
     public static void createOrder() // gonna need table id and timeslot
@@ -109,7 +110,7 @@ public class OrderManager {
     }
 
     /** 
-     * Edits an Order object, this method prompts user for specific timeslot and table
+     * Edits an existing Order object, this method prompts user for specific timeslot and table to access specific order
      */
     public static void editOrder() //add and remove
     {
@@ -183,7 +184,7 @@ public class OrderManager {
      * @param timeslot Timeslot for the respective table
      */
     private static void promptNewOrder(int tableId, int timeslot){
-        System.out.println("Order does not exist for this customer.Would you like to create a new order now?");
+        System.out.println("Order does not exist for this customer. Would you like to create a new order now?");
         System.out.println("(1) Yes (2) No ");
         int choice = sc.nextInt();
         if (choice==1){
@@ -192,7 +193,7 @@ public class OrderManager {
     }
    
     /** 
-     * Views an order, this method prompts user for specific timeslot and table
+     * Views an order, this method prompts user for specific timeslot and table to access the order
      */
     public static void viewOrder(){
         System.out.println("===================== VIEW EXISTING ORDER =====================");
@@ -238,7 +239,7 @@ public class OrderManager {
 
     
     /** 
-     * Adds an item to a specific order object
+     * Adds an item and its quantityn from Menu to a specific order object
      * @param order Order the item is to be added to
      */
     private static void addNewItemToOrder(Order order){
@@ -251,7 +252,7 @@ public class OrderManager {
 
     
     /** 
-     * Changes item quantities within a specific order object
+     * Changes item quantities within a specific order
      * @param order Order that is to be updated
      */
     private static void updateItemQty(Order order){
@@ -263,7 +264,7 @@ public class OrderManager {
         while (itemIndex>order.getOrderedItems().size() || itemIndex<=0){
             if (itemIndex == -1) return;
 
-            System.out.println("Error. Please try again? ");
+            System.out.println("Error. Please try again?");
             itemIndex = sc.nextInt();
         }
 

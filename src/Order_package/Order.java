@@ -7,14 +7,14 @@ import java.util.Set;
 
 public class Order {
     /**
-     * HashMap containing ordered items and quantities
+     * HashMap containing ordered Item objects and quantities
      */
     protected HashMap<Item, Integer> orders=new HashMap<Item,Integer>();
     private String date;
     private String staffName;
     private Scanner sc = new Scanner(System.in);
     /** 
-     * Creates a new Order object
+     * Creates a new Order object and prompts for name of staff handling the order
      */
     public Order()
     {
@@ -26,7 +26,7 @@ public class Order {
 
     
     /** 
-     * Gets the date of the order
+     * Gets the date that the order was created 
      * @return String of date the order was created
      */
     public String getDate(){
@@ -55,7 +55,7 @@ public class Order {
 
     
     /** 
-     * Sets quantity of each item in the HashMap
+     * Sets quantity of each Menu item in the HashMap
      * @param item Item object 
      * @param quantity Quantity of item object
      */
@@ -85,7 +85,7 @@ public class Order {
     }
 
     /** 
-     * Displays ordered items
+     * Displays all items in the order and their quantities
      */
     public void viewOrders()
     {
@@ -117,8 +117,8 @@ public class Order {
 
     
     /** 
-     * Gets the total price after both tax and discount
-     * @return double of price of items taxed and with member discount
+     * Gets the total price after both tax and member discount (10%)
+     * @return double of price of items taxed and with member discount (10%)
      */
     public double memberGstTotal()
     {
@@ -136,7 +136,7 @@ public class Order {
     }
 
     /** 
-     * Prints invoice if non-member
+     * Prints invoice if non-member (no discount)
      */
     public void printInvoiceRaw()
     {
@@ -160,7 +160,7 @@ public class Order {
     }
 
     /** 
-     * Prints invoice if member
+     * Prints invoice if member (10% discount)
      */
     public void printInvoiceMember()
     {
