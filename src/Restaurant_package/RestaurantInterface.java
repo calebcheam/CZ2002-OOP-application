@@ -54,7 +54,7 @@ public class RestaurantInterface {
                 System.out.println(i + " : " + option); 
             }
             System.out.println("===============================================");
-            choice = sc.nextInt();
+            choice = Integer.parseInt(sc.nextLine());
             if (choice<-1 || choice>4)
             {
                 System.out.println("Invalid option, please re-enter.");
