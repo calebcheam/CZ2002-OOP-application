@@ -6,6 +6,9 @@ import java.util.Random;
 
 import Order_package.Order;
 
+/**
+ * Customer class that contains customer information such as name, id, pax, and membership.
+ */
 public class Customer { 
 
     private String name; //customer reservation representative name 
@@ -18,7 +21,7 @@ public class Customer {
     
 
     /** 
-     * Creates Customer object used for reservation
+     * Customer object constructor 
      * @param name name of the customer
      * @param pax number of people to be seated at table
      * @param membership boolean whether the customer is a member or not

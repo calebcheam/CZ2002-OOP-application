@@ -4,7 +4,9 @@ import java.util.Scanner;
 
 import Restaurant_package.Restaurant;
 
-
+/** 
+* ReservationManager class that handles all reservation related actions such as creating, removing and viewing reservations
+*/
 public class ReservationManager {
 
     
@@ -13,7 +15,8 @@ public class ReservationManager {
 
    
    /** 
-    * @return Customer
+    * Creates a customer with all necessary details for reservation
+    * @return Customer to be allocated a reservation
     */
    public static Customer createCustomer(){
         
@@ -52,7 +55,9 @@ public class ReservationManager {
         }
     }
 
-
+   /** 
+    * Assigns a customer to requested table and timeslot subject on pax and availability
+    */
     public static void createReservation (){
         
         Customer customer = createCustomer();
@@ -99,7 +104,9 @@ public class ReservationManager {
         // need to minus one because the method from Table class takes in the index itself
         
     }
-
+   /** 
+    * Removes a reservation at selected time and table after prompting user for selection
+    */
     public static void removeReservation (){
 
         System.out.println("=====================\nSelect timeslot : ");
@@ -116,8 +123,10 @@ public class ReservationManager {
         // need to minus one because the method from Table class takes in the index itself
 
     }
-
-    public static void checkbill()
+   /** 
+    * Attempts to print the invoice of a customer at selected timeslot and table. If no reservation or order is present, the user is notified. Else, the invoice is printed and the timeslot is vacated.
+    */
+    public static void checkBill()
     {
         System.out.println("=====================\nSelect timeslot : ");
 
@@ -142,7 +151,9 @@ public class ReservationManager {
 
     }
 
-
+   /** 
+    * Displays table and timeslot availability
+    */
     public static void viewTableAvailability(){
         System.out.println("View by : \n(1) Timeslot \n(2) Table \n(3) All");
         int choice = Integer.parseInt(sc.nextLine());

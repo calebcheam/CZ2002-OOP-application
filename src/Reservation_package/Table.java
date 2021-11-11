@@ -2,6 +2,9 @@ package Reservation_package;
 
 import java.time.LocalDateTime;
 
+/**
+ * Table class that contains table information such as table number, max seating capacity of the table, timeslots, and customers reserving this table at each timeslot
+ */
 public class Table {
     private int id;
     private int size;
@@ -9,10 +12,9 @@ public class Table {
     private LocalDateTime[] times;
 
     /** 
-     * Creates a Table object
+     * Table object constructor 
      * @param id The table number 
      * @param size The max pax taken by the table
-     * @return Table object
      */
     public Table(int id, int size)
     {

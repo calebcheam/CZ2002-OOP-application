@@ -5,6 +5,10 @@ import Menu_package.Item;
 import java.util.Scanner;
 import java.util.Set;
 
+/**
+ * Order class that contains all ordered items for a specific customer, table and timseslot
+ * Also includes date of order creation and handler staff name 
+ */
 public class Order {
     /**
      * HashMap containing ordered Item objects and quantities
@@ -14,7 +18,7 @@ public class Order {
     private String staffName;
     private Scanner sc = new Scanner(System.in);
     /** 
-     * Creates a new Order object and prompts for name of staff handling the order
+     * Order constructor that prompts for name of staff handling the order
      */
     public Order()
     {
