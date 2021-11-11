@@ -10,6 +10,9 @@ import java.util.Arrays;
 import Menu_package.Item;
 import Menu_package.MenuItemCategoryTypes;
 
+/**This class prints the Ala Carte Menu and handles processes that involves Items of the Ala Carte Menu.
+ * This class creates 3 ArrayLists of Item objects that contains Item objects of Item Category of "Main Course", "Dessert", and "Drink" respectively. 
+ */
 public class AlaCarteMenu extends GenericMenu{
 
     private ArrayList<Item> mainCourseItems=new ArrayList<>();
@@ -17,6 +20,11 @@ public class AlaCarteMenu extends GenericMenu{
     private ArrayList<Item> drinkItems=new ArrayList<>();
     
     
+    /**
+     * Constructor for AlaCarteMenu class.
+     * Creates 3 ArrayLists of Item objects that contains Item objects of Item Category of "Main Course", "Dessert", and "Drink" respectively,
+     * using the information from the csv file (containing Menu Items' information).
+     */
     public AlaCarteMenu(){ //constructor
 
         this.name="Ala Carte Menu";
@@ -66,12 +74,14 @@ public class AlaCarteMenu extends GenericMenu{
 
     
     /** 
-     * @param menuItems
-     * @param spacing
-     * @param isDrinkType
+     * Prints the Items' name, price, description(excluded for types in Drink category) in the menuItems, separated by their Item types using a header line.
+     * For each Item, price and description(excluded for types in Drink category) of Item is printed right and below of the Item name respectively.
+     * This method is only used for Item type that do not belong to Set category.
+     * @param menuItems List of Item objects
+     * @param spacing Used to format the positioning of the displayed words and header in the Menu display.
+     * @param isDrinkType To indicate if Items in menuItems are of Drink category or not. "true" if in Drink category, "false" if not in Drink category.
      */
     public void printItemSection(ArrayList<Item> menuItems, int spacing, boolean isDrinkType){
-        //only for non-Set type items
         int i;
         String menuItemName;
         ArrayList<String> menuItemDescription;
@@ -128,15 +138,15 @@ public class AlaCarteMenu extends GenericMenu{
 
     
     /** 
-     * @param itemType
-     * @return String
+     * Returns the Category name of an Item type.
+     * (e.g. itemType = "Appetiser" => Main Course Category).
+     * Return "Invalid Type" if the Item type is not in any category.
+     * @param itemType Item type 
+     * @return String String to indicate the Category of the Item type.
      */
     @Override
 	public String findItemTypeCategory(String itemType) {
-		/* Method to find which category is itemType in.
-        * (e.g. itemType = "Appetiser" => Main Course Category)
-        * return "Invalid Type" if the type is not in any category*/
-
+		
         //Create Arraylists from the item types' array to use
         //for allocation of Item object into its respective ArrayList (the ArrayLists created above)
         ArrayList<String> mainCourseTypesList = new ArrayList<>(Arrays.asList(MenuItemCategoryTypes.mainCourseTypes));
@@ -159,13 +169,13 @@ public class AlaCarteMenu extends GenericMenu{
 	}
 	
 	
-    /** 
-     * @param menuItem
-     * @param itemType
-     * @return int
+    /**
+     * Adds Item object into the ArrayList of Items, that contains Item objects of the same category.
+     * @param menuItem Item object to be addede
+     * @param itemType Item type of the Item object
+     * @return int Return 1 to indicate Item object has been added, -1 to indicate Item object is not added
      */
     public int allocateItem(Item menuItem, String itemType) {
-		/*Allocate Item object into the ArrayList of Items, according to its type*/
 
         String typeCategory = findItemTypeCategory(itemType);
 
@@ -186,14 +196,14 @@ public class AlaCarteMenu extends GenericMenu{
 	}
 	
 	
-    /** 
-     * @param typeCategory
-     * @param itemType
-     * @return int
+    /**
+     * Find the first occurrence of an Item type (e.g. Appetiser) in the ArrayList of Items. The ArrayList contains the Items of the Category, that Item type is under.
+     * This method is used in the proccess of deleting/updating an Item's information.
+     * @param typeCategory Category the Item type is under
+     * @param itemType Item type, to find the first occurrence in the ArrayList
+     * @return int Returns the index of the first occurrence of the specified Item type. Returns -2 if Item type is not in any category, -1 if Item type is in a category, but Item type is not found in the ArrayList.
      */
     public int findFirstTypeOccurrence(String typeCategory, String itemType) {
-		/*Find the first occurrence of a type (e.g. Appetiser) in the ArrayList of Items of "typeCategory" category
-        * This method is used to delete/update an Item*/
 
         ArrayList<Item> tempItemArray;
 
@@ -221,15 +231,14 @@ public class AlaCarteMenu extends GenericMenu{
 	}
 	
 	
-    /** 
-     * @param typeCategory
-     * @return ArrayList<Item>
+    /**
+     * This method returns the reference of ArrayList of Item (one of the attributes of AlaCarteMenu class), that contains Items that is under an Item Category specified.
+     * This method can only be used when it can be assumed that Item Category specified is always valid.
+     * @param typeCategory Item Category, of the ArrayList wanted.
+     * @return ArrayList<Item> ArrayList of Item that contains Items under the specified Item category.
      */
     public ArrayList<Item> returnItemListReference(String typeCategory) {
-		 /*This method returns the reference of ArrayList of Item (one of the attributes of Menu class),
-        that contains Items that is classified under "typeCategory" (Item type) category
-        * Only use this method when itemType parameter is always a valid Item type*/
-
+	    
         ArrayList<Item> tempItemArray;
 
         switch(typeCategory) {
@@ -249,8 +258,12 @@ public class AlaCarteMenu extends GenericMenu{
         return tempItemArray;
 	}
 	
-	public void displayMenu() {
-		int spacing = longestStringSize+20; //number of spacing to format the menu display spacing
+    /**
+     * Prints Ala Carte Menu.
+     */
+    public void displayMenu() {
+	    
+	int spacing = longestStringSize+20; //number of spacing to format the menu display spacing
 
         printMenuHeader(spacing);
         System.out.printf("| %s%"+(spacing-priceDisclaimerMessage.length()-2)+"c\n", priceDisclaimerMessage, '|');
@@ -260,11 +273,12 @@ public class AlaCarteMenu extends GenericMenu{
         printItemSection(dessertItems, spacing, false);
         printItemSection(drinkItems, spacing, true);
 		
-	}
+    }
 
     
-    /** 
-     * @param category
+    /**
+     * Prints Ala Carte Menu of Items that is under the Item Category specified.
+     * @param category Item Category, to specify the Category of Items to be printed
      */
     @Override
     public void displayMenuCategory(String category){ 
@@ -279,11 +293,4 @@ public class AlaCarteMenu extends GenericMenu{
         if (category!="Drink") printItemSection(categoryList, spacing, false);
         else printItemSection(drinkItems, spacing, true);
     }
-
-
-    
-    
-
-   
-
 }
