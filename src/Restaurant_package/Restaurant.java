@@ -28,10 +28,18 @@ public class Restaurant {
         }
     }
 
+    
+    /** 
+     * @return Table[]
+     */
     public static Table[] getTables(){
         return tables; 
     }
 
+    
+    /** 
+     * @return String[]
+     */
     public static String[] getTimeSlots(){
         return timeslots; 
     }
@@ -44,6 +52,11 @@ public class Restaurant {
         }
     }
 
+    
+    /** 
+     * @param time
+     * @return boolean
+     */
     public static boolean checkTimeslotFullyBooked(int time){
         int timeIndex = time-1; 
         int booked=0;
@@ -59,6 +72,10 @@ public class Restaurant {
         return false; 
     }
 
+    
+    /** 
+     * @param time
+     */
     public static void printTableAvailabilityByTime(int time){
         int timeIndex = time-1; 
         System.out.println("Table Availability at "+  timeslots[timeIndex]);
@@ -74,6 +91,10 @@ public class Restaurant {
         }
         System.out.println();
     }
+    
+    /** 
+     * @param table
+     */
     public static void printTableAvailabilityByTable(int table){
         System.out.printf("\nFor table %d : \n", table); 
         tables[table-1].printReservations(timeslots);

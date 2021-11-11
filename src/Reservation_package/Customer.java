@@ -28,30 +28,54 @@ public class Customer {
     }
 
 
+    
+    /** 
+     * @return LocalDateTime
+     */
     public LocalDateTime getExpiry()
     {
         return this.expiry;
     }
 
+    
+    /** 
+     * @param name
+     */
     public void setName(String name){
         this.name = name;
     }
 
+    
+    /** 
+     * @param bookingtime
+     */
     public void setExpiry(LocalDateTime bookingtime)
     {
         this.expiry=bookingtime.plusMinutes(10);
     }
 
+    
+    /** 
+     * @param order
+     */
     public void addOrder(Order order)
     {
         this.order=order;
     }
 
+    
+    /** 
+     * @return Order
+     */
     public Order getOrder() 
     {
         return this.order;
     }
 
+    
+    /** 
+     * @return double
+     */
     public double getOrderPrice()
     {
         // for tabulating total (sales report)
@@ -68,6 +92,10 @@ public class Customer {
 
     }
 
+    
+    /** 
+     * @return double
+     */
     public double getOrderDiscount()
     {
         //for tabulating total discount (in sales report)
@@ -76,6 +104,10 @@ public class Customer {
         return 0.0; 
     }
 
+    
+    /** 
+     * @return String
+     */
     //getters and setters
 
     public String getName()
@@ -83,16 +115,28 @@ public class Customer {
         return this.name;
     }
 
+    
+    /** 
+     * @return int
+     */
     public int getCustomerID()
     {
         return this.customerID;
     }
 
+    
+    /** 
+     * @return int
+     */
     public int getPax()
     {
         return this.pax;
     }
 
+    
+    /** 
+     * @return boolean
+     */
     public boolean isMember()
     {
         return this.membership;
@@ -117,6 +161,10 @@ public class Customer {
         }
 
     }
+    
+    /** 
+     * @return int
+     */
     public int print_invoice()
     {
         if (this.order == null){

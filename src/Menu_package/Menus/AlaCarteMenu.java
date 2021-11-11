@@ -64,6 +64,12 @@ public class AlaCarteMenu extends GenericMenu{
         
     }
 
+    
+    /** 
+     * @param menuItems
+     * @param spacing
+     * @param isDrinkType
+     */
     public void printItemSection(ArrayList<Item> menuItems, int spacing, boolean isDrinkType){
         //only for non-Set type items
         int i;
@@ -120,6 +126,11 @@ public class AlaCarteMenu extends GenericMenu{
 
 
 
+    
+    /** 
+     * @param itemType
+     * @return String
+     */
     @Override
 	public String findItemTypeCategory(String itemType) {
 		/* Method to find which category is itemType in.
@@ -147,7 +158,13 @@ public class AlaCarteMenu extends GenericMenu{
         }
 	}
 	
-	public int allocateItem(Item menuItem, String itemType) {
+	
+    /** 
+     * @param menuItem
+     * @param itemType
+     * @return int
+     */
+    public int allocateItem(Item menuItem, String itemType) {
 		/*Allocate Item object into the ArrayList of Items, according to its type*/
 
         String typeCategory = findItemTypeCategory(itemType);
@@ -168,7 +185,13 @@ public class AlaCarteMenu extends GenericMenu{
         }
 	}
 	
-	public int findFirstTypeOccurrence(String typeCategory, String itemType) {
+	
+    /** 
+     * @param typeCategory
+     * @param itemType
+     * @return int
+     */
+    public int findFirstTypeOccurrence(String typeCategory, String itemType) {
 		/*Find the first occurrence of a type (e.g. Appetiser) in the ArrayList of Items of "typeCategory" category
         * This method is used to delete/update an Item*/
 
@@ -197,7 +220,12 @@ public class AlaCarteMenu extends GenericMenu{
         return -1;//return -1 if itemType is in a category but not found
 	}
 	
-	public ArrayList<Item> returnItemListReference(String typeCategory) {
+	
+    /** 
+     * @param typeCategory
+     * @return ArrayList<Item>
+     */
+    public ArrayList<Item> returnItemListReference(String typeCategory) {
 		 /*This method returns the reference of ArrayList of Item (one of the attributes of Menu class),
         that contains Items that is classified under "typeCategory" (Item type) category
         * Only use this method when itemType parameter is always a valid Item type*/
@@ -234,6 +262,10 @@ public class AlaCarteMenu extends GenericMenu{
 		
 	}
 
+    
+    /** 
+     * @param category
+     */
     @Override
     public void displayMenuCategory(String category){ 
         // used in Order section so that we wont print whole menu every time

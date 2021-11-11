@@ -6,10 +6,16 @@ import java.util.Scanner;
 import java.util.Set;
 
 public class Order {
+    /**
+     * HashMap containing ordered items and quantities
+     */
     protected HashMap<Item, Integer> orders=new HashMap<Item,Integer>();
     private String date;
     private String staffName;
     private Scanner sc = new Scanner(System.in);
+    /** 
+     * Creates a new Order object
+     */
     public Order()
     {
         this.date = java.time.LocalDate.now().toString();
@@ -18,20 +24,41 @@ public class Order {
         System.out.println("This order is handled by "+getStaff());
     }
 
+    
+    /** 
+     * Gets the date of the order
+     * @return String of date the order was created
+     */
     public String getDate(){
         return this.date; 
     }
 
+    
+    /** 
+     * Gets the name of the staff handling the order
+     * @return String of staff name that handles order
+     */
     public String getStaff()
     {
         return this.staffName;
     }
 
+    
+    /** 
+     * Gets the HashMap of all ordered items
+     * @return HashMap of all ordered items
+     */
     public HashMap<Item, Integer> getOrderedItems()
     {
         return this.orders;
     }
 
+    
+    /** 
+     * Sets quantity of each item in the HashMap
+     * @param item Item object 
+     * @param quantity Quantity of item object
+     */
     public void setOrders(Item item, Integer quantity)
     {
         if (quantity>0){
@@ -43,6 +70,11 @@ public class Order {
 
     }
 
+    
+    /** 
+     * Gets an ArrayList of strings of all ordered item names
+     * @return ArrayList of names of ordered items
+     */
     public ArrayList<String> getOrderedItemsNames(){
         Set<Item> items = this.getOrderedItems().keySet();
         ArrayList<String> nameList = new ArrayList<String>();
@@ -52,6 +84,9 @@ public class Order {
         return nameList;
     }
 
+    /** 
+     * Displays ordered items
+     */
     public void viewOrders()
     {
         
@@ -65,6 +100,11 @@ public class Order {
         
     }
     
+    
+    /** 
+     * Gets the total price of order before tax and discounts (if any)
+     * @return float of raw untaxed and undiscounted price of items
+     */
     public float totalPrice()
     {
         float res = 0;
@@ -75,16 +115,29 @@ public class Order {
         return res;
     }
 
+    
+    /** 
+     * Gets the total price after both tax and discount
+     * @return double of price of items taxed and with member discount
+     */
     public double memberGstTotal()
     {
         return totalPrice()*0.9*1.17;
     }
 
+    
+    /**
+     * Gets total price after tax, without discount 
+     * @return double of price of items, taxed without member discount
+     */
     public double nonMemberGstTotal()
     {
         return totalPrice()*1.17;
     }
 
+    /** 
+     * Prints invoice if non-member
+     */
     public void printInvoiceRaw()
     {
         // name, date, quantity, price, totalAmount
@@ -106,6 +159,9 @@ public class Order {
 
     }
 
+    /** 
+     * Prints invoice if member
+     */
     public void printInvoiceMember()
     {
         // name, date, quantity, price, totalAmount

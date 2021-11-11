@@ -15,6 +15,11 @@ public class CSVHandler {
 
     public CSVHandler(){};
 
+    
+    /** 
+     * @param csvLine
+     * @return Item
+     */
     public Item createItem(String csvLine){
         //Create an Item object using the csv values
         String[] itemAttributes = csvLine.split(",");//get the csv row value into String array
@@ -27,6 +32,12 @@ public class CSVHandler {
         return item;
     }
 
+    
+    /** 
+     * @param path
+     * @param friendLine
+     * @return int
+     */
     private int saveItemsBefore(String path, String friendLine){
         //this saves the contents of the CSV before the line we want to stop at 
         try{
@@ -64,6 +75,12 @@ public class CSVHandler {
         return -1; 
     }
 
+    
+    /** 
+     * @param path
+     * @param friendLine
+     * @return int
+     */
     private int saveItemsAfter(String path, String friendLine){
         //this saves the contents of the CSV before the line we want to stop at 
         try{
@@ -106,6 +123,11 @@ public class CSVHandler {
             
     }
 
+    
+    /** 
+     * @param filetoWritepath
+     * @return int
+     */
     private int overwriteCSV(String filetoWritepath){
         try{
             File fileToRead = new File("TempBefore.csv");
@@ -132,6 +154,12 @@ public class CSVHandler {
        return -1;
     }
 
+    
+    /** 
+     * @param fileToWritepath
+     * @param lineToDelete
+     * @return int
+     */
     private int appendToCSV(String fileToWritepath, String lineToDelete){
         // skips over the line to delete
         // then appends the rest as per normal
@@ -164,6 +192,12 @@ public class CSVHandler {
     }
 
 
+    
+    /** 
+     * @param fileToWritepath
+     * @param newLine
+     * @return int
+     */
     private int appendNewLineToCSV(String fileToWritepath, String newLine){
         try{
             File fileToRead = new File("TempAfter.csv");
@@ -198,6 +232,11 @@ public class CSVHandler {
     }
 
 
+    
+    /** 
+     * @param path
+     * @param lineToDelete
+     */
     public void removeItemFromCSV(String path, String lineToDelete){
         int w = this.saveItemsBefore(path, lineToDelete); //copy original contents to temp csv up to the specific line
         int x = this.saveItemsAfter(path, lineToDelete); //copy remaining contents to temp csv from to the specific line
@@ -212,6 +251,12 @@ public class CSVHandler {
         // }
 
     }
+    
+    /** 
+     * @param item
+     * @param path
+     * @param friendLine
+     */
     public void addItemToCSV(Item item, String path, String friendLine){
   
         int w = this.saveItemsBefore(path, friendLine); //copy original contents to temp csv up to the specific line
@@ -232,6 +277,12 @@ public class CSVHandler {
         } else System.out.println("Item not added successfully.");
     }
 
+    
+    /** 
+     * @param descriptionString
+     * @param type
+     * @return ArrayList<String>
+     */
     public ArrayList<String> splitDescription(String descriptionString, String type){
         //Create ArrayList to return at the end
         ArrayList<String> descriptionList = new ArrayList<>();

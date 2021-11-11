@@ -18,6 +18,10 @@ public class Item {
 
     public Item(){}
 
+    
+    /** 
+     * @return String 
+     */
     public String AlaCarteToCSVString(){
         String descriptionString = "";
         boolean isFirst = true;
@@ -33,6 +37,10 @@ public class Item {
         return this.name + "," + this.type + "," + descriptionString + "," + String.valueOf(this.price) + "," + String.valueOf(this.stock);
     }
 
+    
+    /** 
+     * @return String 
+     */
     public String SetToString(){
         String descriptionString = String.join(" + ", this.description);
         return this.name + "," + this.type + "," + descriptionString + "," + String.valueOf(this.price) + "," + String.valueOf(this.stock);
@@ -40,34 +48,66 @@ public class Item {
     }
 
 
+    
+    /** 
+     * @return String
+     */
     public String getName(){
         return this.name;
     }
 
+    
+    /** 
+     * @return String
+     */
     public String getType(){
         return this.type;
     }
 
+    
+    /** 
+     * @return ArrayList<String>
+     */
     public ArrayList<String> getDescription(){
         return this.description;
     }
 
+    
+    /** 
+     * @return float
+     */
     public float getPrice(){
         return this.price;
     }
 
+    
+    /** 
+     * @return int
+     */
     public int getStock(){
         return this.stock;
     }
 
+    
+    /** 
+     * @param name
+     */
     public void setName(String name){
         this.name = name;
     }
 
+    
+    /** 
+     * @param type
+     */
     public void setType(String type){
         this.type = type;
     }
 
+    
+    /** 
+     * @param descriptionString
+     */
     public void setDescription(String descriptionString){
         //description is csvRow[2]
         boolean isSet;
@@ -93,14 +133,26 @@ public class Item {
         }
     }
 
+    
+    /** 
+     * @param description
+     */
     public void setDescription(ArrayList<String> description){
         this.description = description;
     }
 
+    
+    /** 
+     * @param price
+     */
     public void setPrice(float price){
         this.price = price;
     }
 
+    
+    /** 
+     * @param stock
+     */
     public void setStock(int stock){
         this.stock = stock;
     }

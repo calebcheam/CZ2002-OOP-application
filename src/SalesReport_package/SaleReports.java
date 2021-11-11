@@ -20,6 +20,10 @@ public class SaleReports {
         }
     }
 
+    
+    /** 
+     * @param date
+     */
     public void printOneReport(String date){
         for (DailySaleReport dsr : salereports) {
             if (dsr.getDate().equals(date)){
@@ -28,10 +32,19 @@ public class SaleReports {
         } 
     }
 
+   
+   /** 
+    * @return String[]
+    */
    public String[] getReportDates(){
     return this.dates; 
    }
 
+   
+   /** 
+    * @param start
+    * @param end
+    */
    public void printSomeReports(int start, int end){
        String date = this.dates[start] + " to " + this.dates[end]; 
        double summedTotal = 0.0;

@@ -84,6 +84,10 @@ public class RestaurantInterface {
     }
 
 
+    
+    /** 
+     * @param args
+     */
     public static void main (String[] args){
         RestaurantInterface restaurantApp = new RestaurantInterface();
         restaurantApp.Start();

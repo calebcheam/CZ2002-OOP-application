@@ -49,6 +49,10 @@ public class MenuManager {
         }
     }
 
+    
+    /** 
+     * @return int
+     */
     private static int selectCategory(){
         System.out.println("=================== MENU CATEGORY SELECTION ====================");
         Menu.getMenuItemCategoryTypes().printCategories();
@@ -81,6 +85,10 @@ public class MenuManager {
 
         
     }
+    
+    /** 
+     * @return Item
+     */
     public static Item orderItemfromMenu(){
         System.out.println("Which menu would you like to order from?");
         System.out.println("(1) Ala Carte (2) Promotional");
@@ -100,6 +108,10 @@ public class MenuManager {
        return orderedItem;
     }
 
+    
+    /** 
+     * @return Item
+     */
     private static Item selectAlaCarteItemFromMenu(){
         int categorySelectedIndex = selectCategory();
         String categorySelected = Menu.getMenuItemCategoryTypes().indexToCategory(categorySelectedIndex);
@@ -110,6 +122,11 @@ public class MenuManager {
         return Menu.getItem(menuItemNumber, categorySelected, subcategory);
     }
 
+    
+    /** 
+     * @param categorySelectedIndex
+     * @return int
+     */
     private static int selectSubCategory(int categorySelectedIndex){
        
         String categorySelected = Menu.getMenuItemCategoryTypes().indexToCategory(categorySelectedIndex);
@@ -122,6 +139,11 @@ public class MenuManager {
         return subcategorySelectedIndex;
     }
     
+    
+    /** 
+     * @param typeInput
+     * @return String
+     */
     private static String verifyItemTypeCategory(String typeInput){
         String typeCategory = Menu.findItemTypeCategory(typeInput);
         int i;
@@ -142,6 +164,11 @@ public class MenuManager {
         return "Invalid";
     }
 
+    
+    /** 
+     * @param typeInput
+     * @return String
+     */
     private static String newItemTypeCategory(String typeInput){
         if (typeInput=="Invalid") {
              return "Invalid";
@@ -199,6 +226,10 @@ public class MenuManager {
         Menu.add(name,"Set", "Set",parts,price,stock);
     }
 
+    
+    /** 
+     * @return ArrayList<String>
+     */
     private static ArrayList<String> newPromoItemParts(){
         String[] itemCategories= new String[] {"Appetiser", "Main Course", "Dessert", "Drink"};
         ArrayList<String> parts = new ArrayList<String>();
@@ -223,6 +254,11 @@ public class MenuManager {
         return parts;
     }
 
+    
+    /** 
+     * @param name
+     * @return String
+     */
     private static String newSetItemDescription(String name){
         System.out.printf("Enter description for the item, %s: ", name);
         System.out.println("Enter each descriptor one by one.");
@@ -245,6 +281,11 @@ public class MenuManager {
         return description; 
     }
 
+    
+    /** 
+     * @param name
+     * @return ArrayList<String>
+     */
     private static ArrayList<String> newItemDescription(String name){
         System.out.println("Enter description for the item "+ name + " : ");
         System.out.println("Enter each descriptor one by one. Enter \'x\' only to indicate end of description");

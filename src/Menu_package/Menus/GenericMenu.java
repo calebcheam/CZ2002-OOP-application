@@ -16,6 +16,13 @@ public abstract class GenericMenu {
     protected final String priceTag = "Price: SGD$"; //used for display menu method
     protected String name=null;
 
+    
+    /** 
+     * @param number
+     * @param typeCategory
+     * @param itemType
+     * @return Item
+     */
     public Item getItem(int number, String typeCategory, String itemType){
         //typeCategory referring to categories eg. Main Course / Drink
         //itemType referring to subcategories eg. Appetisers / Salad 
@@ -25,6 +32,11 @@ public abstract class GenericMenu {
         return tempItemArray.get(firstOccurIndex + number - 1);
     }
  
+    
+    /** 
+     * @param itemType
+     * @return String
+     */
     /////////////////////// methods relating to changing the menu//////////////
     public String findItemTypeCategory(String itemType){
         
@@ -32,24 +44,53 @@ public abstract class GenericMenu {
         
     };
 
+    
+    /** 
+     * @param menuItem
+     * @param itemType
+     * @return int
+     */
     public int allocateItem(Item menuItem, String itemType)
     {
         return longestStringSize;
 
     };
 
+    
+    /** 
+     * @param typeCategory
+     * @param itemType
+     * @return int
+     */
     public int findFirstTypeOccurrence(String typeCategory, String itemType)
     {
         return longestStringSize;
         
     }
 
+    
+    /** 
+     * @param typeCategory
+     * @return ArrayList<Item>
+     */
     public ArrayList<Item> returnItemListReference(String typeCategory)
     {
         return null;
 
     }
 
+    
+    /** 
+     * @param typeCategory
+     * @param findFirstTypeOccurrence(typeCategory
+     * @param name
+     * @param itemType
+     * @param typeCategory
+     * @param description
+     * @param price
+     * @param stock
+     * @return String
+     */
     public String findFriend(String typeCategory, String itemType) { //to insert into correct location in the CSV
        
         int firstOccurIndex = findFirstTypeOccurrence(typeCategory, itemType);
@@ -59,6 +100,16 @@ public abstract class GenericMenu {
         return tempItemArray.get(firstOccurIndex).getName();
     }
     
+    
+    /** 
+     * @param name
+     * @param itemType
+     * @param typeCategory
+     * @param description
+     * @param price
+     * @param stock
+     * @return int
+     */
     public int add(String name, String itemType, String typeCategory, ArrayList<String> description, float price, int stock){
         Item newItem = new Item(name, itemType, description, price, stock);
         int check = allocateItem(newItem, newItem.getType());
@@ -70,11 +121,22 @@ public abstract class GenericMenu {
         return check;
     }
 
+    
+    /** 
+     * @param item
+     */
     public void remove(Item item){
         String lineToDelete = item.getName();
         this.csvHandler.removeItemFromCSV(this.csvPath, lineToDelete);
     }
 
+    
+    /** 
+     * @param number
+     * @param typeCategory
+     * @param itemType
+     * @return Item
+     */
     public Item getItemToBeRemoved(int number, String typeCategory, String itemType) {
 		//remove the specified Item according to the type category, Item type,
         //the numbering of the Item in the Menu display.
@@ -96,6 +158,13 @@ public abstract class GenericMenu {
 		
 	}
 
+    
+    /** 
+     * @param number
+     * @param typeCategory
+     * @param itemType
+     * @param updateInfo
+     */
     public void updateItem(int number, String typeCategory, String itemType, ArrayList<String> updateInfo) {
 		int firstOccurIndex = findFirstTypeOccurrence(typeCategory, itemType);
         //will not consider failure of getting an index number from the above method as the MenuUI will not display
@@ -134,6 +203,11 @@ public abstract class GenericMenu {
         }
 	}
 
+    
+    /** 
+     * @param itemsNamesTypesList
+     * @return int
+     */
     ///////////////////// methods relating to displaying the menu
     public int findLongestStringSize(ArrayList<String> itemsNamesTypesList) {
 		//Find the longest string in the itemsNamesTypesList
@@ -157,14 +231,26 @@ public abstract class GenericMenu {
         return longestStringSize;
 	}
     
+    
+    /** 
+     * @return int
+     */
     public int getLongestStringSize() {
 		return this.longestStringSize;
 	}
 
+    
+    /** 
+     * @return MenuItemCategoryTypes
+     */
     public MenuItemCategoryTypes getMenuItemCategoryTypes(){
         return this.menuCategories;
     }
 
+    
+    /** 
+     * @return int
+     */
     public int getNumofCategories(){
         return this.menuCategories.getNumberOfCategories();
     }
@@ -174,10 +260,18 @@ public abstract class GenericMenu {
         return;
     };
 
+    
+    /** 
+     * @param category
+     */
     public void displayMenuCategory(String category){
 
     }
 
+    
+    /** 
+     * @param numOfLines
+     */
     public void printHeaderLines(int numOfLines) {
 		for (int i = 0; i < numOfLines; i++){
             System.out.printf("=");
@@ -186,7 +280,11 @@ public abstract class GenericMenu {
 		
 	}
 	
-	public void printSubHeaderLines(int numOfLines) {
+	
+    /** 
+     * @param numOfLines
+     */
+    public void printSubHeaderLines(int numOfLines) {
 		for (int i = 0; i < numOfLines; i++){
             System.out.printf("-");
         }
@@ -194,7 +292,11 @@ public abstract class GenericMenu {
 		
 	}
 	
-	public void printMenuHeader(int spacing) {
+	
+    /** 
+     * @param spacing
+     */
+    public void printMenuHeader(int spacing) {
         printHeaderLines(spacing);
 
         //print the line with "MENU"

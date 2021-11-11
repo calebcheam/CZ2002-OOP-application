@@ -62,18 +62,34 @@ public class DailySaleReport { //this stores one day's worth orders
         this.calculateTotals(); //tabulate dailyTotal & total discount given
     }
 
+    
+    /** 
+     * @return String
+     */
     public String getDate(){
         return this.date;
     }
 
+    
+    /** 
+     * @return double
+     */
     public double getDailyTotal(){
         return this.dailyTotal;
     }
 
+    
+    /** 
+     * @return double
+     */
     public double getDiscountTotal(){
         return this.dailyDiscount;
     }
 
+    
+    /** 
+     * @return Map<String, List<Double>>
+     */
     public Map<String, List<Double>> getMap(){
         return this.map;
     }
@@ -196,6 +212,11 @@ public class DailySaleReport { //this stores one day's worth orders
         System.out.printf("\nTOTAL DISCOUNT GIVEN : %.2f\n",this.dailyDiscount);
     }
 
+    
+    /** 
+     * @param original
+     * @return String
+     */
     private String padString(String original){
         return String.format("%-" + 30 + "s", original);  
 

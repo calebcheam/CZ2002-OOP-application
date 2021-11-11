@@ -28,24 +28,45 @@ public class Table {
         }
     }
 
+    
+    /** 
+     * @return int
+     */
     public int getId()
     {
         return this.id;
     }
 
+    
+    /** 
+     * @return int
+     */
     public int getSize()
     {
         return this.size;
     }
 
+    
+    /** 
+     * @return Customer[]
+     */
     public Customer[] getReservations()
     {
         return this.reservations;
     }
+    
+    /** 
+     * @return LocalDateTime[]
+     */
     public LocalDateTime[] getTimeslots(){
         return this.times;
     }
 
+    
+    /** 
+     * @param time
+     * @return Customer
+     */
     public Customer getCustomerAtTime(int time) // can be used to check reservation status
     {
         try {
@@ -57,11 +78,21 @@ public class Table {
         
     }
 
+    
+    /** 
+     * @param time
+     * @return boolean
+     */
     public boolean isReservedAtTime(int time)
     {
         return this.reservations[time] != null;
     }
 
+    
+    /** 
+     * @param customer
+     * @param time
+     */
     public void reserveAtTime(Customer customer, int time) //takes in the timeslot INDEX
     {
         if (this.reservations[time] != null)
@@ -81,6 +112,10 @@ public class Table {
         customer.print_customer();
     }
 
+    
+    /** 
+     * @param time
+     */
     public void removeReservationAtTime(int time)
     {
         if(this.reservations[time]==null)
@@ -95,6 +130,10 @@ public class Table {
 
     }
 
+    
+    /** 
+     * @param timeslot
+     */
     public void printReservations(String[] timeslot)
     {
         for (int i=0; i<getReservations().length;i++)

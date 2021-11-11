@@ -65,6 +65,11 @@ public class PromoMenu extends GenericMenu{
        
     }
 
+    
+    /** 
+     * @param setItems
+     * @param spacing
+     */
     public void printSetSection(ArrayList<Item> setItems, int spacing){
         String type;
         int i;
@@ -112,7 +117,12 @@ public class PromoMenu extends GenericMenu{
 
     
 
-	@Override
+	
+    /** 
+     * @param itemType
+     * @return String
+     */
+    @Override
 	public String findItemTypeCategory(String itemType) {
 		ArrayList<String> setTypesList = new ArrayList<>(Arrays.asList(MenuItemCategoryTypes.setTypes));
         if (setTypesList.contains(itemType)) {
@@ -123,7 +133,13 @@ public class PromoMenu extends GenericMenu{
         }
 	}
 
-	@Override
+	
+    /** 
+     * @param menuItem
+     * @param itemType
+     * @return int
+     */
+    @Override
 	public int allocateItem(Item menuItem, String itemType) {
         String typeCategory = findItemTypeCategory(itemType);
 
@@ -134,7 +150,13 @@ public class PromoMenu extends GenericMenu{
         } else return -1;
 	}
 
-	@Override
+	
+    /** 
+     * @param typeCategory
+     * @param itemType
+     * @return int
+     */
+    @Override
 	public int findFirstTypeOccurrence(String typeCategory, String itemType) {
 		ArrayList<Item> tempItemArray;
         if (typeCategory=="Set") tempItemArray = setItems;
@@ -149,7 +171,12 @@ public class PromoMenu extends GenericMenu{
         return -1;//return -1 if itemType is in a category but not found
 	}
 
-	@Override
+	
+    /** 
+     * @param typeCategory
+     * @return ArrayList<Item>
+     */
+    @Override
 	public ArrayList<Item> returnItemListReference(String typeCategory) {
 		return this.setItems;
 	}

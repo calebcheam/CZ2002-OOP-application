@@ -86,6 +86,10 @@ public class SalesUI {
         } while (choice!=-1); 
     }
 
+    
+    /** 
+     * @param startIndex
+     */
     private static void printDates(int startIndex){
         if (startIndex==dates.length-1) return;
         for (int i=startIndex; i<dates.length; i++){

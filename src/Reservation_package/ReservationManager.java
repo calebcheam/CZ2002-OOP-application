@@ -11,6 +11,10 @@ public class ReservationManager {
    private static Scanner sc=new Scanner(System.in); //scanner attribute to read things;
 
 
+   
+   /** 
+    * @return Customer
+    */
    public static Customer createCustomer(){
         
         while (true)

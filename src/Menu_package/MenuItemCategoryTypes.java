@@ -21,23 +21,47 @@ public final class MenuItemCategoryTypes {
        
     };
 
+    
+    /** 
+     * @return int
+     */
     public int getNumberOfCategories(){
         return this.categories.length;
     }
     
 
+    
+    /** 
+     * @return String[]
+     */
     public String[] getCategoryTypes(){
         return this.categoryTypes;
     }
 
+    
+    /** 
+     * @param index
+     * @return String
+     */
     public String indexToCategory(int index){
         return this.categoryTypes[index];
     }
 
+    
+    /** 
+     * @param categoryIndex
+     * @return String[]
+     */
     public String[] indexToCategoryList(int categoryIndex){
         return this.categories[categoryIndex];
     }
 
+    
+    /** 
+     * @param index
+     * @param categoryIndex
+     * @return String
+     */
     public String indexToSubcategory(int index, int categoryIndex){
         String[] subcategoryList = this.indexToCategoryList(categoryIndex);
         return subcategoryList[index]; 
@@ -51,6 +75,10 @@ public final class MenuItemCategoryTypes {
         }
     }
 
+    
+    /** 
+     * @param categoryIndex
+     */
     public void printSubCategories(int categoryIndex){
         String[] subcategoryList = this.indexToCategoryList(categoryIndex);
 
