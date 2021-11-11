@@ -72,7 +72,7 @@ Chocolate Marquise,7,168.0
 DAY'S TOTAL,759.67
 TOTAL DISC GIVEN,29.03
 =======================================================
-Date,2021-11-10
+Date,2021-11-09
 Item,Quantity,Revenue (w/o Discount)
 Set Cheam,3,105.0
 Teh Tarik,2,16.0
@@ -82,4 +82,18 @@ Nicoise Salad,2,48.0
 -
 DAY'S TOTAL,234.00
 TOTAL DISC GIVEN,1.17
+=======================================================
+Date,2021-11-10
+Item,Quantity,Revenue (w/o Discount)
+Set B,3,261.90002
+-
+GRAND TOTAL,306.42
+TOTAL DISC GIVEN,0.00
+=======================================================
+Date,2021-11-11
+Item,Quantity,Revenue (w/o Discount)
+Set B,3,261.90002
+-
+GRAND TOTAL,306.42
+TOTAL DISC GIVEN,0.00
 =======================================================

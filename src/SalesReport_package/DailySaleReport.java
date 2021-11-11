@@ -38,13 +38,10 @@ public class DailySaleReport { //this stores one day's worth orders
     private String date; 
 
    
-    private Restaurant restaurant; 
-    private Table[] restaurantTables;  //for easier referencing in the method functions
+    
+      //for easier referencing in the method functions
 
-    public DailySaleReport()
-    {
-
-    }
+    
     public DailySaleReport(double dailyTotal, double dailyDiscount, Map<String, List<Double>> map, String date)
     {
         //constructor for reading in past reports from csv 
@@ -55,10 +52,10 @@ public class DailySaleReport { //this stores one day's worth orders
         //the tempMap will be empty 
     }
 
-    public DailySaleReport(Restaurant res){
+    public DailySaleReport(){
         // constructor for new report (ie. today's sales)
-        this.restaurant = res; 
-        this.restaurantTables = this.restaurant.getTables();
+        
+        
         this.date = java.time.LocalDate.now().toString();
         this.calculateMenuItems(); //filling in menu items
         this.tempMapToMap(); //convert Item to Strings
@@ -85,7 +82,7 @@ public class DailySaleReport { //this stores one day's worth orders
         // constructor for reading in today's sales 
         
         this.tempMap = new HashMap<Item, Integer>();
-        for (Table table : this.restaurantTables ) {
+        for (Table table : Restaurant.getTables() ) {
             
             for (int i=0; i<6; i++){ // loop through each time slot of one table
 
@@ -136,7 +133,7 @@ public class DailySaleReport { //this stores one day's worth orders
     }
 
     private void calculateTotals(){
-        for (Table table : this.restaurantTables) {
+        for (Table table : Restaurant.getTables()) {
             for (int i=0; i<6; i++){
                 Customer customer = table.getCustomerAtTime(i);
                 if (customer==null){

@@ -126,8 +126,10 @@ public class ReservationManager {
         int tableChoice = sc.nextInt();
         sc.nextLine();
         try {
-            Restaurant.getTables()[tableChoice-1].getCustomerAtTime(time-1).print_invoice();
-            Restaurant.getTables()[tableChoice-1].getCustomerAtTime(time-1).setName("Vacated");
+            int check = Restaurant.getTables()[tableChoice-1].getCustomerAtTime(time-1).print_invoice();
+            if (check==1){
+                Restaurant.getTables()[tableChoice-1].getCustomerAtTime(time-1).setName("Vacated");
+            }
         } catch (Exception e) {
             //TODO: handle exception
             System.out.println("No reservation in selected slot!");

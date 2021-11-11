@@ -38,7 +38,7 @@ public class RestaurantInterface {
         
         
 
-        SalesUI salesUI = new SalesUI(this.restaurant);
+        
 
         Thread t1 = new Thread(new Refresh());
         t1.start();
@@ -75,7 +75,7 @@ public class RestaurantInterface {
                 break; 
                 
                 case 4: //for sales report
-                salesUI.start(); 
+                SalesUI.start();
                 break;
             }
             

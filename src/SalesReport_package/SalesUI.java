@@ -1,40 +1,29 @@
 package SalesReport_package;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
-import Restaurant_package.Restaurant;
+
 
 public class SalesUI {
-    protected Restaurant restaurant;
-    private DailySaleReport dsr; 
-    private SaleReports SR; 
-    private String[] dates; 
-
-    ArrayList<String> options=new ArrayList<>();
-    Scanner sc=new Scanner(System.in);
-
-    public SalesUI(Restaurant res)
-    {
-        this.restaurant=res;
     
-        options.add("View Today's Sales Report");
-        options.add("Save Today's Report to Records");
-        options.add("View previous All Sales Reports separately");
-        options.add("View previous Sales Report (One day)"); 
-        options.add("View previous Sales Report (All days summed up)");
-        options.add("View previous Sales Report (Over a period)");
-        
-    }
-    public void start()
+    private static DailySaleReport dsr=new DailySaleReport();
+    private static SaleReports SR=new SaleReports(); 
+    private static String[] dates=SR.getReportDates();
+
+    private static ArrayList<String> options=new ArrayList<>(Arrays.asList("View Today's Sales Report","Save Today's Report to Records","View previous All Sales Reports separately","View previous Sales Report (One day)","View previous Sales Report (All days summed up)","View previous Sales Report (Over a period)"));
+    private static Scanner sc=new Scanner(System.in);
+
+    public static void start()
     {
         int choice;
-        this.dsr =  new DailySaleReport(this.restaurant);
-        this.SR = new SaleReports(); 
-        this.dates = this.SR.getReportDates();
-       
+        
+        
+    
         do {
-            
+            dsr=new DailySaleReport();
+            SR=new SaleReports();
             System.out.println("===============================================");
 	        System.out.println("|              Sale Report Options            |");
             System.out.println("|              (Enter -1 to Exit)             |");
@@ -61,34 +50,34 @@ public class SalesUI {
                     if (sc.nextInt()==1)
                     {
                         dsr.writeReportToCSV();
-                        this.refreshSR();
+                        refreshSR();
                     } else System.out.println("Did not save to records");
                     break;
                 case 3 : 
-                    this.SR.printAllReports();
+                    SR.printAllReports();
                     break;
                 case 4:
                     System.out.println("Which date would you like to view?");
-                    this.printDates(0);
+                    printDates(0);
                     int dateSelected = sc.nextInt(); 
-                    this.SR.printOneReport(dates[dateSelected-1]);
+                    SR.printOneReport(dates[dateSelected-1]);
                     break;
                 case 5 : 
-                    this.SR.printSomeReports(0, this.dates.length-1);
+                    SR.printSomeReports(0, dates.length-1);
                     break;
                 case 6: 
                     System.out.println("Select starting date:");
-                    this.printDates(0);
+                    printDates(0);
                     int dateStart = sc.nextInt();
                     
                     int dateEnd;
-                    if (dateStart < this.dates.length){
+                    if (dateStart < dates.length){
                         System.out.println("Select ending date:");
-                        this.printDates(dateStart);
+                        printDates(dateStart);
                         dateEnd = sc.nextInt();
                     } else dateEnd = dateStart; 
                     
-                    this.SR.printSomeReports(dateStart-1, dateEnd-1);
+                    SR.printSomeReports(dateStart-1, dateEnd-1);
                 default:
                     
                     break;
@@ -97,15 +86,15 @@ public class SalesUI {
         } while (choice!=-1); 
     }
 
-    private void printDates(int startIndex){
-        if (startIndex==this.dates.length-1) return;
-        for (int i=startIndex; i<this.dates.length; i++){
+    private static void printDates(int startIndex){
+        if (startIndex==dates.length-1) return;
+        for (int i=startIndex; i<dates.length; i++){
             System.out.println((i+1) + " : " + dates[i]);
         }
     }
 
-    private void refreshSR(){
-        this.SR = new SaleReports(); 
-        this.dates = this.SR.getReportDates();
+    private static void refreshSR(){
+        SR = new SaleReports(); 
+        dates = SR.getReportDates();
     }
 }

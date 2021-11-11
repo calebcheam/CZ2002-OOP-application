@@ -22,7 +22,7 @@ public class SaleReports {
 
     public void printOneReport(String date){
         for (DailySaleReport dsr : salereports) {
-            if (dsr.getDate() == date){
+            if (dsr.getDate().equals(date)){
                 dsr.printFromObject();
             }
         } 

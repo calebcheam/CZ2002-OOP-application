@@ -117,11 +117,11 @@ public class Customer {
         }
 
     }
-    public void print_invoice()
+    public int print_invoice()
     {
         if (this.order == null){
             System.out.println("Order doesn't exist!");
-            return;
+            return -1;
         }
         else if (this.membership==false)
         {
@@ -134,6 +134,7 @@ public class Customer {
             System.out.println("Customer ID:"+this.customerID);
             this.order.printInvoiceMember();
         }
+        return 1;
     }
 
    
