@@ -17,6 +17,12 @@ public class Customer {
     
     
 
+    /** 
+     * Creates Customer object used for reservation
+     * @param name name of the customer
+     * @param pax number of people to be seated at table
+     * @param membership boolean whether the customer is a member or not
+     */
     public Customer(String name,int pax,Boolean membership)
     {
         Random rand=new Random();
@@ -30,33 +36,8 @@ public class Customer {
 
     
     /** 
-     * @return LocalDateTime
-     */
-    public LocalDateTime getExpiry()
-    {
-        return this.expiry;
-    }
-
-    
-    /** 
-     * @param name
-     */
-    public void setName(String name){
-        this.name = name;
-    }
-
-    
-    /** 
-     * @param bookingtime
-     */
-    public void setExpiry(LocalDateTime bookingtime)
-    {
-        this.expiry=bookingtime.plusMinutes(10);
-    }
-
-    
-    /** 
-     * @param order
+     * Assigns an order object to this customer
+     * @param order order object to be assigned
      */
     public void addOrder(Order order)
     {
@@ -65,7 +46,8 @@ public class Customer {
 
     
     /** 
-     * @return Order
+     * Gets the order of this customer
+     * @return order of this customer
      */
     public Order getOrder() 
     {
@@ -74,7 +56,8 @@ public class Customer {
 
     
     /** 
-     * @return double
+     * Gets the price of this customer's order, including tax and membership discount (if applicable)
+     * @return double total amount payable for this customer
      */
     public double getOrderPrice()
     {
@@ -93,8 +76,9 @@ public class Customer {
     }
 
     
-    /** 
-     * @return double
+    /**
+     * Gets amount of money saved by the customer due to membership discount (if applicable)
+     * @return double of amount of money saved due to discounts if member, else 0 
      */
     public double getOrderDiscount()
     {
@@ -106,18 +90,47 @@ public class Customer {
 
     
     /** 
-     * @return String
+     * Gets name of customer 
+     * @return String name of customer
      */
-    //getters and setters
 
     public String getName()
     {
         return this.name;
     }
 
+    /** 
+     * Gets expiry of reservation if the customer does not show up
+     * @return LocalDateTime expiry time of the reservation (10 minutes after timeslot)
+     */
+    public LocalDateTime getExpiry()
+    {
+        return this.expiry;
+    }
+
     
     /** 
-     * @return int
+     * Sets the name of the customer
+     * @param name name to be set
+     */
+    public void setName(String name){
+        this.name = name;
+    }
+
+    
+    /** 
+     * Sets the expiry time of the reservation (10 minutes after creation)
+     * @param bookingtime time of reservation creation
+     */
+    public void setExpiry(LocalDateTime bookingtime)
+    {
+        this.expiry=bookingtime.plusMinutes(10);
+    }
+
+    
+    /**
+     * Gets customer ID of this customer 
+     * @return int customer Id
      */
     public int getCustomerID()
     {
@@ -126,7 +139,8 @@ public class Customer {
 
     
     /** 
-     * @return int
+     * Gets total number of pax eating with this customer at the restaurant, including customer
+     * @return int total number of pax
      */
     public int getPax()
     {
@@ -135,13 +149,17 @@ public class Customer {
 
     
     /** 
-     * @return boolean
+     * Gets membership status of the customer
+     * @return boolean true if member, else false
      */
     public boolean isMember()
     {
         return this.membership;
     }
 
+    /** 
+     * Displays the customers details along with their reservation details
+     */
     public void print_customer()
     {
         System.out.println("===Customer Details===");
@@ -163,7 +181,8 @@ public class Customer {
     }
     
     /** 
-     * @return int
+     * Displays the customer's invoice and returns a success value 
+     * @return int 1 if invoice successfully printed, and -1 if there is no order created and thus no invoice
      */
     public int print_invoice()
     {
@@ -184,18 +203,6 @@ public class Customer {
         }
         return 1;
     }
-
-   
-
-
-
-
-
-
-
-    
-
-
 
     
 }
