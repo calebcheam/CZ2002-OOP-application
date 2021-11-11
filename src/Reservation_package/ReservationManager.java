@@ -102,11 +102,11 @@ public class ReservationManager {
 
         Restaurant.printTimeSlots();
 
-        int time = sc.nextInt();
+        int time = Integer.parseInt(sc.nextLine());
         Restaurant.printTableAvailabilityByTime(time);
 
         System.out.println("=====================\nSelect table : ");
-        int tableChoice = sc.nextInt();
+        int tableChoice = Integer.parseInt(sc.nextLine());
         
         Restaurant.getTables()[tableChoice-1].removeReservationAtTime(time-1); 
         // need to minus one because the method from Table class takes in the index itself
