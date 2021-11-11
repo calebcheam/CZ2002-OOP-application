@@ -217,7 +217,8 @@ public class MenuManager {
 
     private String newSetItemDescription(String name){
         System.out.printf("Enter description for the item, %s: ", name);
-        System.out.println("Enter each descriptor one by one. Enter \'x\' only to indicate end of description");
+        System.out.println("Enter each descriptor one by one.");
+        System.out.println("Enter \'x\' only to indicate end of description");
         String description = "(";
         String input = sc.nextLine();
         boolean isFirst=true;
