@@ -36,7 +36,7 @@ public class RestaurantInterface {
         
 
         
-        OrderUI orderUI = new OrderUI(this.restaurant);
+        
 
         SalesUI salesUI = new SalesUI(this.restaurant);
 
@@ -67,7 +67,7 @@ public class RestaurantInterface {
                 MenuUI.start();
                 break; 
                 case 2:
-                orderUI.start();
+                OrderUI.start();
                 break;
                 
                 case 3: //for reservations

@@ -81,7 +81,7 @@ public class MenuManager {
 
         
     }
-    public Item orderItemfromMenu(){
+    public static Item orderItemfromMenu(){
         System.out.println("Which menu would you like to order from?");
         System.out.println("(1) Ala Carte (2) Promotional");
         int choice = sc.nextInt();
