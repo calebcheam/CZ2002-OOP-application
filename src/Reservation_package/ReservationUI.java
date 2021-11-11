@@ -42,7 +42,7 @@ public class ReservationUI {
                     ReservationManager.viewTableAvailability();
                     break;
                 case 4:
-                    ReservationManager.checkbill();
+                    ReservationManager.checkBill();
                     break;
                 
             }

@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /** 
- * Handles all order related activities, including order creating, editing and viewing
+ * OrderManager class that handles all order related activities, including order creating, editing and viewing
  */
   
 public class OrderManager {
