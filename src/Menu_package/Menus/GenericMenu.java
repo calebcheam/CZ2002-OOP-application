@@ -17,11 +17,16 @@ public abstract class GenericMenu {
     protected String name=null;
 
     
-    /** 
-     * @param number
-     * @param typeCategory
-     * @param itemType
-     * @return Item
+    /**
+     * Returns Item object by the Item Category, Type and the numbering (number).
+     * For explanation purposes, numbering will be referred to as 'i'.
+     * 'i' indicates the position of the Item, with the Item Type specified.
+     * This method will return the 'i'th Item of the Item type specified.
+     * For e.g., if Type = "Appetiser", number = 2, then the 2nd Item of Type "Appetiser" wil be returned.
+     * @param number Position of Item, of the specified Item Type.
+     * @param typeCategory Item Category, to indicate which Item Category the Item (to be returned) is from.
+     * @param itemType Item Type, to indicate which Item Type the Item (to be returned) is of.
+     * @return Item Item object under Item Category, of Item Type, and numbering specified.
      */
     public Item getItem(int number, String typeCategory, String itemType){
         //typeCategory referring to categories eg. Main Course / Drink
@@ -34,8 +39,11 @@ public abstract class GenericMenu {
  
     
     /** 
-     * @param itemType
-     * @return String
+     * Abstract method for subclasses to get Item Category of the Item Type specified.
+     * @see Menus.AlaCarteMenu#findItemTypeCategory(String itemType)
+     * @see Menus.PromoMenu#findItemTypeCategory(String itemType)
+     * @param itemType Item Type
+     * @return String Item Type
      */
     /////////////////////// methods relating to changing the menu//////////////
     public String findItemTypeCategory(String itemType){
@@ -45,10 +53,13 @@ public abstract class GenericMenu {
     };
 
     
-    /** 
-     * @param menuItem
-     * @param itemType
-     * @return int
+    /**
+     * Abstract method for subclasses to add Item object into ArrayList according to the Item Type.
+     * @see Menus.AlaCarteMenu#allocateItem(Item menuItem, String itemType)
+     * @see Menus.PromoMenu#allocateItem(Item menuItem, String itemType)
+     * @param menuItem Item Object to be added
+     * @param itemType Item Type of the Item object to be added
+     * @return int 
      */
     public int allocateItem(Item menuItem, String itemType)
     {
