@@ -9,6 +9,7 @@ public class ReservationUI {
     
     private static ArrayList<String> options=new ArrayList<String>();
     private static Scanner sc=new Scanner(System.in); 
+    
 
 
     public static void start()

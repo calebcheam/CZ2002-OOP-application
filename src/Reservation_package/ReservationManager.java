@@ -64,8 +64,7 @@ public class ReservationManager {
 
         
         while (true){
-            time = sc.nextInt();
-            sc.nextLine();
+            time = Integer.parseInt(sc.nextLine());
             if (time>6 || time<1){
                 System.out.println("Invalid timeslot, please re-enter.");
                 continue;
@@ -82,8 +81,7 @@ public class ReservationManager {
         System.out.println("=====================\nSelect table : ");
         
         while (true){
-            tableChoice = sc.nextInt();
-            sc.nextLine();
+            tableChoice = Integer.parseInt(sc.nextLine());
             if (tableChoice>10 || tableChoice<1)
             {
                 System.out.println("Invalid table, please re-enter.");
@@ -91,11 +89,6 @@ public class ReservationManager {
             }
             break;
         }
-    
-
-    
-
-        sc.nextLine();
         
         Restaurant.getTables()[tableChoice-1].reserveAtTime(customer, time-1); 
 
@@ -131,9 +124,14 @@ public class ReservationManager {
 
         System.out.println("=====================\nSelect table : ");
         int tableChoice = sc.nextInt();
-
-        Restaurant.getTables()[tableChoice-1].getCustomerAtTime(time-1).print_invoice();
-        Restaurant.getTables()[tableChoice-1].getCustomerAtTime(time-1).setName("Vacated");
+        sc.nextLine();
+        try {
+            Restaurant.getTables()[tableChoice-1].getCustomerAtTime(time-1).print_invoice();
+            Restaurant.getTables()[tableChoice-1].getCustomerAtTime(time-1).setName("Vacated");
+        } catch (Exception e) {
+            //TODO: handle exception
+            System.out.println("No reservation in selected slot!");
+        }
 
         
 

@@ -119,7 +119,11 @@ public class Customer {
     }
     public void print_invoice()
     {
-        if (this.membership==false)
+        if (this.order == null){
+            System.out.println("Order doesn't exist!");
+            return;
+        }
+        else if (this.membership==false)
         {
             System.out.println("Customer ID:"+this.customerID);
             this.order.printInvoiceRaw();
