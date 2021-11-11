@@ -119,11 +119,11 @@ public class ReservationManager {
 
         Restaurant.printTimeSlots();
 
-        int time = sc.nextInt();
+        int time = Integer.parseInt(sc.nextLine());
         Restaurant.printTableAvailabilityByTime(time);
 
         System.out.println("=====================\nSelect table : ");
-        int tableChoice = sc.nextInt();
+        int tableChoice = Integer.parseInt(sc.nextLine());
         sc.nextLine();
         try {
             int check = Restaurant.getTables()[tableChoice-1].getCustomerAtTime(time-1).print_invoice();
@@ -142,16 +142,16 @@ public class ReservationManager {
 
     public static void viewTableAvailability(){
         System.out.println("View by : \n(1) Timeslot \n(2) Table \n(3) All");
-        int choice = sc.nextInt();
+        int choice = Integer.parseInt(sc.nextLine());
 
         if (choice==1){
             Restaurant.printTimeSlots();
-            int time = sc.nextInt(); 
+            int time = Integer.parseInt(sc.nextLine()); 
             Restaurant.printTableAvailabilityByTime(time);
 
         } else if (choice==2) {
             System.out.println("Select Table Number [1-10] : "); 
-            int table = sc.nextInt();
+            int table = Integer.parseInt(sc.nextLine());
             Restaurant.printTableAvailabilityByTable(table);
         }
         else if (choice==3) {
