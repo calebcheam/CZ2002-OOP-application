@@ -22,7 +22,6 @@ public class MenuUI {
 	        System.out.println("1. Display Menu             ");
 	        System.out.println("2. Add new item             ");
 	        System.out.println("3. Remove existing item     ");
-	        System.out.println("4. Update an existing item  ");
 	        System.out.println("============================");
 	        System.out.print("Enter Option: ");
 	        choice = sc.nextInt();
@@ -40,20 +39,9 @@ public class MenuUI {
 	        case 3:
 			this.menuManager.removeItemFromMenu();
 	        break;
-
-	        case 4:
-	        break;
-	        case 5:
-	        break;
-	
 	        }
 		}while (choice != -1);
         
     }
-    public static void main (String [] args){
-        MenuUI menuUI = new MenuUI(); 
-        menuUI.start();
-    }
-
 }
 

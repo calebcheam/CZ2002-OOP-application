@@ -123,24 +123,31 @@ public class MenuManager {
         return subcategorySelectedIndex;
     }
     
-    private String newItemTypeCategory(String typeInput){
+    private String verifyItemTypeCategory(String typeInput){
         String typeCategory = this.Menu.findItemTypeCategory(typeInput);
-			int i;
-			for (i=0; i<2; i++){
-				if (typeCategory=="Invalid Type"){
-					System.out.println("Type Idenitifed Unsuccessful - Please enter the type again :");
-					typeInput = sc.nextLine();
-					typeCategory = this.Menu.findItemTypeCategory(typeInput);
-				} else
-				{
-					System.out.println("Type Identfied Successful - This is a " + typeInput + " from " + typeCategory);
-					return typeCategory;
-				} 
-			}
-			System.out.println("Too many invalid inputs!");
-			System.out.println("Quitting...");
-			
-            return "Invalid";
+        int i;
+        for (i=0; i<2; i++){
+            if (typeCategory=="Invalid Type"){
+                System.out.println("Type Idenitifed Unsuccessful - Please enter the type again :");
+                typeInput = sc.nextLine();
+                typeCategory = this.Menu.findItemTypeCategory(typeInput);
+            } else
+            {
+                System.out.println("Type Identfied Successful - This is a " + typeInput + " from " + typeCategory);
+                return typeInput;
+            } 
+        }
+        System.out.println("Too many invalid inputs!");
+        System.out.println("Quitting...");
+        
+        return "Invalid";
+    }
+
+    private String newItemTypeCategory(String typeInput){
+        if (typeInput=="Invalid") {
+             return "Invalid";
+         }
+         return this.Menu.findItemTypeCategory(typeInput);
     }
 
     
@@ -164,9 +171,11 @@ public class MenuManager {
     private void addAlaCarteItemtoMenu(){
         System.out.println("\nWhat type of item is this?");
 	    String typeInput = sc.nextLine();
-        String typeCategory = this.newItemTypeCategory(typeInput);
+        String correctTypeInput = this.verifyItemTypeCategory(typeInput);
+        String typeCategory = this.newItemTypeCategory(correctTypeInput);
 
-        System.out.println("\nWhat is the name of the new " + typeInput + " ?");
+        if (typeCategory=="Invalid") return; 
+        System.out.println("\nWhat is the name of the new " + correctTypeInput + " ?");
 		String name = sc.nextLine();
         
 		ArrayList<String> description = this.newItemDescription(name);
@@ -174,7 +183,7 @@ public class MenuManager {
         float price = sc.nextFloat();
         System.out.println("Enter stock : ");
         int stock = sc.nextInt();
-        this.Menu.add(name,typeInput,typeCategory,description,price,stock);
+        this.Menu.add(name,correctTypeInput,typeCategory,description,price,stock);
 		
     }
 

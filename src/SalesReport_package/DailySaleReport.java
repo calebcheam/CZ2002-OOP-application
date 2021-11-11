@@ -94,8 +94,11 @@ public class DailySaleReport { //this stores one day's worth orders
                     continue; 
                 }
                 
-                // get order associated with the customer 
+                // get order associated with the customer
                 Order order = customer.getOrder();
+                if (order ==null){
+                    continue;
+                }
                 boolean isMember = customer.isMember(); 
                 
                 HashMap<Item, Integer> orderedItems = order.getOrderedItems();  //the actual menu items ordered
@@ -141,6 +144,9 @@ public class DailySaleReport { //this stores one day's worth orders
                 Customer customer = table.getCustomerAtTime(i);
                 if (customer==null){
                     continue;
+                }
+                if (customer.getOrder()==null){
+                    continue; 
                 }
                 this.dailyTotal += customer.getOrderPrice(); 
                 this.dailyDiscount += customer.getOrderDiscount();
