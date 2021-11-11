@@ -13,7 +13,7 @@ public class OrderUI {
     public OrderUI(Restaurant res)
     {
         this.restaurant=res;
-        this.manager=new OrderManager(this.restaurant); 
+        this.manager=new OrderManager(); 
            
         options.add("Create new order");
         options.add("Edit existing order");

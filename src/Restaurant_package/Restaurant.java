@@ -6,7 +6,7 @@ import Reservation_package.Table;
 public class Restaurant {
 
     private final static int numOfTables=10; 
-    private Table[] tables; 
+    private static Table[] tables; 
     private final static String[] timeslots= new String[] {"10:00 - 12:00", 
                                     "12:00 - 14:00", 
                                     "14:00 - 16:00", 
@@ -28,15 +28,15 @@ public class Restaurant {
         }
     }
 
-    public Table[] getTables(){
-        return this.tables; 
+    public static Table[] getTables(){
+        return tables; 
     }
 
-    public String[] getTimeSlots(){
+    public static String[] getTimeSlots(){
         return timeslots; 
     }
 
-    public void printTimeSlots(){
+    public static void printTimeSlots(){
         System.out.println("-------Timeslots------");
         for (int i=0; i<6; i++) {
             System.out.printf("( %d ) ", i+1);
@@ -44,7 +44,7 @@ public class Restaurant {
         }
     }
 
-    public boolean checkTimeslotFullyBooked(int time){
+    public static boolean checkTimeslotFullyBooked(int time){
         int timeIndex = time-1; 
         int booked=0;
         for (Table table: tables){
@@ -59,7 +59,7 @@ public class Restaurant {
         return false; 
     }
 
-    public void printTableAvailabilityByTime(int time){
+    public static void printTableAvailabilityByTime(int time){
         int timeIndex = time-1; 
         System.out.println("Table Availability at "+  timeslots[timeIndex]);
         System.out.println("Tables : ");
@@ -74,12 +74,12 @@ public class Restaurant {
         }
         System.out.println();
     }
-    public void printTableAvailabilityByTable(int table){
+    public static void printTableAvailabilityByTable(int table){
         System.out.printf("\nFor table %d : \n", table); 
         tables[table-1].printReservations(timeslots);
     }
 
-    public void printTableAvailabilityAll()
+    public static void printTableAvailabilityAll()
     {
         System.out.print("                ");
         for (Table table : tables)

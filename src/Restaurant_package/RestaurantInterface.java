@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 
 import Menu_package.MenuUI;
-import Menu_package.MenuUI;
+
 import Order_package.OrderUI;
 import Reservation_package.ReservationUI;
 import SalesReport_package.SalesUI;
@@ -35,13 +35,12 @@ public class RestaurantInterface {
         
         MenuUI menuUI = new MenuUI(); 
 
-        ReservationUI reservationUI=new ReservationUI(this.restaurant);
-
+        
         OrderUI orderUI = new OrderUI(this.restaurant);
 
         SalesUI salesUI = new SalesUI(this.restaurant);
 
-        Thread t1 = new Thread(new Refresh(this.restaurant));
+        Thread t1 = new Thread(new Refresh());
         t1.start();
         System.out.println("\n\n\n\n\n\n");
         System.out.println("======================== WELCOME TO THE RESTAURANT =========================");
@@ -72,7 +71,7 @@ public class RestaurantInterface {
                 break;
                 
                 case 3: //for reservations
-                reservationUI.start();
+                ReservationUI.start();
                 break; 
                 
                 case 4: //for sales report

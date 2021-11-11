@@ -3,8 +3,6 @@ package Order_package;
 import Menu_package.Item;
 
 import Menu_package.MenuManager;
-import Menu_package.Menus.AlaCarteMenu;
-import Menu_package.Menus.GenericMenu;
 import Restaurant_package.Restaurant;
 
 import java.util.ArrayList;
@@ -16,9 +14,9 @@ public class OrderManager {
 
     private MenuManager menuManager;
 
-    public OrderManager(Restaurant tables)
+    public OrderManager()
     {
-        this.tables = tables;
+        
         this.sc = new Scanner(System.in);
         this.menuManager = new MenuManager(); 
     
@@ -28,7 +26,7 @@ public class OrderManager {
         Order order = new Order();
         System.out.println("--------------------- CREATING ORDER ---------------------");
         System.out.println("                    (Enter -1 to exit)                    ");
-        System.out.println("Customer Name : " + this.tables.getTables()[tableId-1].getCustomerAtTime(timeslot-1).getName());
+        System.out.println("Customer Name : " + Restaurant.getTables()[tableId-1].getCustomerAtTime(timeslot-1).getName());
         System.out.println("Table ID : " + tableId);
         System.out.println("----------------------------------------------------------");
         while (true){
@@ -52,7 +50,7 @@ public class OrderManager {
                 int cfm = sc.nextInt();
                 if (cfm==1){
 
-                    this.tables.getTables()[tableId-1].getCustomerAtTime(timeslot-1).addOrder(order);
+                    Restaurant.getTables()[tableId-1].getCustomerAtTime(timeslot-1).addOrder(order);
                     System.out.println("Order created successfully! This is the order added : ");
                     System.out.println(" - - - - - - - - - - - - - - - -\tORDER\t- - - - - - -- - - - - - - - - -");
                     this.displayOrder(tableId, timeslot);
@@ -210,7 +208,7 @@ public class OrderManager {
     {
         int check = checkIfOrderExists(tableId, timeslot);
         if (check==1){ // order found
-            this.tables.getTables()[tableId-1].getCustomerAtTime(timeslot-1).getOrder().viewOrders();
+            Restaurant.getTables()[tableId-1].getCustomerAtTime(timeslot-1).getOrder().viewOrders();
         } else if (check==-1){
             this.promptNewOrder(tableId, timeslot);
         }
@@ -266,11 +264,11 @@ public class OrderManager {
 
     private int checkIfOrderExists(int tableId, int timeslot){
 
-        if (this.tables.getTables()[tableId-1].getCustomerAtTime(timeslot-1)!=null){
+        if (Restaurant.getTables()[tableId-1].getCustomerAtTime(timeslot-1)!=null){
             System.out.println("Reservation at table " + tableId + " found for " +
-                this.tables.getTables()[tableId-1].getCustomerAtTime(timeslot-1).getName());
+            Restaurant.getTables()[tableId-1].getCustomerAtTime(timeslot-1).getName());
 
-            if (this.tables.getTables()[tableId-1].getCustomerAtTime(timeslot-1).getOrder()!=null)
+            if (Restaurant.getTables()[tableId-1].getCustomerAtTime(timeslot-1).getOrder()!=null)
             {
                 return 1; // order found at this slot
             } else return -1; // reservation found, but no order assigned yet

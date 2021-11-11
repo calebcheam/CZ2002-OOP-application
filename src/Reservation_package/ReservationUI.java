@@ -3,30 +3,20 @@ package Reservation_package;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import Restaurant_package.Restaurant;
+
 
 public class ReservationUI {
     
-    protected Restaurant restaurant;
-    private ReservationManager manager;
-    ArrayList<String> options=new ArrayList<String>();
-    Scanner sc=new Scanner(System.in); 
+    private static ArrayList<String> options=new ArrayList<String>();
+    private static Scanner sc=new Scanner(System.in); 
 
 
-    public ReservationUI(Restaurant res)
+    public static void start()
     {
-        this.restaurant=res;
-        this.manager=new ReservationManager(this.restaurant);
-           
         options.add("Create new Reservation");
         options.add("Delete Reservation");
         options.add("View Reservations");
         options.add("Check Bill");
-        
-    }
-
-    public void start()
-    {
         int choice;
         do {
             System.out.println("");
@@ -44,16 +34,16 @@ public class ReservationUI {
             switch(choice){
                  
                 case 1:
-                    this.manager.createReservation();
+                    ReservationManager.createReservation();
                     break; 
                 case 2:
-                    this.manager.removeReservation();
+                    ReservationManager.removeReservation();
                     break;
                 case 3:
-                    this.manager.viewTableAvailability();
+                    ReservationManager.viewTableAvailability();
                     break;
                 case 4:
-                    this.manager.checkbill();
+                    ReservationManager.checkbill();
                     break;
                 
             }

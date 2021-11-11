@@ -7,25 +7,18 @@ import Restaurant_package.Restaurant;
 
 public class ReservationManager {
 
-    private Restaurant restaurant;
-    private Scanner sc=new Scanner(System.in); //scanner attribute to read things;
+    
+    private static Scanner sc=new Scanner(System.in); //scanner attribute to read things;
 
 
-    public ReservationManager(Restaurant res)
-    {
-        this.restaurant=res;
-    }
-
-
-
-    public Customer createCustomer(){
+   public static Customer createCustomer(){
         
         while (true)
         {
              try {
                 System.out.println("Enter customer details for this reservation");
                 System.out.println("Customer name : ");
-                String name = this.sc.nextLine();
+                String name = sc.nextLine();
                 System.out.println("Number of pax : ");
                 int pax = Integer.parseInt(sc.nextLine());
                 if (pax<1 || pax>10){
@@ -56,87 +49,85 @@ public class ReservationManager {
     }
 
 
-    public void createReservation (){
+    public static void createReservation (){
         
-        Customer customer = this.createCustomer();
+        Customer customer = createCustomer();
         
         System.out.println("=====================\nSelect timeslot : ");
-        if (this.restaurant==null){
-            System.out.println("Restaurant is empty");
-        }
-        this.restaurant.printTimeSlots();
+        
+        Restaurant.printTimeSlots();
 
-        int time = this.sc.nextInt();
+        int time = sc.nextInt();
 
-        if (this.restaurant.checkTimeslotFullyBooked(time)==true){
+        if (Restaurant.checkTimeslotFullyBooked(time)==true){
             System.out.println("This timeslot is fully booked!");
-            this.restaurant.printTableAvailabilityByTime(time);
+            Restaurant.printTableAvailabilityByTime(time);
             return;
         }
 
-        this.restaurant.printTableAvailabilityByTime(time);
+        Restaurant.printTableAvailabilityByTime(time);
         System.out.println("=====================\nSelect table : ");
-        int tableChoice = this.sc.nextInt();
+        int tableChoice = sc.nextInt();
         
-        this.restaurant.getTables()[tableChoice-1].reserveAtTime(customer, time-1); 
+        Restaurant.getTables()[tableChoice-1].reserveAtTime(customer, time-1); 
 
         // need to minus one because the method from Table class takes in the index itself
         
     }
 
-    public void removeReservation (){
+    public static void removeReservation (){
 
         System.out.println("=====================\nSelect timeslot : ");
 
-        this.restaurant.printTimeSlots();
+        Restaurant.printTimeSlots();
 
-        int time = this.sc.nextInt();
-        this.restaurant.printTableAvailabilityByTime(time);
+        int time = sc.nextInt();
+        Restaurant.printTableAvailabilityByTime(time);
 
         System.out.println("=====================\nSelect table : ");
-        int tableChoice = this.sc.nextInt();
+        int tableChoice = sc.nextInt();
         
-        this.restaurant.getTables()[tableChoice-1].removeReservationAtTime(time-1); 
+        Restaurant.getTables()[tableChoice-1].removeReservationAtTime(time-1); 
         // need to minus one because the method from Table class takes in the index itself
 
     }
 
-    public void checkbill()
+    public static void checkbill()
     {
         System.out.println("=====================\nSelect timeslot : ");
 
-        this.restaurant.printTimeSlots();
+        Restaurant.printTimeSlots();
 
-        int time = this.sc.nextInt();
-        this.restaurant.printTableAvailabilityByTime(time);
+        int time = sc.nextInt();
+        Restaurant.printTableAvailabilityByTime(time);
 
         System.out.println("=====================\nSelect table : ");
-        int tableChoice = this.sc.nextInt();
+        int tableChoice = sc.nextInt();
 
-        this.restaurant.getTables()[tableChoice-1].getCustomerAtTime(time-1).print_invoice();
-        this.restaurant.getTables()[tableChoice-1].getCustomerAtTime(time-1).setName("Vacated");
+        Restaurant.getTables()[tableChoice-1].getCustomerAtTime(time-1).print_invoice();
+        Restaurant.getTables()[tableChoice-1].getCustomerAtTime(time-1).setName("Vacated");
 
         
 
     }
 
 
-    public void viewTableAvailability(){
+    public static void viewTableAvailability(){
         System.out.println("View by : \n(1) Timeslot \n(2) Table \n(3) All");
-        int choice = this.sc.nextInt();
+        int choice = sc.nextInt();
 
         if (choice==1){
-            this.restaurant.printTimeSlots();
-            int time = this.sc.nextInt(); 
-            this.restaurant.printTableAvailabilityByTime(time);
+            Restaurant.printTimeSlots();
+            int time = sc.nextInt(); 
+            Restaurant.printTableAvailabilityByTime(time);
 
         } else if (choice==2) {
             System.out.println("Select Table Number [1-10] : "); 
-            int table = this.sc.nextInt();
-            this.restaurant.printTableAvailabilityByTable(table);
+            int table = sc.nextInt();
+            Restaurant.printTableAvailabilityByTable(table);
         }
         else if (choice==3) {
-            this.restaurant.printTableAvailabilityAll();
+            Restaurant.printTableAvailabilityAll();
         }
        
     }
