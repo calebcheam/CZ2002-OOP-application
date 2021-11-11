@@ -4,6 +4,8 @@ import java.time.LocalDateTime;
 
 /**
  * Table class that contains table information such as table number, max seating capacity of the table, timeslots, and customers reserving this table at each timeslot
+ * @author DSAI1 ASSIGNMENT GROUP 3
+ * @version 1.0
  */
 public class Table {
     private int id;

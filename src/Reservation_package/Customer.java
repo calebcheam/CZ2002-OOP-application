@@ -8,6 +8,8 @@ import Order_package.Order;
 
 /**
  * Customer class that contains customer information such as name, id, pax, and membership.
+ * @author DSAI1 ASSIGNMENT GROUP 3
+ * @version 1.0
  */
 public class Customer { 
 

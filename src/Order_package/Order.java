@@ -8,6 +8,8 @@ import java.util.Set;
 /**
  * Order class that contains all ordered items for a specific customer, table and timseslot
  * Also includes date of order creation and handler staff name 
+ * @author DSAI1 ASSIGNMENT GROUP 3
+ * @version 1.0
  */
 public class Order {
     /**

@@ -4,6 +4,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 
+/** 
+ * OrderUI that links user to order manager
+ * @author DSAI1 ASSIGNMENT GROUP 3
+ * @version 1.0
+ */
 
 public class OrderUI {
     

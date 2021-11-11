@@ -5,6 +5,11 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 
+/**
+ * ReservationUI class that links user and reservation manager
+ * @author DSAI1 ASSIGNMENT GROUP 3
+ * @version 1.0
+ */
 
 public class ReservationUI {
     

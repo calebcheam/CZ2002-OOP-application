@@ -6,6 +6,8 @@ import Restaurant_package.Restaurant;
 
 /** 
 * ReservationManager class that handles all reservation related actions such as creating, removing and viewing reservations
+* @author DSAI1 ASSIGNMENT GROUP 3
+* @version 1.0
 */
 public class ReservationManager {
 
