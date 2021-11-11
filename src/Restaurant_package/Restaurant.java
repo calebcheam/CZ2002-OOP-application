@@ -21,10 +21,10 @@ public class Restaurant {
         tables = new Table[numOfTables];
         int k=2; 
         for (int i=0; i<numOfTables; i++){
-            tables[i] = new Table(i+1, k); 
-            if (i%2==0){
+            if (i%2==0 && i>0){
                 k+=2;
             }
+            tables[i] = new Table(i+1, k); 
         }
     }
 

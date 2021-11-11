@@ -53,12 +53,24 @@ public class ReservationManager {
         
         Customer customer = createCustomer();
         
+        
+        int time;
+        int tableChoice;
         System.out.println("=====================\nSelect timeslot : ");
         
         Restaurant.printTimeSlots();
 
-        int time = sc.nextInt();
+        
 
+        
+        while (true){
+            time = sc.nextInt();
+            if (time>6 || time<1){
+                System.out.println("Invalid timeslot, please re-enter.");
+                continue;
+            }
+            break;
+        }
         if (Restaurant.checkTimeslotFullyBooked(time)==true){
             System.out.println("This timeslot is fully booked!");
             Restaurant.printTableAvailabilityByTime(time);
@@ -67,7 +79,21 @@ public class ReservationManager {
 
         Restaurant.printTableAvailabilityByTime(time);
         System.out.println("=====================\nSelect table : ");
-        int tableChoice = sc.nextInt();
+        
+        while (true){
+            tableChoice = sc.nextInt();
+            if (tableChoice>10 || tableChoice<1)
+            {
+                System.out.println("Invalid table, please re-enter.");
+                continue;
+            }
+            break;
+        }
+    
+
+    
+
+        sc.nextLine();
         
         Restaurant.getTables()[tableChoice-1].reserveAtTime(customer, time-1); 
 
