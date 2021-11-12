@@ -73,7 +73,7 @@ public class SaleReports {
     * @param start <code>int</code> index of start date to be printed from
     * @param end <code>int</code> index of end date to be printed from
     */
-   public void printSomeReports(int start, int end){
+   public void printCompiledReport(int start, int end){
        String date = this.dates[start] + " to " + this.dates[end]; 
        double summedTotal = 0.0;
        double summedDiscount = 0.0; 

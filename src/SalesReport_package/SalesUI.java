@@ -14,12 +14,9 @@ import java.util.Scanner;
 
 public class SalesUI {
     
-    private static DailySaleReport dsr=new DailySaleReport();
-    private static SaleReports SR=new SaleReports(); 
-    private static String[] dates=SR.getReportDates();
-
     private static ArrayList<String> options=new ArrayList<>(Arrays.asList("View Today's Sales Report","Save Today's Report to Records","View previous All Sales Reports separately","View previous Sales Report (One day)","View previous Sales Report (All days summed up)","View previous Sales Report (Over a period)"));
     private static Scanner sc=new Scanner(System.in);
+
 
     /** 
      * Starts the <code>SalesUI</code> and displays user options
@@ -27,12 +24,8 @@ public class SalesUI {
     public static void start()
     {
         int choice;
-        
-        
-    
         do {
-            dsr=new DailySaleReport();
-            SR=new SaleReports();
+    
             System.out.println("===============================================");
 	        System.out.println("|              Sale Report Options            |");
             System.out.println("|              (Enter -1 to Exit)             |");
@@ -49,44 +42,25 @@ public class SalesUI {
             switch(choice){
                  
                 case 1:
-                    dsr.printFromObject();
-                    break; 
+                SalesManager.viewTodaySales();;
+        
+                break; 
                 case 2:
-                    dsr.printFromObject();
-                    System.out.println("\n\nThis is how the current sales report looks like... Do you wish to save this to our records?");
-                    System.out.println("(1) Yes (2) No");
-                    System.out.println("*****NOTE : Please only do this when the restaurant is closing for the day.*****");
-                    if (sc.nextInt()==1)
-                    {
-                        dsr.writeReportToCSV();
-                        refreshSR();
-                    } else System.out.println("Did not save to records");
-                    break;
+                SalesManager.saveTodaySales(); 
+                break;
                 case 3 : 
-                    SR.printAllReports();
+                    SalesManager.viewAllSaleReport();
+
                     break;
                 case 4:
-                    System.out.println("Which date would you like to view?");
-                    printDates(0);
-                    int dateSelected = sc.nextInt(); 
-                    SR.printOneReport(dates[dateSelected-1]);
+                    SalesManager.viewOneSaleReport();
                     break;
                 case 5 : 
-                    SR.printSomeReports(0, dates.length-1);
+                    SalesManager.viewAccumulatedSales(true);
+        
                     break;
                 case 6: 
-                    System.out.println("Select starting date:");
-                    printDates(0);
-                    int dateStart = sc.nextInt();
-                    
-                    int dateEnd;
-                    if (dateStart < dates.length){
-                        System.out.println("Select ending date:");
-                        printDates(dateStart);
-                        dateEnd = sc.nextInt();
-                    } else dateEnd = dateStart; 
-                    
-                    SR.printSomeReports(dateStart-1, dateEnd-1);
+                    SalesManager.viewAccumulatedSales(false);
                 default:
                     
                     break;
@@ -95,23 +69,6 @@ public class SalesUI {
         } while (choice!=-1); 
     }
 
-    
-    /** 
-     * Displays the dates of each sales report
-     * @param startIndex
-     */
-    private static void printDates(int startIndex){
-        if (startIndex==dates.length-1) return;
-        for (int i=startIndex; i<dates.length; i++){
-            System.out.println((i+1) + " : " + dates[i]);
-        }
-    }
 
-    /** 
-     * Refreshes and updates the sales reports to include all sales made up to point of refresh
-     */
-    private static void refreshSR(){
-        SR = new SaleReports(); 
-        dates = SR.getReportDates();
-    }
+
 }
