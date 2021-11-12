@@ -4,18 +4,31 @@ package Restaurant_package;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+/** 
+ * Refresh thread that runs separately from main app, periodically fetching system time
+ * @author DSAI1 ASSIGNMENT GROUP 3
+ * @version 1.0
+ */
+
 public class Refresh implements Runnable{
 
     LocalDateTime currentTime=null;
 
     
-
+    /** 
+     * Refresh constructor
+     */
     public Refresh()
     {
         
     }
 
- 
+    /** 
+     * Runs the Refresh thread, fetches system time and compares it to reservation expiry times every 15 seconds.
+     * If system time exceeds reservation expiry by 10 or more minutes, the reservation is removed.
+     * This only applies for "no-show" reservations, where no order is created within the 10 minute period.
+     * @see Order_package.Order
+     */ 
     public void run(){
         while(true)
     {

@@ -10,6 +10,11 @@ import Order_package.OrderUI;
 import Reservation_package.ReservationUI;
 import SalesReport_package.SalesUI;
 
+/** 
+ * RestaurantInterface boundary class that is the main convenor between user and the app
+ * @author DSAI1 ASSIGNMENT GROUP 3
+ * @version 1.0
+ */
 
 public class RestaurantInterface {
     ArrayList<String> options;
@@ -17,7 +22,11 @@ public class RestaurantInterface {
     Restaurant restaurant=new Restaurant();
     
 
-
+    /** 
+     * Starts the app and displays user options
+     * Also executes Refresh thread that fetches system time periodically for the auto-expiry/removal of reservations
+     * @see Refresh
+     */
     public void Start(){
         
 
@@ -86,6 +95,7 @@ public class RestaurantInterface {
 
     
     /** 
+     * Main method to run the app.
      * @param args
      */
     public static void main (String[] args){

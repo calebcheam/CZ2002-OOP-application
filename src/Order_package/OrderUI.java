@@ -15,6 +15,9 @@ public class OrderUI {
     private static ArrayList<String> options=new ArrayList<>(Arrays.asList("Create new order","Edit existing order","View existing order"));
     private static Scanner sc=new Scanner(System.in);
 
+    /** 
+     * Starts the OrderUI and displays user options
+     */
     public static void start()
     {
         int choice;

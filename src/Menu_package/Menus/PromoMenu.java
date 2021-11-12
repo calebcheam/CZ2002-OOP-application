@@ -170,7 +170,7 @@ public class PromoMenu extends GenericMenu{
      * @param itemType Item type, to find the first occurrence in the ArrayList
      * @return int Returns the index of the first occurrence of the specified Item type. Returns -2 if Item type is not in any category, -1 if Item type is in a category, but Item type is not found in the ArrayList.
      */
-     */
+     
     @Override
     public int findFirstTypeOccurrence(String typeCategory, String itemType) {
 	ArrayList<Item> tempItemArray;

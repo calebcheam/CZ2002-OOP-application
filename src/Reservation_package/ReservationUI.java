@@ -18,7 +18,9 @@ public class ReservationUI {
     
     
 
-
+    /** 
+     * Starts the ReservationUI and displays user options
+     */
     public static void start()
     {
         int choice;
