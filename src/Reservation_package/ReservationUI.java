@@ -13,7 +13,13 @@ import java.util.Scanner;
 
 public class ReservationUI {
     
+    /**
+     * ArrayList of options to be displayed to user
+     */
     private static ArrayList<String> options=new ArrayList<String>(Arrays.asList("Create new Reservation","Delete Reservation","View Reservations","Check Bill"));
+    /**
+     * Scanner used for user input
+     */
     private static Scanner sc=new Scanner(System.in); 
     
     

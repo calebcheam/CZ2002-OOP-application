@@ -8,9 +8,22 @@ import java.time.LocalDateTime;
  * @version 1.0
  */
 public class Table {
+
+    /**
+     * The ID of this Table
+     */
     private int id;
+    /**
+     * The maximum capacity (pax) of this table
+     */
     private int size;
+    /**
+     * Array of Customer objects who have reserved this table
+     */
     private Customer[] reservations;
+    /**
+     * Array of LocalDateTime objects that will be used as table timeslots
+     */
     private LocalDateTime[] times;
 
     /** 

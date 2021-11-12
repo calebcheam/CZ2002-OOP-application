@@ -17,6 +17,9 @@ import java.util.Scanner;
   
 public class OrderManager {
     
+    /**
+     * Scanner used for user input
+     */
     private static Scanner sc=new Scanner(System.in);
     
     

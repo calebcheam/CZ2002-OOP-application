@@ -11,8 +11,10 @@ import Restaurant_package.Restaurant;
 */
 public class ReservationManager {
 
-    
-   private static Scanner sc=new Scanner(System.in); //scanner attribute to read things;
+    /**
+     * Scanner used for user input
+     */
+   private static Scanner sc=new Scanner(System.in); 
 
 
    

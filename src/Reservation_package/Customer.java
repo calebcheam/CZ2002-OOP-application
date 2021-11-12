@@ -13,11 +13,29 @@ import Order_package.Order;
  */
 public class Customer { 
 
-    private String name; //customer reservation representative name 
-    private int customerID; //customer ID for reservation
-    private int pax; //number of customers for specific reservation
-    private Boolean membership; //whether a customer is a member or not
-    private Order order;//stores the orders of that customer
+    /**
+     * Customer reservation representative name
+     */
+    private String name;
+    /**
+     * Customer ID for reservation
+     */
+    private int customerID; 
+    /**
+     * Number of customers for specific reservation
+     */
+    private int pax;
+    /**
+     * Whether a customer is a member or not
+     */
+    private Boolean membership;
+    /**
+     * Stores the orders of that customer
+     */
+    private Order order;
+    /**
+     * Expiry time of reservation if no order is created
+     */
     private LocalDateTime expiry;
     
     

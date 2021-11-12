@@ -16,8 +16,17 @@ public class Order {
      * HashMap containing ordered Item objects and quantities
      */
     protected HashMap<Item, Integer> orders=new HashMap<Item,Integer>();
+    /**
+     * Date the order was created
+     */
     private String date;
+    /**
+     * Name of staff handling order
+     */
     private String staffName;
+    /**
+     * Scanner used for user input
+     */
     private Scanner sc = new Scanner(System.in);
     /** 
      * Order constructor that prompts for name of staff handling the order

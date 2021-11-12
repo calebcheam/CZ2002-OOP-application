@@ -12,7 +12,13 @@ import java.util.Arrays;
 
 public class OrderUI {
     
+    /**
+     * ArrayList of user options to be displayed
+     */
     private static ArrayList<String> options=new ArrayList<>(Arrays.asList("Create new order","Edit existing order","View existing order"));
+    /**
+     * Scanner used for user input
+     */
     private static Scanner sc=new Scanner(System.in);
 
     /** 

@@ -28,23 +28,46 @@ import Restaurant_package.Restaurant;
 // So there is no real need to use Item object
 // Except for when adding in new report, because we need to calculate by taking Item.price * quantity
 
+/** 
+ * DailySaleReport class that stores one day's worth of orders
+ */
+public class DailySaleReport { 
 
-public class DailySaleReport { //this stores one day's worth orders
-    private double dailyTotal; // total revenue from one day
-    private double dailyDiscount; // total discount given in one day
+    /** 
+     * Total revenue from one day
+     */
+    private double dailyTotal;
+    /** 
+     * Total discount given in one day
+     */
+    private double dailyDiscount;
+    /** 
+     * Used to calculate today's addition (will be empty for past reports)
+     */
     private Map<Item, Integer> tempMap; 
-    // used to calculate today's addition (will be empty for past reports)
-    private Map<String, List<Double>> map;  // total quantity sold by item 
+    /** 
+     * Total quantity sold by item 
+     */
+    private Map<String, List<Double>> map;
+    /** 
+     * Date of this sales report
+     */
     private String date; 
 
    
     
       //for easier referencing in the method functions
 
-    
+    /** 
+     * Constructor for reading in past reports from csv, with parameters
+     * @param dailyTotal double of total revenue in a day
+     * @param dailyDiscount double of total discounts given in said day
+     * @param map Map of item name and quantity of said item sold
+     * @param date date of this sales report  
+     */
     public DailySaleReport(double dailyTotal, double dailyDiscount, Map<String, List<Double>> map, String date)
     {
-        //constructor for reading in past reports from csv 
+        
         this.dailyTotal = dailyTotal; 
         this.dailyDiscount = dailyDiscount;
         this.map = map;
@@ -52,8 +75,10 @@ public class DailySaleReport { //this stores one day's worth orders
         //the tempMap will be empty 
     }
 
+    /** 
+     * Constructor for new daily sales report (ie. today's sales)
+     */
     public DailySaleReport(){
-        // constructor for new report (ie. today's sales)
         
         
         this.date = java.time.LocalDate.now().toString();
@@ -64,7 +89,8 @@ public class DailySaleReport { //this stores one day's worth orders
 
     
     /** 
-     * @return String
+     * Gets the date of this daily sale report
+     * @return String date of this report
      */
     public String getDate(){
         return this.date;
@@ -72,7 +98,8 @@ public class DailySaleReport { //this stores one day's worth orders
 
     
     /** 
-     * @return double
+     * Gets the daily total revenue of this sale report
+     * @return double revenue from this day's sales
      */
     public double getDailyTotal(){
         return this.dailyTotal;
@@ -80,7 +107,8 @@ public class DailySaleReport { //this stores one day's worth orders
 
     
     /** 
-     * @return double
+     * Gets total discount given in this sale report
+     * @return double total discounts given in this day's sales
      */
     public double getDiscountTotal(){
         return this.dailyDiscount;
@@ -88,12 +116,17 @@ public class DailySaleReport { //this stores one day's worth orders
 
     
     /** 
-     * @return Map<String, List<Double>>
+     * Gets the Map of item names and their quantities sold
+     * @return Map<String, List<Double>> with item name as keys and List of doubles
      */
     public Map<String, List<Double>> getMap(){
         return this.map;
     }
 
+    /** 
+     * Calculates the daily sales by tabulating orders made for all tables and timeslots
+     * Updates tempMap with tabulated data
+     */
     private void calculateMenuItems(){
         // constructor for reading in today's sales 
         
@@ -137,6 +170,9 @@ public class DailySaleReport { //this stores one day's worth orders
         }
     }
 
+    /** 
+     * idrk whats going on here but since its private maybe dunneed do
+     */
     private void tempMapToMap(){
         //degen way; converting map with Items to <String, List<Double>>
         this.map = new HashMap<String, List<Double>>(); 
@@ -151,6 +187,9 @@ public class DailySaleReport { //this stores one day's worth orders
         }
     }
 
+    /** 
+     * Calculates total revenue and discount given in a day (if any)
+     */
     private void calculateTotals(){
         for (Table table : Restaurant.getTables()) {
             for (int i=0; i<6; i++){
@@ -167,6 +206,9 @@ public class DailySaleReport { //this stores one day's worth orders
         }
     }
     
+    /** 
+     * Appends new day's sales report to a csv containing all sales reports
+     */
     public void writeReportToCSV(){ //writes to the csv file
         try{
             File file =new File("SALESREPORT.csv");
@@ -198,6 +240,9 @@ public class DailySaleReport { //this stores one day's worth orders
         }
     }
 
+    /** 
+     * Displays the sales report information in a readable format
+     */
     public void printFromObject(){
         System.out.printf("\n==============================         DAY REPORT FOR %s      ===========================\n", this.date);
         System.out.println("Item \t\t\t\t\t\t  Quantity \t\t  Revenue (w/o discount)\n");
@@ -214,8 +259,9 @@ public class DailySaleReport { //this stores one day's worth orders
 
     
     /** 
-     * @param original
-     * @return String
+     * Formatting function for readable printing
+     * @param original String to be formatted
+     * @return String that has been formatted
      */
     private String padString(String original){
         return String.format("%-" + 30 + "s", original);  
