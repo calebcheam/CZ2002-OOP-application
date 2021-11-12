@@ -3,6 +3,8 @@ import java.util.ArrayList;
 
 /**
  * Class to store Menu Items' and Sets' attributes.
+ * @author DSAI1 ASSIGNMENT GROUP 3
+ * @version 1.0
  */
 public class Item {
     private String name;

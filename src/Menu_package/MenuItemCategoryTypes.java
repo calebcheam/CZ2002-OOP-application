@@ -3,6 +3,8 @@ package Menu_package;
 /**
  * Final class to store Strings arrays of different Item Categories, that stores Item Types under it.
  * This class also contains methods relating to the Item Categories.
+ * @author DSAI1 ASSIGNMENT GROUP 3
+ * @version 1.0
  */
 public final class MenuItemCategoryTypes {
     private String[] categoryTypes ;
