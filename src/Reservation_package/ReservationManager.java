@@ -5,22 +5,22 @@ import java.util.Scanner;
 import Restaurant_package.Restaurant;
 
 /** 
-* ReservationManager class that handles all reservation related actions such as creating, removing and viewing reservations
+* <code>ReservationManager</code> class that handles all reservation related actions such as creating, removing and viewing reservations
 * @author DSAI1 ASSIGNMENT GROUP 3
 * @version 1.0
 */
 public class ReservationManager {
 
     /**
-     * Scanner used for user input
+     * <code>Scanner</code> used for user input
      */
    private static Scanner sc=new Scanner(System.in); 
 
 
    
    /** 
-    * Creates a customer with all necessary details for reservation
-    * @return Customer to be allocated a reservation
+    * Creates a <code>Customer</code> with all necessary details for reservation
+    * @return <code>Customer</code> to be allocated a reservation
     */
    public static Customer createCustomer(){
         
@@ -60,7 +60,7 @@ public class ReservationManager {
     }
 
    /** 
-    * Assigns a customer to requested table and timeslot subject on pax and availability
+    * Assigns a <code>Customer</code> to requested <code>Table</code> and timeslot subject to pax and availability
     */
     public static void createReservation (){
         
@@ -128,7 +128,7 @@ public class ReservationManager {
 
     }
    /** 
-    * Attempts to print the invoice of a customer at selected timeslot and table. If no reservation or order is present, the user is notified. Else, the invoice is printed and the timeslot is vacated.
+    * Attempts to print the invoice of a <code>Customer</code> at selected timeslot and table. If no reservation or order is present, the user is notified. Else, the invoice is printed and the timeslot is vacated.
     */
     public static void checkBill()
     {

@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * SaleReports class that contains collection of DailySaleReport objects and their respective dates.
+ * <code>SaleReports</code> class that contains collection of <code>DailySaleReport</code> objects and their respective dates.
  * Handles sales information related activities.
  * @see DailySaleReport
  * @author DSAI1 ASSIGNMENT GROUP 3
@@ -22,7 +22,7 @@ public class SaleReports {
     private String[] dates; 
 
     /** 
-     * SaleReports constructor, initialises collection of DailySaleReports and their dates by reading from csv
+     * <code>SaleReports</code> constructor, initialises collection of <code>DailySaleReports</code> and their dates by reading from csv
      * @see #readReportsFromCSV()
      */
     public SaleReports(){
@@ -48,7 +48,7 @@ public class SaleReports {
     
     /** 
      * Displays the sales report for a specified date
-     * @param date String of date to be passed in, in the format "2021-11-03"
+     * @param date <code>String</code> of date to be passed in, in the format "2021-11-03"
      */
     public void printOneReport(String date){
         for (DailySaleReport dsr : salereports) {
@@ -60,8 +60,8 @@ public class SaleReports {
 
    
    /** 
-    * Gets array of Strings of dates for all sales reports
-    * @return String[] of dates of all sales reports made to date
+    * Gets <code>Array</code> of dates for all sales reports
+    * @return <code>String[]</code> of dates of all sales reports made to date
     */
    public String[] getReportDates(){
     return this.dates; 
@@ -70,8 +70,8 @@ public class SaleReports {
    
    /** 
     * Displays sales reports within a specified time period, with the start and end inclusive
-    * @param start int index of start date to be printed from
-    * @param end int index of end date to be printed from
+    * @param start <code>int</code> index of start date to be printed from
+    * @param end <code>int</code> index of end date to be printed from
     */
    public void printSomeReports(int start, int end){
        String date = this.dates[start] + " to " + this.dates[end]; 

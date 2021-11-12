@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 /** 
- * Refresh thread that runs separately from main app, periodically fetching system time
+ * <code>Refresh</code> thread that runs separately from main app, periodically fetching system time
  * @author DSAI1 ASSIGNMENT GROUP 3
  * @version 1.0
  */
@@ -16,7 +16,7 @@ public class Refresh implements Runnable{
 
     
     /** 
-     * Refresh constructor
+     * <code>Refresh</code> constructor
      */
     public Refresh()
     {
@@ -24,9 +24,9 @@ public class Refresh implements Runnable{
     }
 
     /** 
-     * Runs the Refresh thread, fetches system time and compares it to reservation expiry times every 15 seconds.
+     * Runs the <code>Refresh</code> thread, fetches system time and compares it to reservation expiry times every 15 seconds.
      * If system time exceeds reservation expiry by 10 or more minutes, the reservation is removed.
-     * This only applies for "no-show" reservations, where no order is created within the 10 minute period.
+     * This only applies for "no-show" reservations, where no <code>Order</code> is created within the 10 minute period.
      * @see Order_package.Order
      */ 
     public void run(){

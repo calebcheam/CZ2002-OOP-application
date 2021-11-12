@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 
 /**
- * SalesUI class that links user to the sales reports
+ * <code>SalesUI</code> class that links user to the <code>SaleReports</code>
  * @see SaleReports
  * @author DSAI1 ASSIGNMENT GROUP 3
  * @version 1.0
@@ -22,7 +22,7 @@ public class SalesUI {
     private static Scanner sc=new Scanner(System.in);
 
     /** 
-     * Starts the SalesUI and displays user options
+     * Starts the <code>SalesUI</code> and displays user options
      */
     public static void start()
     {

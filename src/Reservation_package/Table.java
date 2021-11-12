@@ -3,7 +3,7 @@ package Reservation_package;
 import java.time.LocalDateTime;
 
 /**
- * Table class that contains table information such as table number, max seating capacity of the table, timeslots, and customers reserving this table at each timeslot
+ * <code>Table</code> class that contains table information such as table number, max seating capacity of the table, timeslots, and customers reserving this table at each timeslot
  * @author DSAI1 ASSIGNMENT GROUP 3
  * @version 1.0
  */
@@ -27,9 +27,9 @@ public class Table {
     private LocalDateTime[] times;
 
     /** 
-     * Table object constructor 
-     * @param id The table number 
-     * @param size The max pax taken by the table
+     * <code>Table</code> object constructor 
+     * @param id <code>int</code> the table ID
+     * @param size <code>int</code> the max pax taken by the table
      */
     public Table(int id, int size)
     {
@@ -53,8 +53,8 @@ public class Table {
 
     
     /** 
-     * Gets the table number
-     * @return int table number
+     * Gets this <code>Table</code> number
+     * @return <code>int</code> table number
      */
     public int getId()
     {
@@ -63,8 +63,8 @@ public class Table {
 
     
     /** 
-     * Gets max pax of the table
-     * @return int max pax
+     * Gets max size of this <code>Table</code>
+     * @return <code>int</code> max size
      */
     public int getSize()
     {
@@ -73,8 +73,8 @@ public class Table {
 
     
     /**
-     * Get list of Customers who have reserved this Table
-     * @return Array of Customer objects assigned to Table
+     * Gets list of reservations for this <code>Table</code>
+     * @return <code>Array</code> of <code>Customer</code> objects assigned to this <code>Table</code>
      */
     public Customer[] getReservations()
     {
@@ -82,8 +82,8 @@ public class Table {
     }
     
     /** 
-     * Get list of timeslots for this Table
-     * @return Array of LocalDateTime for Table
+     * Gets list of timeslots for this <code>Table</code>
+     * @return <code>Array</code> of <code>LocalDateTime</code>
      */
     public LocalDateTime[] getTimeslots(){
         return this.times;
@@ -91,9 +91,9 @@ public class Table {
 
     
     /** 
-     * Get Customer who reserved this table at specific timeslot
-     * @param time index of the timeslot
-     * @return Customer object assigned to specified timeslot
+     * Gets <code>Customer</code> who reserved this table at specific timeslot
+     * @param time <code>int</code> index of the timeslot
+     * @return <code>Customer</code> object assigned to specified timeslot
      */
     public Customer getCustomerAtTime(int time) // can be used to check reservation status
     {
@@ -108,9 +108,9 @@ public class Table {
 
     
     /** 
-     * Get boolean of whether this table is reserved at specified timeslot
-     * @param time index of the timeslot
-     * @return boolean true if reserved, false if not
+     * Gets <code>boolean</code> of whether this table is reserved at specified timeslot
+     * @param time <code>int</code> index of the timeslot
+     * @return <code>boolean</code> true if reserved, false if not
      */
     public boolean isReservedAtTime(int time)
     {
@@ -118,9 +118,9 @@ public class Table {
     }
     
     /** 
-     * Reserves this table by assigning Customer object to it at specified time
-     * @param customer customer object to be assigned to table
-     * @param time index of timeslot the customer is reserving
+     * Reserves this <code>Table</code> by assigning <code>Customer</code> object to it at specified time
+     * @param customer <code>Customer</code> to be assigned to this table
+     * @param time <code>int</code> index of timeslot the customer is reserving
      */
     public void reserveAtTime(Customer customer, int time) //takes in the timeslot INDEX
     {
@@ -144,7 +144,7 @@ public class Table {
     
     /** 
      * Removes reservation at specified timeslot
-     * @param time index of timeslot to be cleared
+     * @param time <code>int</code> index of timeslot to be cleared
      */
     public void removeReservationAtTime(int time)
     {
@@ -162,8 +162,8 @@ public class Table {
 
     
     /** 
-     * Prints reservations made for this table for all timeslots, prints customer name if reserved and nothing if not
-     * @param timeslot Array of timeslots to be iterated through to print reservation status
+     * Prints reservations made for this table for all timeslots, prints <code>Customer</code> name if reserved and nothing if not
+     * @param timeslot <code>Array</code> of timeslots to be iterated through to print reservation status
      */
     public void printReservations(String[] timeslot)
     {

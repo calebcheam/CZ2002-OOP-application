@@ -6,8 +6,8 @@ import java.util.Scanner;
 import java.util.Set;
 
 /**
- * <code>Order</code> class that contains all ordered items for a specific customer, table and timeslot
- * Also includes date of order creation and handler staff name 
+ * <code>Order</code> class that contains all ordered items for a specific <code>Customer</code>, <code>Table</code> and timeslot
+ * Also includes <code>date</code> of order creation and handler staff name 
  * @author DSAI1 ASSIGNMENT GROUP 3
  * @version 1.0
  */
@@ -72,7 +72,7 @@ public class Order {
     /** 
      * Sets quantity of each menu <code>Item</code> in this <code>Order</code>
      * @param item <code>Item</code> object to be set
-     * @param quantity Quantity of <code>Item</code> object to be set
+     * @param quantity <code>int</code> quantity of <code>Item</code> object to be set
      */
     public void setOrders(Item item, Integer quantity)
     {

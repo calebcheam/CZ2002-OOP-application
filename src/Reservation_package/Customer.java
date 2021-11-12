@@ -7,44 +7,44 @@ import java.util.Random;
 import Order_package.Order;
 
 /**
- * Customer class that contains customer information such as name, id, pax, and membership.
+ * <code>Customer</code> class that contains <code>Customer</code> information such as <code>name</code>, <code>id</code>, <code>pax</code>, and <code>membership</code>.
  * @author DSAI1 ASSIGNMENT GROUP 3
  * @version 1.0
  */
 public class Customer { 
 
     /**
-     * Customer reservation representative name
+     * <code>Customer</code> reservation representative name
      */
     private String name;
     /**
-     * Customer ID for reservation
+     * <code>Customer</code> ID for reservation
      */
     private int customerID; 
     /**
-     * Number of customers for specific reservation
+     * Number of <code>pax</code> this <code>Customer</code> is making the reservation for
      */
     private int pax;
     /**
-     * Whether a customer is a member or not
+     * Whether this <code>Customer</code> is a <code>member</code> or not
      */
     private Boolean membership;
     /**
-     * Stores the orders of that customer
+     * Stores the <code>Order</code> of this <code>Customer</code>
      */
     private Order order;
     /**
-     * Expiry time of reservation if no order is created
+     * Expiry time of reservation if no <code>Order</code> is created
      */
     private LocalDateTime expiry;
     
     
 
     /** 
-     * Customer object constructor 
-     * @param name name of the customer
-     * @param pax number of people to be seated at table
-     * @param membership boolean whether the customer is a member or not
+     * <code>Customer</code> object constructor 
+     * @param name <code>name</code> of this <code>Customer</code>
+     * @param pax <code>int</code> number of people this reservation is for
+     * @param membership <code>boolean</code> whether the <code>Customer</code> is a member or not
      */
     public Customer(String name,int pax,Boolean membership)
     {
@@ -59,8 +59,8 @@ public class Customer {
 
     
     /** 
-     * Assigns an order object to this customer
-     * @param order order object to be assigned
+     * Assigns an <code>Order</code> object to this <code>Customer</code>
+     * @param order <code>Order</code> object to be assigned
      */
     public void addOrder(Order order)
     {
@@ -69,8 +69,8 @@ public class Customer {
 
     
     /** 
-     * Gets the order of this customer
-     * @return order of this customer
+     * Gets the <code>Order</code> of this <code>Customer</code>
+     * @return <code>Order</code> of this <code>Customer</code>
      */
     public Order getOrder() 
     {
@@ -79,8 +79,8 @@ public class Customer {
 
     
     /** 
-     * Gets the price of this customer's order, including tax and membership discount (if applicable)
-     * @return double total amount payable for this customer
+     * Gets the price of this customer's <code>Order</code>, including tax and membership discount (if applicable)
+     * @return <code>double</code> total amount payable by this <code>Customer</code>
      */
     public double getOrderPrice()
     {
@@ -100,8 +100,8 @@ public class Customer {
 
     
     /**
-     * Gets amount of money saved by the customer due to membership discount (if applicable)
-     * @return double of amount of money saved due to discounts if member, else 0 
+     * Gets amount of money saved by this <code>Customer</code> due to membership discount (if applicable)
+     * @return <code>double</code> amount of money saved due to discounts if member, else 0 
      */
     public double getOrderDiscount()
     {
@@ -113,8 +113,8 @@ public class Customer {
 
     
     /** 
-     * Gets name of customer 
-     * @return String name of customer
+     * Gets <code>name</code> of this <code>Customer</code> 
+     * @return String <code>name</code>
      */
 
     public String getName()
@@ -123,8 +123,8 @@ public class Customer {
     }
 
     /** 
-     * Gets expiry of reservation if the customer does not show up
-     * @return LocalDateTime expiry time of the reservation (10 minutes after timeslot)
+     * Gets expiry of reservation if this <code>Customer</code> does not show up
+     * @return <code>LocalDateTime</code> expiry time of the reservation (10 minutes after timeslot)
      */
     public LocalDateTime getExpiry()
     {
@@ -133,8 +133,8 @@ public class Customer {
 
     
     /** 
-     * Sets the name of the customer
-     * @param name name to be set
+     * Sets the name of this <code>Customer</code>
+     * @param name <code>String</code> name to be set
      */
     public void setName(String name){
         this.name = name;
@@ -143,7 +143,7 @@ public class Customer {
     
     /** 
      * Sets the expiry time of the reservation (10 minutes after creation)
-     * @param bookingtime time of reservation creation
+     * @param bookingtime <code>LocalDateTime</code> time of reservation creation
      */
     public void setExpiry(LocalDateTime bookingtime)
     {
@@ -152,8 +152,8 @@ public class Customer {
 
     
     /**
-     * Gets customer ID of this customer 
-     * @return int customer Id
+     * Gets <code>customerID</code> of this <code>Customer</code> 
+     * @return <code>int</code> customer Id
      */
     public int getCustomerID()
     {
@@ -162,8 +162,8 @@ public class Customer {
 
     
     /** 
-     * Gets total number of pax eating with this customer at the restaurant, including customer
-     * @return int total number of pax
+     * Gets total number of <code>pax</code> for this reservation
+     * @return <code>int</code>  <code>pax</code>
      */
     public int getPax()
     {
@@ -172,8 +172,8 @@ public class Customer {
 
     
     /** 
-     * Gets membership status of the customer
-     * @return boolean true if member, else false
+     * Gets membership status of this <code>Customer</code>
+     * @return <code>boolean</code> true if member, else false
      */
     public boolean isMember()
     {
@@ -181,7 +181,7 @@ public class Customer {
     }
 
     /** 
-     * Displays the customers details along with their reservation details
+     * Displays this customers details along with their reservation details
      */
     public void print_customer()
     {
@@ -204,8 +204,8 @@ public class Customer {
     }
     
     /** 
-     * Displays the customer's invoice and returns a success value 
-     * @return int 1 if invoice successfully printed, and -1 if there is no order created and thus no invoice
+     * Displays this customer's invoice and returns a success value 
+     * @return <code>int</code> 1 if invoice successfully printed, and <code>int</code> -1 if there is no <code>Order</code> created and thus no invoice
      */
     public int print_invoice()
     {

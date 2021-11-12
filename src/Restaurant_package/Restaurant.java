@@ -4,7 +4,7 @@ import Reservation_package.Customer;
 import Reservation_package.Table;
 
 /** 
- * Restaurant class that stores all reservation information at all timeslots and tables
+ * <code>Restaurant</code> class that stores all reservation information at all timeslots and tables
  * @author DSAI1 ASSIGNMENT GROUP 3
  * @version 1.0
  */
@@ -21,7 +21,7 @@ public class Restaurant {
                                     "20:00 - 22:00"}; //Timeslots of the restaurant (fixed)
                                     
     /** 
-     * Restaurant object constructor, initialises all tables and timeslots to be empty
+     * <code>Restaurant</code> object constructor, initialises all tables and timeslots to be empty
      */
     public Restaurant(){
         //constructor -- this creates a restaurant from scratch
@@ -39,8 +39,8 @@ public class Restaurant {
 
     
     /** 
-     * Gets array of Table objects in the restaurant 
-     * @return Table[] of size 10, indexes correspond to (table Id - 1) 
+     * Gets <code>Array</code> of <code>Table</code> objects in this <code>Restaurant</code> 
+     * @return <code>Table[]</code> of size 10, indexes correspond to (table Id - 1) 
      */
     public static Table[] getTables(){
         return tables; 
@@ -48,15 +48,15 @@ public class Restaurant {
 
     
     /** 
-     * Gets array of Strings of fixed timeslots in the restaurant, opening at 10:00 and closing at 22:00
-     * @return String[] of size 6, each string has format "XX:00 - YY:00" where XX and YY represent hours in a day and are 2 hours apart
+     * Gets <code>Array</code> of <code>Strings</code> of fixed timeslots in this <code>Restaurant</code>, opening at 10:00 and closing at 22:00
+     * @return <code>String[]</code> of size 6, each string has format "XX:00 - YY:00" where XX and YY represent hours in a day and are 2 hours apart
      */
     public static String[] getTimeSlots(){
         return timeslots; 
     }
 
     /** 
-     * Displays the timeslots the restaurant offers
+     * Displays the timeslots this restaurant offers
      */
     public static void printTimeSlots(){
         System.out.println("-------Timeslots------");
@@ -68,9 +68,9 @@ public class Restaurant {
 
     
     /** 
-     * Checks if a specific timeslot has been fully booked across all tables
-     * @param time index of timeslot to be checked
-     * @return boolean true if all tables are reserved at that time, else false
+     * Checks if a specific timeslot has been fully booked across all tables in this <code>Restaurant</code>
+     * @param time <code>int</code> index of timeslot to be checked
+     * @return <code>boolean</code> true if all tables are reserved at that time, else false
      */
     public static boolean checkTimeslotFullyBooked(int time){
         int timeIndex = time-1; 
@@ -89,8 +89,8 @@ public class Restaurant {
 
     
     /** 
-     * Displays table availability acc
-     * @param time
+     * Displays table availability across all tables for a specific timeslot
+     * @param time <code>int</code> index of timeslot to be checked
      */
     public static void printTableAvailabilityByTime(int time){
         int timeIndex = time-1; 
@@ -109,7 +109,8 @@ public class Restaurant {
     }
     
     /** 
-     * @param table
+     * Displays table availability across all timeslots for a specific table
+     * @param table <code>int</code> ID of <code>Table</code> to be checked
      */
     public static void printTableAvailabilityByTable(int table){
         System.out.printf("\nFor table %d : \n", table); 

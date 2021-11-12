@@ -29,7 +29,7 @@ import Restaurant_package.Restaurant;
 // Except for when adding in new report, because we need to calculate by taking Item.price * quantity
 
 /** 
- * DailySaleReport class that stores one day's worth of orders
+ * <code>DailySaleReport</code> class that stores one day's worth of orders
  */
 public class DailySaleReport { 
 
@@ -59,10 +59,10 @@ public class DailySaleReport {
       //for easier referencing in the method functions
 
     /** 
-     * Constructor for reading in past reports from csv, with parameters
-     * @param dailyTotal double of total revenue in a day
-     * @param dailyDiscount double of total discounts given in said day
-     * @param map Map of Strings of item name as keys, and quantity/revenue of said item sold as values
+     * <code>DailySaleReport</code> constructor for reading in past reports from csv, with parameters
+     * @param dailyTotal <code>double</code> of total revenue in a day
+     * @param dailyDiscount <code>double</code> of total discounts given in said day
+     * @param map <code>Map</code> of <code>String: int</code> with item name as keys, and quantity/revenue of said item sold as values
      * @param date date of this sales report  
      */
     public DailySaleReport(double dailyTotal, double dailyDiscount, Map<String, List<Double>> map, String date)
@@ -76,7 +76,7 @@ public class DailySaleReport {
     }
 
     /** 
-     * Constructor for new daily sales report (ie. today's sales)
+     * <code>DailySaleReport</code> constructor for new daily sales report (ie. today's sales)
      */
     public DailySaleReport(){
         
@@ -89,8 +89,8 @@ public class DailySaleReport {
 
     
     /** 
-     * Gets the date of this daily sale report
-     * @return String date of this report
+     * Gets the date of this <code>DailySaleReport</code>
+     * @return <code>String</code> date of this report
      */
     public String getDate(){
         return this.date;
@@ -98,8 +98,8 @@ public class DailySaleReport {
 
     
     /** 
-     * Gets the daily total revenue of this sale report
-     * @return double revenue from this day's sales
+     * Gets the daily total revenue of this <code>DailySaleReport</code>
+     * @return <code>double</code> revenue from this day's sales
      */
     public double getDailyTotal(){
         return this.dailyTotal;
@@ -107,8 +107,8 @@ public class DailySaleReport {
 
     
     /** 
-     * Gets total discount given in this sale report
-     * @return double total discounts given in this day's sales
+     * Gets total discount given in this <code>DailySaleReport</code>
+     * @return <code>double</code> total discounts given in this day's sales
      */
     public double getDiscountTotal(){
         return this.dailyDiscount;
@@ -116,8 +116,8 @@ public class DailySaleReport {
 
     
     /** 
-     * Gets the Map of item names and their quantities sold
-     * @return Map<String, List<Double>> with item name as keys and List of doubles
+     * Gets the <code>Map</code> of item names and their quantities sold in this <code>DailySaleReport</code>
+     * @return <code>Map</code> with item name as keys and List of quantity sold/revenue as valeus
      */
     public Map<String, List<Double>> getMap(){
         return this.map;
@@ -207,7 +207,7 @@ public class DailySaleReport {
     }
     
     /** 
-     * Appends new day's sales report to a csv containing all sales reports
+     * Appends a new day's sales report to a csv containing all sales reports
      */
     public void writeReportToCSV(){ //writes to the csv file
         try{

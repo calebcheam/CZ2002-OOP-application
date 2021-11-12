@@ -25,8 +25,8 @@ public class OrderManager {
     
     /** 
      * Creates an <code>Order</code> at an already reserved timeslot and <code>Table</code>
-     * @param tableId <code>Table</code> number this <code>Order</code> is assigned to
-     * @param timeslot Timeslot for the respective <code>Table</code>
+     * @param tableId <code>int</code> table ID this <code>Order</code> is assigned to
+     * @param timeslot <code>int</code> timeslot for the respective <code>Table</code>
      */
 
     private static void createOrderGivenReservation(int tableId, int timeslot){
@@ -186,8 +186,8 @@ public class OrderManager {
 
     
     /** Prompts user to create an <code>Order</code> at a reserved slot, if one has not already been created
-     * @param tableId <code>Table</code> number the <code>Order</code> is for
-     * @param timeslot Timeslot for the respective <code>Table</code>
+     * @param tableId <code>int</code> table ID the <code>Order</code> is for
+     * @param timeslot <code>int</code> timeslot for the respective <code>Table</code>
      */
     private static void promptNewOrder(int tableId, int timeslot){
         System.out.println("Order does not exist for this customer. Would you like to create a new order now?");
@@ -230,8 +230,8 @@ public class OrderManager {
     
     /** 
      * Displays <code>Order</code> made at specific timeslot and <code>Table</code>
-     * @param tableId <code>Table</code> number the order is for
-     * @param timeslot Timeslot for the respective <code>Table</code>
+     * @param tableId <code>int</code> table ID the order is for
+     * @param timeslot <code>int</code> timeslot for the respective <code>Table</code>
      */
     private static void displayOrder(int tableId, int timeslot)
     {
@@ -304,8 +304,8 @@ public class OrderManager {
     
     /** 
      * Checks if <code>Order<code> and reservation exists at a specific <code>Table</code> and timeslot
-     * @param tableId <code>Table</code> number the order is for
-     * @param timeslot Timeslot for the respective <code>Table</code>
+     * @param tableId <code>int</code> table ID the order is for
+     * @param timeslot <code>int</code> timeslot for the respective <code>Table</code>
      * @return <code>int</code> 1 if both exist, <code>int</code> -1 if reservation exists with no <code>Order</code> and <code>int</code> -2 if neither exists
      */
     private static int checkIfOrderExists(int tableId, int timeslot){

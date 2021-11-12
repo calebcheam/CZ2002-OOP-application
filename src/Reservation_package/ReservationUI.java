@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 
 /**
- * ReservationUI class that links user and reservation manager
+ * <code>ReservationUI</code> class that links user and <code>ReservationManager</code>
  * @author DSAI1 ASSIGNMENT GROUP 3
  * @version 1.0
  */
@@ -14,18 +14,18 @@ import java.util.Scanner;
 public class ReservationUI {
     
     /**
-     * ArrayList of options to be displayed to user
+     * <code>ArrayList</code> of options to be displayed to user
      */
     private static ArrayList<String> options=new ArrayList<String>(Arrays.asList("Create new Reservation","Delete Reservation","View Reservations","Check Bill"));
     /**
-     * Scanner used for user input
+     * <code>Scanner</code> used for user input
      */
     private static Scanner sc=new Scanner(System.in); 
     
     
 
     /** 
-     * Starts the ReservationUI and displays user options
+     * Starts the <code>ReservationUI</code> and displays user options
      */
     public static void start()
     {
