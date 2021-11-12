@@ -6,30 +6,30 @@ import java.util.Scanner;
 import java.util.Set;
 
 /**
- * Order class that contains all ordered items for a specific customer, table and timeslot
+ * <code>Order</code> class that contains all ordered items for a specific customer, table and timeslot
  * Also includes date of order creation and handler staff name 
  * @author DSAI1 ASSIGNMENT GROUP 3
  * @version 1.0
  */
 public class Order {
     /**
-     * HashMap containing ordered Item objects and quantities
+     * <code>HashMap</code> containing ordered <code>Item</code> objects and quantities
      */
     protected HashMap<Item, Integer> orders=new HashMap<Item,Integer>();
     /**
-     * Date the order was created
+     * Date this <code>Order</code> was created
      */
     private String date;
     /**
-     * Name of staff handling order
+     * Name of staff handling this <code>Order</code>
      */
     private String staffName;
     /**
-     * Scanner used for user input
+     * <code>Scanner</code> used for user input
      */
     private Scanner sc = new Scanner(System.in);
     /** 
-     * Order constructor that prompts for name of staff handling the order
+     * <code>Order</code> constructor that prompts for name of staff handling this order
      */
     public Order()
     {
@@ -41,8 +41,8 @@ public class Order {
 
     
     /** 
-     * Gets the date that the order was created 
-     * @return String of date the order was created
+     * Gets the date that this order was created 
+     * @return <code>String</code> of date this <code>Order</code> was created
      */
     public String getDate(){
         return this.date; 
@@ -50,8 +50,8 @@ public class Order {
 
     
     /** 
-     * Gets the name of the staff handling the order
-     * @return String of staff name that handles order
+     * Gets the name of the staff handling this <code>Order</code>
+     * @return <code>String</code> of staff name that handles this <code>Order</code>
      */
     public String getStaff()
     {
@@ -60,8 +60,8 @@ public class Order {
 
     
     /** 
-     * Gets the HashMap of all ordered items
-     * @return HashMap of all ordered items
+     * Gets the <code>HashMap</code> of all ordered <code>Item</code> objects and their quantities
+     * @return <code>HashMap</code> of <code>Item</code> : quantity 
      */
     public HashMap<Item, Integer> getOrderedItems()
     {
@@ -70,9 +70,9 @@ public class Order {
 
     
     /** 
-     * Sets quantity of each Menu item in the HashMap
-     * @param item Item object 
-     * @param quantity Quantity of item object
+     * Sets quantity of each menu <code>Item</code> in this <code>Order</code>
+     * @param item <code>Item</code> object to be set
+     * @param quantity Quantity of <code>Item</code> object to be set
      */
     public void setOrders(Item item, Integer quantity)
     {
@@ -87,8 +87,8 @@ public class Order {
 
     
     /** 
-     * Gets an ArrayList of strings of all ordered item names
-     * @return ArrayList of names of ordered items
+     * Gets an <code>ArrayList</code> of all ordered <code>Item</code> names
+     * @return <code>ArrayList</code> of <code>String</code> names of ordered items
      */
     public ArrayList<String> getOrderedItemsNames(){
         Set<Item> items = this.getOrderedItems().keySet();
@@ -117,8 +117,8 @@ public class Order {
     
     
     /** 
-     * Gets the total price of order before tax and discounts (if any)
-     * @return float of raw untaxed and undiscounted price of items
+     * Gets the total price of this <code>Order</code> before tax and discounts (if any)
+     * @return <code>float</code> of raw untaxed and undiscounted price of this <code>Order</code>
      */
     public float totalPrice()
     {
@@ -132,8 +132,8 @@ public class Order {
 
     
     /** 
-     * Gets the total price after both tax and member discount (10%)
-     * @return double of price of items taxed and with member discount (10%)
+     * Gets the total price of this <code>Order</code> after both tax and member discount (10%)
+     * @return <code>double</code> of price of this <code>Order</code> taxed and with member discount (10%)
      */
     public double memberGstTotal()
     {
@@ -142,8 +142,8 @@ public class Order {
 
     
     /**
-     * Gets total price after tax, without discount 
-     * @return double of price of items, taxed without member discount
+     * Gets total price of this <code>Order</code> after tax, without discount 
+     * @return <code>double</code> of price of items, taxed without member discount
      */
     public double nonMemberGstTotal()
     {
@@ -151,7 +151,7 @@ public class Order {
     }
 
     /** 
-     * Prints invoice if non-member (no discount)
+     * Prints invoice of this <code>Order</code> if non-member (no discount)
      */
     public void printInvoiceRaw()
     {
@@ -175,7 +175,7 @@ public class Order {
     }
 
     /** 
-     * Prints invoice if member (10% discount)
+     * Prints invoice of this <code>Order</code> if member (10% discount)
      */
     public void printInvoiceMember()
     {

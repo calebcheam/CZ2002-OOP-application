@@ -5,7 +5,8 @@ import java.util.Arrays;
 
 
 /** 
- * OrderUI that links user to order manager
+ * <code>OrderUI</code> that links user to <code>OrderManager</code>
+ * @see OrderManager
  * @author DSAI1 ASSIGNMENT GROUP 3
  * @version 1.0
  */
@@ -13,16 +14,16 @@ import java.util.Arrays;
 public class OrderUI {
     
     /**
-     * ArrayList of user options to be displayed
+     * <code>ArrayList</code> of user options to be displayed
      */
     private static ArrayList<String> options=new ArrayList<>(Arrays.asList("Create new order","Edit existing order","View existing order"));
     /**
-     * Scanner used for user input
+     * <code>Scanner</code> used for user input
      */
     private static Scanner sc=new Scanner(System.in);
 
     /** 
-     * Starts the OrderUI and displays user options
+     * Starts the <code>OrderUI</code> and displays user options
      */
     public static void start()
     {

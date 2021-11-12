@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /** 
- * OrderManager class that handles all order related activities, including order creating, editing and viewing
+ * <code>OrderManager</code> class that handles all <code>Order</code> related activities, including order creating, editing and viewing
  * @see Order
  * @author DSAI1 ASSIGNMENT GROUP 3
  * @version 1.0
@@ -18,15 +18,15 @@ import java.util.Scanner;
 public class OrderManager {
     
     /**
-     * Scanner used for user input
+     * <code>Scanner</code> used for user input
      */
     private static Scanner sc=new Scanner(System.in);
     
     
     /** 
-     * Creates an order at an already reserved timeslot and table
-     * @param tableId Table number the order is assigned to
-     * @param timeslot Timeslot for the respective table
+     * Creates an <code>Order</code> at an already reserved timeslot and <code>Table</code>
+     * @param tableId <code>Table</code> number this <code>Order</code> is assigned to
+     * @param timeslot Timeslot for the respective <code>Table</code>
      */
 
     private static void createOrderGivenReservation(int tableId, int timeslot){
@@ -78,8 +78,8 @@ public class OrderManager {
     }
 
     /** 
-     * Creates an Order object, this method prompts user for specific timeslot and table the order is assigned to
-     * Notifies user if order already exists
+     * Creates an <code>Order</code> object, this method prompts user for specific timeslot and <code>Table</code> the order is assigned to.
+     * Notifies user if an <code>Order</code> already exists at this slot
      */
 
     public static void createOrder() // gonna need table id and timeslot
@@ -116,7 +116,7 @@ public class OrderManager {
     }
 
     /** 
-     * Edits an existing Order object, this method prompts user for specific timeslot and table to access specific order
+     * Edits an existing <code>Order</code>, this method prompts user for specific timeslot and <code>Table</code> to access specific <code>Order</code>
      */
     public static void editOrder() //add and remove
     {
@@ -185,9 +185,9 @@ public class OrderManager {
     }   
 
     
-    /** Prompts user to create an order at a reserved slot, if order has not already been created
-     * @param tableId Table number the order is for
-     * @param timeslot Timeslot for the respective table
+    /** Prompts user to create an <code>Order</code> at a reserved slot, if one has not already been created
+     * @param tableId <code>Table</code> number the <code>Order</code> is for
+     * @param timeslot Timeslot for the respective <code>Table</code>
      */
     private static void promptNewOrder(int tableId, int timeslot){
         System.out.println("Order does not exist for this customer. Would you like to create a new order now?");
@@ -199,7 +199,7 @@ public class OrderManager {
     }
    
     /** 
-     * Views an order, this method prompts user for specific timeslot and table to access the order
+     * Views an <code>Order</code>, this method prompts user for specific timeslot and <code>Table</code> to access the <code>Order</code>
      */
     public static void viewOrder(){
         System.out.println("===================== VIEW EXISTING ORDER =====================");
@@ -229,9 +229,9 @@ public class OrderManager {
 
     
     /** 
-     * Displays order made at specific timeslot and table
-     * @param tableId Table number the order is for
-     * @param timeslot Timeslot for the respective table
+     * Displays <code>Order</code> made at specific timeslot and <code>Table</code>
+     * @param tableId <code>Table</code> number the order is for
+     * @param timeslot Timeslot for the respective <code>Table</code>
      */
     private static void displayOrder(int tableId, int timeslot)
     {
@@ -245,8 +245,8 @@ public class OrderManager {
 
     
     /** 
-     * Adds an item and its quantityn from Menu to a specific order object
-     * @param order Order the item is to be added to
+     * Adds a new <code>Item</code> and its quantity to a specific <code>Order</code> object
+     * @param order <code>Order</code> that the <code>Item</code> is to be added to
      */
     private static void addNewItemToOrder(Order order){
         Item item = MenuManager.orderItemfromMenu();
@@ -258,8 +258,8 @@ public class OrderManager {
 
     
     /** 
-     * Changes item quantities within a specific order
-     * @param order Order that is to be updated
+     * Changes <code>Item</code> quantities within a specific <code>Order</code>
+     * @param order <code>Order</code> that is to be updated
      */
     private static void updateItemQty(Order order){
         order.viewOrders();
@@ -303,10 +303,10 @@ public class OrderManager {
 
     
     /** 
-     * Checks if order and reservation exists at a specific table and timeslot
-     * @param tableId
-     * @param timeslot
-     * @return int 1 if both exist, -1 if reservation exists with no order and -2 if neither exists
+     * Checks if <code>Order<code> and reservation exists at a specific <code>Table</code> and timeslot
+     * @param tableId <code>Table</code> number the order is for
+     * @param timeslot Timeslot for the respective <code>Table</code>
+     * @return <code>int</code> 1 if both exist, <code>int</code> -1 if reservation exists with no <code>Order</code> and <code>int</code> -2 if neither exists
      */
     private static int checkIfOrderExists(int tableId, int timeslot){
 
