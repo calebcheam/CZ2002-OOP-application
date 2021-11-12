@@ -46,7 +46,7 @@ public class DailySaleReport {
      */
     private Map<Item, Integer> tempMap; 
     /** 
-     * Total quantity sold by item 
+     * Total quantity sold by item as well as total revenue from those sales
      */
     private Map<String, List<Double>> map;
     /** 
@@ -62,7 +62,7 @@ public class DailySaleReport {
      * Constructor for reading in past reports from csv, with parameters
      * @param dailyTotal double of total revenue in a day
      * @param dailyDiscount double of total discounts given in said day
-     * @param map Map of item name and quantity of said item sold
+     * @param map Map of Strings of item name as keys, and quantity/revenue of said item sold as values
      * @param date date of this sales report  
      */
     public DailySaleReport(double dailyTotal, double dailyDiscount, Map<String, List<Double>> map, String date)
@@ -171,7 +171,7 @@ public class DailySaleReport {
     }
 
     /** 
-     * idrk whats going on here but since its private maybe dunneed do
+     * Converts data from tempMap of a single day's Item objects and respective quantities sold to a csv readable format of Strings and doubles
      */
     private void tempMapToMap(){
         //degen way; converting map with Items to <String, List<Double>>
