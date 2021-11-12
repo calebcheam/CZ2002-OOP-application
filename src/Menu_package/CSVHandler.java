@@ -11,14 +11,24 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+/**
+ * This class handles all proccesses that relating to the csv file provided (with information of all Menu Items and Set)
+ * This class reads and creates Items objects from the csv file. It also edits the csv file itself when Items needs to be added or deleted permanently.
+ * @author DSAI1 ASSIGNMENT GROUP 3
+ * @version 1.0
+ */
 public class CSVHandler {
 
+    /**
+     * Constructor for this class
+     */
     public CSVHandler(){};
 
     
     /** 
-     * @param csvLine
-     * @return Item
+     * Creates and returns Item object, with attributes information extracted from a single row, from the csv file provided (with information of all Menu Items and Set)
+     * @param csvLine String representing the single row in the csv file, where values are separated by commas
+     * @return Item New Item object, created using the single row in the csv file
      */
     public Item createItem(String csvLine){
         //Create an Item object using the csv values
@@ -34,6 +44,7 @@ public class CSVHandler {
 
     
     /** 
+     * 
      * @param path
      * @param friendLine
      * @return int
@@ -253,6 +264,7 @@ public class CSVHandler {
     }
     
     /** 
+     * 
      * @param item
      * @param path
      * @param friendLine
@@ -279,9 +291,20 @@ public class CSVHandler {
 
     
     /** 
-     * @param descriptionString
-     * @param type
-     * @return ArrayList<String>
+     * Creates and returns ArrayList of String, where each String represents a part of an Item description.
+     *
+     * The ArrayList is created by splitting the String that contains the description of the Item.
+     * If the description comes from a Item under the Set category, the description String is splitted into 7 parts. 
+     * 1st to 6th parts are Item name and description from Appetiser, Main Course, Dessert respectively,
+     * and 7th part is the Item name of drink Item. There is no description for Items in Drink category as its name is self-explanatory.
+     * Hence, ArrayList size for an Item under Set Category is always fixed.
+     *
+     * If the description comes from a Item not under the Set category, the description String is splitted by " + ".
+     * Unlike the Item under the Set Category, the description ArraySize of the Item is not fixed. It can have any size, i.e. description can have 6 parts, 1 parts, etc
+     *
+     * @param descriptionString String that contains the description of the Item
+     * @param type Item Type of the described Item
+     * @return ArrayList<String> ArrayList of String, where each String represents a part of an Item description.
      */
     public ArrayList<String> splitDescription(String descriptionString, String type){
         //Create ArrayList to return at the end
