@@ -36,9 +36,9 @@ public class Item {
 
     
     /** 
-     * Returns String of this class's attributes, where attributes are separated by commas
-     * This class's description ArrayList is converted to String by inserting "With " at the start of the string, followed by the elements of the ArrayList, each separated by " + ".
-     * @return String String of Item attributes, separated by commas
+     * Returns <code>String</code> of this class's attributes, where attributes are separated by commas
+     * This class's description <code>ArrayList</code> is converted to <code>String</code> by inserting "With " at the start of the string, followed by the elements of the ArrayList, each separated by " + ".
+     * @return <code>String</code> of <code>Item</code> attributes, separated by commas
      */
     public String AlaCarteToCSVString(){
         String descriptionString = "";

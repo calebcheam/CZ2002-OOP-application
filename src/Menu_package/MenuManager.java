@@ -7,7 +7,7 @@ import Menu_package.Menus.AlaCarteMenu;
 import Menu_package.Menus.GenericMenu;
 import Menu_package.Menus.PromoMenu;
 /**
- * MenuManager class to implement methods needed for the menu interface
+ * <code>MenuManager</code> class to implement methods needed for the menu interface
  * @author DSAI1 ASSIGNMENT GROUP 3
  * @version 1.0
  */
@@ -35,7 +35,7 @@ public class MenuManager {
     }
 
     /**
-     *  for viewMenu() function, after the user chooses a menu to display, user needs to choose if they want to view all or one categories.
+     *  for <code>viewMenu()<code> function, after the user chooses a menu to display, user needs to choose if they want to view all or one categories.
      */
     private static void subMenuSelection(){
         if (Menu.getNumofCategories()==1) {
@@ -56,7 +56,7 @@ public class MenuManager {
     }
    /** 
      * returns index of category chosen by the user
-     * @return index integer of category selected
+     * @return index <code>integer</code> of category selected
      */
     private static int selectCategory(){
         System.out.println("=================== MENU CATEGORY SELECTION ====================");
@@ -95,7 +95,7 @@ public class MenuManager {
     
    /** 
      * user is asked to input the choice of the type of menu in which the item is from
-     * @return Item that user chooses from either the Ala Carte or Promotional Menu
+     * @return <code>Item</code> that user chooses from either the Ala Carte or Promotional Menu
      */
     public static Item orderItemfromMenu(){
         System.out.println("Which menu would you like to order from?");
@@ -116,8 +116,8 @@ public class MenuManager {
        return orderedItem;
     }
    /** 
-     * returns Item from Ala Carte Menu after user inputs the item number
-     * @return Item from Ala Carte Menu
+     * returns <code>Item</code> from Ala Carte Menu after user inputs the item number
+     * @return <code>Item</code> from Ala Carte Menu
      */
     private static Item selectAlaCarteItemFromMenu(){
         int categorySelectedIndex = selectCategory();
@@ -130,9 +130,9 @@ public class MenuManager {
     }
     /** 
      * The index of category selected by the user is passed in where the user is asked to input the subcategory the item is from
-     * @param categorySelectedIndex index of category selected 
+     * @param categorySelectedIndex <code>int</code> index of category selected 
      * returns the index of the subcategory the item is from
-     * @return index of subcategory selected
+     * @return <code>int</code> index of subcategory selected
      */
     private static int selectSubCategory(int categorySelectedIndex){
        
@@ -147,9 +147,9 @@ public class MenuManager {
     }
     /** 
      * the methods checks whether the item type the user has input is valid and exists
-     * @param typeInput type of item that user has input
+     * @param typeInput <code>String</code> type of item that user has input
      * returns Invalid if item type is invalid or returns the item type if it exists
-     * @return Invalid or the item's type
+     * @return <code>String<code> "Invalid" or the item's type
      */
     private static String verifyItemTypeCategory(String typeInput){
         String typeCategory = Menu.findItemTypeCategory(typeInput);
@@ -172,9 +172,9 @@ public class MenuManager {
     }
     /** 
      * checks whether string that is passed in is a valid type or invalid
-     * @param typeInput type of item that user has input
+     * @param typeInput <code>String</code> type of item that user has input
      * returns the item type category if it exists or else it returns "Invalid" to indicate that the item type category does not exist
-     * @return item type category or Invalid
+     * @return item type category or <code>String</code> Invalid
      */
     private static String newItemTypeCategory(String typeInput){
         if (typeInput=="Invalid") {
@@ -268,9 +268,9 @@ public class MenuManager {
     
    /** 
      * passes in the name of the new set item
-     * @param name name of new set item
+     * @param name <code>String</code> name of new set item
      * user is prompted to add description for new set item and returns the description of it
-     * @return returns description of new set item
+     * @return <code>String</code> description of new set item
      */
     private static String newSetItemDescription(String name){
         System.out.printf("Enter description for the item, %s: ", name);
@@ -295,9 +295,9 @@ public class MenuManager {
     }
    /**
      * passes in the name of the new menu item
-     * @param name name of new menu item
+     * @param name <code>String</code> name of new menu item
      * user is prompted to add description for new item and returns the description of it
-     * @return returns description of the new item 
+     * @return <code>String</code> description of the new item 
      */
     private static ArrayList<String> newItemDescription(String name){
         System.out.println("Enter description for the item "+ name + " : ");
