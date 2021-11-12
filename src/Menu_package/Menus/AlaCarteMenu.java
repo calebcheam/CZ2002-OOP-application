@@ -12,6 +12,8 @@ import Menu_package.MenuItemCategoryTypes;
 
 /**This class prints the Ala Carte Menu and handles processes that involves Items of the Ala Carte Menu.
  * This class creates 3 ArrayLists of Item objects that contains Item objects of Item Category of "Main Course", "Dessert", and "Drink" respectively. 
+ * @author DSAI1 ASSIGNMENT GROUP 3
+ * @version 1.0
  */
 public class AlaCarteMenu extends GenericMenu{
 
