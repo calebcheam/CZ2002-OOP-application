@@ -10,6 +10,8 @@ import Menu_package.MenuItemCategoryTypes;
  * Abstract class for sub classes that handles operation relating to different types of Menu Items.
  * @see Menus.AlaCarteMenu
  * @see Menus.PromoMenu
+ * @author DSAI1 ASSIGNMENT GROUP 3
+ * @version 1.0
  */
 public abstract class GenericMenu {
     protected MenuItemCategoryTypes menuCategories;
