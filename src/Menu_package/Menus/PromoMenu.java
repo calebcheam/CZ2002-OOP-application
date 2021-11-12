@@ -12,6 +12,8 @@ import Menu_package.MenuItemCategoryTypes;
 
 /**
  * Subclass of GenericMenu, that specifically handles operation relating to Menu Items under the Set category
+ * @author DSAI1 ASSIGNMENT GROUP 3
+ * @version 1.0
  */
 public class PromoMenu extends GenericMenu{
 
