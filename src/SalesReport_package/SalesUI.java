@@ -5,6 +5,12 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 
+/**
+ * <code>SalesUI</code> class that links user to the <code>SaleReports</code>
+ * @see SaleReports
+ * @author DSAI1 ASSIGNMENT GROUP 3
+ * @version 1.0
+ */
 
 public class SalesUI {
     
@@ -15,6 +21,9 @@ public class SalesUI {
     private static ArrayList<String> options=new ArrayList<>(Arrays.asList("View Today's Sales Report","Save Today's Report to Records","View previous All Sales Reports separately","View previous Sales Report (One day)","View previous Sales Report (All days summed up)","View previous Sales Report (Over a period)"));
     private static Scanner sc=new Scanner(System.in);
 
+    /** 
+     * Starts the <code>SalesUI</code> and displays user options
+     */
     public static void start()
     {
         int choice;
@@ -86,6 +95,11 @@ public class SalesUI {
         } while (choice!=-1); 
     }
 
+    
+    /** 
+     * Displays the dates of each sales report
+     * @param startIndex
+     */
     private static void printDates(int startIndex){
         if (startIndex==dates.length-1) return;
         for (int i=startIndex; i<dates.length; i++){
@@ -93,6 +107,9 @@ public class SalesUI {
         }
     }
 
+    /** 
+     * Refreshes and updates the sales reports to include all sales made up to point of refresh
+     */
     private static void refreshSR(){
         SR = new SaleReports(); 
         dates = SR.getReportDates();

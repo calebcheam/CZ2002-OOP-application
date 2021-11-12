@@ -4,13 +4,24 @@ import java.util.Scanner;
 
 import Restaurant_package.Restaurant;
 
-
+/** 
+* <code>ReservationManager</code> class that handles all reservation related actions such as creating, removing and viewing reservations
+* @author DSAI1 ASSIGNMENT GROUP 3
+* @version 1.0
+*/
 public class ReservationManager {
 
-    
-   private static Scanner sc=new Scanner(System.in); //scanner attribute to read things;
+    /**
+     * <code>Scanner</code> used for user input
+     */
+   private static Scanner sc=new Scanner(System.in); 
 
 
+   
+   /** 
+    * Creates a <code>Customer</code> with all necessary details for reservation
+    * @return <code>Customer</code> to be allocated a reservation
+    */
    public static Customer createCustomer(){
         
         while (true)
@@ -48,7 +59,9 @@ public class ReservationManager {
         }
     }
 
-
+   /** 
+    * Assigns a <code>Customer</code> to requested <code>Table</code> and timeslot subject to pax and availability
+    */
     public static void createReservation (){
         
         Customer customer = createCustomer();
@@ -95,7 +108,9 @@ public class ReservationManager {
         // need to minus one because the method from Table class takes in the index itself
         
     }
-
+   /** 
+    * Removes a reservation at selected time and table after prompting user for selection
+    */
     public static void removeReservation (){
 
         System.out.println("=====================\nSelect timeslot : ");
@@ -112,8 +127,10 @@ public class ReservationManager {
         // need to minus one because the method from Table class takes in the index itself
 
     }
-
-    public static void checkbill()
+   /** 
+    * Attempts to print the invoice of a <code>Customer</code> at selected timeslot and table. If no reservation or order is present, the user is notified. Else, the invoice is printed and the timeslot is vacated.
+    */
+    public static void checkBill()
     {
         System.out.println("=====================\nSelect timeslot : ");
 
@@ -124,7 +141,10 @@ public class ReservationManager {
 
         System.out.println("=====================\nSelect table : ");
         int tableChoice = Integer.parseInt(sc.nextLine());
+<<<<<<< HEAD
         //sc.nextLine();
+=======
+>>>>>>> 32cafeeae3a4e5b2523b810370080f0f9fcb8676
         try {
             int check = Restaurant.getTables()[tableChoice-1].getCustomerAtTime(time-1).print_invoice();
             if (check==1){
@@ -139,7 +159,9 @@ public class ReservationManager {
 
     }
 
-
+   /** 
+    * Displays table and timeslot availability
+    */
     public static void viewTableAvailability(){
         System.out.println("View by : \n(1) Timeslot \n(2) Table \n(3) All");
         int choice = Integer.parseInt(sc.nextLine());

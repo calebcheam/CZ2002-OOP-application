@@ -1,15 +1,17 @@
 package Menu_package;
 import java.util.Scanner;
-
-
-
-
+/**
+  * Interface where user can decide what to do with the menu and its items
+  * @author DSAI1 ASSIGNMENT GROUP 3
+  * @version 1.0
+  */
 public class MenuUI {
 	
 	 
 	private static Scanner sc = new Scanner(System.in);
-	
-	
+	/**
+	 * Starts running the menu interface where user needs to input the choice of what they want the application to do	 
+	 */	
 	public static void start() {
 		int choice;
 		do {

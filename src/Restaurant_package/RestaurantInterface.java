@@ -10,20 +10,29 @@ import Order_package.OrderUI;
 import Reservation_package.ReservationUI;
 import SalesReport_package.SalesUI;
 
+/** 
+ * <code>RestaurantInterface</code> boundary class that is the main convenor between user and the app
+ * @author DSAI1 ASSIGNMENT GROUP 3
+ * @version 1.0
+ */
 
 public class RestaurantInterface {
     ArrayList<String> options;
     Scanner sc; 
-    Restaurant restaurant=new Restaurant();
     
 
-
+    /** 
+     * Starts the app and displays user options
+     * Also executes <code>Refresh</code> thread that fetches system time periodically for the auto-expiry/removal of reservations
+     * @see Refresh
+     */
     public void Start(){
         
 
         int choice;
         this.sc = new Scanner(System.in); //scanner attribute to read things
         this.options = new ArrayList<String>(); //options for functions staff can use
+        Restaurant.createTables();
 
         // Menu Actions
         options.add("Menu actions");
@@ -84,6 +93,11 @@ public class RestaurantInterface {
     }
 
 
+    
+    /** 
+     * <code>Main</code> method to run the app.
+     * @param args
+     */
     public static void main (String[] args){
         RestaurantInterface restaurantApp = new RestaurantInterface();
         restaurantApp.Start();

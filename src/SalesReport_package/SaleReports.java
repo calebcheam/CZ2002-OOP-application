@@ -9,10 +9,35 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * <code>SaleReports</code> class that contains collection of <code>DailySaleReport</code> objects and their respective dates.
+ * Handles sales information related activities.
+ * @see DailySaleReport
+ * @author DSAI1 ASSIGNMENT GROUP 3
+ * @version 1.0
+ */
+
 public class SaleReports {
     private ArrayList<DailySaleReport> salereports;
     private String[] dates; 
 
+    /** 
+     * <code>SaleReports</code> constructor, initialises collection of <code>DailySaleReports</code> and their dates by reading from csv
+     * @see #readReportsFromCSV()
+     */
+    public SaleReports(){
+        this.salereports = new ArrayList<DailySaleReport>(); 
+        this.readReportsFromCSV();
+
+        this.dates = new String[salereports.size()]; 
+       for (int i=0; i<dates.length; i++){
+           dates[i] = salereports.get(i).getDate(); 
+       }
+    }
+
+    /** 
+     * Displays sales reports for all days recorded
+     */
     public void printAllReports(){
         
         for (DailySaleReport dailySaleReport : salereports) {
@@ -20,6 +45,11 @@ public class SaleReports {
         }
     }
 
+    
+    /** 
+     * Displays the sales report for a specified date
+     * @param date <code>String</code> of date to be passed in, in the format "2021-11-03"
+     */
     public void printOneReport(String date){
         for (DailySaleReport dsr : salereports) {
             if (dsr.getDate().equals(date)){
@@ -28,10 +58,21 @@ public class SaleReports {
         } 
     }
 
+   
+   /** 
+    * Gets <code>Array</code> of dates for all sales reports
+    * @return <code>String[]</code> of dates of all sales reports made to date
+    */
    public String[] getReportDates(){
     return this.dates; 
    }
 
+   
+   /** 
+    * Displays sales reports within a specified time period, with the start and end inclusive
+    * @param start <code>int</code> index of start date to be printed from
+    * @param end <code>int</code> index of end date to be printed from
+    */
    public void printSomeReports(int start, int end){
        String date = this.dates[start] + " to " + this.dates[end]; 
        double summedTotal = 0.0;
@@ -68,16 +109,10 @@ public class SaleReports {
        compiledReport.printFromObject();
    }
 
-    public SaleReports(){
-        this.salereports = new ArrayList<DailySaleReport>(); 
-        this.readReportsFromCSV();
 
-        this.dates = new String[salereports.size()]; 
-       for (int i=0; i<dates.length; i++){
-           dates[i] = salereports.get(i).getDate(); 
-       }
-    }
-
+   /** 
+    * Reads sales reports stored in a csv file and updates overall sales reports to include new additions
+    */
     private void readReportsFromCSV(){  //reads in all reports from the CSV file
         try{
             File file = new File("SALESREPORT.csv");

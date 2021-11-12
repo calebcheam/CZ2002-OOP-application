@@ -5,15 +5,28 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 
+/**
+ * <code>ReservationUI</code> class that links user and <code>ReservationManager</code>
+ * @author DSAI1 ASSIGNMENT GROUP 3
+ * @version 1.0
+ */
 
 public class ReservationUI {
     
+    /**
+     * <code>ArrayList</code> of options to be displayed to user
+     */
     private static ArrayList<String> options=new ArrayList<String>(Arrays.asList("Create new Reservation","Delete Reservation","View Reservations","Check Bill"));
+    /**
+     * <code>Scanner</code> used for user input
+     */
     private static Scanner sc=new Scanner(System.in); 
     
     
 
-
+    /** 
+     * Starts the <code>ReservationUI</code> and displays user options
+     */
     public static void start()
     {
         int choice;
@@ -42,7 +55,7 @@ public class ReservationUI {
                     ReservationManager.viewTableAvailability();
                     break;
                 case 4:
-                    ReservationManager.checkbill();
+                    ReservationManager.checkBill();
                     break;
                 
             }

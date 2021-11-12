@@ -3,6 +3,12 @@ package Restaurant_package;
 import Reservation_package.Customer;
 import Reservation_package.Table;
 
+/** 
+ * <code>Restaurant</code> class that stores all reservation information at all timeslots and tables
+ * @author DSAI1 ASSIGNMENT GROUP 3
+ * @version 1.0
+ */
+
 public class Restaurant {
 
     private final static int numOfTables=10; 
@@ -13,8 +19,11 @@ public class Restaurant {
                                     "16:00 - 18:00", 
                                     "18:00 - 20:00", 
                                     "20:00 - 22:00"}; //Timeslots of the restaurant (fixed)
-
-    public Restaurant(){
+                                    
+    /** 
+     * Initialises all <code>Table</code> objects in restaurant, sets all tables and timeslots to be empty
+     */
+    public static void createTables(){
         //constructor -- this creates a restaurant from scratch
         //this means 0 reservations have been made, all tables empty, no sales made
          
@@ -28,14 +37,27 @@ public class Restaurant {
         }
     }
 
+    
+    /** 
+     * Gets <code>Array</code> of <code>Table</code> objects in this <code>Restaurant</code> 
+     * @return <code>Table[]</code> of size 10, indexes correspond to (table Id - 1) 
+     */
     public static Table[] getTables(){
         return tables; 
     }
 
+    
+    /** 
+     * Gets <code>Array</code> of <code>Strings</code> of fixed timeslots in this <code>Restaurant</code>, opening at 10:00 and closing at 22:00
+     * @return <code>String[]</code> of size 6, each string has format "XX:00 - YY:00" where XX and YY represent hours in a day and are 2 hours apart
+     */
     public static String[] getTimeSlots(){
         return timeslots; 
     }
 
+    /** 
+     * Displays the timeslots this restaurant offers
+     */
     public static void printTimeSlots(){
         System.out.println("-------Timeslots------");
         for (int i=0; i<6; i++) {
@@ -44,6 +66,12 @@ public class Restaurant {
         }
     }
 
+    
+    /** 
+     * Checks if a specific timeslot has been fully booked across all tables in this <code>Restaurant</code>
+     * @param time <code>int</code> index of timeslot to be checked
+     * @return <code>boolean</code> true if all tables are reserved at that time, else false
+     */
     public static boolean checkTimeslotFullyBooked(int time){
         int timeIndex = time-1; 
         int booked=0;
@@ -59,6 +87,11 @@ public class Restaurant {
         return false; 
     }
 
+    
+    /** 
+     * Displays table availability across all tables for a specific timeslot
+     * @param time <code>int</code> index of timeslot to be checked
+     */
     public static void printTableAvailabilityByTime(int time){
         int timeIndex = time-1; 
         System.out.println("Table Availability at "+  timeslots[timeIndex]);
@@ -74,6 +107,11 @@ public class Restaurant {
         }
         System.out.println();
     }
+    
+    /** 
+     * Displays table availability across all timeslots for a specific table
+     * @param table <code>int</code> ID of <code>Table</code> to be checked
+     */
     public static void printTableAvailabilityByTable(int table){
         System.out.printf("\nFor table %d : \n", table); 
         tables[table-1].printReservations(timeslots);
