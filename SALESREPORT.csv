@@ -92,8 +92,13 @@ TOTAL DISC GIVEN,0.00
 =======================================================
 Date,2021-11-11
 Item,Quantity,Revenue (w/o Discount)
-Set B,3,261.90002
+(Discounted)Iced Coffee,1,10.0
+Old Fashion Tiramisu,2,44.0
+Set E,2,169.2
+(Discounted)Set Cheam,1,35.0
+Apple,4,40.0
+(Discounted)Old Fashion Tiramisu,1,22.0
 -
-GRAND TOTAL,306.42
-TOTAL DISC GIVEN,0.00
+GRAND TOTAL,366.79
+TOTAL DISC GIVEN,7.84
 =======================================================

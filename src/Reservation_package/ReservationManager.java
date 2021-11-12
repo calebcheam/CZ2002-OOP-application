@@ -124,7 +124,7 @@ public class ReservationManager {
 
         System.out.println("=====================\nSelect table : ");
         int tableChoice = Integer.parseInt(sc.nextLine());
-        sc.nextLine();
+        //sc.nextLine();
         try {
             int check = Restaurant.getTables()[tableChoice-1].getCustomerAtTime(time-1).print_invoice();
             if (check==1){

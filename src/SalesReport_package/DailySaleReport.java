@@ -105,7 +105,9 @@ public class DailySaleReport { //this stores one day's worth orders
                     // the quantity of this menu item for this specific order 
 
                     if (isMember){
-                        item.setName("(Discounted)" + item.getName());
+                        if (!item.getName().contains("(Discounted)")){
+                            item.setName("(Discounted)" + item.getName());
+                        }
                     } 
 
                     if (this.tempMap.containsKey(item)){
@@ -184,7 +186,7 @@ public class DailySaleReport { //this stores one day's worth orders
 
     public void printFromObject(){
         System.out.printf("\n==============================         DAY REPORT FOR %s      ===========================\n", this.date);
-        System.out.println("Item \t\t\t\t\t\t  Quantity \t\t  Revenue (w/o discount)\n");
+        System.out.println("Item \t\t\t\t\t  Quantity \t\t  Revenue (w/o discount)\n");
 
         for (String key : this.map.keySet()){
             System.out.print(this.padString(key) + " \t\t\t\t ");
@@ -197,7 +199,7 @@ public class DailySaleReport { //this stores one day's worth orders
     }
 
     private String padString(String original){
-        return String.format("%-" + 30 + "s", original);  
+        return String.format("%-" + 35 + "s", original);  
 
     }
 

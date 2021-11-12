@@ -49,7 +49,7 @@ public class OrderManager {
                 }
                 else{
                     System.out.println("Order was not created");
-                    continue;
+                    return;
                 }
 
             }
@@ -247,6 +247,7 @@ public class OrderManager {
                 
                 System.out.println("");
                 order.viewOrders();
+                return; //found the item to remove, can end the method
             } 
         }
         
