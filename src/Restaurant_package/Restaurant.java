@@ -21,9 +21,9 @@ public class Restaurant {
                                     "20:00 - 22:00"}; //Timeslots of the restaurant (fixed)
                                     
     /** 
-     * <code>Restaurant</code> object constructor, initialises all tables and timeslots to be empty
+     * Initialises all <code>Table</code> objects in restaurant, sets all tables and timeslots to be empty
      */
-    public Restaurant(){
+    public static void createTables(){
         //constructor -- this creates a restaurant from scratch
         //this means 0 reservations have been made, all tables empty, no sales made
          

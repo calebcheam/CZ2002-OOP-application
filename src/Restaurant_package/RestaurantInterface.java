@@ -19,7 +19,6 @@ import SalesReport_package.SalesUI;
 public class RestaurantInterface {
     ArrayList<String> options;
     Scanner sc; 
-    Restaurant restaurant=new Restaurant();
     
 
     /** 
@@ -33,6 +32,7 @@ public class RestaurantInterface {
         int choice;
         this.sc = new Scanner(System.in); //scanner attribute to read things
         this.options = new ArrayList<String>(); //options for functions staff can use
+        Restaurant.createTables();
 
         // Menu Actions
         options.add("Menu actions");
