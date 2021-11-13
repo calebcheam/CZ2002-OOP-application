@@ -88,7 +88,7 @@ public class ReservationManager {
             {
                 DateTimeFormatter format = DateTimeFormatter.ofPattern("HH:mm");
                 System.out.println("This booking is in the past! Please try again. Current time is " + LocalDateTime.now().format(format));
-                continue;
+                return;
             }
             
             break;
