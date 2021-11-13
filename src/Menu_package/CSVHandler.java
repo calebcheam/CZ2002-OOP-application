@@ -12,8 +12,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
- * This class handles all proccesses that relating to the csv file provided (with information of all Menu Items and Set)
- * This class reads and creates Items objects from the csv file. It also edits the csv file itself when Items needs to be added or deleted permanently.
+ * This <code>class</code> handles all proccesses that relating to the csv file provided (with information of all Menu Items and Set)
+ * This <code>class</code> reads and creates Items objects from the csv file. It also edits the csv file itself when Items needs to be added or deleted permanently.
  * @author DSAI1 ASSIGNMENT GROUP 3
  * @version 1.0
  */
@@ -26,9 +26,9 @@ public class CSVHandler {
 
     
     /** 
-     * Creates and returns Item object, with attributes information extracted from a single row, from the csv file provided (with information of all Menu Items and Set)
-     * @param csvLine String representing the single row in the csv file, where values are separated by commas
-     * @return Item New Item object, created using the single row in the csv file
+     * Creates and returns an <code>Item</code> object, with attributes information extracted from a single row, from the csv file provided (with information of all Menu Items and Set)
+     * @param csvLine <code>String</code> representing the single row in the csv file, where values are separated by commas
+     * @return Item New <code>Item</code> object, created using the single row in the csv file
      */
     public Item createItem(String csvLine){
         //Create an Item object using the csv values
@@ -45,9 +45,9 @@ public class CSVHandler {
     
     /** 
      * Creates a new (temporary) csv file to temporarily copy rows of the csv file (provided by the path in the parameter).
-     * It will copy from the first row to the row, before a row containing a certain String (specified in parameter)
+     * It will copy from the first row to the row, before a row containing a certain <code>String</code> (specified in parameter)
      * @param path Path to csv file to copy from
-     * @param friendLine String, that indicates where to stop copying the csv file's row 
+     * @param friendLine <code>String</code>, that indicates where to stop copying the csv file's row 
      * @return int Return 1 if success, -1 if failure
      */
     private int saveItemsBefore(String path, String friendLine){
@@ -90,9 +90,9 @@ public class CSVHandler {
     
     /** 
      * Creates a new (temporary) csv file to temporarily copy rows of the csv file (provided by the path in the parameter).
-     * It will copy from a row containing a certain String (specified in parameter), to the last row of the csv file.
+     * It will copy from a row containing a certain <code>String</code> (specified in parameter), to the last row of the csv file.
      * @param path Path to csv file to copy from
-     * @param friendLine String, that indicates where to start copying the csv file's row from
+     * @param friendLine <code>String</code>, that indicates where to start copying the csv file's row from
      * @return int Return 1 if success, -1 if failure
      */
     private int saveItemsAfter(String path, String friendLine){
@@ -212,10 +212,10 @@ public class CSVHandler {
 
     
     /**
-     * Appends a (String) line (specified in the parameter), followed by the contents of "TempAfter.csv" (the csv file created by saveItemsAfter() method),
+     * Appends a (<code>String</code>) line (specified in the parameter), followed by the contents of "TempAfter.csv" (the csv file created by saveItemsAfter() method),
      * to the csv file (specified by path of the file in the parameter).
-     * @param fileToWritepath csv file, that will be appended with the (String) line and the contents of "TempAfter.csv"
-     * @param newLine (String) line to append to the csv file first
+     * @param fileToWritepath csv file, that will be appended with the (<code>String</code>) line and the contents of "TempAfter.csv"
+     * @param newLine (<code>String</code>) line to append to the csv file first
      * @return int Return 1 if success, -1 if failure
      */
     private int appendNewLineToCSV(String fileToWritepath, String newLine){
@@ -254,10 +254,10 @@ public class CSVHandler {
 
     
     /** 
-     * Remove an Item (by its name) from the csv file (that contains information of all Menu Items and Set),
+     * Remove an <code>Item</code> (by its name) from the csv file (that contains information of all Menu Items and Set),
      * by removing the line that contains the Item's name (specified by the parameter).
      * @param path Path to the csv file that contains information of all Menu Items and Set.
-     * @param lineToDelete Item name of Item to be deleted.
+     * @param lineToDelete <code>Item</code> name of <code>Item</code> to be deleted.
      */
     public void removeItemFromCSV(String path, String lineToDelete){
         int w = this.saveItemsBefore(path, lineToDelete); //copy original contents to temp csv up to the specific line
@@ -275,11 +275,11 @@ public class CSVHandler {
     }
     
     /** 
-     * Add an Item into the csv file (that contains information of all Menu Items and Set),
-     * where it will be added above the first Item, that has the same Item Type as the Item to be added.
-     * @param item Item to be added
+     * Add an <code>Item</code> into the csv file (that contains information of all Menu Items and Set),
+     * where it will be added above the first <code>Item</code>, that has the same <code>Item</code> Type as the <code>Item</code> to be added.
+     * @param item <code>Item</code> to be added
      * @param path Path to the csv file that contains information of all Menu Items and Set
-     * @param friendLine Item name of the first Item, that has the same Item Type as the Item to be added.
+     * @param friendLine <code>Item</code> name of the first <code>Item</code>, that has the same <code>Item</code> Type as the <code>Item</code> to be added.
      */
     public void addItemToCSV(Item item, String path, String friendLine){
   
@@ -303,20 +303,20 @@ public class CSVHandler {
 
     
     /** 
-     * Creates and returns ArrayList of String, where each String represents a part of an Item description.
+     * Creates and returns <code>ArrayList</code> of <code>String</code>, where each <code>String</code> represents a part of an <code>Item</code> description.
      *
-     * The ArrayList is created by splitting the String that contains the description of the Item.
-     * If the description comes from a Item under the Set category, the description String is splitted into 7 parts. 
-     * 1st to 6th parts are Item name and description from Appetiser, Main Course, Dessert respectively,
-     * and 7th part is the Item name of drink Item. There is no description for Items in Drink category as its name is self-explanatory.
-     * Hence, ArrayList size for an Item under Set Category is always fixed.
+     * The <code>ArrayList</code> is created by splitting the <code>String</code> that contains the description of the <code>Item.
+     * If the description comes from an <code>Item</code> under the Set category, the description <code>String</code> is splitted into 7 parts. 
+     * 1st to 6th parts are <code>Item</code> name and description from Appetiser, Main Course, Dessert respectively,
+     * and 7th part is the <code>Item</code> name of drink <code>Item</code>. There is no description for Items in Drink category as its name is self-explanatory.
+     * Hence, ArrayList size for an <code>Item</code> under Set Category is always fixed.
      *
-     * If the description comes from a Item not under the Set category, the description String is splitted by " + ".
-     * Unlike the Item under the Set Category, the description ArraySize of the Item is not fixed. It can have any size, i.e. description can have 6 parts, 1 parts, etc
+     * If the description comes from an <code>Item</code> not under the Set category, the description <code>String</code> is splitted by " + ".
+     * Unlike the <code>Item</code> under the Set Category, the description <code>ArrayList</code> Size of the <code>Item</code> is not fixed. It can have any size, i.e. description can have 6 parts, 1 parts, etc
      *
-     * @param descriptionString String that contains the description of the Item
-     * @param type Item Type of the described Item
-     * @return ArrayList<String> ArrayList of String, where each String represents a part of an Item description.
+     * @param descriptionString <code>String</code> that contains the description of the <code>Item</code></code>
+     * @param type <code>Item</code> Type of the described <code>Item</code>
+     * @return ArrayList<String> <code>ArrayList</code> of <code>String</code>, where each <code>String</code> represents a part of an <code>Item</code> description.
      */
     public ArrayList<String> splitDescription(String descriptionString, String type){
         //Create ArrayList to return at the end
