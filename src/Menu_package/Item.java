@@ -59,7 +59,7 @@ public class Item {
     /** 
      * Return <code>String</code> of <code>this</code> class's attributes, where attributes are separated by commas
      * This class's description <code>ArrayList</code> is converted to <code>String</code> by joining all elements in the <code>ArrayList</code> by " + "
-     * @return String <code>String</code> of <code>Item</code> attributes, separated by commas
+     * @return <code>String</code> <code>String</code> of <code>Item</code> attributes, separated by commas
      */
     public String SetToString(){
         String descriptionString = String.join(" + ", this.description);
@@ -71,7 +71,7 @@ public class Item {
     
     /** 
      * Return <code>this</code> class's name.
-     * @return String <code>Item</code> name
+     * @return <code>String</code> <code>Item</code> name
      */
     public String getName(){
         return this.name;
@@ -80,7 +80,7 @@ public class Item {
     
     /** 
      * Return <code>this</code> class's type.
-     * @return String <code>Item</code> Type
+     * @return <code>String</code> <code>Item</code> Type
      */
     public String getType(){
         return this.type;
@@ -89,7 +89,7 @@ public class Item {
     
     /** 
      * Return <code>this</code> class's description
-     * @return ArrayList<String> <code>Item</code> Description
+     * @return <code>ArrayList</code> of <code>String</code> <code>Item</code> Description
      */
     public ArrayList<String> getDescription(){
         return this.description;
@@ -98,7 +98,7 @@ public class Item {
     
     /** 
      * Return <code>this</code> class's price.
-     * @return float <code>Item</code> price
+     * @return <code>float</code> <code>Item</code> price
      */
     public float getPrice(){
         return this.price;
@@ -107,7 +107,7 @@ public class Item {
     
     /** 
      * Return <code>this</code> class's stock.
-     * @return int <code>Item</code> stock
+     * @return <code>int</code> <code>Item</code> stock
      */
     public int getStock(){
         return this.stock;
@@ -163,7 +163,7 @@ public class Item {
 
     
     /** 
-     * Set <code>this</code> class's description using ArrayList that contains Strings (that describes the Item)
+     * Set <code>this</code> class's description using <code>ArrayList</code> that contains Strings (that describes the <code>Item</code>)
      * @param description <code>ArrayList</code> of <code>String</code> that describes the <code>Item</code>
      */
     public void setDescription(ArrayList<String> description){
