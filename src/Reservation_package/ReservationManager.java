@@ -1,5 +1,7 @@
 package Reservation_package;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 import Restaurant_package.Restaurant;
@@ -82,6 +84,13 @@ public class ReservationManager {
                 System.out.println("Invalid timeslot, please re-enter.");
                 continue;
             }
+            else if (LocalDateTime.now().getHour()>=(time*2)+8) //1,10, 2,12, 3,14 4,16, 5,18, 6,20
+            {
+                DateTimeFormatter format = DateTimeFormatter.ofPattern("HH:mm");
+                System.out.println("This booking is in the past! Please try again. Current time is " + LocalDateTime.now().format(format));
+                continue;
+            }
+            
             break;
         }
         if (Restaurant.checkTimeslotFullyBooked(time)==true){
