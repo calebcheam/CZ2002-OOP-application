@@ -213,6 +213,10 @@ public class Customer {
             System.out.println("Order doesn't exist!");
             return -1;
         }
+        else if (this.name.equals("Vacated")){
+            System.out.println("This slot has already been vacated!");
+            return -1;
+        }
         else if (this.membership==false)
         {
             System.out.println("Customer ID:"+this.customerID);

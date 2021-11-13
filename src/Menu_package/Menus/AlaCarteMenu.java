@@ -144,7 +144,7 @@ public class AlaCarteMenu extends GenericMenu{
      * (e.g. when itemType = "Appetiser", it will be under Main Course Category).
      * Return "Invalid Type" if the <code>Item</code> type is not in any category.
      * @param itemType <code>Item</code> type 
-     * @return String <code>String</code> to indicate the Category of the <code>Item</code> type.
+     * @return <code>String</code> <code>String</code> to indicate the Category of the <code>Item</code> type.
      */
     @Override
 	public String findItemTypeCategory(String itemType) {
@@ -175,7 +175,7 @@ public class AlaCarteMenu extends GenericMenu{
      * Adds <code>Item</code> object into the <code>ArrayList</code> of Items, that contains <code>Item</code> objects of the same category.
      * @param menuItem <code>Item</code> object to be added
      * @param itemType <code>Item</code> type of the <code>Item</code> object
-     * @return int Return 1 to indicate <code>Item</code> object has been added, -1 to indicate <code>Item</code> object is not added
+     * @return <code>int</code> Return 1 to indicate <code>Item</code> object has been added, -1 to indicate <code>Item</code> object is not added
      */
     public int allocateItem(Item menuItem, String itemType) {
 
@@ -203,7 +203,7 @@ public class AlaCarteMenu extends GenericMenu{
      * This method is used in the proccess of deleting/updating an Item's information.
      * @param typeCategory Category the <code>Item</code> type is under
      * @param itemType <code>Item</code> type, to find the first occurrence in the <code>ArrayList</code>
-     * @return int Returns the index of the first occurrence of the specified <code>Item</code> type. Returns -2 if <code>Item</code> type is not in any category, -1 if <code>Item</code> type is in a category, but <code>Item</code> type is not found in the <code>ArrayList</code>.
+     * @return <code>int</code> Returns the index of the first occurrence of the specified <code>Item</code> type. Returns -2 if <code>Item</code> type is not in any category, -1 if <code>Item</code> type is in a category, but <code>Item</code> type is not found in the <code>ArrayList</code>.
      */
     public int findFirstTypeOccurrence(String typeCategory, String itemType) {
 
@@ -237,7 +237,7 @@ public class AlaCarteMenu extends GenericMenu{
      * This method returns the reference of <code>ArrayList</code> of Items (one of the attributes of <code>this</code> <code>class</code>), that contains Items that is under an <code>Item</code> Category specified.
      * This method can only be used when it can be assumed that <code>Item</code> Category specified is always valid.
      * @param typeCategory <code>Item</code> Category, of the <code>ArrayList</code> wanted.
-     * @return ArrayList<Item> <code>ArrayList</code> of <code>Item</code> that contains Items under the specified <code>Item</code> category.
+     * @return <code>ArrayList</code> of <code>Item</code> objects <code>ArrayList</code> of <code>Item</code> that contains Items under the specified <code>Item</code> category.
      */
     public ArrayList<Item> returnItemListReference(String typeCategory) {
 	    

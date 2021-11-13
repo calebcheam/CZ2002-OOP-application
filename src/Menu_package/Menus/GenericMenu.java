@@ -33,7 +33,7 @@ public abstract class GenericMenu {
      * @param number Position of <code>Item</code>, of the specified <code>Item</code> Type.
      * @param typeCategory <code>Item</code> Category, to indicate which <code>Item</code> Category the <code>Item</code> (to be returned) is from.
      * @param itemType <code>Item</code> Type, to indicate which <code>Item</code> Type the <code>Item</code> (to be returned) is of.
-     * @return Item <code>Item</code> object under <code>Item</code> Category, of <code>Item</code> Type, and numbering specified.
+     * @return <code>Item</code> <code>Item</code> object under <code>Item</code> Category, of <code>Item</code> Type, and numbering specified.
      */
     public Item getItem(int number, String typeCategory, String itemType){
         //typeCategory referring to categories eg. Main Course / Drink
@@ -50,7 +50,7 @@ public abstract class GenericMenu {
      * @see Menu_package.Menus.AlaCarteMenu#findItemTypeCategory(String itemType)
      * @see Menu_package.Menus.PromoMenu#findItemTypeCategory(String itemType)
      * @param itemType <code>Item</code> Type
-     * @return String <code>Item</code> Type
+     * @return <code>String</code> <code>Item</code> Type
      */
     /////////////////////// methods relating to changing the menu//////////////
     public String findItemTypeCategory(String itemType){
@@ -66,7 +66,7 @@ public abstract class GenericMenu {
      * @see Menu_package.Menus.PromoMenu#allocateItem(Item menuItem, String itemType)
      * @param menuItem <code>Item</code> Object to be added
      * @param itemType <code>Item</code> Type of the <code>Item</code> object to be added
-     * @return int Return positive integer if success, negative if failure (refer to above method links)
+     * @return <code>int</code> Return positive integer if success, negative if failure (refer to above method links)
      */
     public int allocateItem(Item menuItem, String itemType)
     {
@@ -81,7 +81,7 @@ public abstract class GenericMenu {
      * @see Menu_package.Menus.PromoMenu#findFirstTypeOccurrence(String typeCategory, String itemType)
      * @param typeCategory <code>Item</code> Category 
      * @param itemType <code>Item</code> Type 
-     * @return int Return positive integer if success, negative if failure (refer to above method links)
+     * @return <code>int</code> Return positive integer if success, negative if failure (refer to above method links)
      */
     public int findFirstTypeOccurrence(String typeCategory, String itemType)
     {
@@ -93,7 +93,7 @@ public abstract class GenericMenu {
     /** 
      * Abstract method for subclasses to <code>return</code> <code>ArrayList</code> containing the Items under the <code>Item</code> Category specified
      * @param typeCategory <code>Item</code> Category
-     * @return ArrayList<Item> <code>ArrayList</code> that contains the Items under the <code>Item</code> Category specified
+     * @return <code>ArrayList</code> of <code>Item</code> objects <code>ArrayList</code> that contains the Items under the <code>Item</code> Category specified
      */
     public ArrayList<Item> returnItemListReference(String typeCategory)
     {
@@ -106,7 +106,7 @@ public abstract class GenericMenu {
      * Returns String of first <code>Item</code> object's name of specified <code>Item</code> Type in the <code>ArrayList</code> of Items, containing <code>Item</code> under specified <code>Item</code> Category.
      * @param typeCategory <code>Item</code> Category
      * @param itemType <code>Item</code> Type
-     * @return String <code>String</code> of first <code>Item</code> object's name
+     * @return <code>String</code> <code>String</code> of first <code>Item</code> object's name
      */
     public String findFriend(String typeCategory, String itemType) { //to insert into correct location in the CSV
        
@@ -126,7 +126,7 @@ public abstract class GenericMenu {
      * @param description <code>Item</code> description
      * @param price <code>Item</code> price
      * @param stock <code>Item</code> stock
-     * @return int Returns 1 to indicate successful addition of <code>Item</code> to csv, negative integer to indicate failure
+     * @return <code>int</code> Returns 1 to indicate successful addition of <code>Item</code> to csv, negative integer to indicate failure
      */
     public int add(String name, String itemType, String typeCategory, ArrayList<String> description, float price, int stock){
         Item newItem = new Item(name, itemType, description, price, stock);
@@ -156,7 +156,7 @@ public abstract class GenericMenu {
      * @param number Numbering of the <code>Item</code> in the Menu display
      * @param typeCategory <code>Item</code> Category of specified <code>Item</code>
      * @param itemType <code>Item</code> Type of specified <code>Item</code>
-     * @return Item <code>Item</code> to be removed
+     * @return <code>Item</code> <code>Item</code> to be removed
      */
     public Item getItemToBeRemoved(int number, String typeCategory, String itemType) {
 	//remove the specified Item according to the type category, Item type,
@@ -235,7 +235,7 @@ public abstract class GenericMenu {
      * Return length of the longest <code>String</code> to be displayed (in a single line) in the Menu display.
      * This is to format the display positioning of the Menu's words and headers.
      * @param itemsNamesTypesList <code>ArrayList</code> that contains all Strings that will be displayed in the Menu. The max length out of these Strings will be returned.
-     * @return int Length of the longest <code>String</code> to be displayed in a single line.
+     * @return <code>int</code> Length of the longest <code>String</code> to be displayed in a single line.
      */
     ///////////////////// methods relating to displaying the menu
     public int findLongestStringSize(ArrayList<String> itemsNamesTypesList) {
@@ -263,7 +263,7 @@ public abstract class GenericMenu {
     
     /** 
      * Returns the longest <code>String</code> size (to be displayed in a single line in the Menu display), stored in <code>this</code> <code>class</code>.
-     * @return int Longest <code>String</code> size
+     * @return <code>int</code> Longest <code>String</code> size
      */
     public int getLongestStringSize() {
 		return this.longestStringSize;
@@ -281,7 +281,7 @@ public abstract class GenericMenu {
     
     /** 
      * Returns number of <code>Item</code> Categories associated with <code>this</code> <code>class</code>
-     * @return int Number of <code>Item</code> Categories
+     * @return <code>int</code> Number of <code>Item</code> Categories
      */
     public int getNumofCategories(){
         return this.menuCategories.getNumberOfCategories();

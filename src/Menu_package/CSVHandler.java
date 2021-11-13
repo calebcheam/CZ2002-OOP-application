@@ -28,7 +28,7 @@ public class CSVHandler {
     /** 
      * Creates and returns an <code>Item</code> object, with attributes information extracted from a single row, from the csv file provided (with information of all Menu Items and Set)
      * @param csvLine <code>String</code> representing the single row in the csv file, where values are separated by commas
-     * @return Item New <code>Item</code> object, created using the single row in the csv file
+     * @return <code>Item</code> New <code>Item</code> object, created using the single row in the csv file
      */
     public Item createItem(String csvLine){
         //Create an Item object using the csv values
@@ -48,7 +48,7 @@ public class CSVHandler {
      * It will copy from the first row to the row, before a row containing a certain <code>String</code> (specified in parameter)
      * @param path Path to csv file to copy from
      * @param friendLine <code>String</code>, that indicates where to stop copying the csv file's row 
-     * @return int Return 1 if success, -1 if failure
+     * @return <code>int</code> Return 1 if success, -1 if failure
      */
     private int saveItemsBefore(String path, String friendLine){
         //this saves the contents of the CSV before the line we want to stop at 
@@ -93,7 +93,7 @@ public class CSVHandler {
      * It will copy from a row containing a certain <code>String</code> (specified in parameter), to the last row of the csv file.
      * @param path Path to csv file to copy from
      * @param friendLine <code>String</code>, that indicates where to start copying the csv file's row from
-     * @return int Return 1 if success, -1 if failure
+     * @return <code>int</code> Return 1 if success, -1 if failure
      */
     private int saveItemsAfter(String path, String friendLine){
         //this saves the contents of the CSV before the line we want to stop at 
@@ -142,7 +142,7 @@ public class CSVHandler {
      * Overwrite the contents of a csv file (specified by its path in the parameter) by contents of "TempBefore.csv" (the csv file created by saveItemsBefore() method).
      * @link #saveItemsBefore
      * @param filetoWritepath csv file to overwrite
-     * @return int Return 1 if success, -1 if failure
+     * @return <code>int</code> Return 1 if success, -1 if failure
      */
     private int overwriteCSV(String filetoWritepath){
         try{
@@ -175,10 +175,9 @@ public class CSVHandler {
      * Append contents (excluding first line) of "TempAfter.csv" (the csv file created by saveItemsAfter() method), to the csv file (specified by path of the file in the parameter).
      * @link #saveItemsAfter
      * @param fileToWritepath csv file, that will be appended with contents of "TempAfter.csv"  
-     * @param lineToDelete
-     * @return int Return 1 if success, -1 if failure
+     * @return <code>int</code> Return 1 if success, -1 if failure
      */
-    private int appendToCSV(String fileToWritepath, String lineToDelete){
+    private int appendToCSV(String fileToWritepath){
         // skips over the line to delete
         // then appends the rest as per normal
         try{
@@ -216,7 +215,7 @@ public class CSVHandler {
      * to the csv file (specified by path of the file in the parameter).
      * @param fileToWritepath csv file, that will be appended with the (<code>String</code>) line and the contents of "TempAfter.csv"
      * @param newLine (<code>String</code>) line to append to the csv file first
-     * @return int Return 1 if success, -1 if failure
+     * @return <code>int</code> Return 1 if success, -1 if failure
      */
     private int appendNewLineToCSV(String fileToWritepath, String newLine){
         try{
@@ -264,7 +263,7 @@ public class CSVHandler {
         int x = this.saveItemsAfter(path, lineToDelete); //copy remaining contents to temp csv from to the specific line
 
         int y = this.overwriteCSV(path); //rewrite the first part from copied csv
-        int z = this.appendToCSV(path, lineToDelete); //skips over the line to delete, then appends the rest
+        int z = this.appendToCSV(path); //skips over the line to delete, then appends the rest
         if (w + x + y + z ==4) { //if all operation above success
             System.out.println("Item removed successfully! ");
         } 
@@ -305,18 +304,18 @@ public class CSVHandler {
     /** 
      * Creates and returns <code>ArrayList</code> of <code>String</code>, where each <code>String</code> represents a part of an <code>Item</code> description.
      *
-     * The <code>ArrayList</code> is created by splitting the <code>String</code> that contains the description of the <code>Item.
+     * The <code>ArrayList</code> is created by splitting the <code>String</code> that contains the description of the <code>Item</code>.
      * If the description comes from an <code>Item</code> under the Set category, the description <code>String</code> is splitted into 7 parts. 
      * 1st to 6th parts are <code>Item</code> name and description from Appetiser, Main Course, Dessert respectively,
      * and 7th part is the <code>Item</code> name of drink <code>Item</code>. There is no description for Items in Drink category as its name is self-explanatory.
-     * Hence, ArrayList size for an <code>Item</code> under Set Category is always fixed.
+     * Hence, <code>ArrayList</code> size for an <code>Item</code> under Set Category is always fixed.
      *
      * If the description comes from an <code>Item</code> not under the Set category, the description <code>String</code> is splitted by " + ".
      * Unlike the <code>Item</code> under the Set Category, the description <code>ArrayList</code> Size of the <code>Item</code> is not fixed. It can have any size, i.e. description can have 6 parts, 1 parts, etc
      *
      * @param descriptionString <code>String</code> that contains the description of the <code>Item</code>
      * @param type <code>Item</code> Type of the described <code>Item</code>
-     * @return ArrayList<String> <code>ArrayList</code> of <code>String</code>, where each <code>String</code> represents a part of an <code>Item</code> description.
+     * @return <code>ArrayList</code> of <code>String</code>  <code>ArrayList</code> of <code>String</code>, where each <code>String</code> represents a part of an <code>Item</code> description.
      */
     public ArrayList<String> splitDescription(String descriptionString, String type){
         //Create ArrayList to return at the end
