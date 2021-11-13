@@ -12,7 +12,6 @@ public class SalesCSVHandler implements CSVAppendable{
 
     @Override
     public void writeToCSVEnd(ArrayList<String> lines) {
-        // TODO Auto-generated method stub
         try{
             File file =new File("SALESREPORT.csv");
             
@@ -29,8 +28,6 @@ public class SalesCSVHandler implements CSVAppendable{
             pw.close();
   
         System.out.println("Successfully added today's report to the CSV!");
-        //System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> PLEASE UNCOMMENT ME >>>>>>>>>>>>>>>TRYING OUT NEW SALES CSV ");
-  
          }catch(IOException ioe){
              System.out.println("Exception occurred:");
              ioe.printStackTrace();
