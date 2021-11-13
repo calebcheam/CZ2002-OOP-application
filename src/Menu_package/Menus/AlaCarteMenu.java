@@ -56,8 +56,10 @@ public class AlaCarteMenu extends GenericMenu{
                     itemsStringList.add(menuItem.getName());
                     itemsStringList.addAll(menuItem.getDescription());
                     //System.out.println("I CREATED A " + menuItem.getName());
+                } else {
+                    System.out.println("i could not convert "  + line);
+                    invalidItems.add(menuItem); //add Item with invalid type
                 }
-                else invalidItems.add(menuItem); //add Item with invalid type
 
             }
 

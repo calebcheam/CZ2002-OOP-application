@@ -33,12 +33,11 @@ public class Item {
     public Item (String csvLine){
         //Create an Item object using the csv values
         String[] itemAttributes = csvLine.split(",");//get the csv row value into String array
-        String name = itemAttributes[0];
-        String type = itemAttributes[1];
-        ArrayList<String> description = splitDescription(itemAttributes[2], type);
-        float price = Float.parseFloat(itemAttributes[3]);
-        int stock = Integer.parseInt(itemAttributes[4]);
-        Item item = new Item(name, type, description, price, stock);
+        this.name = itemAttributes[0];
+        this.type = itemAttributes[1];
+        this.description = splitDescription(itemAttributes[2], type);
+        this.price = Float.parseFloat(itemAttributes[3]);
+        this.stock = Integer.parseInt(itemAttributes[4]);
     }
     
     /**
