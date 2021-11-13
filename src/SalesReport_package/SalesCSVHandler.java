@@ -35,7 +35,7 @@ public class SalesCSVHandler implements CSVAppendable{
             pw.close();
   
         System.out.println("Successfully added today's report to the CSV!");
-        System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> PLEASE UNCOMMENT ME >>>>>>>>>>>>>>>TRYING OUT NEW SALES CSV ");
+        //System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> PLEASE UNCOMMENT ME >>>>>>>>>>>>>>>TRYING OUT NEW SALES CSV ");
   
          }catch(IOException ioe){
              System.out.println("Exception occurred:");
