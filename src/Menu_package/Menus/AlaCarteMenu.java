@@ -10,8 +10,8 @@ import java.util.Arrays;
 import Menu_package.Item;
 import Menu_package.MenuItemCategoryTypes;
 
-/**This class prints the Ala Carte Menu and handles processes that involves Items of the Ala Carte Menu.
- * This class creates 3 ArrayLists of Item objects that contains Item objects of Item Category of "Main Course", "Dessert", and "Drink" respectively. 
+/**This <code>class</code> prints the Ala Carte Menu and handles processes that involves Items of the Ala Carte Menu.
+ * This <code>class</code> creates 3 <code>ArrayLists of <code>Item</code> objects that contains <code>Item</code> objects of <code>Item</code> Category of "Main Course", "Dessert", and "Drink" respectively. 
  * @author DSAI1 ASSIGNMENT GROUP 3
  * @version 1.0
  */
@@ -23,8 +23,8 @@ public class AlaCarteMenu extends GenericMenu{
     
     
     /**
-     * Constructor for AlaCarteMenu class.
-     * Creates 3 ArrayLists of Item objects that contains Item objects of Item Category of "Main Course", "Dessert", and "Drink" respectively,
+     * Constructor of this <code>class</code>.
+     * Creates 3 <code>ArrayLists</code> of <code>Item</code> objects that contains <code>Item</code> objects of <code>Item</code> Category of "Main Course", "Dessert", and "Drink" respectively,
      * using the information from the csv file (containing Menu Items' information).
      */
     public AlaCarteMenu(){ //constructor
@@ -76,10 +76,10 @@ public class AlaCarteMenu extends GenericMenu{
 
     
     /** 
-     * Prints the Items' name, price, description(excluded for types in Drink category) in the menuItems, separated by their Item types using a header line.
-     * For each Item, price and description(excluded for types in Drink category) of Item is printed right and below of the Item name respectively.
-     * This method is only used for Item type that do not belong to Set category.
-     * @param menuItems List of Item objects
+     * Prints the Items' name, price, description(excluded for types in Drink category) in the Menu, separated by their <code>Item</code> types using a header line.
+     * For each <code>Item</code>, price and description(excluded for types in Drink category) of <code>Item</code> is printed right and below of the <code>Item</code> name respectively.
+     * This method is only used for <code>Item</code> type that do not belong to Set category.
+     * @param menuItems List of <code>Item</code> objects
      * @param spacing Used to format the positioning of the displayed words and header in the Menu display.
      * @param isDrinkType To indicate if Items in menuItems are of Drink category or not. "true" if in Drink category, "false" if not in Drink category.
      */
@@ -140,11 +140,11 @@ public class AlaCarteMenu extends GenericMenu{
 
     
     /** 
-     * Returns the Category name of an Item type.
-     * (e.g. itemType = "Appetiser" => Main Course Category).
-     * Return "Invalid Type" if the Item type is not in any category.
-     * @param itemType Item type 
-     * @return String String to indicate the Category of the Item type.
+     * Returns the Category name of an <code>Item</code> type.
+     * (e.g. when itemType = "Appetiser", it will be under Main Course Category).
+     * Return "Invalid Type" if the <code>Item</code> type is not in any category.
+     * @param itemType <code>Item</code> type 
+     * @return String <code>String</code> to indicate the Category of the <code>Item</code> type.
      */
     @Override
 	public String findItemTypeCategory(String itemType) {
@@ -172,10 +172,10 @@ public class AlaCarteMenu extends GenericMenu{
 	
 	
     /**
-     * Adds Item object into the ArrayList of Items, that contains Item objects of the same category.
-     * @param menuItem Item object to be addede
-     * @param itemType Item type of the Item object
-     * @return int Return 1 to indicate Item object has been added, -1 to indicate Item object is not added
+     * Adds <code>Item</code> object into the <code>ArrayList</code> of Items, that contains <code>Item</code> objects of the same category.
+     * @param menuItem <code>Item</code> object to be added
+     * @param itemType <code>Item</code> type of the <code>Item</code> object
+     * @return int Return 1 to indicate <code>Item</code> object has been added, -1 to indicate <code>Item</code> object is not added
      */
     public int allocateItem(Item menuItem, String itemType) {
 
@@ -199,11 +199,11 @@ public class AlaCarteMenu extends GenericMenu{
 	
 	
     /**
-     * Find the first occurrence of an Item type (e.g. Appetiser) in the ArrayList of Items. The ArrayList contains the Items of the Category, that Item type is under.
+     * Find the first occurrence of an <code>Item</code> type (e.g. Appetiser) in the <code>ArrayList</code> of Items. The <code>ArrayList</code> contains the Items of the Category, that <code>Item</code> type is under.
      * This method is used in the proccess of deleting/updating an Item's information.
-     * @param typeCategory Category the Item type is under
-     * @param itemType Item type, to find the first occurrence in the ArrayList
-     * @return int Returns the index of the first occurrence of the specified Item type. Returns -2 if Item type is not in any category, -1 if Item type is in a category, but Item type is not found in the ArrayList.
+     * @param typeCategory Category the <code>Item</code> type is under
+     * @param itemType <code>Item</code> type, to find the first occurrence in the <code>ArrayList</code>
+     * @return int Returns the index of the first occurrence of the specified <code>Item</code> type. Returns -2 if <code>Item</code> type is not in any category, -1 if <code>Item</code> type is in a category, but <code>Item</code> type is not found in the <code>ArrayList</code>.
      */
     public int findFirstTypeOccurrence(String typeCategory, String itemType) {
 
@@ -234,10 +234,10 @@ public class AlaCarteMenu extends GenericMenu{
 	
 	
     /**
-     * This method returns the reference of ArrayList of Item (one of the attributes of AlaCarteMenu class), that contains Items that is under an Item Category specified.
-     * This method can only be used when it can be assumed that Item Category specified is always valid.
-     * @param typeCategory Item Category, of the ArrayList wanted.
-     * @return ArrayList<Item> ArrayList of Item that contains Items under the specified Item category.
+     * This method returns the reference of <code>ArrayList</code> of Items (one of the attributes of <code>this</code> <code>class</code>), that contains Items that is under an <code>Item</code> Category specified.
+     * This method can only be used when it can be assumed that <code>Item</code> Category specified is always valid.
+     * @param typeCategory <code>Item</code> Category, of the <code>ArrayList</code> wanted.
+     * @return ArrayList<Item> <code>ArrayList</code> of <code>Item</code> that contains Items under the specified <code>Item</code> category.
      */
     public ArrayList<Item> returnItemListReference(String typeCategory) {
 	    
@@ -279,8 +279,8 @@ public class AlaCarteMenu extends GenericMenu{
 
     
     /**
-     * Prints Ala Carte Menu of Items that is under the Item Category specified.
-     * @param category Item Category, to specify the Category of Items to be printed
+     * Prints Ala Carte Menu of Items that is under the <code>Item</code> Category specified.
+     * @param category <code>Item</code> Category, to specify the Category of Items to be printed
      */
     @Override
     public void displayMenuCategory(String category){ 
