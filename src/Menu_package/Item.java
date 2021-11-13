@@ -16,7 +16,7 @@ public class Item {
     /**
      * Constructor of <code>this</code> <code>class</code>.
      * @param name <code>Item</code> name
-     * @param itemType <code>Item</code> Type
+     * @param type <code>Item</code> Type
      * @param description <code>Item</code> description
      * @param price <code>Item</code> price
      * @param stock <code>Item</code> stock
