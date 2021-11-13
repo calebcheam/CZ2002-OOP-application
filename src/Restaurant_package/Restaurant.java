@@ -9,8 +9,9 @@ import Reservation_package.Table;
  * @version 1.0
  */
 
-public class Restaurant {
-
+public class Restaurant { //Singleton class
+    
+    private static Restaurant restaurant = null;
     private final static int numOfTables=10; 
     private static Table[] tables; 
     private final static String[] timeslots= new String[] {"10:00 - 12:00", 
@@ -23,10 +24,10 @@ public class Restaurant {
     /** 
      * Initialises all <code>Table</code> objects in restaurant, sets all tables and timeslots to be empty
      */
-    public static void createTables(){
-        //constructor -- this creates a restaurant from scratch
-        //this means 0 reservations have been made, all tables empty, no sales made
-         
+
+    //private constructor to instantiate 1 restaurant
+    private Restaurant() {
+
         tables = new Table[numOfTables];
         int k=2; 
         for (int i=0; i<numOfTables; i++){
@@ -34,7 +35,15 @@ public class Restaurant {
                 k+=2;
             }
             tables[i] = new Table(i+1, k); 
-        }
+    }
+    } 
+    
+    public static Restaurant get_instance(){ 
+        //constructor -- this creates a restaurant from scratch
+        //this means 0 reservations have been made, all tables empty, no sales made
+        restaurant=new Restaurant();
+        return restaurant;
+        
     }
 
     
