@@ -11,12 +11,6 @@ import java.io.PrintWriter;
 public class MenuCSVHandler implements CSVLocatable {
 
     @Override
-    public void readFromCSV() {
-        // TODO Auto-generated method stub
-        
-    }
-
-    @Override
     public void writeToCSVLocation(String path, String friendLine, String newItemString) {
         //adds a new Item to the Menu by writing to specific location in the CSV
         int w = this.copyCSVUntilLine(path, friendLine); //copy original contents to temp csv up to the specific line

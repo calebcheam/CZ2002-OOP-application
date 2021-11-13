@@ -30,6 +30,17 @@ public class Item {
         this.stock = stock;
     }
 
+    public Item (String csvLine){
+        //Create an Item object using the csv values
+        String[] itemAttributes = csvLine.split(",");//get the csv row value into String array
+        String name = itemAttributes[0];
+        String type = itemAttributes[1];
+        ArrayList<String> description = splitDescription(itemAttributes[2], type);
+        float price = Float.parseFloat(itemAttributes[3]);
+        int stock = Integer.parseInt(itemAttributes[4]);
+        Item item = new Item(name, type, description, price, stock);
+    }
+    
     /**
      * Another constructor of <code>this</code> <code>class</code>.
      */
@@ -56,18 +67,7 @@ public class Item {
         return this.name + "," + this.type + "," + descriptionString + "," + String.valueOf(this.price) + "," + String.valueOf(this.stock);
     }
 
-    public Item createItemfromString(String csvLine){
-        //Create an Item object using the csv values
-        String[] itemAttributes = csvLine.split(",");//get the csv row value into String array
-        String name = itemAttributes[0];
-        String type = itemAttributes[1];
-        ArrayList<String> description = splitDescription(itemAttributes[2], type);
-        float price = Float.parseFloat(itemAttributes[3]);
-        int stock = Integer.parseInt(itemAttributes[4]);
-        Item item = new Item(name, type, description, price, stock);
-        return item;
-    }
-
+    
     public ArrayList<String> splitDescription(String descriptionString, String type){
         //Create ArrayList to return at the end
         ArrayList<String> descriptionList = new ArrayList<>();

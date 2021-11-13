@@ -11,12 +11,6 @@ public class SalesCSVHandler implements CSVAppendable{
     //implements CSV Appendable since we will always add to the end of CSV
 
     @Override
-    public void readFromCSV() {
-        System.out.println("I dont know how to read yet");
-        
-    }
-
-    @Override
     public void writeToCSVEnd(ArrayList<String> lines) {
         // TODO Auto-generated method stub
         try{

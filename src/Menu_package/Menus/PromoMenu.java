@@ -49,8 +49,8 @@ public class PromoMenu extends GenericMenu{
             br.readLine();//read first line and ignore as first line is header
 
             while ((line = br.readLine()) != null){//while there is a row of values in the csv
-                Item menuItem = csvHandler.createItem(line);//create Item object from current row in the csv file
-
+                //Item menuItem = csvHandler.createItem(line);//create Item object from current row in the csv file
+                Item menuItem = new Item(line);
                 //allocate Item into ArrayList according to its type
                 int allocSuccess = allocateItem(menuItem, menuItem.getType());
 

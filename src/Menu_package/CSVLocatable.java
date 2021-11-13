@@ -1,6 +1,6 @@
 package Menu_package;
 
-public interface CSVLocatable extends CSVHandlerInterface{
+public interface CSVLocatable{
     
     public void writeToCSVLocation(String path, String line, String newLine);
     public void removeFromCSVLocation(String path, String line);
