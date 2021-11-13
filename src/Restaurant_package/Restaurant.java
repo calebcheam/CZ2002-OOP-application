@@ -39,8 +39,7 @@ public class Restaurant { //Singleton class
     } 
     
     public static Restaurant get_instance(){ 
-        //constructor -- this creates a restaurant from scratch
-        //this means 0 reservations have been made, all tables empty, no sales made
+        
         restaurant=new Restaurant();
         return restaurant;
         
