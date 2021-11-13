@@ -19,9 +19,9 @@ public final class MenuItemCategoryTypes {
 
     /**
      * Constructor of <code>this</code> <code>class</code>.
-     * Initializes two <code>String</code> Arrays that stores Item Category (2D array) and Item Type names relating to the Menu Name specified.
-     * If Menu Name is "Promotion Menu", the constructor will store Item Category and Item Type names relating to Set Items.
-     * Else, it will store Item Category and Item Type names relating to non-Set Type Items.
+     * Initializes two <code>String</code> Arrays that stores <code>Item</code> Category (2D array) and <code>Item</code> Type names relating to the Menu Name specified.
+     * If Menu Name is "Promotion Menu", the constructor will store <code>Item</code> Category and <code>Item</code> Type names relating to Set Items.
+     * Else, it will store <code>Item</code> Category and <code>Item</code> Type names relating to non-Set Type Items.
      */
     public MenuItemCategoryTypes(String menuName){
         if (menuName == "Promotion Menu"){
@@ -36,8 +36,8 @@ public final class MenuItemCategoryTypes {
 
     
     /** 
-     * Returns the number of Item Categories stored in <code>this</code> <code>class</code>.
-     * @return int Number of Item Categories
+     * Returns the number of <code>Item</code> Categories stored in <code>this</code> <code>class</code>.
+     * @return <code>int</code> Number of <code>Item</code> Categories
      */
     public int getNumberOfCategories(){
         return this.categories.length;
@@ -46,8 +46,8 @@ public final class MenuItemCategoryTypes {
 
     
     /** 
-     * Returns <code>String</code> array of Item Types stored in <code>this</code> <code>class</code>.
-     * @return String[] <code>String</code> array of Item Types
+     * Returns <code>String</code> array of <code>Item</code> Types stored in <code>this</code> <code>class</code>.
+     * @return <code>String</code>[] <code>String</code> array of <code>Item</code> Types
      */
     public String[] getCategoryTypes(){
         return this.categoryTypes;
@@ -55,9 +55,9 @@ public final class MenuItemCategoryTypes {
 
     
     /** 
-     * Returns <code>String</code> of Item Type at the specified index, in the <code>String</code> array of Item Types.
+     * Returns <code>String</code> of <code>Item</code> Type at the specified index, in the <code>String</code> array of <code>Item</code> Types.
      * @param index Index
-     * @return String <code>String</code> of Item Type at the specified index
+     * @return <code>String</code> <code>String</code> of <code>Item</code> Type at the specified index
      */
     public String indexToCategory(int index){
         return this.categoryTypes[index];
@@ -65,9 +65,9 @@ public final class MenuItemCategoryTypes {
 
     
     /** 
-     * Returns <code>String</code> array of Item Category at the specified index, in the <code>String</code> 2D array of Item Category.
+     * Returns <code>String</code> array of <code>Item</code> Category at the specified index, in the <code>String</code> 2D array of <code>Item</code> Category.
      * @param categoryIndex Index
-     * @return String[] <code>String</code> array of Item Category
+     * @return <code>String</code>[] <code>String</code> array of <code>Item</code> Category
      */
     public String[] indexToCategoryList(int categoryIndex){
         return this.categories[categoryIndex];
@@ -75,10 +75,10 @@ public final class MenuItemCategoryTypes {
 
     
     /** 
-     * Returns <code>String</code> of Item Type at the specified index, in the specified index that indicates Item Category
+     * Returns <code>String</code> of <code>Item</code> Type at the specified index, in the specified index that indicates <code>Item</code> Category
      * @param index Index
-     * @param categoryIndex Index that indicates Item Category
-     * @return String Item Type
+     * @param categoryIndex Index that indicates <code>Item</code> Category
+     * @return <code>String</code> <code>Item</code> Type
      */
     public String indexToSubcategory(int index, int categoryIndex){
         String[] subcategoryList = this.indexToCategoryList(categoryIndex);
@@ -86,7 +86,7 @@ public final class MenuItemCategoryTypes {
     }
     
     /**
-     * Print the Item Categories in <code>this</code> class's <code>String</code> array of Category Types.
+     * Print the <code>Item</code> Categories in <code>this</code> class's <code>String</code> array of Category Types.
      */
     public void printCategories(){
         int i=1; 
@@ -98,8 +98,8 @@ public final class MenuItemCategoryTypes {
 
     
     /** 
-     * Prints Item Types in the specified Item Category, indicated by the index
-     * @param categoryIndex Index that indicates Item Category
+     * Prints <code>Item</code> Types in the specified <code>Item</code> Category, indicated by the index
+     * @param categoryIndex Index that indicates <code>Item</code> Category
      */
     public void printSubCategories(int categoryIndex){
         String[] subcategoryList = this.indexToCategoryList(categoryIndex);
