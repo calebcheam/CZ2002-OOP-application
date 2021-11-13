@@ -32,7 +32,7 @@ public class RestaurantInterface {
         int choice;
         this.sc = new Scanner(System.in); //scanner attribute to read things
         this.options = new ArrayList<String>(); //options for functions staff can use
-        Restaurant.createTables();
+        Restaurant restaurant= Restaurant.get_instance();
 
         // Menu Actions
         options.add("Menu actions");
@@ -42,13 +42,6 @@ public class RestaurantInterface {
 
 
         
-        
-
-        
-        
-
-        
-
         Thread t1 = new Thread(new Refresh());
         t1.start();
         System.out.println("\n\n\n\n\n\n");
