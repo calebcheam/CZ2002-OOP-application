@@ -8,8 +8,19 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+/**
+ * <code>MenuCSVHandler</code> class that implements <code>CSVLocatable</code> interface and handles inserting and removing lines at specified locations in the CSV
+ * @see CSVLocatable
+ */
 public class MenuCSVHandler implements CSVLocatable {
 
+    
+    /** 
+     * Inserts a <code>String</code> into the CSV at a specified location, identitfied using other target <code>String</code> objects
+     * @param path <code>String</code> path to the CSV file
+     * @param friendLine Target <code>String</code> that marks out where the new <code>String</code> is to be inserted in the CSV
+     * @param newItemString <code>String</code> that is to be inserted into the CSV
+     */
     @Override
     public void writeToCSVLocation(String path, String friendLine, String newItemString) {
         //adds a new Item to the Menu by writing to specific location in the CSV
@@ -26,6 +37,12 @@ public class MenuCSVHandler implements CSVLocatable {
         
     }
 
+    
+    /** 
+     * Removes a <code>String</code> from the CSV
+     * @param path <code>String</code> path to the CSV file
+     * @param lineToDelete <code>String</code> to be deleted from the CSV
+     */
     @Override
     public void removeFromCSVLocation(String path, String lineToDelete) {
         int w = this.copyCSVUntilLine(path, lineToDelete); //copy original contents to temp csv up to the specific line

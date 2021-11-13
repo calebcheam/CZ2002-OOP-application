@@ -38,6 +38,11 @@ public class Restaurant { //Singleton class
     }
     } 
     
+    
+    /** 
+     * Gets instance of <code>Restaurant</code>
+     * @return Restaurant
+     */
     public static Restaurant get_instance(){ 
         
         restaurant=new Restaurant();
@@ -125,6 +130,9 @@ public class Restaurant { //Singleton class
         tables[table-1].printReservations(timeslots);
     }
 
+    /** 
+     * Displays table availability across all timeslots for all tables
+     */
     public static void printTableAvailabilityAll()
     {
         System.out.print("                ");

@@ -7,7 +7,16 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
+/** 
+ * <code>SalesCSVHandler</code> class that implements <code>CSVAppendable</code> interface and handles updating the overall sales data with sales data per day
+ * @see CSVAppendable
+ */
 public class SalesCSVHandler implements CSVAppendable{
+    
+    /** 
+     * Writes the contents of an <code>ArrayList</code> to the end of a CSV file
+     * @param lines the <code>ArrayList</code> containing the strings to be written to the CSV
+     */
     //implements CSV Appendable since we will always add to the end of CSV
 
     @Override

@@ -208,6 +208,11 @@ public class DailySaleReport {
         }
     }
     
+    
+    /** 
+     * Converts this <code>DailySaleReport</code> information to <code>String</code> format 
+     * @return <code>ArrayList</code> of strings of this daily sales report
+     */
     public ArrayList<String> DSRtoStrings(){
         ArrayList<String> dsrAsStrings = new ArrayList<String>();
         dsrAsStrings.add("Date," + this.date);
@@ -226,7 +231,7 @@ public class DailySaleReport {
     }
 
     /** 
-     * Displays the sales report information in a readable format
+     * Displays this sales report information in a readable format
      */
     public void printDSR(){
         System.out.printf("\n==============================         DAY REPORT FOR %s      ===========================\n", this.date);

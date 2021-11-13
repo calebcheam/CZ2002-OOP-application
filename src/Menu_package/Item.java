@@ -30,6 +30,10 @@ public class Item {
         this.stock = stock;
     }
 
+    /**
+     * Another constructor of <code>this</code> <code>class</code>.
+     * @param csvLine <code>String</code> the line from the CSV that will be used to create this item
+     */
     public Item (String csvLine){
         //Create an Item object using the csv values
         String[] itemAttributes = csvLine.split(",");//get the csv row value into String array
@@ -67,6 +71,13 @@ public class Item {
     }
 
     
+    
+    /** 
+     * Splits the description of an <code>Item</code> into strings for storage into an <code>ArrayList</code>, which is returned to the caller
+     * @param descriptionString <code>String</code> of <code>Item</code> description to be split
+     * @param type <code>Item</code> type 
+     * @return <code>ArrayList</code> containing the split description
+     */
     public ArrayList<String> splitDescription(String descriptionString, String type){
         //Create ArrayList to return at the end
         ArrayList<String> descriptionList = new ArrayList<>();
