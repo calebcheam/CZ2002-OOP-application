@@ -169,7 +169,7 @@ public class Order {
             System.out.println(item.getPrice()*orders.get(item));
         }
         System.out.println("Member? No");
-        System.out.println("Total Price with GST = "+nonMemberGstTotal());
+        System.out.printf("\nTotal Price with GST = %.3f",nonMemberGstTotal());
 
 
     }

@@ -171,7 +171,12 @@ public class Table {
         {
             if (this.reservations[i]!=null)
             {
-                System.out.print(timeslot[i] + " : Reserved by " + this.reservations[i].getName()+ "\n");
+                if (this.reservations[i].getName().equals("Vacated")){
+                    System.out.println(timeslot[i] + " : Vacated (" + this.reservations[i].getName() + ")\n");
+                }else {
+                    System.out.print(timeslot[i] + " : Reserved by " + this.reservations[i].getName()+ "\n");
+                }
+                
             }
             else
             {
