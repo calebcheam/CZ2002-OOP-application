@@ -208,40 +208,6 @@ public class DailySaleReport {
         }
     }
     
-    /** 
-     * Appends a new day's sales report to a csv containing all sales reports
-     */
-    public void writeReportToCSV(){ //writes to the csv file
-        try{
-            File file =new File("SALESREPORT.csv");
-            
-            if(!file.exists()){
-               file.createNewFile();
-            }
-            FileWriter fw = new FileWriter(file,true);
-            BufferedWriter bw = new BufferedWriter(fw);
-            PrintWriter pw = new PrintWriter(bw);
-            
-            pw.println("Date," + this.date); 
-            pw.println("Item" + "," + "Quantity" + "," + "Revenue (w/o Discount)");
-            for (Item item : this.tempMap.keySet()){
-                int quantity = this.tempMap.get(item);
-                pw.println(item.getName() + "," + quantity + "," + item.getPrice()*quantity);
-            }
-            pw.print('-');
-            pw.printf("\nGRAND TOTAL,%.2f\n" , this.dailyTotal);
-            pw.printf("TOTAL DISC GIVEN,%.2f\n" , this.dailyDiscount);
-            pw.println("=======================================================");
-            pw.close();
-  
-        System.out.println("Successfully added today's report to the CSV!");
-  
-         }catch(IOException ioe){
-             System.out.println("Exception occurred:");
-             ioe.printStackTrace();
-        }
-    }
-
     public ArrayList<String> DSRtoStrings(){
         ArrayList<String> dsrAsStrings = new ArrayList<String>();
         dsrAsStrings.add("Date," + this.date);
