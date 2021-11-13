@@ -242,10 +242,27 @@ public class DailySaleReport {
         }
     }
 
+    public ArrayList<String> DSRtoStrings(){
+        ArrayList<String> dsrAsStrings = new ArrayList<String>();
+        dsrAsStrings.add("Date," + this.date);
+        dsrAsStrings.add("Item" + "," + "Quantity" + "," + "Revenue (w/o Discount)");
+        for (Item item : this.tempMap.keySet()){
+            int quantity = this.tempMap.get(item);
+            dsrAsStrings.add(item.getName() + "," + quantity + "," + item.getPrice()*quantity);
+        }
+        dsrAsStrings.add("-");
+        String grandTotalString = String.format("GRAND TOTAL,%.2f", this.dailyTotal);
+        String totalDiscountString = String.format("TOTAL DISC GIVEN, %.2f", this.dailyDiscount);
+        dsrAsStrings.add(grandTotalString);
+        dsrAsStrings.add(totalDiscountString);
+        dsrAsStrings.add("=======================================================");
+        return dsrAsStrings;
+    }
+
     /** 
      * Displays the sales report information in a readable format
      */
-    public void printFromObject(){
+    public void printDSR(){
         System.out.printf("\n==============================         DAY REPORT FOR %s      ===========================\n", this.date);
         System.out.println("Item \t\t\t\t\t  Quantity \t\t  Revenue (w/o discount)\n");
 

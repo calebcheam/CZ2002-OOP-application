@@ -77,7 +77,6 @@ public class MenuManager {
         if (menuChoice == 1){
             Menu=new AlaCarteMenu();
             itemToRemove = selectAlaCarteItemFromMenu();
-            //System.out.println("I WANT TO REMOVE " + itemToRemove.getName());
             Menu.remove(itemToRemove);
         } else if (menuChoice ==2) {
             Menu=new PromoMenu();
@@ -89,7 +88,6 @@ public class MenuManager {
             return;
         }
         Menu.remove(itemToRemove);
-
         
     }
     

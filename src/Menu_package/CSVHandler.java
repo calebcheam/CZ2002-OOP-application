@@ -319,7 +319,7 @@ public class CSVHandler {
      * @return ArrayList<String> <code>ArrayList</code> of <code>String</code>, where each <code>String</code> represents a part of an <code>Item</code> description.
      */
     public ArrayList<String> splitDescription(String descriptionString, String type){
-        //Create ArrayList to return at the end
+        //Create ArrayListf to return at the end
         ArrayList<String> descriptionList = new ArrayList<>();
 
         //Get ArrayList of Set types

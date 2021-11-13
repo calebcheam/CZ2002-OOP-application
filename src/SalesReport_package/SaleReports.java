@@ -41,7 +41,7 @@ public class SaleReports {
     public void printAllReports(){
         
         for (DailySaleReport dailySaleReport : salereports) {
-            dailySaleReport.printFromObject();
+            dailySaleReport.printDSR();
         }
     }
 
@@ -53,7 +53,7 @@ public class SaleReports {
     public void printOneReport(String date){
         for (DailySaleReport dsr : salereports) {
             if (dsr.getDate().equals(date)){
-                dsr.printFromObject();
+                dsr.printDSR();
             }
         } 
     }
@@ -106,7 +106,7 @@ public class SaleReports {
        }
        
        DailySaleReport compiledReport = new DailySaleReport(summedTotal, summedDiscount, compiledMap, date);
-       compiledReport.printFromObject();
+       compiledReport.printDSR();
    }
 
 
