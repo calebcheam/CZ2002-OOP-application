@@ -22,6 +22,7 @@ public final class MenuItemCategoryTypes {
      * Initializes two <code>String</code> Arrays that stores <code>Item</code> Category (2D array) and <code>Item</code> Type names relating to the Menu Name specified.
      * If Menu Name is "Promotion Menu", the constructor will store <code>Item</code> Category and <code>Item</code> Type names relating to Set Items.
      * Else, it will store <code>Item</code> Category and <code>Item</code> Type names relating to non-Set Type Items.
+     * @param menuName Menu Name
      */
     public MenuItemCategoryTypes(String menuName){
         if (menuName == "Promotion Menu"){
