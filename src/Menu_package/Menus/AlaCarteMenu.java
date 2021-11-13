@@ -144,7 +144,7 @@ public class AlaCarteMenu extends GenericMenu{
      * (e.g. when itemType = "Appetiser", it will be under Main Course Category).
      * Return "Invalid Type" if the <code>Item</code> type is not in any category.
      * @param itemType <code>Item</code> type 
-     * @return String <code>String</code> to indicate the Category of the <code>Item</code> type.
+     * @return String string to indicate the Category of the <code>Item</code> type.
      */
     @Override
 	public String findItemTypeCategory(String itemType) {
@@ -237,7 +237,7 @@ public class AlaCarteMenu extends GenericMenu{
      * This method returns the reference of <code>ArrayList</code> of Items (one of the attributes of <code>this</code> <code>class</code>), that contains Items that is under an <code>Item</code> Category specified.
      * This method can only be used when it can be assumed that <code>Item</code> Category specified is always valid.
      * @param typeCategory <code>Item</code> Category, of the <code>ArrayList</code> wanted.
-     * @return ArrayList<Item> <code>ArrayList</code> of <code>Item</code> that contains Items under the specified <code>Item</code> category.
+     * @return <code>ArrayList</code> of <code>Item</code> objects <code>ArrayList</code> of <code>Item</code> that contains Items under the specified <code>Item</code> category.
      */
     public ArrayList<Item> returnItemListReference(String typeCategory) {
 	    
