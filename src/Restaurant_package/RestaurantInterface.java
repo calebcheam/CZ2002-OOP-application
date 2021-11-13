@@ -96,7 +96,7 @@ public class RestaurantInterface {
     
     /** 
      * <code>Main</code> method to run the app.
-     * @param args
+     * @param args parameter for main method
      */
     public static void main (String[] args){
         RestaurantInterface restaurantApp = new RestaurantInterface();

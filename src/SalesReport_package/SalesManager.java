@@ -52,7 +52,7 @@ public class SalesManager {
     
     
     /** 
-     * Displays sales from a selected date if <code>boolean</code> value of <code>true</code< is passed in as parameters.
+     * Displays sales from a selected date if <code>boolean</code> value of <code>true</code> is passed in as parameters.
      * Else, prompts user to select a time period and displays sales over that period
      * @param viewAll <code>boolean</code> true views all sales, false enables time period selection
      */

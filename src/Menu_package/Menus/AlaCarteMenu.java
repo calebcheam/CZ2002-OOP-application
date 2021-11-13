@@ -11,7 +11,7 @@ import Menu_package.Item;
 import Menu_package.MenuItemCategoryTypes;
 
 /**This <code>class</code> prints the Ala Carte Menu and handles processes that involves Items of the Ala Carte Menu.
- * This <code>class</code> creates 3 <code>ArrayLists of <code>Item</code> objects that contains <code>Item</code> objects of <code>Item</code> Category of "Main Course", "Dessert", and "Drink" respectively. 
+ * This <code>class</code> creates 3 <code>ArrayLists</code> of <code>Item</code> objects that contains <code>Item</code> objects of <code>Item</code> Category of "Main Course", "Dessert", and "Drink" respectively. 
  * @author DSAI1 ASSIGNMENT GROUP 3
  * @version 1.0
  */

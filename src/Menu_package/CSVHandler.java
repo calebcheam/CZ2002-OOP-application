@@ -178,7 +178,7 @@ public class CSVHandler {
      * @param lineToDelete
      * @return int Return 1 if success, -1 if failure
      */
-    private int appendToCSV(String fileToWritepath, String lineToDelete){
+    private int appendToCSV(String fileToWritepath){
         // skips over the line to delete
         // then appends the rest as per normal
         try{
