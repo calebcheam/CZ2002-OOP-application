@@ -178,7 +178,7 @@ public class CSVHandler {
      * @param lineToDelete
      * @return int Return 1 if success, -1 if failure
      */
-    private int appendToCSV(String fileToWritepath){
+    private int appendToCSV(String fileToWritepath, String lineToDelete){
         // skips over the line to delete
         // then appends the rest as per normal
         try{
@@ -314,7 +314,7 @@ public class CSVHandler {
      * If the description comes from an <code>Item</code> not under the Set category, the description <code>String</code> is splitted by " + ".
      * Unlike the <code>Item</code> under the Set Category, the description <code>ArrayList</code> Size of the <code>Item</code> is not fixed. It can have any size, i.e. description can have 6 parts, 1 parts, etc
      *
-     * @param descriptionString <code>String</code> that contains the description of the <code>Item</code></code>
+     * @param descriptionString <code>String</code> that contains the description of the <code>Item</code>
      * @param type <code>Item</code> Type of the described <code>Item</code>
      * @return ArrayList<String> <code>ArrayList</code> of <code>String</code>, where each <code>String</code> represents a part of an <code>Item</code> description.
      */
