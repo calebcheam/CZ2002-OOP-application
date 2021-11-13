@@ -15,12 +15,14 @@ public class SalesManager {
     private static SaleReports SR=new SaleReports(); 
     private static Scanner sc=new Scanner(System.in);
 
+    private static SalesCSVHandler salesCSVHandler = new SalesCSVHandler();
+
     /** 
      * Displays the current day's sales report
      */
     public static void viewTodaySales(){
         dsr = new DailySaleReport();
-        dsr.printFromObject();
+        dsr.printDSR();
     }
 
     /** 
@@ -28,14 +30,16 @@ public class SalesManager {
      */
     public static void saveTodaySales(){
         dsr = new DailySaleReport();
-        dsr.printFromObject();
+        dsr.printDSR();
 
         System.out.println("\n\nThis is how the current sales report looks like... Do you wish to save this to our records?");
         System.out.println("(1) Yes (2) No");
         System.out.println("*****NOTE : Please only do this when the restaurant is closing for the day.*****");
         if (sc.nextInt()==1)
         {
-            dsr.writeReportToCSV();
+            //dsr.writeReportToCSV();
+            salesCSVHandler.writeToCSVEnd(dsr.DSRtoStrings());
+
             //refreshSR();
         } else System.out.println("Did not save to records");
 
