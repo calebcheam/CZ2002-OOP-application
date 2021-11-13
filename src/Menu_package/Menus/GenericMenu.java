@@ -2,8 +2,8 @@ package Menu_package.Menus;
 
 import java.util.ArrayList;
 
-import Menu_package.CSVHandler;
 import Menu_package.Item;
+import Menu_package.MenuCSVHandler;
 import Menu_package.MenuItemCategoryTypes;
 
 /**
@@ -13,9 +13,10 @@ import Menu_package.MenuItemCategoryTypes;
  * @author DSAI1 ASSIGNMENT GROUP 3
  * @version 1.0
  */
+
 public abstract class GenericMenu {
     protected MenuItemCategoryTypes menuCategories;
-    protected CSVHandler csvHandler=new CSVHandler();  //we need this to be shared within the package
+    protected MenuCSVHandler menuCSVHandler = new MenuCSVHandler();
     protected int longestStringSize;
     protected String csvPath=null;
     //This message below is later used for the display menu method
@@ -134,7 +135,15 @@ public abstract class GenericMenu {
         if (check==1){
             String friendItemName= this.findFriend(typeCategory, itemType);
             //System.out.println("I want to find friend " + friendItemName);
-            this.csvHandler.addItemToCSV(newItem, this.csvPath, friendItemName);
+            
+            String newItemString; 
+            if (newItem.getType()=="Set"){
+                newItemString = newItem.SetToString();
+            } else {
+                newItemString = newItem.AlaCarteToCSVString();
+            }
+            this.menuCSVHandler.writeToCSVLocation(this.csvPath, friendItemName, newItemString);
+
         } else System.out.println("ERROR! Item was not created successfully");
         return check;
     }
@@ -146,7 +155,8 @@ public abstract class GenericMenu {
      */
     public void remove(Item item){
         String lineToDelete = item.getName();
-        this.csvHandler.removeItemFromCSV(this.csvPath, lineToDelete);
+        //this.csvHandler.removeItemFromCSV(this.csvPath, lineToDelete);
+        this.menuCSVHandler.removeFromCSVLocation(this.csvPath, lineToDelete);
     }
 
     
