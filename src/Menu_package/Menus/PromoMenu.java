@@ -132,7 +132,7 @@ public class PromoMenu extends GenericMenu{
      * Returns <code>String</code> that indicates the <code>Item</code> Type specified is under the Set Category.
      * If the <code>Item</code> Type is not under Set Category, <code>this</code> method returns "Invalid Type".
      * @param itemType <code>Item</code> Type
-     * @return String <code>String</code> indicating if <code>Item</code> Type specified is under the Set Category
+     * @return <code>String</code> <code>String</code> indicating if <code>Item</code> Type specified is under the Set Category
      */
     @Override
     public String findItemTypeCategory(String itemType) {
@@ -147,13 +147,13 @@ public class PromoMenu extends GenericMenu{
 
 	
     /** 
-     * Adds <code>Item</code> to the <code>ArrayList of Set Items if the Item's type is under the Set Category
+     * Adds <code>Item</code> to the <code>ArrayList</code> of Set Items if the Item's type is under the Set Category
      * @param menuItem <code>Item</code> to be added
      * @param itemType <code>Item</code> Type of the <code>Item</code> to be added
-     * @return int Return 1 if <code>Item</code> is added successfully, otherwise returns -1.
+     * @return <code>int</code> Return 1 if <code>Item</code> is added successfully, otherwise returns -1.
      */
     @Override
-	public int allocateItem(Item menuItem, String itemType) {
+    public int allocateItem(Item menuItem, String itemType) {
         String typeCategory = findItemTypeCategory(itemType);
 
         if (typeCategory == "Set"){
@@ -161,7 +161,7 @@ public class PromoMenu extends GenericMenu{
             return 1;
 
         } else return -1;
-	}
+    }
 
 	
     /**
@@ -169,7 +169,7 @@ public class PromoMenu extends GenericMenu{
      * This method is used in the proccess of deleting/updating a Set Item's information.
      * @param typeCategory Category the <code>Item</code> type is under
      * @param itemType <code>Item</code> type, to find the first occurrence in the <code>ArrayList</code>
-     * @return int Returns the index of the first occurrence of the specified <code>Item</code> type. Returns -2 if <code>Item</code> type is not in any category, -1 if <code>Item</code> type is in a category, but <code>Item</code> type is not found in the <code>ArrayList</code>.
+     * @return <code>int</code> Returns the index of the first occurrence of the specified <code>Item</code> type. Returns -2 if <code>Item</code> type is not in any category, -1 if <code>Item</code> type is in a category, but <code>Item</code> type is not found in the <code>ArrayList</code>.
      */
      
     @Override
@@ -189,8 +189,9 @@ public class PromoMenu extends GenericMenu{
 
 	
     /** 
-     * Returns the reference of ArrayList of Set Item
-     * @param typeCategory Item Category
+     * Returns the reference of <code>ArrayList</code> of Set Items
+     * @param typeCategory <code>Item</code> Category
+     * @return <code>ArrayList</code> of <code>Item</code> objects <code>ArrayList</code> of Items that contains Set Items
      */
     @Override
 	public ArrayList<Item> returnItemListReference(String typeCategory) {
